@@ -1,0 +1,32 @@
+// ant components
+@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
+
+.title {
+  // width: 4%;
+  color: var(--text-secondary-color);
+  position: relative;
+  .text-line {
+    width: 1.2px;
+    background-color: var(--text-secondary-color);
+    height: 90%;
+    display: flex;
+    justify-content: center;
+
+    .text {
+      background: var(--bg-primary-color);
+      transform: rotate(-90deg);
+      width: max-content;
+      text-transform: uppercase;
+      position: absolute;
+      top: 68px;
+      left: -42px;
+      padding: 0 10px;
+    }
+  }
+}
+.fit-width {
+  max-width: fit-content;
+}
+.pt-7 {
+  padding-top: 7rem;
+}
