@@ -18,23 +18,34 @@
       <about-me />
     </div>
     <div id="my-skill">
-      <my-skills/>
+      <my-skills />
+    </div>
+    <div id="my-work">
+      <my-work />
+    </div>
+    <div id="contact-info">
+      <contact-info />
     </div>
   </div>
 </template>
 
 <script>
-import aboutMe from "./aboutMe.vue";
-import MySkills from './mySkills.vue';
+import aboutMe from './aboutMe.vue'
+import MySkills from './mySkills.vue'
+import MyWork from './myWork.vue'
+import ContactInfo from './contact.vue'
 export default {
-  components: { aboutMe, MySkills },
-  name: "TheBody",
-};
+  components: { aboutMe, MySkills, MyWork, ContactInfo },
+  name: 'TheBody',
+}
 </script>
 
 <style lang="scss">
 .portfolio-wrapper {
   #hero-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
     min-height: var(--hero-section-height);
     .image-wrapper {
       display: block;
@@ -51,16 +62,16 @@ export default {
           position: relative;
           height: var(--hero-section-height);
           zoom: 1.2;
-          top: -15px;
+          top: -1.5rem;
         }
         &:first-child {
           height: var(--hero-section-height);
-          mask-image: url("~/assets/images/mask-image.png");
+          mask-image: url('~/assets/images/mask-image.png');
           mask-size: contain;
           mask-repeat: no-repeat;
           mask-position: center;
           &::before {
-            content: "";
+            content: '';
             top: 0;
             left: 0;
             height: 100%;
@@ -88,22 +99,20 @@ export default {
       position: absolute;
       top: 50%;
       z-index: 99;
-      width: 65rem;
-      color: #fff;
-      left: 28%;
+      color: var(--text-white-color);
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: 0.2rem;
       text-shadow: 0rem 0rem 2rem black;
       text-align: center;
     }
   }
   #about-me {
-    margin-top: 10rem;
-    // height: 50rem;
+    position: relative;
+    margin: 10rem 0rem;
     overflow: hidden;
   }
-  #my-skill{
-    height: 40rem;
+  #my-skill {
+    position: relative;
   }
 }
 </style>

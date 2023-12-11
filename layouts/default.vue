@@ -25,7 +25,7 @@ export default {
 .ant-layout {
   .ant-layout-header {
     padding: 0;
-    height: var(--layout-header-height);
+    height:fit-content;
     background-color: var(--bg-primary-color) !important;
   }
   .ant-layout-content {

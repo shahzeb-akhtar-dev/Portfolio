@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="description col-5">
-      <h1>Solid Experience in building Vue js and responsive web app .</h1>
+      <h1>Solid Experience in building Vue js responsive web app .</h1>
       <p>
         Hi,i am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
         passion for creating visually stunning and user-friendly web
@@ -37,8 +37,8 @@
 
 <script>
 export default {
-  name: "about-me",
-};
+  name: 'about-me',
+}
 </script>
 
 <style lang="scss">
@@ -53,12 +53,14 @@ export default {
       height: 100%;
 
       .image-wrapper {
-        display: block;
         text-align: center;
+        position: relative;
+        width: 50rem;
+        height: 50rem;
         .image-layer {
           position: absolute;
           left: 0;
-          width: 100%;
+          width: 45rem;
           height: 100%;
           overflow: hidden;
 
@@ -66,17 +68,17 @@ export default {
             position: relative;
 
             zoom: 1.2;
-            top: -45px;
+            top: -4.5rem;
             width: 60%;
           }
           &:first-child {
-            height: 100%;
-            mask-image: url("~/assets/images/mask-image.png");
+            // height: 100%;
+            mask-image: url('~/assets/images/mask-image.png');
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: center;
             &::before {
-              content: "";
+              content: '';
               top: 0;
               left: 0;
               height: 100%;
@@ -91,7 +93,7 @@ export default {
             }
           }
           &:last-child {
-            height: 50%;
+            height: 20rem;
             overflow: hidden !important;
             .layer-image {
               z-index: 5;
@@ -108,7 +110,7 @@ export default {
       text-transform: capitalize;
     }
     p {
-      padding-left:1rem ;
+      padding-left: 1rem;
       margin: 1rem;
     }
   }

@@ -1,10 +1,12 @@
-@import url('./htmlTags.css');
+@import './htmlTags.css';
 
 
 :root{
     --logo-font-family:'Saira Stencil One', sans-serif;
     --bg-primary-color:#efefef;
     --text-secondary-color:#a19797;
+    --text-black-color:#000000;
+    --text-white-color:#ffff;
     --box-shadow-color:#a19797;
     --theme-primary-color:rgb(255 90 1);
     --layout-header-height:6.3rem;
