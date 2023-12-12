@@ -45,29 +45,29 @@ export default {
   #hero-section {
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
-    min-height: var(--hero-section-height);
+    height: 65rem;
     .image-wrapper {
       display: block;
       text-align: center;
       .image-layer {
         position: absolute;
-        // top: var(--layout-header-height);
+        top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        // height: 100%;
         overflow: hidden;
 
         .layer-image {
           position: relative;
-          height: var(--hero-section-height);
           zoom: 1.2;
           top: -1.5rem;
+          width: 35rem;
         }
         &:first-child {
-          height: var(--hero-section-height);
           mask-image: url('~/assets/images/mask-image.png');
-          mask-size: contain;
+          mask-size: 80rem;
           mask-repeat: no-repeat;
           mask-position: center;
           &::before {
@@ -86,7 +86,7 @@ export default {
           }
         }
         &:last-child {
-          height: 50%;
+          height: 40rem;
           overflow: hidden !important;
           .layer-image {
             z-index: 5;
@@ -97,7 +97,7 @@ export default {
     .hero-text {
       font-size: 4.8rem;
       position: absolute;
-      top: 50%;
+      top: 30rem;
       z-index: 99;
       color: var(--text-white-color);
       font-weight: 900;

@@ -9,6 +9,7 @@
     --text-white-color:#ffff;
     --box-shadow-color:#a19797;
     --theme-primary-color:rgb(255 90 1);
+    --primary-transparent-color:rgb(255 90 1 / 93%);
     --layout-header-height:6.3rem;
     --hero-section-height:calc(100vh - var(--layout-header-height))
 }
