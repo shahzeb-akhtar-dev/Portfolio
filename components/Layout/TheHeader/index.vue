@@ -4,7 +4,7 @@
       <div class="logo">Portfolio</div>
 
       <div class="actions">
-        <a-switch default-checked>
+        <a-switch default-checked @change="changeThemeMode">
           <a-icon slot="checkedChildren" type="check" />
           <a-icon slot="unCheckedChildren" type="close" />
         </a-switch>
@@ -23,7 +23,25 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods:{
+    changeThemeMode(e){
+      let root=document.querySelector(':root')
+      if(e){
+
+        root.style.setProperty('--bg-primary-color',"#efefef")
+        root.style.setProperty('--text-black-color',"#000000")
+
+      }
+      else{
+        root.style.setProperty('--bg-primary-color',"#000000")
+        root.style.setProperty('--text-black-color',"#fffff")
+
+      }
+      console.log()
+    }
+  }
+}
 </script>
 
 <style lang="scss">

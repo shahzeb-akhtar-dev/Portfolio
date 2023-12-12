@@ -90,6 +90,15 @@
   .poster-wrapper {
     display: none;
   }
+  .contact-info {
+    .contact {
+      .message-box {
+        .box {
+          margin-top: 6rem !important;
+        }
+      }
+    }
+  }
 }
 @media screen and (max-width: 1024px) {
   html {
