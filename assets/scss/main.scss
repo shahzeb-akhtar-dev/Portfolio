@@ -56,9 +56,11 @@
 .description {
   padding: 2rem;
   text-align: center;
-  margin: auto;
+  margin:0 auto;
   h1 {
     text-transform: capitalize;
+    color: var(--text-black-color);
+    margin-bottom: 3rem;
   }
   p {
     padding-left: 1rem;

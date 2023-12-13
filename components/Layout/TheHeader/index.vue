@@ -5,8 +5,13 @@
 
       <div class="actions">
         <a-switch default-checked @change="changeThemeMode">
-          <a-icon slot="checkedChildren" type="check" />
-          <a-icon slot="unCheckedChildren" type="close" />
+          <!-- <a-icon  type="check" /> -->
+          <span slot="checkedChildren">
+            <i class="fa-regular fa-moon"></i>
+          </span>
+          <span slot="unCheckedChildren">
+            <i class="fa-regular fa-sun"></i>
+          </span>
         </a-switch>
       </div>
     </div>
@@ -24,23 +29,19 @@
 
 <script>
 export default {
-  methods:{
-    changeThemeMode(e){
-      let root=document.querySelector(':root')
-      if(e){
-
-        root.style.setProperty('--bg-primary-color',"#efefef")
-        root.style.setProperty('--text-black-color',"#000000")
-
-      }
-      else{
-        root.style.setProperty('--bg-primary-color',"#000000")
-        root.style.setProperty('--text-black-color',"#fffff")
-
+  methods: {
+    changeThemeMode(e) {
+      let root = document.querySelector(':root')
+      if (e) {
+        root.style.setProperty('--bg-primary-color', '#efefef')
+        root.style.setProperty('--text-black-color', '#000000')
+      } else {
+        root.style.setProperty('--bg-primary-color', '#000000')
+        root.style.setProperty('--text-black-color', '#ffffff')
       }
       console.log()
-    }
-  }
+    },
+  },
 }
 </script>
 

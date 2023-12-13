@@ -17,27 +17,62 @@
         <div class="text">About Me</div>
       </div>
     </div>
-    <div class="description col-5">
-      <h1>Solid Experience in building Vue js responsive web app .</h1>
-      <p>
-        Hi,i am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
-        passion for creating visually stunning and user-friendly web
-        applications. With over 1.5 years of professional experience, I have
-        developed a deep understanding of front-end technologies, frameworks,
-        and best practices. <br />
-        Throughout my career, I have successfully delivered numerous projects
-        from concept to completion, collaborating closely with cross-functional
-        teams to ensure exceptional user experiences. I excel in transforming
-        complex design concepts into pixel-perfect, responsive websites that
-        align with client objectives and business goals.
-      </p>
+    <div class="about col-5">
+      <div class="description">
+        <h1>Solid Experience in building Vue js responsive web app.</h1>
+        <p>
+          Hi,i am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
+          passion for creating visually stunning and user-friendly web
+          applications. With over 1.5 years of professional experience, I have
+          developed a deep understanding of front-end technologies, frameworks,
+          and best practices. <br />
+          Throughout my career, I have successfully delivered numerous projects
+          from concept to completion, collaborating closely with
+          cross-functional teams to ensure exceptional user experiences. I excel
+          in transforming complex design concepts into pixel-perfect, responsive
+          websites that align with client objectives and business goals.
+        </p>
+      </div>
+      <div class="action text-center">
+        <!-- <CustomButton @click="downloadCv">Download CV</CustomButton>
+        <pdf :src="cvUrl" v-if="true" ref="pdfViewer"></pdf> -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import CustomButton from '../../BasicComponents/CustomButton.vue'
 export default {
   name: 'about-me',
+  components: { CustomButton },
+  data() {
+    return {
+      cvUrl: '@/assets/images/My-Resume.pdf',
+    }
+  },
+  methods: {
+    async downloadCv() {
+      const pdfViewer = this.$refs.pdfViewer
+      console.log(pdfViewer)
+      if (pdfViewer) {
+        const pdfData = pdfViewer.src
+        const blob = new Blob([pdfData], { type: 'application/pdf' })
+
+        // Create a download link
+        const link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = 'document.pdf'
+
+        // Trigger a click on the link to start the download
+        document.body.appendChild(link)
+        link.click()
+
+        // Remove the link from the DOM
+        document.body.removeChild(link)
+      }
+    },
+  },
 }
 </script>
 
@@ -101,17 +136,6 @@ export default {
           }
         }
       }
-    }
-  }
-
-  .description {
-    // width: 48%;
-    h1 {
-      text-transform: capitalize;
-    }
-    p {
-      padding-left: 1rem;
-      margin: 1rem;
     }
   }
 }

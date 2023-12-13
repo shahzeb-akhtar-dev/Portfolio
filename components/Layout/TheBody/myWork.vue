@@ -29,7 +29,11 @@
               </span>
               <div class="overlay">
                 <span class="name">{{ card.name }}</span>
-                <span class="desc">{{ card.description }}</span>
+                <span
+                  class="desc d-none d-sm-block"
+                  :title="card.description"
+                  >{{ card.description }}</span
+                >
               </div>
             </li>
           </ul>
@@ -311,12 +315,14 @@ export default {
         }
 
         .overlay {
+          max-width: calc(100% - 1.8rem);
           position: absolute;
           padding-left: 1rem;
           margin: 1rem;
-          bottom: 2rem;
-          border-bottom-left-radius: 0.5rem;
-          border-bottom-right-radius: 0.5rem;
+          left: -0.1rem;
+          bottom: 1.78rem;
+          border-bottom-left-radius: 1rem;
+          border-bottom-right-radius: 1rem;
           height: 0%;
           font-weight: 400;
           transition: 0.7s ease-in;
@@ -324,23 +330,29 @@ export default {
           color: var(--text-white-color);
           overflow: hidden;
           text-align: left;
+          width: 100%;
           .name {
             display: block;
             cursor: pointer;
-            margin: 1rem 0rem;
             font-weight: 600;
-            font-size: 1.8rem;
-            cursor: pointer;
+            margin: 1rem 0rem;
+            font-size: 2rem;
             &:hover {
               text-decoration: underline;
             }
           }
-          .description {
+          .desc {
+            text-wrap: nowrap;
             cursor: context-menu;
+            max-width: 99% !important;
+            text-overflow: ellipsis;
+            display: block;
+            overflow: hidden;
+            margin: 1rem 0rem;
           }
         }
         &:hover .overlay {
-          height: 50%;
+          height: 35%;
         }
       }
     }
