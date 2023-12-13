@@ -36,25 +36,24 @@
   transition: none;
   line-height: 1rem;
   &.ant-switch-checked {
-  transition: none;
+    transition: none;
 
     border: 1px solid #ffffff;
     &:after {
       font-family: 'Font Awesome 5 Free';
       font-weight: 900;
       content: '\f185';
-      line-height: 2.52rem;
-      font-size: 1.9rem;
+      line-height: 16px;
+      font-size: 12px;
       margin-left: -2px;
     }
   }
   &:after {
-    
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: '\f186';
-    line-height: 2.52rem;
-    font-size:1.9rem;
+    line-height: 16px;
+    font-size: 12px;
     background-color: transparent !important;
     border: 2px solid #ffffff;
   }
