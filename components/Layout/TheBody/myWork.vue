@@ -13,6 +13,7 @@
         Well-documented, clean, easy and elegant interface helps any
         non-technical clients.
       </p>
+      <strong>*Note: These are dummy projects.</strong>
     </div>
     <div class="tabs">
       <a-tabs :default-active-key="1" @change="workDataLimit = 7">

@@ -95,20 +95,20 @@ export default {
         .image-layer {
           position: absolute;
           left: 0;
-          width: 45rem;
+          width: 60rem;
           height: 100%;
           overflow: hidden;
 
           .layer-image {
             position: relative;
-
             zoom: 1.2;
             top: -4.5rem;
-            width: 60%;
+            width: 53%;
+            left: 1.1rem;
           }
           &:first-child {
-            // height: 100%;
-            mask-image: url('~/assets/images/mask-image.png');
+            // mask-image: url('~/assets/images/mask-image.png');
+            mask-image: url('~/assets/images/splash/mask.png');
             mask-size: contain;
             mask-repeat: no-repeat;
             mask-position: center;
@@ -121,7 +121,7 @@ export default {
               overflow: hidden !important;
               position: absolute;
               z-index: 1;
-              background: var(--theme-primary-color);
+              background: var(--theme-gradient-primary-color);
             }
             .layer-image {
               z-index: 2;

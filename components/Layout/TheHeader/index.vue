@@ -75,8 +75,22 @@ export default {
         list-style: none;
         a {
           padding: 1rem;
-          color: var(--text-black-color) !important;
+          color: var(--text-black-color);
           font-weight: 700;
+          text-decoration: none;
+          transition: 0.4s;
+          background: linear-gradient(
+            0deg,
+            var(--theme-primary-color) 1%,
+            transparent 48%
+          );
+          background-size: 102% 200%;
+          background-position: top;
+          &:hover {
+            background-position: bottom;
+            color: #fff;
+            border-radius: 1rem;
+          }
         }
       }
     }

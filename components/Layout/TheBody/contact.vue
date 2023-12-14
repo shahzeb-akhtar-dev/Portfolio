@@ -64,6 +64,30 @@
         </div>
       </div>
     </div>
+    <div class="social-links">
+      <ul>
+        <li>
+          <a href="https://www.facebook.com/shahzeb.akhtar.583" target="blank">
+            <i class="fa-brands fa-square-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/shahzeb-akhtar-889570247/" target="blank">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/ShahzebAkhtar89" target="blank">
+            <i class="fa-brands fa-square-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="fa-brands fa-square-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -126,6 +150,37 @@ export default {
           }
           button {
             width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .social-links {
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5rem;
+      li {
+        margin: 0.5rem 1.5rem;
+        border-radius: 50%;
+        font-size: 6.5rem;
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          i {
+            color: var(--text-black-color);
+            height: 5.55rem;
+            background: inherit;
+            width: 4.5rem;
+            display: flex;
+            justify-content: center;
+            line-height: 5.5rem;
+            transition: 0.4s;
+          }
+          &:hover i {
+            color: var(--theme-primary-color);
+            background: #ffffff;
           }
         }
       }
