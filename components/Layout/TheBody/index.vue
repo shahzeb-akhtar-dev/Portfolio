@@ -10,8 +10,8 @@
         </div>
       </div>
       <div class="hero-text">
-        Hi, I'm Shahzeb Akhtar <br />
-        I build a Web Application's.
+        Hi, I'm Shahzeb Akhtar, <br />
+        and I am a web developer
       </div>
     </div>
     <div id="about-me">

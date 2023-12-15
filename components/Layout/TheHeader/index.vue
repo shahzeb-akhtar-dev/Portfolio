@@ -5,7 +5,6 @@
 
       <div class="actions">
         <a-switch default-checked @change="changeThemeMode">
-          <!-- <a-icon  type="check" /> -->
           <span slot="checkedChildren">
             <i class="fa-regular fa-moon"></i>
           </span>

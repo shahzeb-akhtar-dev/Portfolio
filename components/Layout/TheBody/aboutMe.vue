@@ -19,9 +19,9 @@
     </div>
     <div class="about col-5">
       <div class="description">
-        <h1>Solid Experience in building Vue js responsive web app.</h1>
+        <h1>Solid Experience in building Vue js responsive web apps.</h1>
         <p>
-          Hi,i am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
+          Hi, I am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
           passion for creating visually stunning and user-friendly web
           applications. With over 1.5 years of professional experience, I have
           developed a deep understanding of front-end technologies, frameworks,

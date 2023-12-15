@@ -30,6 +30,7 @@ export default {
         referrerpolicy: 'no-referrer',
       },
     ],
+    script: [{ src: 'https://smtpjs.com/v3/smtp.js' }],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

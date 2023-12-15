@@ -9,7 +9,7 @@
     <div class="description col-6">
       <h1>See My Works Which Will Amaze You!</h1>
       <p>
-        We develop the best quality website that serves for the long-term.
+        We develop the best quality website that serves for the long term.
         Well-documented, clean, easy and elegant interface helps any
         non-technical clients.
       </p>
@@ -29,7 +29,7 @@
                 <img :src="card.image" alt="" />
               </span>
               <div class="overlay">
-                <span class="name">{{ card.name }}</span>
+                <span class="name"><a href="">{{ card.name }}</a></span>
                 <span
                   class="desc d-none d-sm-block"
                   :title="card.description"
@@ -338,6 +338,9 @@ export default {
             font-weight: 600;
             margin: 1rem 0rem;
             font-size: 2rem;
+            a{
+              color: inherit;
+            }
             &:hover {
               text-decoration: underline;
             }
