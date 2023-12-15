@@ -70,7 +70,7 @@
             <div class="b-item">
               <a-form-model-item
                 ref="subject"
-                label="Subject (Optional)"
+                label="Subject"
                 prop="subject"
               >
                 <a-input v-model="form.subject"></a-input>
@@ -87,7 +87,7 @@
             </div>
           </a-form-model>
           <div class="b-item">
-            <custom-button @click="sendMail">Send</custom-button>
+            <custom-button @click="sendMail" :loading="mailLoading">Send</custom-button>
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default {
     sendMail() {
       this.mailLoading = true
       let form = this.form
-      const valid = this.$refs.ruleForm.validate((valid) => {
+      this.$refs.ruleForm.validate((valid) => {
         if (valid) {
           Email.send({
             Host: 'smtp.elasticemail.com',
@@ -191,7 +191,7 @@ export default {
             Password: '7AF83909F8EAC86E2E241F40E7138F8D5A7A',
             To: 'shahzebakhtar892@gmail.com',
             From: 'stephanakhtar.web@gmail.com',
-            Subject: form.subject,
+            Subject: form.subject || '',
             Body: `name : ${form.name} , phone Number : ${form.phoneNumber} , email : ${form.message}`,
           }).then((e) => {
             this.mailLoading = false
@@ -201,8 +201,7 @@ export default {
                 message: 'Email send',
               })
             } else {
-              this.$notification.error()
-              ;({
+              this.$notification.error({
                 message: 'Email sending failed',
                 description: e,
               })
