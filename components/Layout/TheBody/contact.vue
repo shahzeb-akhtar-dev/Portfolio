@@ -197,6 +197,7 @@ export default {
             this.mailLoading = false
 
             if (e == 'OK') {
+              this.form={}
               this.$notification.success({
                 message: 'Email send',
               })
