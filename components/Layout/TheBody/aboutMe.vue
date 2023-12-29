@@ -21,8 +21,8 @@
       <div class="description">
         <h1>Solid Experience in building Vue js responsive web apps.</h1>
         <p>
-          Hi, I am a Shahzeb Akhtar. Experienced Frontend Developer with a strong
-          passion for creating visually stunning and user-friendly web
+          Hi, I am a Shahzeb Akhtar. Experienced Frontend Developer with a
+          strong passion for creating visually stunning and user-friendly web
           applications. With over 1.5 years of professional experience, I have
           developed a deep understanding of front-end technologies, frameworks,
           and best practices. <br />
@@ -34,8 +34,7 @@
         </p>
       </div>
       <div class="action text-center">
-        <!-- <CustomButton @click="downloadCv">Download CV</CustomButton>
-        <pdf :src="cvUrl" v-if="true" ref="pdfViewer"></pdf> -->
+        <CustomButton @click="downloadCv">Download CV</CustomButton>
       </div>
     </div>
   </div>
@@ -47,30 +46,19 @@ export default {
   name: 'about-me',
   components: { CustomButton },
   data() {
-    return {
-      cvUrl: '@/assets/images/My-Resume.pdf',
-    }
+    return {}
   },
   methods: {
-    async downloadCv() {
-      const pdfViewer = this.$refs.pdfViewer
-      console.log(pdfViewer)
-      if (pdfViewer) {
-        const pdfData = pdfViewer.src
-        const blob = new Blob([pdfData], { type: 'application/pdf' })
-
-        // Create a download link
-        const link = document.createElement('a')
-        link.href = window.URL.createObjectURL(blob)
-        link.download = 'document.pdf'
-
-        // Trigger a click on the link to start the download
-        document.body.appendChild(link)
-        link.click()
-
-        // Remove the link from the DOM
-        document.body.removeChild(link)
-      }
+    downloadCv() {
+      fetch('/My-Resume.pdf')
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = window.URL.createObjectURL(blob)
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute('download', 'My-Resume.pdf')
+          link.click()
+        })
     },
   },
 }

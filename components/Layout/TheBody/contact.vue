@@ -27,14 +27,14 @@
             <i class="fa-solid fa-phone-volume"></i>
             Phone Number
           </div>
-          <div class="details">0303 XXXXXXX</div>
+          <div class="details">0320 8055452</div>
         </div>
         <div class="c-item">
           <div class="heading">
             <i class="fa-solid fa-envelope-circle-check"></i>
             Email
           </div>
-          <div class="details">stephanakhtar.web@gmail.com</div>
+          <div class="details">shahzebakhtar892@gmail.com</div>
         </div>
       </div>
       <div class="message-box col-6">

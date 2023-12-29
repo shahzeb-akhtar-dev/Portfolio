@@ -20,7 +20,11 @@ export default {
     ],
 
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/logo.png',
+      },
       {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
@@ -30,7 +34,10 @@ export default {
         referrerpolicy: 'no-referrer',
       },
     ],
-    script: [{ src: 'https://smtpjs.com/v3/smtp.js' }],
+    script: [
+
+      { src: 'https://smtpjs.com/v3/smtp.js' },
+    ],
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -39,9 +46,8 @@ export default {
     '~/assets/scss/main.scss',
     '~/assets/scss/main.css',
   ],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/antd-ui'],
+  plugins: ['@/plugins/global-libraries'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

@@ -49,6 +49,11 @@ export default {
   // position: relative;
   text-align: center;
   .Header-title {
+    @media screen and (max-width: 600px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .logo {
       float: left;
       text-transform: uppercase;
@@ -63,6 +68,9 @@ export default {
   }
   .menu {
     display: inline-block;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
     // position: absolute;
     ul {
       padding: 0%;
