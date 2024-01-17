@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import CustomButton from '../../BasicComponents/CustomButton.vue'
+import CustomButton from '~/components/BasicComponents/CustomButton.vue'
 export default {
   components: { CustomButton },
   data() {

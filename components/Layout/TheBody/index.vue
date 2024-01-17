@@ -1,7 +1,7 @@
 <template>
   <div class="portfolio-wrapper">
     <div id="hero-section" ref="triggerElement">
-      <LayoutTheBodyHeroSection />
+      <HeroSection />
     </div>
     <div id="about-me" ref="animatedElement">
       <about-me />
@@ -19,19 +19,19 @@
 </template>
 
 <script>
-import aboutMe from './aboutMe.vue'
-import MySkills from './mySkills.vue'
-import MyWork from './myWork.vue'
-import ContactInfo from './contact.vue'
+import aboutMe from '@/components/AboutMe'
+import MySkills from '@/components/MySkills'
+import MyWork from '@/components/MyWork'
+import ContactInfo from '@/components/Contact'
 import Mixins from '@/mixins/commonFunction.js'
 export default {
   components: { aboutMe, MySkills, MyWork, ContactInfo },
   mixins: [Mixins],
   name: 'TheBody',
   mounted() {
-    this.scrollInOutAnimation('about-me')
+    this.scrollInOutAnimation('about-me',200)
     // this.scrollInOutAnimation('my-skill')
-    this.scrollInOutAnimation('my-work')
+    this.scrollInOutAnimation('my-work', -100)
   },
   methods: {},
 }
@@ -45,8 +45,8 @@ export default {
     margin: 20rem 0rem;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.7s ease-out;
-    transform: translateY(60px);
+    transition: all 0.5s ease-out;
+    transform: translateY(50px);
     &.fade-in {
       opacity: 1;
       transform: translateY(0px);
@@ -59,8 +59,8 @@ export default {
   #my-work {
     opacity: 0;
     margin: 10rem 0rem;
-    transition: all 0.7s ease-out;
-    transform: translateY(60px);
+    transition: all 0.5s ease-out;
+    transform: translateY(50px);
     &.fade-in {
       opacity: 1;
       transform: translateY(0px);

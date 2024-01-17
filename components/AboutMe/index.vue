@@ -21,16 +21,21 @@
       <div class="description">
         <h1>Solid Experience in building Vue js responsive web apps.</h1>
         <p>
-          Hi, I am a Shahzeb Akhtar. Experienced Frontend Developer with a
-          strong passion for creating visually stunning and user-friendly web
-          applications. With over 1.5 years of professional experience, I have
-          developed a deep understanding of front-end technologies, frameworks,
-          and best practices. <br />
-          Throughout my career, I have successfully delivered numerous projects
-          from concept to completion, collaborating closely with
-          cross-functional teams to ensure exceptional user experiences. I excel
-          in transforming complex design concepts into pixel-perfect, responsive
-          websites that align with client objectives and business goals.
+          Greetings, I'm Shahzeb Akhtar, a seasoned Frontend Developer with
+          approximately 2 years of hands-on experience. My passion lies in
+          crafting visually striking and user-friendly web applications that
+          leave a lasting impact. Over the course of my professional journey,
+          I've honed a profound understanding of front-end technologies,
+          frameworks, and industry best practices. My expertise extends to
+          successfully spearheading various projects, and navigating them from
+          inception to fruition. I thrive in collaborative environments, working
+          closely with cross-functional teams to ensure the delivery of
+          exceptional user experiences. My forte lies in translating intricate
+          design concepts into pixel-perfect, responsive websites that
+          seamlessly align with both client objectives and overarching business
+          goals. With a commitment to excellence, I bring a blend of creativity
+          and technical proficiency to every project, ensuring a harmonious
+          fusion of aesthetics and functionality.
         </p>
       </div>
       <div class="action text-center">
@@ -41,7 +46,7 @@
 </template>
 
 <script>
-import CustomButton from '../../BasicComponents/CustomButton.vue'
+import CustomButton from '../BasicComponents/CustomButton.vue'
 export default {
   name: 'about-me',
   components: { CustomButton },

@@ -5,9 +5,9 @@ export default {
         return id?document.getElementById(id):""
       
     },
-    scrollInOutAnimation(id) {
+    scrollInOutAnimation(id,plus) {
       const controller = new ScrollMagic.Controller()
-      const targetHeight = this.getElById(id).clientHeight+110
+      const targetHeight = this.getElById(id).clientHeight+plus
       
       new ScrollMagic.Scene({
         triggerElement: '#' + id,
