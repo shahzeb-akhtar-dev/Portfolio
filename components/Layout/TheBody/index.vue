@@ -29,9 +29,7 @@ export default {
   mixins: [Mixins],
   name: 'TheBody',
   mounted() {
-    this.scrollInOutAnimation('about-me',200)
-    // this.scrollInOutAnimation('my-skill')
-    this.scrollInOutAnimation('my-work', -100)
+    this.scrollInOutAnimation('about-me', 200)
   },
   methods: {},
 }
@@ -57,14 +55,8 @@ export default {
     margin: 20rem 0rem;
   }
   #my-work {
-    opacity: 0;
     margin: 10rem 0rem;
     transition: all 0.5s ease-out;
-    transform: translateY(50px);
-    &.fade-in {
-      opacity: 1;
-      transform: translateY(0px);
-    }
   }
 }
 </style>

@@ -27,7 +27,7 @@
             <i class="fa-solid fa-phone-volume"></i>
             Phone Number
           </div>
-          <div class="details">0320 8055452</div>
+          <div class="details">0320 8055453</div>
         </div>
         <div class="c-item">
           <div class="heading">
@@ -243,7 +243,6 @@ export default {
         padding: 2rem;
         border-radius: 2rem;
         box-shadow: 0px 0px 55px -14px var(--box-shadow-color);
-        // background: var(--theme-primary-color);
         .b-item {
           margin: 2rem 0rem;
           .ant-form-item-label {
