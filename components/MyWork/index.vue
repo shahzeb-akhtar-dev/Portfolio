@@ -13,43 +13,27 @@
         Well-documented, clean, easy and elegant interface helps any
         non-technical clients.
       </p>
-      <strong>*Note: These are dummy projects.</strong>
     </div>
     <div class="tabs">
-      <a-tabs :default-active-key="1" @change="workDataLimit = 7">
-        <a-tab-pane v-for="item in myWork" :key="item.id" :tab="item.name">
-          <ul class="work-cards">
-            <li
-              v-for="card in handleWorkData(
-                item.name == 'All' ? workAllData : item.cards
-              )"
-              :key="card.id"
+      <ul class="work-cards">
+        <li v-for="card in recentProjects" :key="card.id">
+          <span class="image">
+            <img :src="card.image" alt="" />
+          </span>
+          <div class="overlay">
+            <span class="name"
+              ><a href="">{{ card.name }}</a></span
             >
-              <span class="image">
-                <img :src="card.image" alt="" />
-              </span>
-              <div class="overlay">
-                <span class="name"><a href="">{{ card.name }}</a></span>
-                <span
-                  class="desc d-none d-sm-block"
-                  :title="card.description"
-                  >{{ card.description }}</span
-                >
-              </div>
-            </li>
-          </ul>
-          <!-- LOAD MORE BUTTON -->
-          <custom-button
-            @click="
-              loadMore(
-                item.name == 'All' ? workAllData.length : item.cards.length
-              )
-            "
-          >
-            <template> load more </template>
-          </custom-button>
-        </a-tab-pane>
-      </a-tabs>
+            <p class="desc" :title="card.description">
+              {{ card.description }}
+            </p>
+          </div>
+        </li>
+      </ul>
+      <!-- LOAD MORE BUTTON -->
+      <custom-button @click="loadMore">
+        <template> load more </template>
+      </custom-button>
     </div>
   </div>
 </template>
@@ -63,227 +47,103 @@ export default {
       myWork: [
         {
           id: 1,
-          name: 'All',
-          cards: [],
+          name: 'EZ-Reminder System',
+          description:
+            'Led frontend development, building campaigns, templates, and workflows for improved user functionality. Created interfaces for contact and workspace management, optimized performance through refactoring, and mentored junior developers.',
+          image: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
         },
         {
           id: 2,
-          name: 'HTML',
-          cards: [
-            {
-              id: 4,
-              image:
-                'https://cdn3.vectorstock.com/i/1000x1000/95/17/online-shopping-card-vector-21509517.jpg',
-              name: 'Shopping Web',
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-            },
-            {
-              id: 5,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://i.pinimg.com/736x/e0/d5/d2/e0d5d259ecbb26b3e81c559cdba1f4db.jpg',
-              name: 'Chat App',
-            },
-
-            {
-              id: 12,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://img.freepik.com/free-vector/hand-drawn-construction-project-landing-page_23-2149694928.jpg?q=10&h=200',
-              name: 'Construction',
-            },
-
-            {
-              id: 13,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://image.isu.pub/170601131610-51f1732c2c93789115216f24651a5349/jpg/page_1_thumb_large.jpg',
-              name: 'School CMS',
-            },
-            {
-              id: 14,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/328527341/original/ff79190b1793f9df381660257e29005e7c48b5b3/do-any-graphic-design-work.png',
-              name: 'Graphic Designer',
-            },
-            {
-              id: 21,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://static.vecteezy.com/system/resources/previews/001/434/261/non_2x/web-development-isometric-landing-page-vector.jpg',
-              name: 'Developer',
-            },
-            {
-              id: 22,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://img.freepik.com/premium-vector/stock-exchange-platform-landing-page_23-2148593745.jpg',
-              name: 'Stock Exchange',
-            },
-            {
-              id: 30,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://static.vecteezy.com/system/resources/previews/019/097/214/non_2x/our-services-assemble-customize-electronics-engineering-parts-solid-glyph-icon-web-card-template-free-vector.jpg',
-              name: 'Engineering',
-            },
-            {
-              id: 31,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://d2qp0siotla746.cloudfront.net/img/features/photo-editor/hero.png',
-              name: 'Editing',
-            },
-          ],
+          name: 'EzHubSpot (Workforce Management System)',
+          description:
+            'Designed and implemented core modules for time tracking, payroll automation, attendance, and leave requests. Built real-time user monitoring and optimized system performance with efficient state management and API integrations.',
+          image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
         },
         {
           id: 3,
-          name: 'VUE JS',
-          cards: [
-            {
-              id: 6,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-6kBYF4Nqd-bPW2fprbNvY41fp0xqqcrjUw&usqp=CAU',
-              name: 'RBPO Services',
-            },
-            {
-              id: 7,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp9uGNAEfG_EtIpOrBZOSYbkwvBHad0zFRZg&usqp=CAU',
-              name: 'Copilot',
-            },
-            {
-              id: 8,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://i.pinimg.com/564x/a6/1a/3a/a61a3a1057d00eff335486255dbe9868.jpg',
-              name: 'Restaurant Management Services',
-            },
-            {
-              id: 9,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://img.freepik.com/premium-psd/linkedin-profile-style-business-card-template-psd_644552-350.jpg?w=600',
-              name: 'Linked IN',
-            },
-            {
-              id: 10,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcKJuco99B5QGFgsTaDrJVf53CW8qGFxfBpQ&usqp=CAU',
-              name: 'Face Book',
-            },
-            {
-              id: 16,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://img.freepik.com/free-vector/import-export-flat-design-landing-page_52683-76256.jpg',
-              name: 'Import Export',
-            },
-            {
-              id: 17,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://image.slidesharecdn.com/olxfinalppt-141003041056-phpapp01/85/olx-ppt-with-its-campaign-1-320.jpg?cb=1666777281',
-              name: 'OLX',
-            },
-            {
-              id: 18,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://img.freepik.com/free-vector/cashabck-concept-with-cash-register_23-2148475251.jpg?size=338&ext=jpg&ga=GA1.1.1413502914.1697155200&semt=ais',
-              name: 'Cash',
-            },
-            {
-              id: 19,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROrK3dgaZTLoHSim603xOF7TSsH1SIi-Eni4kIC2PYeGSZz32c3dRYUMCuXxh0s_Lz_F8&usqp=CAU',
-              name: 'Online Trading',
-            },
-            {
-              id: 20,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNugWsKhhfKZVjuRr9gV4OVhdWJVFf4-5ryg&usqp=CAU',
-              name: 'Online Shopping',
-            },
-            {
-              id: 23,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://d1hdtc0tbqeghx.cloudfront.net/wp-content/uploads/2023/04/10114555/Calendly-1.png',
-              name: 'Calendly',
-            },
-            {
-              id: 24,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRPsZDytBh3mV1DKMT2g2WMJlxSoZpDYJX-S3Cta8_8318UbfeQzK7KjlsmX_1KRc5P_A&usqp=CAU',
-              name: 'Web Designing',
-            },
-            {
-              id: 25,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://colorlib.com/wp/wp-content/uploads/sites/2/library-website-design.jpg',
-              name: 'Library Website',
-            },
-            {
-              id: 26,
-              description:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, pariatur amet dignissimos corrupti porro est. Vero fuga doloremque eius veniam consectetur aliquid magni totam, possimus mollitia ipsam iste, commodi minus?',
-              image:
-                'https://i.pinimg.com/originals/e8/17/00/e817007f1231f6e1c050847dcd968044.jpg',
-              name: 'News Website',
-            },
-          ],
+          name: 'Medical Referral System',
+          description:
+            'Developed a dynamic user interface, integrated backend APIs, and customized Mapbox for location-based interactions. Added draggable dynamic custom fields and optimized overall performance for scalability.',
+          image: 'https://cdn-icons-png.flaticon.com/512/2966/2966482.png',
+        },
+        {
+          id: 4,
+          name: 'Customer Relationship Management (CRM)',
+          description:
+            'Designed responsive UI for deals, boards, staff management, and analytics. Integrated Apex Charts for visualization, drag-and-drop with Vue Draggable, and customizable fields for better user control.',
+          image: 'https://cdn-icons-png.flaticon.com/512/1039/1039328.png',
+        },
+        {
+          id: 5,
+          name: 'RCM (Revenue Cycle Management System)',
+          description:
+            'Contributed to a multi-modular medical billing system covering patient registration, insurance verification, claim submission, and payment posting. Built dashboards and reporting modules for efficient billing management.',
+          image: 'https://cdn-icons-png.flaticon.com/512/2331/2331941.png',
+        },
+        {
+          id: 6,
+          name: 'Tipz (Customer Portal)',
+          description:
+            'Built a portal for customers to send tips to barbers. Integrated Stripe for secure payments, ensuring a smooth and seamless tipping experience.',
+          image: 'https://cdn-icons-png.flaticon.com/512/1170/1170576.png',
+        },
+        {
+          id: 7,
+          name: 'Tipz-Admin (Admin Panel)',
+          description:
+            'Developed a dashboard for barbershops to view received tips, track amounts, and review customer feedback. Added analytics and filtering for insights.',
+          image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+        },
+        {
+          id: 8,
+          name: 'TCA (Voucher App)',
+          description:
+            'Developed a voucher management app where users can apply vouchers by scanning QR codes or entering codes. Added trip history for better user tracking.',
+          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+        },
+        {
+          id: 9,
+          name: 'Ez SignDocu (E-Sign Document webApp)',
+          description:
+            'Built a secure e-signature platform enabling users to upload, sign, and manage documents digitally. Integrated authentication workflows, document versioning, and real-time status tracking to streamline approval processes.',
+          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+        },
+        {
+          id: 10,
+          name: 'Servr (Hotel Management System)',
+          description:
+            'Developed a hotel management solution covering booking, check-in/check-out, and staff coordination. Added modules for room availability, customer profiles, billing, and reporting to improve operational efficiency.',
+          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
+        },
+        {
+          id: 11,
+          name: 'Drive-Vip-Cars (Ride Booking Website)',
+          description:
+            'Built a responsive ride-booking site where users can schedule and manage rides. Focused on smooth booking flow and mobile-friendly usability.',
+          image: 'https://cdn-icons-png.flaticon.com/512/3104/3104830.png',
+        },
+        {
+          id: 12,
+          name: 'A2B Tommyfield (Ride Booking Website)',
+          description:
+            'Developed a ride-booking platform similar to Drive-Vip-Cars, maintaining a clean and intuitive UI/UX for seamless ride scheduling and management.',
+          image: 'https://cdn-icons-png.flaticon.com/512/883/883806.png',
         },
       ],
-      workDataLimit: 7,
+      workDataLimit: 6,
     }
   },
   computed: {
-    workAllData() {
+    recentProjects() {
       let data = this.myWork
-
-      return [...data[1].cards, ...data[2].cards]
+      let offSet = this.workDataLimit
+      return data.slice(0, offSet)
     },
   },
   mounted() {},
   methods: {
-    handleWorkData(val) {
-      let offSet = this.workDataLimit
-      let result = val.slice(0, offSet)
-      return result
-    },
-    loadMore(limit) {
-      console.log(limit, this.workDataLimit)
+    loadMore() {
+      const limit = this.myWork.length
       if (limit >= this.workDataLimit) {
         this.workDataLimit += 3
       } else {
@@ -299,6 +159,8 @@ export default {
 <style lang="scss">
 .my-work {
   .tabs {
+    width: 60vw;
+    margin: 10px auto;
     .work-cards {
       column-count: 3;
       column-gap: 2rem;
@@ -338,7 +200,7 @@ export default {
             font-weight: 600;
             margin: 1rem 0rem;
             font-size: 2rem;
-            a{
+            a {
               color: inherit;
             }
             &:hover {
@@ -346,13 +208,15 @@ export default {
             }
           }
           .desc {
-            text-wrap: nowrap;
-            cursor: context-menu;
-            max-width: 99% !important;
-            text-overflow: ellipsis;
-            display: block;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Number of lines */
+            -webkit-box-orient: vertical;
             overflow: hidden;
+            text-overflow: ellipsis;
             margin: 1rem 0rem;
+            cursor: default;
+            max-width: 99%;
+            line-height: 1.5rem;
           }
         }
         &:hover .overlay {

@@ -8,7 +8,7 @@
         </div>
       </a-layout-header>
       <a-layout-content>
-        <div class="body-wrapper container">
+        <div class="body-wrapper">
           <Nuxt />
         </div>
       </a-layout-content>
