@@ -1,0 +1,109 @@
+// ant components
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+@import url(./antComponents.scss);
+.title {
+  // width: 4%;
+  color: var(--text-secondary-color);
+  position: relative;
+  .text-line {
+    width: 0.12rem;
+    background-color: var(--text-secondary-color);
+    height: 90%;
+    display: flex;
+    justify-content: center;
+
+    .text {
+      background: var(--bg-primary-color);
+      transform: rotate(-90deg);
+      width: max-content;
+      text-transform: uppercase;
+      position: absolute;
+      top: 6.8rem;
+      left: -4.2rem;
+      padding: 0 1rem;
+    }
+  }
+}
+.title-h {
+  // width: 4%;
+  color: var(--text-secondary-color);
+  position: relative;
+  .text-line {
+    width: 100%;
+    background-color: var(--text-secondary-color);
+    height: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+      background: var(--bg-primary-color);
+      width: max-content;
+      text-transform: uppercase;
+      position: absolute;
+      top: -1.5rem;
+      // left: -4.2rem;
+      padding: 0 1rem;
+    }
+  }
+}
+.fit-width {
+  max-width: fit-content;
+}
+.pt-7 {
+  padding-top: 7rem;
+}
+.description {
+  padding: 2rem;
+  text-align: center;
+  margin:0 auto;
+  h1 {
+    text-transform: capitalize;
+    color: var(--text-black-color);
+    margin-bottom: 3rem;
+  }
+  p {
+    padding-left: 1rem;
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .col-5,
+  .col,
+  .col-6 {
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .title {
+    position: absolute;
+    .text-line {
+      width: 100%;
+      height: 0.1rem;
+      align-items: center;
+      .text {
+        transform: none;
+        top: -1.5rem;
+        left: auto;
+      }
+    }
+  }
+  .poster-wrapper {
+    display: none;
+  }
+  .contact-info {
+    .contact {
+      .message-box {
+        .box {
+          margin-top: 6rem !important;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 6px !important;
+  }
+}
