@@ -1,23 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
 @import './htmlTags.css';
 
-
-:root{
-    --logo-font-family:'Saira Stencil One', sans-serif;
-    --bg-primary-color:#efefef;
-    --text-secondary-color:#a19797;
-    --text-black-color:#000000;
-    --text-white-color:#ffff;
-    --box-shadow-color:#a19797;
-    --theme-primary-color:rgb(255 90 1);
-    --theme-gradient-primary-color: linear-gradient(70deg ,rgb(255, 90, 1) 53%,rgb(255 75 0) 61%);;
-    --primary-transparent-color:rgb(255 90 1 / 93%);
-    --layout-header-height:6.3rem;
-    --hero-section-height:calc(100vh - var(--layout-header-height))
+:root {
+  --logo-font-family: 'Saira Stencil One', sans-serif;
+  --bg-primary-color: #efefef;
+  --text-secondary-color: #a19797;
+  --text-black-color: #000000;
+  --text-white-color: #ffff;
+  --box-shadow-color: #a19797;
+  --theme-primary-color: rgb(255 90 1);
+  --theme-gradient-primary-color: linear-gradient(
+    70deg,
+    rgb(255, 90, 1) 53%,
+    rgb(255 75 0) 61%
+  );
+  --primary-transparent-color: rgb(255 90 1 / 93%);
+  --layout-header-height: 6.3rem;
 }
-
-
-@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
-
+.logo-font-family {
+  font-family: var(--logo-font-family);
+  font-size: 2.5rem;
+  color: var(--text-secondary-color);
+  font-weight: 400;
+}
 .title {
   color: var(--text-secondary-color);
   position: relative;
@@ -121,3 +126,36 @@
     font-size: 6px !important;
   }
 } */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-primary-color) var(--bg-primary-color);
+}
+
+/* Chrome, Edge, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-primary-color);
+  border-radius: 1rem;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--theme-primary-color),
+    var(--theme-gradient-primary-color)
+  );
+  border-radius: 1rem;
+  transition: background 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--theme-gradient-primary-color),
+    var(--theme-primary-color)
+  );
+}

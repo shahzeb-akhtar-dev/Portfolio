@@ -2,6 +2,7 @@
 import { reactive, ref } from 'vue'
 import type { Rule } from 'ant-design-vue/es/form'
 import type { FormInstance } from 'ant-design-vue'
+import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 
 const formRef = ref<FormInstance>()
 const isSubmitting = ref(false)
@@ -12,26 +13,44 @@ const formData = reactive({
   phoneNumber: '',
   email: '',
   subject: '',
-  message: ''
+  message: '',
 })
 
 const validationRules: Record<string, Rule[]> = {
   name: [
     { required: true, message: 'Please enter your name', trigger: 'blur' },
-    { min: 3, max: 50, message: 'Name should be 3–50 characters', trigger: 'blur' }
+    {
+      min: 3,
+      max: 50,
+      message: 'Name should be 3–50 characters',
+      trigger: 'blur',
+    },
   ],
   phoneNumber: [
-    { required: true, message: 'Please enter your phone number', trigger: 'blur' },
-    { min: 3, max: 17, message: 'Phone should be 3–17 characters', trigger: 'blur' }
+    {
+      required: true,
+      message: 'Please enter your phone number',
+      trigger: 'blur',
+    },
+    {
+      min: 3,
+      max: 17,
+      message: 'Phone should be 3–17 characters',
+      trigger: 'blur',
+    },
   ],
   email: [
     { required: true, message: 'Please enter your email', trigger: 'blur' },
-    { type: 'email', message: 'Please enter a valid email', trigger: 'blur' }
+    { type: 'email', message: 'Please enter a valid email', trigger: 'blur' },
   ],
   message: [
     { required: true, message: 'Please enter your message', trigger: 'blur' },
-    { min: 10, message: 'Message should be at least 10 characters', trigger: 'blur' }
-  ]
+    {
+      min: 10,
+      message: 'Message should be at least 10 characters',
+      trigger: 'blur',
+    },
+  ],
 }
 
 const submitForm = async () => {
@@ -40,7 +59,7 @@ const submitForm = async () => {
   try {
     const response = await $fetch('/api/send-mail', {
       method: 'POST',
-      body: formData
+      body: formData,
     })
 
     if (response.success) {
@@ -49,7 +68,7 @@ const submitForm = async () => {
         phoneNumber: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
       })
       showSuccessModal.value = true
       formRef.value?.resetFields()
@@ -65,67 +84,93 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950">
+  <div
+    class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950"
+  >
     <!-- Animated Background -->
     <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI0YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyNGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"></div>
-      <div class="absolute top-0 right-0 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-orange-500/20 to-pink-500/20 blur-3xl animate-pulse-slow"></div>
-      <div class="absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-3xl animate-pulse-slower"></div>
-      <div class="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-yellow-500/10 to-orange-500/10 blur-3xl animate-spin-slow"></div>
+      <div
+        class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI0YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyNGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"
+      ></div>
+      <div
+        class="absolute top-0 right-0 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-orange-500/20 to-pink-500/20 blur-3xl animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-3xl animate-pulse-slower"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-yellow-500/10 to-orange-500/10 blur-3xl animate-spin-slow"
+      ></div>
     </div>
 
     <!-- Content -->
     <div class="relative z-10">
       <!-- Hero Section -->
-      <div class="relative overflow-hidden border-b border-white/5 backdrop-blur-sm">
-        <div class="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-32">
+      <div
+        class="relative overflow-hidden border-b border-white/5 backdrop-blur-sm"
+      >
+        <div
+          class="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-32"
+        >
           <!-- Badge -->
-          <div class="mb-8 inline-flex animate-fade-in-down">
-            <div class="group relative overflow-hidden rounded-full bg-gradient-to-r from-orange-600 to-pink-600 p-[2px] shadow-lg shadow-orange-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/60 hover:scale-105">
-              <div class="flex items-center gap-3 rounded-full bg-slate-950 px-6 py-3">
-                <div class="relative">
-                  <i class="fa-solid fa-message text-orange-400 animate-bounce-slow"></i>
-                  <div class="absolute inset-0 animate-ping">
-                    <i class="fa-solid fa-message text-orange-400 opacity-20"></i>
-                  </div>
-                </div>
-                <span class="bg-gradient-to-r from-orange-300 to-pink-300 bg-clip-text text-sm font-bold text-transparent">Let's Connect</span>
-              </div>
-            </div>
-          </div>
+          <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
 
           <!-- Title -->
-          <h1 class="mb-6 animate-fade-in-up text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
-            <span class="block bg-gradient-to-r from-white via-orange-100 to-orange-300 bg-clip-text text-transparent drop-shadow-2xl">
+          <h1
+            class="mb-6 animate-fade-in-up text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            <span
+              class="block bg-gradient-to-r from-white via-orange-100 to-orange-300 bg-clip-text text-transparent drop-shadow-2xl"
+            >
               Ready to Start
             </span>
-            <span class="block bg-gradient-to-r from-orange-400 via-pink-400 to-orange-500 bg-clip-text text-transparent animate-gradient-x">
+            <span
+              class="block bg-gradient-to-r from-orange-400 via-pink-400 to-orange-500 bg-clip-text text-transparent animate-gradient-x"
+            >
               Your Project?
             </span>
           </h1>
 
           <!-- Description -->
-          <p class="mx-auto mb-10 max-w-3xl animate-fade-in text-lg text-gray-300 sm:text-xl lg:text-2xl">
+          <p
+            class="mx-auto mb-10 max-w-3xl animate-fade-in text-lg text-gray-300 sm:text-xl lg:text-2xl"
+          >
             Transform your ideas into reality with cutting-edge solutions.
-            <span class="block mt-2 text-orange-400 font-semibold">Let's create something extraordinary together.</span>
+            <span class="block mt-2 text-orange-400 font-semibold"
+              >Let's create something extraordinary together.</span
+            >
           </p>
 
           <!-- Stats -->
-          <div class="mx-auto mt-12 grid max-w-4xl grid-cols-3 gap-6 animate-fade-in-up">
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:bg-white/10 hover:scale-105">
+          <div
+            class="mx-auto mt-12 grid max-w-4xl grid-cols-3 gap-6 animate-fade-in-up"
+          >
+            <div
+              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:bg-white/10 hover:scale-105"
+            >
               <div class="text-3xl font-black text-orange-400 mb-2">24h</div>
               <div class="text-sm text-gray-400 font-medium">Response Time</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent transition-all duration-300"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent transition-all duration-300"
+              ></div>
             </div>
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-pink-500/50 hover:bg-white/10 hover:scale-105">
+            <div
+              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-pink-500/50 hover:bg-white/10 hover:scale-105"
+            >
               <div class="text-3xl font-black text-pink-400 mb-2">100%</div>
               <div class="text-sm text-gray-400 font-medium">Satisfaction</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-pink-500/0 to-pink-500/0 group-hover:from-pink-500/10 group-hover:to-transparent transition-all duration-300"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-pink-500/0 to-pink-500/0 group-hover:from-pink-500/10 group-hover:to-transparent transition-all duration-300"
+              ></div>
             </div>
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:bg-white/10 hover:scale-105">
+            <div
+              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:bg-white/10 hover:scale-105"
+            >
               <div class="text-3xl font-black text-purple-400 mb-2">50+</div>
               <div class="text-sm text-gray-400 font-medium">Projects Done</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent transition-all duration-300"></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent transition-all duration-300"
+              ></div>
             </div>
           </div>
         </div>
@@ -136,23 +181,35 @@ const submitForm = async () => {
         <div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
           <!-- Form Column -->
           <div class="lg:col-span-7">
-            <div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/30 sm:p-12 animate-slide-in-left">
+            <div
+              class="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/30 sm:p-12 animate-slide-in-left"
+            >
               <!-- Shine Effect -->
-              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <div
+                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                ></div>
               </div>
 
               <!-- Header -->
               <div class="relative mb-10">
                 <h2 class="mb-3 text-4xl font-black text-white sm:text-5xl">
-                  <span class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
+                  <span
+                    class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
+                  >
                     Drop Me a Line
                   </span>
                 </h2>
                 <p class="flex items-center gap-2 text-base text-gray-400">
                   <span class="relative flex h-3 w-3">
-                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
+                    <span
+                      class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
+                    ></span>
+                    <span
+                      class="relative inline-flex h-3 w-3 rounded-full bg-green-500"
+                    ></span>
                   </span>
                   Available now • Usually responds within 24 hours
                 </p>
@@ -170,7 +227,9 @@ const submitForm = async () => {
                 <div class="grid gap-6 sm:grid-cols-2">
                   <a-form-item name="name" class="group/item">
                     <template #label>
-                      <span class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400">
+                      <span
+                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
+                      >
                         <i class="fa-solid fa-user"></i>
                         Your Name
                       </span>
@@ -185,7 +244,9 @@ const submitForm = async () => {
 
                   <a-form-item name="email" class="group/item">
                     <template #label>
-                      <span class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400">
+                      <span
+                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
+                      >
                         <i class="fa-solid fa-envelope"></i>
                         Email Address
                       </span>
@@ -203,7 +264,9 @@ const submitForm = async () => {
                 <div class="grid gap-6 sm:grid-cols-2">
                   <a-form-item name="phoneNumber" class="group/item">
                     <template #label>
-                      <span class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400">
+                      <span
+                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
+                      >
                         <i class="fa-solid fa-phone"></i>
                         Phone Number
                       </span>
@@ -218,7 +281,9 @@ const submitForm = async () => {
 
                   <a-form-item name="subject" class="group/item">
                     <template #label>
-                      <span class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400">
+                      <span
+                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
+                      >
                         <i class="fa-solid fa-bookmark"></i>
                         Subject
                       </span>
@@ -235,7 +300,9 @@ const submitForm = async () => {
                 <!-- Message -->
                 <a-form-item name="message" class="group/item">
                   <template #label>
-                    <span class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400">
+                    <span
+                      class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
+                    >
                       <i class="fa-solid fa-pen-to-square"></i>
                       Your Message
                     </span>
@@ -255,12 +322,26 @@ const submitForm = async () => {
                     :disabled="isSubmitting"
                     class="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-orange-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl hover:shadow-orange-500/60 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span class="relative z-10 flex items-center justify-center gap-3">
-                      <i v-if="!isSubmitting" class="fa-solid fa-rocket text-xl group-hover:rotate-45 transition-transform duration-300"></i>
-                      <i v-else class="fa-solid fa-spinner animate-spin text-xl"></i>
-                      {{ isSubmitting ? 'Sending Your Message...' : 'Send Message' }}
+                    <span
+                      class="relative z-10 flex items-center justify-center gap-3"
+                    >
+                      <i
+                        v-if="!isSubmitting"
+                        class="fa-solid fa-rocket text-xl group-hover:rotate-45 transition-transform duration-300"
+                      ></i>
+                      <i
+                        v-else
+                        class="fa-solid fa-spinner animate-spin text-xl"
+                      ></i>
+                      {{
+                        isSubmitting
+                          ? 'Sending Your Message...'
+                          : 'Send Message'
+                      }}
                     </span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                    <div
+                      class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    ></div>
                   </button>
                 </a-form-item>
               </a-form>
@@ -272,29 +353,54 @@ const submitForm = async () => {
             <!-- Contact Cards -->
             <div class="space-y-4">
               <!-- Location -->
-              <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-purple-600/20 to-purple-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20">
-                <div class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-purple-500/20 to-transparent blur-2xl"></div>
+              <div
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-purple-600/20 to-purple-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20"
+              >
+                <div
+                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-purple-500/20 to-transparent blur-2xl"
+                ></div>
                 <div class="relative flex items-center gap-4">
-                  <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 shadow-lg shadow-purple-500/50">
+                  <div
+                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 shadow-lg shadow-purple-500/50"
+                  >
                     <i class="fa-solid fa-location-dot text-2xl text-white"></i>
                   </div>
                   <div>
-                    <h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-purple-300">Visit Me</h4>
-                    <p class="text-lg font-bold text-white">Pakistan KPK<br />Haripur Ghazi</p>
+                    <h4
+                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-purple-300"
+                    >
+                      Visit Me
+                    </h4>
+                    <p class="text-lg font-bold text-white">
+                      Pakistan KPK<br />Haripur Ghazi
+                    </p>
                   </div>
                 </div>
               </div>
 
               <!-- Phone -->
-              <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-blue-600/20 to-cyan-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20">
-                <div class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-blue-500/20 to-transparent blur-2xl"></div>
+              <div
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-blue-600/20 to-cyan-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20"
+              >
+                <div
+                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-blue-500/20 to-transparent blur-2xl"
+                ></div>
                 <div class="relative flex items-center gap-4">
-                  <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/50">
+                  <div
+                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/50"
+                  >
                     <i class="fa-solid fa-phone-flip text-2xl text-white"></i>
                   </div>
                   <div>
-                    <h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-blue-300">Call Me</h4>
-                    <a href="tel:03208055453" class="text-lg font-bold text-white transition-colors hover:text-blue-400">
+                    <h4
+                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-blue-300"
+                    >
+                      Call Me
+                    </h4>
+                    <a
+                      href="tel:03208055453"
+                      class="text-lg font-bold text-white transition-colors hover:text-blue-400"
+                    >
                       0320 8055453
                     </a>
                   </div>
@@ -302,15 +408,30 @@ const submitForm = async () => {
               </div>
 
               <!-- Email -->
-              <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/20 to-pink-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/20">
-                <div class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-orange-500/20 to-transparent blur-2xl"></div>
+              <div
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/20 to-pink-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/20"
+              >
+                <div
+                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-orange-500/20 to-transparent blur-2xl"
+                ></div>
                 <div class="relative flex items-center gap-4">
-                  <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 shadow-lg shadow-orange-500/50">
-                    <i class="fa-solid fa-envelope-open-text text-2xl text-white"></i>
+                  <div
+                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 shadow-lg shadow-orange-500/50"
+                  >
+                    <i
+                      class="fa-solid fa-envelope-open-text text-2xl text-white"
+                    ></i>
                   </div>
                   <div class="min-w-0 flex-1">
-                    <h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-orange-300">Email Me</h4>
-                    <a href="mailto:shahzebakhtar892@gmail.com" class="block truncate text-lg font-bold text-white transition-colors hover:text-orange-400">
+                    <h4
+                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-orange-300"
+                    >
+                      Email Me
+                    </h4>
+                    <a
+                      href="mailto:shahzebakhtar892@gmail.com"
+                      class="block truncate text-lg font-bold text-white transition-colors hover:text-orange-400"
+                    >
                       shahzebakhtar892@gmail.com
                     </a>
                   </div>
@@ -319,51 +440,83 @@ const submitForm = async () => {
             </div>
 
             <!-- Why Work With Me -->
-            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl">
+            <div
+              class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl"
+            >
               <h3 class="mb-6 text-2xl font-black text-white">
-                <span class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
+                <span
+                  class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
+                >
                   Why Work With Me?
                 </span>
               </h3>
               <div class="space-y-5">
-                <div class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5">
-                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 transition-all duration-300 group-hover:from-orange-500/30 group-hover:to-orange-500/10">
+                <div
+                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
+                >
+                  <div
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 transition-all duration-300 group-hover:from-orange-500/30 group-hover:to-orange-500/10"
+                  >
                     <i class="fa-solid fa-bolt text-xl text-orange-400"></i>
                   </div>
                   <div>
                     <h4 class="mb-1 font-bold text-white">Fast Response</h4>
-                    <p class="text-sm text-gray-400">Quick turnaround on all inquiries</p>
+                    <p class="text-sm text-gray-400">
+                      Quick turnaround on all inquiries
+                    </p>
                   </div>
                 </div>
 
-                <div class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5">
-                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500/20 to-pink-500/5 transition-all duration-300 group-hover:from-pink-500/30 group-hover:to-pink-500/10">
+                <div
+                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
+                >
+                  <div
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500/20 to-pink-500/5 transition-all duration-300 group-hover:from-pink-500/30 group-hover:to-pink-500/10"
+                  >
                     <i class="fa-solid fa-trophy text-xl text-pink-400"></i>
                   </div>
                   <div>
                     <h4 class="mb-1 font-bold text-white">Quality Work</h4>
-                    <p class="text-sm text-gray-400">Pixel-perfect & optimized solutions</p>
+                    <p class="text-sm text-gray-400">
+                      Pixel-perfect & optimized solutions
+                    </p>
                   </div>
                 </div>
 
-                <div class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5">
-                  <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 transition-all duration-300 group-hover:from-purple-500/30 group-hover:to-purple-500/10">
-                    <i class="fa-solid fa-handshake text-xl text-purple-400"></i>
+                <div
+                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
+                >
+                  <div
+                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 transition-all duration-300 group-hover:from-purple-500/30 group-hover:to-purple-500/10"
+                  >
+                    <i
+                      class="fa-solid fa-handshake text-xl text-purple-400"
+                    ></i>
                   </div>
                   <div>
                     <h4 class="mb-1 font-bold text-white">Reliable Partner</h4>
-                    <p class="text-sm text-gray-400">Long-term collaboration focus</p>
+                    <p class="text-sm text-gray-400">
+                      Long-term collaboration focus
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Social -->
-            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/30 to-pink-600/30 p-8 backdrop-blur-xl">
-              <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-pink-500/20"></div>
+            <div
+              class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/30 to-pink-600/30 p-8 backdrop-blur-xl"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-pink-500/20"
+              ></div>
               <div class="relative">
-                <h3 class="mb-2 text-2xl font-black text-white">Connect With Me</h3>
-                <p class="mb-6 text-sm text-gray-300">Follow my journey on social media</p>
+                <h3 class="mb-2 text-2xl font-black text-white">
+                  Connect With Me
+                </h3>
+                <p class="mb-6 text-sm text-gray-300">
+                  Follow my journey on social media
+                </p>
                 <div class="grid grid-cols-2 gap-3">
                   <a
                     href="https://www.facebook.com/shahzeb.akhtar.583"
@@ -371,7 +524,9 @@ const submitForm = async () => {
                     class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
                   >
                     <i class="fa-brands fa-facebook-f text-white"></i>
-                    <span class="text-sm font-semibold text-white">Facebook</span>
+                    <span class="text-sm font-semibold text-white"
+                      >Facebook</span
+                    >
                   </a>
 
                   <a
@@ -380,7 +535,9 @@ const submitForm = async () => {
                     class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
                   >
                     <i class="fa-brands fa-linkedin-in text-white"></i>
-                    <span class="text-sm font-semibold text-white">LinkedIn</span>
+                    <span class="text-sm font-semibold text-white"
+                      >LinkedIn</span
+                    >
                   </a>
 
                   <a
@@ -389,7 +546,9 @@ const submitForm = async () => {
                     class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
                   >
                     <i class="fa-brands fa-twitter text-white"></i>
-                    <span class="text-sm font-semibold text-white">Twitter</span>
+                    <span class="text-sm font-semibold text-white"
+                      >Twitter</span
+                    >
                   </a>
 
                   <a
@@ -397,7 +556,9 @@ const submitForm = async () => {
                     class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
                   >
                     <i class="fa-brands fa-instagram text-white"></i>
-                    <span class="text-sm font-semibold text-white">Instagram</span>
+                    <span class="text-sm font-semibold text-white"
+                      >Instagram</span
+                    >
                   </a>
                 </div>
               </div>
@@ -416,16 +577,24 @@ const submitForm = async () => {
       width="450px"
       wrap-class-name="custom-modal"
     >
-      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-10 text-center">
+      <div
+        class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-10 text-center"
+      >
         <!-- Animated Background -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.1),transparent_50%)]"></div>
-        
+        <div
+          class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.1),transparent_50%)]"
+        ></div>
+
         <div class="relative">
           <!-- Success Icon -->
           <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center">
             <div class="relative">
-              <div class="absolute inset-0 animate-ping rounded-full bg-green-500/50"></div>
-              <div class="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-2xl shadow-green-500/50 animate-scale-in">
+              <div
+                class="absolute inset-0 animate-ping rounded-full bg-green-500/50"
+              ></div>
+              <div
+                class="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-2xl shadow-green-500/50 animate-scale-in"
+              >
                 <i class="fa-solid fa-circle-check text-5xl text-white"></i>
               </div>
             </div>
@@ -443,7 +612,9 @@ const submitForm = async () => {
             class="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-orange-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/60"
           >
             <span class="relative z-10">Great!</span>
-            <div class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            ></div>
           </button>
         </div>
       </div>
@@ -454,28 +625,52 @@ const submitForm = async () => {
 <style scoped>
 /* Custom Animations */
 @keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes pulse-slower {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.4; }
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes fade-in-down {
@@ -501,8 +696,12 @@ const submitForm = async () => {
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-left {

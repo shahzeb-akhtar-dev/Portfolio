@@ -1,97 +1,111 @@
 <template>
-  <div>
-    <div class="app-layout">
-      <header class="app-header">
-        <the-header />
-        <div id="scrollProgressBar">
-          <div class="progressBar" :style="`width:${scrollProgress}%;`"></div>
-        </div>
-      </header>
-      <main class="app-content">
-        <div class="body-wrapper">
-        <slot  />
-        </div>
-      </main>
-      <footer class="app-footer">
-        <div class="scroll-button" v-if="scroll >= 200">
-          <button class="scroll-btn" type="button" @click="scrollToTop">
-            <i class="fa-solid fa-up-long"></i>
-          </button>
-        </div>
-        <the-footer />
-      </footer>
+  <!-- Layout Wrapper -->
+  <a-layout class="flex flex-col">
+    <!-- Header -->
+    <a-layout-header
+      class="relative top-0 z-[200] bg-[var(--bg-primary-color)] h-12"
+    >
+      <TheHeader class="h-10 mb-2" />
+    </a-layout-header>
+    <div id="scrollProgressBar" class="bg-black">
+      <div class="progressBar" :style="{ width: `${scrollProgress}%` }"></div>
     </div>
-  </div>
+    <!-- Body -->
+    <a-layout-content
+      id="BodyWrapper"
+      class="flex-1 overflow-y-auto custom-scrollbar  max-h-[calc(100vh-3.5rem)] scroll-smooth"
+      @scroll="handleScroll"
+    >
+      <div class="body-wrapper max-h-full">
+        <NuxtPage />
+      </div>
+      <!-- Footer -->
+      <a-layout-footer class="relative !p-0">
+        <div class="scroll-button" v-if="scroll >= 200">
+          <a-button shape="circle" @click="scrollToTop">
+            <i class="fa-solid fa-up-long"></i>
+          </a-button>
+        </div>
+        <TheFooter />
+      </a-layout-footer>
+    </a-layout-content>
+  </a-layout>
 </template>
-<script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import TheHeader from '@/components/Layout/TheHeader'
-import TheFooter from '@/components/Layout/TheFooter'
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import TheHeader from '../components/Layout/AppHeader.vue'
+import TheFooter from '../components/Layout/AppFooter.vue'
 
 const scroll = ref(0)
 const scrollProgress = ref(0)
+let contentEl: HTMLElement | null = null
 
-function getScroll() {
-  const content = document.getElementById('__layout')
-  const scrollY = window.scrollY
-  scroll.value = scrollY
-  if (content) {
-    const progress = (window.scrollY / (content.scrollHeight - window.innerHeight)) * 100
-    scrollProgress.value = progress
-  }
+const handleScroll = () => {
+  if (!contentEl) return
+
+  const scrollTop = contentEl.scrollTop
+  const scrollHeight = contentEl.scrollHeight - contentEl.clientHeight
+  const progress = (scrollTop / scrollHeight) * 100
+
+  scroll.value = scrollTop
+  scrollProgress.value = progress
 }
 
-function scrollToTop() {
-  document.documentElement.scrollTop = 0
+const scrollToTop = () => {
+  contentEl?.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 onMounted(() => {
-  document.addEventListener('scroll', getScroll)
-})
-
-onBeforeUnmount(() => {
-  document.removeEventListener('scroll', getScroll)
+  contentEl = document.getElementById('BodyWrapper')
 })
 </script>
 
-<style>
-
-.app-layout .app-header {
+<style scoped>
+.ant-layout-header {
+  line-height: 6.4rem;
   padding: 0;
   height: fit-content;
   background-color: var(--bg-primary-color) !important;
 }
 
-.app-layout .app-content {
+.ant-layout-content {
   background-color: var(--bg-primary-color) !important;
 }
 
-.app-layout .scroll-button .scroll-btn {
+/* Scroll To Top Button */
+.scroll-button .ant-btn {
   font-size: 2rem;
   position: fixed;
+  z-index: 999;
   bottom: 7.5rem;
   right: 4rem;
   height: fit-content;
   width: fit-content;
   padding: 0.5rem 1.5rem;
   color: var(--text-black-color);
-  background: linear-gradient(0deg, var(--theme-primary-color) 1%, transparent 48%);
+  background: linear-gradient(
+    0deg,
+    var(--theme-primary-color) 1%,
+    transparent 48%
+  );
   background-size: 102% 200%;
   background-position: top;
+  transition: background-position 0.3s ease, color 0.3s ease;
 }
 
-.app-layout .scroll-button .scroll-btn:hover {
+.scroll-button .ant-btn:hover {
   background-position: bottom;
   color: #fff;
   border-color: var(--theme-primary-color);
 }
 
-.app-layout #scrollProgressBar .progressBar {
-  transition: 0.1s;
+/* Scroll Progress Bar */
+#scrollProgressBar .progressBar {
+  transition: width 0.1s ease;
   background: var(--theme-gradient-primary-color);
-  height: 0.7rem;
-  margin-top: -0.1rem;
+  height: 0.5rem;
   width: 0%;
-  border-radius: 0rem 1rem 1rem 0px;
+  border-radius: 0 1rem 1rem 0;
 }
 </style>

@@ -1,19 +1,18 @@
 <template>
   <header
     id="main-header-wrapper"
-    class="max-w-7xl mx-auto flex h-10 flex-col md:flex-row md:items-center md:justify-between px-4 py-2 text-center md:text-left"
+    class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 text-center md:text-left"
   >
-
     <!-- Logo -->
     <div
-      class="order-1 md:order-1 logo text-4xl md:text-5xl font-semibold uppercase transition-colors duration-300"
+      class="order-1 md:order-1 logo text-4xl md:text-5xl font-semibold uppercase transition-colors duration-300 logo-font-family"
       :style="{ color: 'var(--text-black-color)' }"
     >
       Portfolio
     </div>
 
     <!-- Actions (Theme Switch) -->
-    <div class="order-2 md:order-3 flex justify-center md:justify-end md:mt-0">
+    <div class="order-2 md:order-3 flex justify-center md:justify-end">
       <a-switch
         :default-checked="isLightMode"
         @change="handleThemeChange"
@@ -29,12 +28,16 @@
     </div>
 
     <!-- Navigation Menu -->
-    <nav class="order-3 md:order-2 w-full md:w-auto mt-4 md:mt-0 flex justify-center md:justify-center">
-      <ul class="flex flex-wrap justify-center gap-3 md:gap-4 max-h-full">
-        <li v-for="(item, i) in navItems" :key="i" class="max-h-full">
+    <nav
+      class="order-3 md:order-2 w-full md:w-auto mt-4 md:mt-0 flex justify-center md:justify-center"
+    >
+      <ul
+        class="flex flex-wrap justify-center gap-3 md:gap-4 max-h-full items-center mb-0"
+      >
+        <li v-for="(item, i) in navItems" :key="i" class="max-h-full h-full">
           <a
             :href="item.href"
-            class="inline-block px-5 font-semibold transition-all duration-300 rounded-xl"
+            class="inline-block px-5 py-2 font-semibold transition-all duration-300 rounded-xl h-full"
             :style="{
               color: 'var(--text-black-color)',
               background:

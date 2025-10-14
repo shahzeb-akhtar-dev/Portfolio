@@ -1,16 +1,13 @@
 <template>
-  <div id="footer" class="container">
+  <div id="footer" class="container !h-10 max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
     <div class="logo">Portfolio</div>
     <div class="copyright">@2023 Powered by Shahzeb Akhtar</div>
 
   </div>
 </template>
 
-<script>
-export default {
+<script setup lang="ts">
 
- 
-}
 </script>
 
 <style>

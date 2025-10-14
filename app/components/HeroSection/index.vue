@@ -1,17 +1,7 @@
 <template>
   <section class="hero-wrapper py-4 md:py-t pb-24" id="hero-section">
     <div class="max-w-7xl mx-auto">
-      <!-- Animated background elements -->
-      <div class="bg-elements">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-      </div>
-
-      <!-- Gradient mesh overlay -->
-      <div class="gradient-mesh"></div>
-
+      
       <div class="hero-content">
         <!-- Left: Enhanced User Image -->
         <div class="user-image-container">
@@ -165,28 +155,6 @@
   top: 30%;
   right: 40%;
   animation-delay: 1s;
-}
-
-/* Gradient mesh */
-.gradient-mesh {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 30% 40%,
-      rgba(255, 90, 1, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(255, 75, 0, 0.06) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 90%,
-      rgba(255, 90, 1, 0.06) 0%,
-      transparent 50%
-    );
-  z-index: 2;
 }
 
 /* Hero content */
