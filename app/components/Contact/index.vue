@@ -4,6 +4,9 @@ import type { Rule } from 'ant-design-vue/es/form'
 import type { FormInstance } from 'ant-design-vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 
+import siteInfo from '@/utilies/siteInfo.json'
+import ContactCard from './ContactCard.vue'
+import SocialLinks from './SocialLinks.vue'
 const formRef = ref<FormInstance>()
 const isSubmitting = ref(false)
 const showSuccessModal = ref(false)
@@ -84,25 +87,7 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div
-    class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-orange-950"
-  >
-    <!-- Animated Background -->
-    <div class="absolute inset-0">
-      <div
-        class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDI0YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xMiAxNmMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHptMCAyNGMwLTIuMjEgMS43OS00IDQtNHM0IDEuNzkgNCA0LTEuNzkgNC00IDQtNC0xLjc5LTQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30"
-      ></div>
-      <div
-        class="absolute top-0 right-0 h-[800px] w-[800px] rounded-full bg-gradient-to-br from-orange-500/20 to-pink-500/20 blur-3xl animate-pulse-slow"
-      ></div>
-      <div
-        class="absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-blue-500/20 to-purple-500/20 blur-3xl animate-pulse-slower"
-      ></div>
-      <div
-        class="absolute top-1/2 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-yellow-500/10 to-orange-500/10 blur-3xl animate-spin-slow"
-      ></div>
-    </div>
-
+  <div class="relative min-h-screen overflow-hidden bg-slate-950">
     <!-- Content -->
     <div class="relative z-10">
       <!-- Hero Section -->
@@ -166,7 +151,9 @@ const submitForm = async () => {
             <div
               class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:bg-white/10 hover:scale-105"
             >
-              <div class="text-3xl font-black text-purple-400 mb-2">50+</div>
+              <div class="text-3xl font-black text-purple-400 mb-2">
+                {{ siteInfo.projects.length }}+
+              </div>
               <div class="text-sm text-gray-400 font-medium">Projects Done</div>
               <div
                 class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent transition-all duration-300"
@@ -178,11 +165,11 @@ const submitForm = async () => {
 
       <!-- Main Content -->
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
+        <div class="grid gap-6 lg:grid-cols-12 lg:gap-6">
           <!-- Form Column -->
-          <div class="lg:col-span-7">
+          <div class="lg:col-span-7 h-full">
             <div
-              class="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/30 sm:p-12 animate-slide-in-left"
+              class="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/30 sm:p-12 animate-slide-in-left"
             >
               <!-- Shine Effect -->
               <div
@@ -353,90 +340,30 @@ const submitForm = async () => {
             <!-- Contact Cards -->
             <div class="space-y-4">
               <!-- Location -->
-              <div
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-purple-600/20 to-purple-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20"
-              >
-                <div
-                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-purple-500/20 to-transparent blur-2xl"
-                ></div>
-                <div class="relative flex items-center gap-4">
-                  <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 shadow-lg shadow-purple-500/50"
-                  >
-                    <i class="fa-solid fa-location-dot text-2xl text-white"></i>
-                  </div>
-                  <div>
-                    <h4
-                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-purple-300"
-                    >
-                      Visit Me
-                    </h4>
-                    <p class="text-lg font-bold text-white">
-                      Pakistan KPK<br />Haripur Ghazi
-                    </p>
-                  </div>
-                </div>
-              </div>
+
+              <ContactCard
+                icon="fa-solid fa-location-dot"
+                title="Visit Me"
+                :text="siteInfo.contact.address"
+                color="blue"
+              />
 
               <!-- Phone -->
-              <div
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-blue-600/20 to-cyan-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20"
-              >
-                <div
-                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-blue-500/20 to-transparent blur-2xl"
-                ></div>
-                <div class="relative flex items-center gap-4">
-                  <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/50"
-                  >
-                    <i class="fa-solid fa-phone-flip text-2xl text-white"></i>
-                  </div>
-                  <div>
-                    <h4
-                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-blue-300"
-                    >
-                      Call Me
-                    </h4>
-                    <a
-                      href="tel:03208055453"
-                      class="text-lg font-bold text-white transition-colors hover:text-blue-400"
-                    >
-                      0320 8055453
-                    </a>
-                  </div>
-                </div>
-              </div>
-
+              <ContactCard
+                icon="fa-solid fa-phone-flip"
+                title="Call Me"
+                :text="siteInfo.contact.phoneNumber"
+                color="green"
+                :link="`tel:${siteInfo.contact.phoneNumber}`"
+              />
               <!-- Email -->
-              <div
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/20 to-pink-600/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:scale-[1.02] hover:shadow-2xl hover:shadow-orange-500/20"
-              >
-                <div
-                  class="absolute right-0 top-0 h-32 w-32 bg-gradient-to-br from-orange-500/20 to-transparent blur-2xl"
-                ></div>
-                <div class="relative flex items-center gap-4">
-                  <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-pink-600 shadow-lg shadow-orange-500/50"
-                  >
-                    <i
-                      class="fa-solid fa-envelope-open-text text-2xl text-white"
-                    ></i>
-                  </div>
-                  <div class="min-w-0 flex-1">
-                    <h4
-                      class="mb-1 text-xs font-semibold uppercase tracking-wider text-orange-300"
-                    >
-                      Email Me
-                    </h4>
-                    <a
-                      href="mailto:shahzebakhtar892@gmail.com"
-                      class="block truncate text-lg font-bold text-white transition-colors hover:text-orange-400"
-                    >
-                      shahzebakhtar892@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <ContactCard
+                icon="fa-solid fa-envelope-open-text"
+                title="Email Me"
+                :text="siteInfo.contact.email"
+                color="orange"
+                :link="`mailto:${siteInfo.contact.email}`"
+              />
             </div>
 
             <!-- Why Work With Me -->
@@ -502,69 +429,14 @@ const submitForm = async () => {
                 </div>
               </div>
             </div>
-
-            <!-- Social -->
-            <div
-              class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-orange-600/30 to-pink-600/30 p-8 backdrop-blur-xl"
-            >
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-pink-500/20"
-              ></div>
-              <div class="relative">
-                <h3 class="mb-2 text-2xl font-black text-white">
-                  Connect With Me
-                </h3>
-                <p class="mb-6 text-sm text-gray-300">
-                  Follow my journey on social media
-                </p>
-                <div class="grid grid-cols-2 gap-3">
-                  <a
-                    href="https://www.facebook.com/shahzeb.akhtar.583"
-                    target="_blank"
-                    class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
-                  >
-                    <i class="fa-brands fa-facebook-f text-white"></i>
-                    <span class="text-sm font-semibold text-white"
-                      >Facebook</span
-                    >
-                  </a>
-
-                  <a
-                    href="https://www.linkedin.com/in/shahzeb-akhtar-889570247/"
-                    target="_blank"
-                    class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
-                  >
-                    <i class="fa-brands fa-linkedin-in text-white"></i>
-                    <span class="text-sm font-semibold text-white"
-                      >LinkedIn</span
-                    >
-                  </a>
-
-                  <a
-                    href="https://twitter.com/ShahzebAkhtar89"
-                    target="_blank"
-                    class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
-                  >
-                    <i class="fa-brands fa-twitter text-white"></i>
-                    <span class="text-sm font-semibold text-white"
-                      >Twitter</span
-                    >
-                  </a>
-
-                  <a
-                    href="#"
-                    class="group flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/20 hover:scale-105"
-                  >
-                    <i class="fa-brands fa-instagram text-white"></i>
-                    <span class="text-sm font-semibold text-white"
-                      >Instagram</span
-                    >
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
+        <!-- Social -->
+         <div class="mt-6 ">
+
+        
+        <SocialLinks />
+         </div>
       </div>
     </div>
 

@@ -3,6 +3,7 @@ import userImage from '@/assets/images/user-image.png'
 // strict typing & composition API
 import { ref } from 'vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
+import siteInfo from '@/utilies/siteInfo.json'
 
 // client-only checks
 const isClient = typeof window !== 'undefined'
@@ -120,22 +121,20 @@ function scrollToContact(): void {
             <span
               class="ml-2 inline-block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400"
             >
-              Shahzeb Akhtar
+              {{ siteInfo.name }}
             </span>
           </h1>
 
           <p
             class="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4"
           >
-            Frontend Developer • UI/UX Specialist
+            {{ siteInfo.title }}
           </p>
 
           <p
             class="text-base lg:text-lg text-slate-600 dark:text-slate-300 max-w-[60ch] leading-relaxed mb-6"
           >
-            I build fast, accessible interfaces with clean code and thoughtful
-            design. I focus on component-driven systems powered by Vue, modern
-            CSS, and performance-first patterns.
+            {{ siteInfo.about }}
           </p>
 
           <!-- skill row -->

@@ -122,95 +122,11 @@
 </template>
 
 <script>
+import siteInfo from '@/utilies/siteInfo.json'
 export default {
   data() {
     return {
-      myWork: [
-        {
-          id: 1,
-          name: 'EZ-Reminder System',
-          description:
-            'Led frontend development, building campaigns, templates, and workflows for improved user functionality. Created interfaces for contact and workspace management.',
-          image: 'https://cdn-icons-png.flaticon.com/512/854/854878.png',
-        },
-        {
-          id: 2,
-          name: 'EzHubSpot (Workforce Management)',
-          description:
-            'Designed and implemented core modules for time tracking, payroll automation, attendance, and leave requests. Built real-time user monitoring.',
-          image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-        },
-        {
-          id: 3,
-          name: 'Medical Referral System',
-          description:
-            'Developed a dynamic user interface, integrated backend APIs, and customized Mapbox for location-based interactions with draggable fields.',
-          image: 'https://cdn-icons-png.flaticon.com/512/2966/2966482.png',
-        },
-        {
-          id: 4,
-          name: 'Customer Relationship Management',
-          description:
-            'Designed responsive UI for deals, boards, staff management, and analytics. Integrated Apex Charts for visualization and drag-and-drop functionality.',
-          image: 'https://cdn-icons-png.flaticon.com/512/1039/1039328.png',
-        },
-        {
-          id: 5,
-          name: 'RCM (Revenue Cycle Management)',
-          description:
-            'Contributed to a multi-modular medical billing system covering patient registration, insurance verification, claim submission, and payment posting.',
-          image: 'https://cdn-icons-png.flaticon.com/512/2331/2331941.png',
-        },
-        {
-          id: 6,
-          name: 'Tipz (Customer Portal)',
-          description:
-            'Built a portal for customers to send tips to barbers. Integrated Stripe for secure payments, ensuring a smooth tipping experience.',
-          image: 'https://cdn-icons-png.flaticon.com/512/1170/1170576.png',
-        },
-        {
-          id: 7,
-          name: 'Tipz-Admin (Admin Panel)',
-          description:
-            'Developed a dashboard for barbershops to view received tips, track amounts, and review customer feedback with analytics.',
-          image: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
-        },
-        {
-          id: 8,
-          name: 'TCA (Voucher App)',
-          description:
-            'Developed a voucher management app where users can apply vouchers by scanning QR codes or entering codes with trip history tracking.',
-          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
-        },
-        {
-          id: 9,
-          name: 'Ez SignDocu (E-Sign Platform)',
-          description:
-            'Built a secure e-signature platform enabling users to upload, sign, and manage documents digitally with real-time status tracking.',
-          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
-        },
-        {
-          id: 10,
-          name: 'Servr (Hotel Management)',
-          description:
-            'Developed a hotel management solution covering booking, check-in/check-out, room availability, customer profiles, and billing.',
-          image: 'https://cdn-icons-png.flaticon.com/512/888/888879.png',
-        },
-        {
-          id: 11,
-          name: 'Drive-Vip-Cars (Ride Booking)',
-          description:
-            'Built a responsive ride-booking site where users can schedule and manage rides with smooth booking flow and mobile-friendly design.',
-          image: 'https://cdn-icons-png.flaticon.com/512/3104/3104830.png',
-        },
-        {
-          id: 12,
-          name: 'A2B Tommyfield (Ride Booking)',
-          description:
-            'Developed a ride-booking platform with clean and intuitive UI/UX for seamless ride scheduling and management.',
-          image: 'https://cdn-icons-png.flaticon.com/512/883/883806.png',
-        },
-      ],
+      myWork: siteInfo.projects,
       workDataLimit: 6,
     }
   },
