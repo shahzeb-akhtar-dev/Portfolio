@@ -23,7 +23,7 @@
       <a-layout-footer class="relative !p-0">
         <div class="scroll-button" v-if="scroll >= 200">
           <a-button shape="circle" @click="scrollToTop">
-            <i class="fa-solid fa-up-long"></i>
+            <i class="fa-solid fa-up-long text-gray-300 hover:text-white"></i>
           </a-button>
         </div>
         <TheFooter />
@@ -83,7 +83,7 @@ onMounted(() => {
   height: fit-content;
   width: fit-content;
   padding: 0.5rem 1.5rem;
-  color: var(--text-black-color);
+  
   background: linear-gradient(
     0deg,
     var(--theme-primary-color) 1%,

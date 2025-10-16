@@ -1,16 +1,29 @@
 {
   "name": "Shahzeb Akhtar",
   "title": "Full Stack Developer",
+  "hero": {
+    "techStack": ["Vue.js", "TypeScript", "Laravel"],
+    "description": "Crafting scalable, beautiful web applications with modern technologies. Passionate about clean code and exceptional user experiences."
+  },
+  "dev": {
+    "experience": "3+",
+    "expertise": "Vue/Nuxt",
+    "email": ""
+  },
   "about": "Experienced developer specializing in modern web technologies, passionate about building scalable and performant applications.",
   "skills": [
-    "JavaScript",
-    "TypeScript",
-    "Vue.js",
-    "Nuxt.js",
-    "Tailwind CSS",
-    "Node.js",
-    "Express.js",
-    "MongoDB"
+    { "name": "Bootstrap", "icon": "/images/skill-icon/bootstrap.png" },
+    { "name": "Click Up", "icon": "/images/skill-icon/clickup.png" },
+    { "name": "Command", "icon": "/images/skill-icon/command.png" },
+    { "name": "CSS 3", "icon": "/images/skill-icon/css3.png" },
+    { "name": "Git Hub", "icon": "/images/skill-icon/git.png" },
+    { "name": "HTML 5", "icon": "/images/skill-icon/html5.png" },
+    { "name": "JavaScript", "icon": "/images/skill-icon/javascript.png" },
+    { "name": "jQuery", "icon": "/images/skill-icon/jquery.png" },
+    { "name": "NPM", "icon": "/images/skill-icon/npm.png" },
+    { "name": "SASS", "icon": "/images/skill-icon/sass.png" },
+    { "name": "VS Code", "icon": "/images/skill-icon/vs-code.png" },
+    { "name": "Vue.js", "icon": "/images/skill-icon/vue.png" }
   ],
   "projects": [
     {

@@ -41,17 +41,17 @@
           <!-- Achievement Boxes -->
           <div class="achievement-grid">
             <div class="achievement-box box-1">
-              <div class="achievement-number">12+</div>
+              <div class="achievement-number"> {{ siteInfo.skills.length }}+ </div>
               <div class="achievement-label">Tech Stack</div>
               <div class="box-gradient"></div>
             </div>
             <div class="achievement-box box-2">
-              <div class="achievement-number">5+</div>
+              <div class="achievement-number"> {{ siteInfo.dev.experience }} </div>
               <div class="achievement-label">Years Exp</div>
               <div class="box-gradient"></div>
             </div>
             <div class="achievement-box box-3">
-              <div class="achievement-number">50+</div>
+              <div class="achievement-number"> {{ siteInfo.projects.length }}+ </div>
               <div class="achievement-label">Projects</div>
               <div class="box-gradient"></div>
             </div>
@@ -63,7 +63,7 @@
       <div class="skills-panel">
         <div class="hexagon-grid">
           <div
-            v-for="(skill, index) in skills"
+            v-for="(skill, index) in siteInfo.skills"
             :key="index"
             class="hex-wrapper"
             :style="{ '--index': index }"
@@ -109,34 +109,8 @@
 </template>
 
 <script setup>
-import bootstrapIcon from '~/assets/images/skill-icon/bootstrap.png'
-import clickupIcon from '~/assets/images/skill-icon/clickup.png'
-import commandIcon from '~/assets/images/skill-icon/command.png'
-import css3Icon from '~/assets/images/skill-icon/css3.png'
-import gitIcon from '~/assets/images/skill-icon/git.png'
-import html5Icon from '~/assets/images/skill-icon/html5.png'
-import jsIcon from '~/assets/images/skill-icon/javascript.png'
-import jqueryIcon from '~/assets/images/skill-icon/jquery.png'
-import npmIcon from '~/assets/images/skill-icon/npm.png'
-import sassIcon from '~/assets/images/skill-icon/sass.png'
-import vscodeIcon from '~/assets/images/skill-icon/vs-code.png'
-import vueIcon from '~/assets/images/skill-icon/vue.png'
+import siteInfo from '@/utilies/siteInfo.json'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
-
-const skills = [
-  { name: 'Bootstrap', icon: bootstrapIcon },
-  { name: 'Click Up', icon: clickupIcon },
-  { name: 'Command', icon: commandIcon },
-  { name: 'CSS 3', icon: css3Icon },
-  { name: 'Git Hub', icon: gitIcon },
-  { name: 'HTML 5', icon: html5Icon },
-  { name: 'JavaScript', icon: jsIcon },
-  { name: 'jQuery', icon: jqueryIcon },
-  { name: 'NPM', icon: npmIcon },
-  { name: 'SASS', icon: sassIcon },
-  { name: 'VS Code', icon: vscodeIcon },
-  { name: 'Vue.js', icon: vueIcon },
-]
 </script>
 
 <style scoped>

@@ -1,7 +1,6 @@
 <template>
   <section class="hero-wrapper py-4 md:py-t pb-24" id="hero-section">
     <div class="max-w-7xl mx-auto">
-      
       <div class="hero-content">
         <!-- Left: Enhanced User Image -->
         <div class="user-image-container">
@@ -31,16 +30,18 @@
           <div class="role-container">
             <p class="subtitle">Full-Stack Developer</p>
             <div class="tech-stack">
-              <span class="tech-tag">Vue.js</span>
-              <span class="tech-tag">Laravel</span>
-              <span class="tech-tag">TypeScript</span>
+              <span
+                class="tech-tag"
+                v-for="tech in siteInfo.hero.techStack"
+                :key="tech"
+              >
+                {{ tech }}
+              </span>
             </div>
           </div>
 
           <p class="description">
-            Crafting scalable, beautiful web applications with modern
-            technologies. Passionate about clean code and exceptional user
-            experiences.
+            {{ siteInfo.hero.description }}
           </p>
 
           <div class="hero-actions">
@@ -61,11 +62,11 @@
           <!-- Social proof -->
           <div class="social-proof">
             <div class="stat">
-              <span class="stat-number">50+</span>
+              <span class="stat-number">{{ siteInfo.projects.length }}</span>
               <span class="stat-label">Projects</span>
             </div>
             <div class="stat">
-              <span class="stat-number">3+</span>
+              <span class="stat-number"> {{ siteInfo.dev.experience }} </span>
               <span class="stat-label">Years</span>
             </div>
             <div class="stat">
@@ -86,13 +87,14 @@
 </template>
 
 <script setup lang="ts">
+import siteInfo from '@/utilies/siteInfo.json'
 // Ready for future interactions in Nuxt 4
 </script>
 
 <style scoped>
 .hero-wrapper {
   min-height: 100vh;
-  background: url("~/assets/images/bg-2.jpg") no-repeat center center fixed;
+  background: url('~/assets/images/bg-2.jpg') no-repeat center center fixed;
   background-size: cover;
   position: relative;
   display: flex;
@@ -102,7 +104,7 @@
 }
 
 .hero-wrapper::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(15, 15, 35, 0.7));

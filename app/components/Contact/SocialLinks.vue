@@ -10,7 +10,7 @@
     >
       <!-- Facebook -->
       <a
-        :href="siteInfo.contact.facebook || '#'"
+        :href="siteInfo.socialLinks.facebook || '#'"
         target="_blank"
         class="group flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[var(--theme-primary-color)] hover:bg-[var(--theme-primary-color)]/20"
       >
@@ -28,7 +28,7 @@
 
       <!-- LinkedIn -->
       <a
-        :href="siteInfo.contact.linkedin || '#'"
+        :href="siteInfo.socialLinks.linkedin || '#'"
         target="_blank"
         class="group flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[var(--theme-primary-color)] hover:bg-[var(--theme-primary-color)]/20"
       >
@@ -46,7 +46,7 @@
 
       <!-- Twitter -->
       <a
-        :href="siteInfo.contact.twitter || '#'"
+        :href="siteInfo.socialLinks.twitter || '#'"
         target="_blank"
         class="group flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[var(--theme-primary-color)] hover:bg-[var(--theme-primary-color)]/20"
       >
@@ -84,25 +84,9 @@
 </template>
 
 <script setup lang="ts">
-interface ContactInfo {
-  facebook?: string
-  linkedin?: string
-  twitter?: string
-  instagram?: string
-}
+import siteInfo from '@/utilies/siteInfo.json'
 
-interface SiteInfo {
-  contact: ContactInfo
-}
 
-const siteInfo: SiteInfo = {
-  contact: {
-    facebook: 'https://facebook.com/',
-    linkedin: 'https://linkedin.com/in/',
-    twitter: 'https://twitter.com/',
-    instagram: 'https://instagram.com/',
-  },
-}
 </script>
 
 <style scoped>

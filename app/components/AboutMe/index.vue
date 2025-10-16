@@ -83,7 +83,7 @@ function scrollToContact(): void {
                 class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
               >
                 <strong class="block text-orange-500 font-extrabold text-base"
-                  >2+</strong
+                  > {{ siteInfo.dev.experience }} </strong
                 >
                 <span class="block mt-1 text-xs">Years</span>
               </li>
@@ -92,7 +92,7 @@ function scrollToContact(): void {
                 class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
               >
                 <strong class="block text-orange-500 font-extrabold text-base"
-                  >Vue.js</strong
+                  > {{ siteInfo.dev.expertise }} </strong
                 >
                 <span class="block mt-1 text-xs">Specialist</span>
               </li>
@@ -157,7 +157,7 @@ function scrollToContact(): void {
               </div>
               <div class="min-w-0">
                 <div class="font-extrabold text-slate-900 dark:text-slate-100">
-                  Vue.js
+                  {{ siteInfo.dev.expertise }}
                 </div>
                 <div class="text-xs text-slate-500 dark:text-slate-300">
                   Component Architecture
