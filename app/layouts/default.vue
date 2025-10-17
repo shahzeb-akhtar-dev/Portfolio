@@ -5,7 +5,7 @@
     <a-layout-header
       class="relative top-0 z-[200] bg-[var(--bg-primary-color)] h-12"
     >
-      <TheHeader class="h-10 mb-2" />
+      <TheHeader />
     </a-layout-header>
     <div id="scrollProgressBar" class="bg-black">
       <div class="progressBar" :style="{ width: `${scrollProgress}%` }"></div>

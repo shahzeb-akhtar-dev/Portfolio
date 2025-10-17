@@ -62,7 +62,7 @@
           <!-- Social proof -->
           <div class="social-proof">
             <div class="stat">
-              <span class="stat-number">{{ siteInfo.projects.length }}</span>
+              <span class="stat-number">{{ siteInfo.projects.length }}+</span>
               <span class="stat-label">Projects</span>
             </div>
             <div class="stat">

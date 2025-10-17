@@ -30,73 +30,73 @@
       "id": 1,
       "name": "EZ-Reminder System",
       "description": "Led frontend development, building campaigns, templates, and workflows for improved user functionality. Created interfaces for contact and workspace management.",
-      "image": "https://cdn-icons-png.flaticon.com/512/854/854878.png"
+      "image": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80"
     },
     {
       "id": 2,
       "name": "EzHubSpot (Workforce Management)",
       "description": "Designed and implemented core modules for time tracking, payroll automation, attendance, and leave requests. Built real-time user monitoring.",
-      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
     },
     {
       "id": 3,
       "name": "Medical Referral System",
       "description": "Developed a dynamic user interface, integrated backend APIs, and customized Mapbox for location-based interactions with draggable fields.",
-      "image": "https://cdn-icons-png.flaticon.com/512/2966/2966482.png"
+      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80"
     },
     {
       "id": 4,
       "name": "Customer Relationship Management",
       "description": "Designed responsive UI for deals, boards, staff management, and analytics. Integrated Apex Charts for visualization and drag-and-drop functionality.",
-      "image": "https://cdn-icons-png.flaticon.com/512/1039/1039328.png"
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
     },
     {
       "id": 5,
       "name": "RCM (Revenue Cycle Management)",
       "description": "Contributed to a multi-modular medical billing system covering patient registration, insurance verification, claim submission, and payment posting.",
-      "image": "https://cdn-icons-png.flaticon.com/512/2331/2331941.png"
+      "image": "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80"
     },
     {
       "id": 6,
       "name": "Tipz (Customer Portal)",
       "description": "Built a portal for customers to send tips to barbers. Integrated Stripe for secure payments, ensuring a smooth tipping experience.",
-      "image": "https://cdn-icons-png.flaticon.com/512/1170/1170576.png"
+      "image": "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=80"
     },
     {
       "id": 7,
       "name": "Tipz-Admin (Admin Panel)",
       "description": "Developed a dashboard for barbershops to view received tips, track amounts, and review customer feedback with analytics.",
-      "image": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
     },
     {
       "id": 8,
       "name": "TCA (Voucher App)",
       "description": "Developed a voucher management app where users can apply vouchers by scanning QR codes or entering codes with trip history tracking.",
-      "image": "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+      "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80"
     },
     {
       "id": 9,
       "name": "Ez SignDocu (E-Sign Platform)",
       "description": "Built a secure e-signature platform enabling users to upload, sign, and manage documents digitally with real-time status tracking.",
-      "image": "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+      "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80"
     },
     {
       "id": 10,
       "name": "Servr (Hotel Management)",
       "description": "Developed a hotel management solution covering booking, check-in/check-out, room availability, customer profiles, and billing.",
-      "image": "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+      "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
     },
     {
       "id": 11,
       "name": "Drive-Vip-Cars (Ride Booking)",
       "description": "Built a responsive ride-booking site where users can schedule and manage rides with smooth booking flow and mobile-friendly design.",
-      "image": "https://cdn-icons-png.flaticon.com/512/3104/3104830.png"
+      "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
     },
     {
       "id": 12,
       "name": "A2B Tommyfield (Ride Booking)",
       "description": "Developed a ride-booking platform with clean and intuitive UI/UX for seamless ride scheduling and management.",
-      "image": "https://cdn-icons-png.flaticon.com/512/883/883806.png"
+      "image": "https://images.unsplash.com/photo-1485463611174-f302f6a5c1c9?w=800&q=80"
     }
   ],
   "contact": {

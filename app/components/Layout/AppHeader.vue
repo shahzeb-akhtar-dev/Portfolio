@@ -1,7 +1,7 @@
 <template>
   <header
     id="main-header-wrapper"
-    class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 text-center md:text-left"
+    class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 text-center mb-0 md:text-left max-h-12"
   >
     <!-- Logo -->
     <div
@@ -32,21 +32,19 @@
       class="order-3 md:order-2 w-full md:w-auto mt-4 md:mt-0 flex justify-center md:justify-center"
     >
       <ul
-        class="flex flex-wrap justify-center gap-3 md:gap-4 max-h-full items-center mb-0"
+        class="flex flex-wrap justify-center gap-3 md:gap-4 max-h-fit items-center mb-0"
       >
-        <li v-for="(item, i) in navItems" :key="i" class="max-h-full h-full">
+        <li v-for="(item, i) in navItems" :key="i" class="max-h-full">
           <a
             :href="item.href"
-            class="inline-block px-5 py-2 font-semibold transition-all duration-300 rounded-xl h-full"
+            class="inline-block px-5 py-2 font-semibold transition-all duration-300 rounded-xl h-full hover:bg-[var(--theme-primary-color)] hover:text-white"
             :style="{
               color: 'var(--text-black-color)',
               background:
                 'linear-gradient(0deg, var(--theme-primary-color, #00bcd4) 1%, transparent 48%)',
               backgroundSize: '102% 200%',
-              backgroundPosition: 'top',
+              backgroundPosition: 'center top',
             }"
-            @mouseenter="hoverIn($event)"
-            @mouseleave="hoverOut($event)"
           >
             {{ item.label }}
           </a>
@@ -91,18 +89,6 @@ const handleThemeChange = (checked: boolean) => {
   console.log(`[Theme] Mode changed to: ${checked ? 'Light' : 'Dark'}`)
 }
 
-// Gradient hover effect (respects CSS vars)
-const hoverIn = (e: MouseEvent) => {
-  const target = e.currentTarget as HTMLElement
-  target.style.backgroundPosition = 'bottom'
-  target.style.color = '#fff'
-}
-
-const hoverOut = (e: MouseEvent) => {
-  const target = e.currentTarget as HTMLElement
-  target.style.backgroundPosition = 'top'
-  target.style.color = 'var(--text-black-color)'
-}
 
 onMounted(() => {
   applyTheme(isLightMode.value)

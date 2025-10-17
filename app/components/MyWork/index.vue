@@ -1,767 +1,289 @@
 <template>
-  <div class="portfolio-section">
-    <!-- Animated Background -->
-    <div class="portfolio-bg">
-      <div class="bg-orb orb-1"></div>
-      <div class="bg-orb orb-2"></div>
-      <div class="mesh-gradient"></div>
+  <div class="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <!-- Gradient Orbs -->
+      <div class="absolute -top-1/2 -right-1/2 w-[800px] h-[800px] bg-gradient-to-br from-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-float"></div>
+      <div class="absolute -bottom-1/2 -left-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-purple-500/20 to-blue-500/20 rounded-full blur-3xl animate-float-delayed"></div>
+      
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+      
+      <!-- Floating Particles -->
+      <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-400 rounded-full animate-ping"></div>
+      <div class="absolute top-3/4 right-1/3 w-1 h-1 bg-purple-400 rounded-full animate-pulse"></div>
+      <div class="absolute bottom-1/4 left-1/2 w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce-slow"></div>
     </div>
 
-    <div class="portfolio-container">
+    <!-- Main Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      
       <!-- Header Section -->
-      <div class="portfolio-header">
-        <div class="header-badge">
-          <div class="badge-pulse"></div>
-          <i class="fa-solid fa-briefcase"></i>
-          <span>MY PORTFOLIO</span>
+      <div class="text-center mb-20 space-y-8">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent backdrop-blur-xl border border-orange-500/20 rounded-full group hover:border-orange-500/40 transition-all duration-300">
+          <div class="relative">
+            <div class="absolute inset-0 bg-orange-500 rounded-full animate-ping opacity-75"></div>
+            <div class="relative w-2 h-2 bg-orange-500 rounded-full"></div>
+          </div>
+          <i class="fa-solid fa-briefcase text-orange-400"></i>
+          <span class="text-sm font-bold tracking-wider text-orange-400 uppercase">Portfolio Showcase</span>
         </div>
-        
-        <h1 class="portfolio-title">
-          <span class="title-main">Works That Will</span>
-          <span class="title-highlight">Amaze You!</span>
+
+        <!-- Title -->
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
+          <span class="block text-white mb-2">Crafting Digital</span>
+          <span class="block bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
+            Masterpieces
+          </span>
         </h1>
-        
-        <p class="portfolio-description">
-          We develop the best quality websites that serve for the long term.
-          <strong>Well-documented</strong>, <strong>clean</strong>, 
-          <strong>easy</strong> and <strong>elegant</strong> interface helps 
-          any non-technical clients.
+
+        <!-- Description -->
+        <p class="max-w-3xl mx-auto text-lg text-slate-400 leading-relaxed">
+          Transforming ideas into <span class="text-white font-semibold">stunning digital experiences</span> through 
+          innovative design, clean code, and cutting-edge technology. Each project is a testament to 
+          <span class="text-orange-400 font-semibold">excellence</span> and <span class="text-purple-400 font-semibold">creativity</span>.
         </p>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-          <div class="stat-box">
-            <div class="stat-icon">
-              <i class="fa-solid fa-rocket"></i>
-            </div>
-            <div class="stat-info">
-              <div class="stat-number">{{ myWork.length }}+</div>
-              <div class="stat-text">Projects</div>
-            </div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-icon">
-              <i class="fa-solid fa-users"></i>
-            </div>
-            <div class="stat-info">
-              <div class="stat-number">100%</div>
-              <div class="stat-text">Satisfaction</div>
+        <!-- Stats -->
+        <div class="flex flex-wrap justify-center gap-6 pt-8">
+          <div class="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+            <div class="relative flex items-center gap-4">
+              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl shadow-lg shadow-orange-500/50">
+                <i class="fa-solid fa-rocket text-white text-xl"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-3xl font-black text-white">{{ myWork.length }}+</div>
+                <div class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Projects</div>
+              </div>
             </div>
           </div>
-          <div class="stat-box">
-            <div class="stat-icon">
-              <i class="fa-solid fa-award"></i>
+
+          <div class="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+            <div class="relative flex items-center gap-4">
+              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl shadow-lg shadow-purple-500/50">
+                <i class="fa-solid fa-users text-white text-xl"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-3xl font-black text-white">100%</div>
+                <div class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Satisfaction</div>
+              </div>
             </div>
-            <div class="stat-info">
-              <div class="stat-number">5+</div>
-              <div class="stat-text">Years</div>
+          </div>
+
+          <div class="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+            <div class="relative flex items-center gap-4">
+              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/50">
+                <i class="fa-solid fa-award text-white text-xl"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-3xl font-black text-white">{{siteInfo.dev.experience}}</div>
+                <div class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Years</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Projects Grid -->
-      <div class="projects-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         <div
           v-for="(project, index) in recentProjects"
           :key="project.id"
-          class="project-card"
-          :style="{ '--index': index }"
+          :style="{ animationDelay: `${index * 100}ms` }"
+          class="group relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl border border-slate-700/50 rounded-3xl overflow-hidden hover:border-orange-500/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-500/20 animate-fade-in-up"
         >
-          <div class="card-wrapper">
-            <!-- Image Container -->
-            <div class="card-image">
-              <img :src="project.image" :alt="project.name" />
-              <div class="image-overlay"></div>
-              <div class="project-number">{{ String(index + 1).padStart(2, '0') }}</div>
-            </div>
+          <!-- Gradient Overlay on Hover -->
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-pink-500/0 to-purple-500/0 group-hover:from-orange-500/10 group-hover:via-pink-500/5 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none"></div>
+          
+          <!-- Shine Effect -->
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          </div>
 
-            <!-- Content -->
-            <div class="card-content">
-              <h3 class="project-name">{{ project.name }}</h3>
-              <p class="project-desc">{{ project.description }}</p>
+          <!-- Project Number Badge -->
+          <div class="absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 bg-slate-950/80 backdrop-blur-md border border-orange-500/30 rounded-full font-black text-orange-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+            {{ String(index + 1).padStart(2, '0') }}
+          </div>
+
+          <!-- Image -->
+          <div class="relative h-56 overflow-hidden bg-slate-800">
+            <img 
+              :src="project.image" 
+              :alt="project.name"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-60"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="relative p-6 space-y-4">
+            <h3 class="text-2xl font-black text-white group-hover:text-orange-400 transition-colors duration-300">
+              {{ project.name }}
+            </h3>
+            
+            <p class="text-slate-400 leading-relaxed line-clamp-3">
+              {{ project.description }}
+            </p>
+
+            <!-- Footer -->
+            <div class="flex items-center justify-between pt-4">
+              <a 
+                href="#" 
+                class="inline-flex items-center gap-2 text-orange-400 font-bold hover:gap-4 transition-all duration-300 group/link"
+              >
+                <span>View Project</span>
+                <i class="fa-solid fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
+              </a>
               
-              <div class="card-footer">
-                <a href="#" class="view-btn">
-                  <span>View Project</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <div class="tech-badge">
-                  <i class="fa-solid fa-code"></i>
-                </div>
+              <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500/20 to-purple-500/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
+                <i class="fa-solid fa-code text-orange-400"></i>
               </div>
             </div>
-
-            <!-- Hover Effects -->
-            <div class="card-shine"></div>
-            <div class="card-glow"></div>
           </div>
+
+          <!-- Bottom Glow -->
+          <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
       </div>
 
-      <!-- Load More Button -->
-      <div class="load-more-wrapper" v-if="workDataLimit < myWork.length">
-        <button class="load-more-btn" @click="loadMore">
-          <span class="btn-text">Load More Projects</span>
-          <span class="btn-icon">
-            <i class="fa-solid fa-chevron-down"></i>
+      <!-- Load More / All Loaded -->
+      <div class="flex justify-center">
+        <button
+          v-if="workDataLimit < myWork.length"
+          @click="loadMore"
+          class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl font-bold text-white overflow-hidden hover:shadow-2xl hover:shadow-orange-500/50 hover:-translate-y-1 transition-all duration-300"
+        >
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+          <span class="relative flex items-center gap-3">
+            <span>Load More Projects</span>
+            <i class="fa-solid fa-chevron-down group-hover:animate-bounce"></i>
           </span>
-          <div class="btn-glow"></div>
         </button>
-      </div>
 
-      <!-- All Projects Loaded Message -->
-      <div class="all-loaded" v-else>
-        <div class="loaded-icon">
-          <i class="fa-solid fa-check-circle"></i>
+        <div v-else class="text-center space-y-4">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-xl border border-green-500/30 rounded-full animate-pulse-slow">
+            <i class="fa-solid fa-check-circle text-5xl text-green-400"></i>
+          </div>
+          <p class="text-xl font-bold text-slate-400">
+            All projects loaded! 🎉
+          </p>
         </div>
-        <p>All projects loaded! 🎉</p>
       </div>
     </div>
+
+  
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 import siteInfo from '@/utilies/siteInfo.json'
-export default {
-  data() {
-    return {
-      myWork: siteInfo.projects,
-      workDataLimit: 6,
-    }
-  },
-  computed: {
-    recentProjects() {
-      return this.myWork.slice(0, this.workDataLimit)
-    },
-  },
-  methods: {
-    loadMore() {
-      const limit = this.myWork.length
-      if (this.workDataLimit < limit) {
-        this.workDataLimit += 3
-      }
-    },
-  },
+// Types
+interface Project {
+  id: number | string
+  name: string
+  description: string
+  image: string
+}
+
+// Project data with relevant images
+const myWork = ref<Project[]>(siteInfo.projects || [])
+
+const workDataLimit = ref<number>(6)
+
+const recentProjects = computed(() => {
+  return myWork.value.slice(0, workDataLimit.value)
+})
+
+const loadMore = () => {
+  const limit = myWork.value.length
+  if (workDataLimit.value < limit) {
+    workDataLimit.value += 3
+  }
 }
 </script>
 
-<style scoped>
-/* CSS Variables */
-:root {
-  --theme-primary-color: rgb(255 90 1);
-  --theme-gradient-primary-color: linear-gradient(70deg, rgb(255, 90, 1) 53%, rgb(255 75 0) 61%);
-  --text-black-color: #000000;
-  --text-secondary-color: #a19797;
-  --text-white-color: #ffff;
-  --primary-transparent-color: rgb(255 90 1 / 93%);
-}
-
-/* Main Section */
-.portfolio-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 8rem 0;
-  background: linear-gradient(180deg, #ffffff 0%, #fff8f5 50%, #fef3ee 100%);
-  overflow: hidden;
-}
-
-/* Background */
-.portfolio-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.bg-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.4;
-}
-
-.orb-1 {
-  width: 700px;
-  height: 700px;
-  top: -200px;
-  right: -200px;
-  background: radial-gradient(circle, rgba(255, 90, 1, 0.3) 0%, transparent 70%);
-  animation: float-orb 20s ease-in-out infinite;
-}
-
-.orb-2 {
-  width: 600px;
-  height: 600px;
-  bottom: -200px;
-  left: -200px;
-  background: radial-gradient(circle, rgba(255, 140, 50, 0.25) 0%, transparent 70%);
-  animation: float-orb 25s ease-in-out infinite reverse;
-}
-
-.mesh-gradient {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 90, 1, 0.02) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255, 90, 1, 0.02) 2px, transparent 2px);
-  background-size: 80px 80px;
-}
-
-@keyframes float-orb {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-30px, 30px) scale(0.9);
-  }
-}
-
-/* Container */
-.portfolio-container {
-  position: relative;
-  z-index: 10;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Header */
-.portfolio-header {
-  text-align: center;
-  margin-bottom: 6rem;
-  animation: fade-in-up 1s ease-out;
-}
-
-.header-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 90, 1, 0.1) 0%, rgba(255, 90, 1, 0.05) 100%);
-  border: 2px solid rgba(255, 90, 1, 0.3);
-  border-radius: 100px;
-  margin-bottom: 2rem;
-  font-size: 0.875rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: var(--theme-primary-color);
-  overflow: hidden;
-}
-
-.badge-pulse {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: var(--theme-primary-color);
-  border-radius: 50%;
-  left: 1.5rem;
-  animation: pulse-grow 2s ease-in-out infinite;
-}
-
-@keyframes pulse-grow {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.header-badge i {
-  font-size: 1.1rem;
-  z-index: 1;
-}
-
-.portfolio-title {
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 2rem;
-}
-
-.title-main {
-  display: block;
-  color: var(--text-black-color);
-}
-
-.title-highlight {
-  display: block;
-  background: var(--theme-gradient-primary-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% auto;
-  animation: gradient-shift 3s linear infinite;
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
-.portfolio-description {
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  font-size: 1.125rem;
-  line-height: 1.9;
-  color: var(--text-secondary-color);
-}
-
-.portfolio-description strong {
-  color: var(--text-black-color);
-  font-weight: 700;
-}
-
-/* Stats Bar */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 3rem;
-}
-
-.stat-box {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 2rem;
-  background: white;
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.stat-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(255, 90, 1, 0.15);
-}
-
-.stat-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: var(--theme-gradient-primary-color);
-  border-radius: 12px;
-  color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 8px 25px rgba(255, 90, 1, 0.3);
-}
-
-.stat-info {
-  text-align: left;
-}
-
-.stat-number {
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: var(--theme-primary-color);
-  line-height: 1;
-  margin-bottom: 0.25rem;
-}
-
-.stat-text {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text-secondary-color);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Projects Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  margin-bottom: 4rem;
-}
-
-.project-card {
-  animation: scale-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
-  animation-delay: calc(var(--index) * 0.1s);
-}
-
-.card-wrapper {
-  position: relative;
-  height: 100%;
-  background: white;
-  border-radius: 2rem;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-}
-
-.card-wrapper:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 80px rgba(255, 90, 1, 0.2);
-}
-
-.card-wrapper:hover .image-overlay {
-  opacity: 0.9;
-}
-
-.card-wrapper:hover .project-number {
-  transform: scale(1.2) rotate(10deg);
-}
-
-.card-wrapper:hover .card-shine {
-  transform: translateX(100%);
-}
-
-.card-wrapper:hover .card-glow {
-  opacity: 1;
-}
-
-/* Card Image */
-.card-image {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
-}
-
-.card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.card-wrapper:hover .card-image img {
-  transform: scale(1.1);
-}
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--theme-gradient-primary-color);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  mix-blend-mode: multiply;
-}
-
-.project-number {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--theme-primary-color);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Card Content */
-.card-content {
-  padding: 2rem;
-}
-
-.project-name {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-black-color);
-  margin-bottom: 1rem;
-  line-height: 1.3;
-  transition: color 0.3s ease;
-}
-
-.card-wrapper:hover .project-name {
-  color: var(--theme-primary-color);
-}
-
-.project-desc {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--text-secondary-color);
-  margin-bottom: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.view-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--theme-primary-color);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.view-btn:hover {
-  gap: 1.25rem;
-}
-
-.view-btn i {
-  transition: transform 0.3s ease;
-}
-
-.view-btn:hover i {
-  transform: translateX(5px);
-}
-
-.tech-badge {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(255, 90, 1, 0.1) 0%, rgba(255, 90, 1, 0.05) 100%);
-  border-radius: 10px;
-  color: var(--theme-primary-color);
-  font-size: 1.1rem;
-}
-
-/* Card Effects */
-.card-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform 0.8s ease;
-  pointer-events: none;
-}
-
-.card-glow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, rgba(255, 90, 1, 0.2) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  filter: blur(30px);
-  pointer-events: none;
-}
-
-/* Load More Button */
-.load-more-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-.load-more-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 3rem;
-  background: var(--theme-gradient-primary-color);
-  border: none;
-  border-radius: 1.5rem;
-  color: white;
-  font-size: 1.125rem;
-  font-weight: 700;
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 0 15px 50px rgba(255, 90, 1, 0.4);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.load-more-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 70px rgba(255, 90, 1, 0.5);
-}
-
-.load-more-btn:hover .btn-icon {
-  animation: bounce-down 0.6s ease-in-out infinite;
-}
-
-.btn-text,
-.btn-icon {
-  position: relative;
-  z-index: 2;
-}
-
-.btn-icon {
-  display: flex;
-  align-items: center;
-}
-
-@keyframes bounce-down {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-.btn-glow {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.load-more-btn:hover .btn-glow {
-  transform: translateX(100%);
-}
-
-/* All Loaded */
-.all-loaded {
-  text-align: center;
-  padding: 3rem;
-  animation: fade-in 0.8s ease-out;
-}
-
-.loaded-icon {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
-  border-radius: 50%;
-  color: #22c55e;
-  font-size: 3rem;
-  animation: scale-pulse 2s ease-in-out infinite;
-}
-
-@keyframes scale-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-.all-loaded p {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-secondary-color);
-}
-
-/* Animations */
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
-  }
-
-  .stats-bar {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .portfolio-section {
-    padding: 5rem 0;
-  }
-
-  .portfolio-container {
-    padding: 0 1.5rem;
-  }
-
-  .portfolio-header {
-    margin-bottom: 4rem;
-  }
-
-  .stats-bar {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .stat-box {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .card-image {
-    height: 240px;
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio-title {
-    font-size: 2.5rem;
-  }
-
-  .header-badge {
-    font-size: 0.75rem;
-    padding: 0.75rem 1.5rem;
-  }
-
-  .card-content {
-    padding: 1.5rem;
-  }
-
-  .project-name {
-    font-size: 1.25rem;
-  }
-
-  .load-more-btn {
-    padding: 1.25rem 2.5rem;
-    font-size: 1rem;
-  }
-}
-</style>
+  <!-- Tailwind Custom Styles -->
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(30px, -30px) rotate(5deg); }
+        66% { transform: translate(-20px, 20px) rotate(-5deg); }
+      }
+      
+      @keyframes float-delayed {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        33% { transform: translate(-30px, 30px) rotate(-5deg); }
+        66% { transform: translate(20px, -20px) rotate(5deg); }
+      }
+
+      @keyframes gradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+
+      @keyframes pulse-slow {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+
+      .animate-float {
+        animation: float 20s ease-in-out infinite;
+      }
+
+      .animate-float-delayed {
+        animation: float-delayed 25s ease-in-out infinite;
+      }
+
+      .animate-gradient {
+        background-size: 200% auto;
+        animation: gradient 3s linear infinite;
+      }
+
+      .animate-fade-in-up {
+        animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+      }
+
+      .animate-bounce-slow {
+        animation: bounce-slow 3s ease-in-out infinite;
+      }
+
+      .animate-pulse-slow {
+        animation: pulse-slow 2s ease-in-out infinite;
+      }
+
+      .bg-grid-pattern {
+        background-image: 
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+      }
+
+      .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>

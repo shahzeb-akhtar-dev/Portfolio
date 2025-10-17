@@ -4,6 +4,7 @@ import userImage from '@/assets/images/user-image.png'
 import { ref } from 'vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import siteInfo from '@/utilies/siteInfo.json'
+import CustomButton from '../BasicComponents/CustomButton.vue'
 
 // client-only checks
 const isClient = typeof window !== 'undefined'
@@ -218,6 +219,7 @@ function scrollToContact(): void {
 
           <!-- CTA -->
           <div class="flex flex-wrap gap-3">
+            <CustomButton variant="secondary">test</CustomButton>
             <button
               @click="downloadCv"
               :disabled="downloading"
