@@ -70,9 +70,10 @@ const navItems: NavItem[] = [
   { label: 'Contact', href: '#contact-info' },
 ]
 
-const isLightMode = ref(true)
+const isLightMode = ref(false)
 
 const applyTheme = (light: boolean) => {
+  debugger
   const root = document.documentElement
   if (light) {
     root.style.setProperty('--bg-primary-color', '#efefef')

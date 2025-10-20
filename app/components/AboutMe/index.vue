@@ -83,18 +83,18 @@ function scrollToContact(): void {
               <li
                 class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
               >
-                <strong class="block text-orange-500 font-extrabold text-base"
-                  > {{ siteInfo.dev.experience }} </strong
-                >
+                <strong class="block text-orange-500 font-extrabold text-base">
+                  {{ siteInfo.dev.experience }}
+                </strong>
                 <span class="block mt-1 text-xs">Years</span>
               </li>
 
               <li
                 class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
               >
-                <strong class="block text-orange-500 font-extrabold text-base"
-                  > {{ siteInfo.dev.expertise }} </strong
-                >
+                <strong class="block text-orange-500 font-extrabold text-base">
+                  {{ siteInfo.dev.expertise }}
+                </strong>
                 <span class="block mt-1 text-xs">Specialist</span>
               </li>
 
@@ -113,7 +113,7 @@ function scrollToContact(): void {
         <!-- RIGHT: content -->
         <div class="pt-1">
           <HeaderBadge icon="fa-solid fa-circle-user" heading="About Me" />
-         
+
           <h1
             id="about-heading"
             class="text-4xl lg:text-5xl font-extrabold leading-tight mb-2"
@@ -219,10 +219,7 @@ function scrollToContact(): void {
 
           <!-- CTA -->
           <div class="flex flex-wrap gap-3">
-            <CustomButton variant="secondary">test</CustomButton>
-            <button
-              @click="downloadCv"
-              :disabled="downloading"
+            <!-- <button
               class="inline-flex items-center justify-center gap-2 min-w-[160px] px-4 py-2 rounded-lg font-semibold transition-transform transform hover:-translate-y-1 shadow-md bg-gradient-to-br from-orange-500 to-orange-400 text-white"
             >
               <svg
@@ -240,14 +237,17 @@ function scrollToContact(): void {
                 />
               </svg>
               <span>{{ downloading ? 'Downloading…' : 'Download CV' }}</span>
-            </button>
-
-            <button
-              @click="scrollToContact"
-              class="inline-flex items-center gap-2 min-w-[140px] px-4 py-2 rounded-lg font-semibold border-2 border-orange-500 text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition"
+            </button> -->
+            <CustomButton
+              variant="primary"
+              @click="downloadCv"
+              :disabled="downloading"
             >
+              <span>{{ downloading ? 'Downloading…' : 'Download CV' }}</span>
+            </CustomButton>
+            <CustomButton variant="secondary" @click="scrollToContact">
               Contact Me
-            </button>
+            </CustomButton>
           </div>
         </div>
       </div>
