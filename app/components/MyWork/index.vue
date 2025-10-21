@@ -275,8 +275,8 @@ const loadMore = () => {
 
       .bg-grid-pattern {
         background-image: 
-          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+          linear-gradient(var(--white-transparent-03) 1px, transparent 1px),
+          linear-gradient(90deg, var(--white-transparent-03) 1px, transparent 1px);
         background-size: 50px 50px;
       }
 

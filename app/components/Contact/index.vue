@@ -7,6 +7,7 @@ import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import siteInfo from '@/utilies/siteInfo.json'
 import ContactCard from './ContactCard.vue'
 import SocialLinks from './SocialLinks.vue'
+import CustomButton from '../BasicComponents/CustomButton.vue'
 const formRef = ref<FormInstance>()
 const isSubmitting = ref(false)
 const showSuccessModal = ref(false)
@@ -304,11 +305,7 @@ const submitForm = async () => {
 
                 <!-- Submit -->
                 <a-form-item class="mb-0">
-                  <button
-                    type="submit"
-                    :disabled="isSubmitting"
-                    class="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-orange-500/50 transition-all duration-300 hover:scale-[1.02] hover:shadow-3xl hover:shadow-orange-500/60 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
+                  <CustomButton :disabled="isSubmitting" type="submit" variant="primary" class="w-full">
                     <span
                       class="relative z-10 flex items-center justify-center gap-3"
                     >
@@ -326,10 +323,7 @@ const submitForm = async () => {
                           : 'Send Message'
                       }}
                     </span>
-                    <div
-                      class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    ></div>
-                  </button>
+                  </CustomButton>
                 </a-form-item>
               </a-form>
             </div>
@@ -432,11 +426,9 @@ const submitForm = async () => {
           </div>
         </div>
         <!-- Social -->
-         <div class="mt-6 ">
-
-        
-        <SocialLinks />
-         </div>
+        <div class="mt-6">
+          <SocialLinks />
+        </div>
       </div>
     </div>
 
@@ -454,7 +446,7 @@ const submitForm = async () => {
       >
         <!-- Animated Background -->
         <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(249,115,22,0.1),transparent_50%)]"
+          class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--primary-transparent),transparent_50%)]"
         ></div>
 
         <div class="relative">

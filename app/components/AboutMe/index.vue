@@ -65,7 +65,7 @@ function scrollToContact(): void {
               class="relative rounded-lg overflow-hidden mb-3"
               style="
                 padding-top: 100%;
-                background: linear-gradient(70deg, #ff5a01, #ff4b00);
+                background: var(--theme-gradient-primary);
               "
               aria-hidden="true"
             >
@@ -145,9 +145,9 @@ function scrollToContact(): void {
               class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
-                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-black"
+                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(#ff5a01 ${90 * 1}%, #f1f5f9 0%)`,
+                  background: `conic-gradient(var(--theme-primary-dark) ${90 * 1}%, var(--bg-primary-color) 0%)`,
                   boxShadow:
                     '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
                 }"
@@ -170,9 +170,9 @@ function scrollToContact(): void {
               class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
-                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-black"
+                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(#ff5a01 ${85 * 1}%, #f1f5f9 0%)`,
+                  background: `conic-gradient(var(--theme-primary-dark) ${85 * 1}%, var(--bg-primary-color) 0%)`,
                   boxShadow:
                     '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
                 }"
@@ -195,9 +195,9 @@ function scrollToContact(): void {
               class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
-                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-black"
+                class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(#ff5a01 ${70 * 1}%, #f1f5f9 0%)`,
+                  background: `conic-gradient(var(--theme-primary-dark) ${70 * 1}%, #000 0%)`,
                   boxShadow:
                     '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
                 }"
@@ -219,25 +219,7 @@ function scrollToContact(): void {
 
           <!-- CTA -->
           <div class="flex flex-wrap gap-3">
-            <!-- <button
-              class="inline-flex items-center justify-center gap-2 min-w-[160px] px-4 py-2 rounded-lg font-semibold transition-transform transform hover:-translate-y-1 shadow-md bg-gradient-to-br from-orange-500 to-orange-400 text-white"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 3v12M8 11l4 4 4-4M21 21H3"
-                />
-              </svg>
-              <span>{{ downloading ? 'Downloading…' : 'Download CV' }}</span>
-            </button> -->
+           
             <CustomButton
               variant="primary"
               @click="downloadCv"

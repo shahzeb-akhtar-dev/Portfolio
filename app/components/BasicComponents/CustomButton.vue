@@ -56,8 +56,8 @@ const variantClasses = computed(() => {
   return [
     base,
     props.variant === 'secondary'
-      ? 'border-2 border-orange-500 text-orange-600 dark:text-orange-400 hover:text-white hover:border-orange-400 bg-transparent hover:bg-orange-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] hover:scale-[1.02] active:scale-[0.98]'
-      : 'border-2 border-transparent text-white shadow-[0_10px_40px_-10px_var(--box-shadow-color)] bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.6)] hover:scale-[1.02] active:scale-[0.98] hover:from-orange-400 hover:via-orange-500 hover:to-red-500',
+      ? 'border-2 border-[var(--theme-primary-color)] text-[var(--theme-primary-color)] dark:text-[var(--theme-primary-light)] hover:text-[var(--text-white-color)] hover:border-[var(--theme-primary-light)] bg-transparent hover:bg-[var(--theme-primary-color)] hover:shadow-[var(--shadow-md)] hover:scale-[1.02] active:scale-[0.98]'
+      : 'border-2 border-transparent text-[var(--text-white-color)] shadow-[var(--shadow-md)] bg-gradient-to-br from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-primary-dark)] hover:shadow-[var(--shadow-lg)] hover:scale-[1.02] active:scale-[0.98] hover:from-[var(--theme-primary-light)] hover:via-[var(--theme-primary-color)] hover:to-[var(--theme-primary-dark)]',
   ]
 })
 </script>

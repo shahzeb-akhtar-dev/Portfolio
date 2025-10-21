@@ -2,20 +2,52 @@
 
 
 :root {
+  /* Typography */
   --logo-font-family: 'Saira Stencil One', sans-serif;
+  
+  /* Layout */
+  --layout-header-height: 6.3rem;
+
+  /* Base colors */
   --bg-primary-color: #efefef;
   --text-secondary-color: #a19797;
   --text-black-color: #000000;
-  --text-white-color: #ffff;
+  --text-white-color: #ffffff;
   --box-shadow-color: #a19797;
+
+  /* Theme colors */
   --theme-primary-color: rgb(255 90 1);
-  --theme-gradient-primary-color: linear-gradient(
+  --theme-primary-light: rgb(249 115 22);
+  --theme-primary-dark: rgb(255 75 0);
+  --theme-secondary-color: rgb(236 72 153);
+  --theme-tertiary-color: rgb(168 85 247);
+
+  /* Gradients */
+  --theme-gradient-primary: linear-gradient(
     70deg,
-    rgb(255, 90, 1) 53%,
-    rgb(255 75 0) 61%
+    var(--theme-primary-color) 53%,
+    var(--theme-primary-dark) 61%
   );
-  --primary-transparent-color: rgb(255 90 1 / 93%);
-  --layout-header-height: 6.3rem;
+  
+  /* Transparencies */
+  --primary-transparent: rgb(255 90 1 / 93%);
+  --white-transparent-03: rgba(255, 255, 255, 0.03);
+  --white-transparent-05: rgba(255, 255, 255, 0.05);
+  --white-transparent-10: rgba(255, 255, 255, 0.1);
+  --white-transparent-20: rgba(255, 255, 255, 0.2);
+  --white-transparent-30: rgba(255, 255, 255, 0.3);
+  
+  /* Shadows */
+  --shadow-sm: 0 10px 30px rgba(255, 90, 1, 0.08);
+  --shadow-md: 0 10px 40px -10px rgba(249, 115, 22, 0.4);
+  --shadow-lg: 0 20px 60px -10px rgba(249, 115, 22, 0.6);
+  
+  /* Overlays */
+  --bg-overlay-dark: rgba(0, 0, 0, 0.6);
+  --bg-overlay-darker: rgba(15, 15, 35, 0.7);
+  
+  /* Special effects */
+  --glass-effect: rgba(255, 255, 255, 0.06);
 }
 .logo-font-family {
   font-family: var(--logo-font-family);

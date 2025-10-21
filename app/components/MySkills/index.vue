@@ -180,9 +180,9 @@
                 />
                 <defs>
                   <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color: rgb(249, 115, 22);" />
-                    <stop offset="50%" style="stop-color: rgb(236, 72, 153);" />
-                    <stop offset="100%" style="stop-color: rgb(168, 85, 247);" />
+                    <stop offset="0%" style="stop-color: var(--theme-primary-light);" />
+                    <stop offset="50%" style="stop-color: var(--theme-secondary-color);" />
+                    <stop offset="100%" style="stop-color: var(--theme-tertiary-color);" />
                   </linearGradient>
                 </defs>
               </svg>

@@ -45,18 +45,11 @@
           </p>
 
           <div class="hero-actions">
-            <button class="btn-primary">
-              <span class="btn-icon">🚀</span>
-              <span>Let's Work Together</span>
-              <div class="btn-shine"></div>
-            </button>
-            <button class="btn-secondary">
-              <span class="btn-icon">📂</span>
-              <span>View My Work</span>
-            </button>
-            <button class="btn-contact">
-              <span class="btn-icon">💬</span>
-            </button>
+            <CustomButton>
+              <span class="btn-icon"> 🚀</span> <span>Let's Work Together</span>
+            </CustomButton>
+
+            <CustomButton variant="secondary" @click="navigateTo('#my-work')"> View My Work </CustomButton>
           </div>
 
           <!-- Social proof -->
@@ -88,6 +81,7 @@
 
 <script setup lang="ts">
 import siteInfo from '@/utilies/siteInfo.json'
+import CustomButton from '../BasicComponents/CustomButton.vue'
 // Ready for future interactions in Nuxt 4
 </script>
 
@@ -103,7 +97,7 @@ import siteInfo from '@/utilies/siteInfo.json'
 .hero-wrapper::before {
   content: '';
   @apply absolute inset-0 z-[1];
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(15, 15, 35, 0.7));
+  background: linear-gradient(var(--bg-overlay-dark), var(--bg-overlay-darker));
 }
 
 /* =============================
@@ -150,7 +144,6 @@ import siteInfo from '@/utilies/siteInfo.json'
   @apply relative z-[3] grid items-center md:grid-cols-2 max-w-[1400px] w-full gap-[6rem] px-12;
   grid-template-columns: auto 1fr;
 }
-
 
 /* =============================
      USER IMAGE
@@ -222,7 +215,7 @@ import siteInfo from '@/utilies/siteInfo.json'
 
 .name-highlight {
   @apply bg-clip-text text-transparent;
-  background-image: var(--theme-gradient-primary-color);
+  color: var(--theme-primary-color);
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
 }
