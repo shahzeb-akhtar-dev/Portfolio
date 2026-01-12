@@ -56,7 +56,7 @@ const variantClasses = computed(() => {
   return [
     base,
     props.variant === 'secondary'
-      ? 'border-2 border-[var(--theme-primary-color)] text-[var(--theme-primary-color)] dark:text-[var(--theme-primary-light)] hover:text-[var(--text-white-color)] hover:border-[var(--theme-primary-light)] bg-transparent hover:bg-[var(--theme-primary-color)] hover:shadow-[var(--shadow-md)] hover:scale-[1.02] active:scale-[0.98]'
+      ? 'primary-btn'
       : 'border-2 border-transparent text-[var(--text-white-color)] shadow-[var(--shadow-md)] bg-gradient-to-br from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-primary-dark)] hover:shadow-[var(--shadow-lg)] hover:scale-[1.02] active:scale-[0.98] hover:from-[var(--theme-primary-light)] hover:via-[var(--theme-primary-color)] hover:to-[var(--theme-primary-dark)]',
   ]
 })
@@ -185,5 +185,48 @@ const variantClasses = computed(() => {
 /* Smooth transitions for all interactive states */
 .btn-base * {
   transition: inherit;
+}
+.primary-btn {
+  --gradient-color: linear-gradient(
+    40deg,
+    var(--theme-primary-color) 20%,
+    var(--bg-primary-color) 53%
+  );
+
+  outline: none;
+  border: 0.1rem solid #fff;
+  text-shadow: 0rem 0rem 1.2rem black;
+  color: var(--text-white-color);
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--gradient-color);
+  background-size: 240% 200%;
+  font-size: 1.8rem;
+  font-weight: 500;
+  box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color);
+  background-position: right;
+  transition: all 0.3s ease-out;
+  text-transform: uppercase;
+  &:hover {
+    border: 0.1rem solid var(--gradient-color);
+    box-shadow: none;
+    text-shadow: none;
+    background-position: left;
+    color: var(--text-white-color);
+  }
+  &:disabled:hover {
+    cursor: no-drop;
+    background-position: right;
+    box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color);
+    text-shadow: 0rem 0rem 1.2rem black;
+  }
+
+  i {
+    color: #beb6b6;
+    font-size: 3rem;
+    margin-right: 0.7rem;
+    vertical-align: 0;
+  }
 }
 </style>

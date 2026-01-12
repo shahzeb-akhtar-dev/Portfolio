@@ -1,0 +1,20 @@
+<template>
+  <h2
+    class="text-3xl md:text-4xl lg:text-5xl font-bold open-sans text-white mb-6 flex justify-center gap-1"
+    :class="wrapperClass"
+  >
+    <p class="">{{ firstPart }}</p>
+    <p
+      class="text-3xl md:text-4xl lg:text-5xl pb-2 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--theme-primary-color)] to-[var(--theme-primary-dark)] open-sans"
+    >
+      {{ secondPart }}
+    </p>
+  </h2>
+</template>
+<script setup lang="ts">
+defineProps<{
+  firstPart: string;
+  secondPart?: string;
+  wrapperClass?: string;
+}>();
+</script>

@@ -17,15 +17,12 @@
 
         <!-- Right: Enhanced Text Content -->
         <div class="hero-text">
-          <div class="greeting">
-            <span class="wave">👋</span>
-            <span>Hello there!</span>
-          </div>
-
-          <h1 class="title">
-            I'm <span class="name-highlight">Shahzeb Akhtar</span>
-            <div class="title-decoration"></div>
-          </h1>
+          <HeaderBadge icon="fa-solid fa-hand" heading="Hello there!" />
+          <SectionHeading
+            first-part="I'm "
+            second-part=" Shahzeb Akhtar"
+            wrapperClass="!gap-4"
+          />
 
           <div class="role-container">
             <p class="subtitle">Full-Stack Developer</p>
@@ -49,7 +46,9 @@
               <span class="btn-icon"> 🚀</span> <span>Let's Work Together</span>
             </CustomButton>
 
-            <CustomButton variant="secondary" @click="navigateTo('#my-work')"> View My Work </CustomButton>
+            <CustomButton variant="secondary" @click="navigateTo('#my-work')">
+              View My Work
+            </CustomButton>
           </div>
 
           <!-- Social proof -->
@@ -82,6 +81,8 @@
 <script setup lang="ts">
 import siteInfo from '@/utilies/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
+import SectionHeading from '../BasicComponents/SectionHeading.vue'
+import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 // Ready for future interactions in Nuxt 4
 </script>
 

@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
 
-
 :root {
   /* Typography */
   --logo-font-family: 'Saira Stencil One', sans-serif;
-  
+
   /* Layout */
   --layout-header-height: 6.3rem;
 
@@ -28,7 +27,7 @@
     var(--theme-primary-color) 53%,
     var(--theme-primary-dark) 61%
   );
-  
+
   /* Transparencies */
   --primary-transparent: rgb(255 90 1 / 93%);
   --white-transparent-03: rgba(255, 255, 255, 0.03);
@@ -36,18 +35,24 @@
   --white-transparent-10: rgba(255, 255, 255, 0.1);
   --white-transparent-20: rgba(255, 255, 255, 0.2);
   --white-transparent-30: rgba(255, 255, 255, 0.3);
-  
+
   /* Shadows */
   --shadow-sm: 0 10px 30px rgba(255, 90, 1, 0.08);
   --shadow-md: 0 10px 40px -10px rgba(249, 115, 22, 0.4);
   --shadow-lg: 0 20px 60px -10px rgba(249, 115, 22, 0.6);
-  
+
   /* Overlays */
   --bg-overlay-dark: rgba(0, 0, 0, 0.6);
   --bg-overlay-darker: rgba(15, 15, 35, 0.7);
-  
+
   /* Special effects */
   --glass-effect: rgba(255, 255, 255, 0.06);
+}
+
+@theme {
+  --color-primary: var(--theme-primary-color);
+  --color-primary-light: var(--theme-primary-light);
+  --color-primary-dark: var(--theme-primary-dark);
 }
 .logo-font-family {
   font-family: var(--logo-font-family);
