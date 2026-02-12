@@ -6,13 +6,13 @@
     <!-- Logo -->
     <div
       class="order-1 md:order-1 logo text-4xl md:text-5xl font-semibold uppercase transition-colors duration-300 logo-font-family"
-      :style="{ color: 'var(--text-black-color)' }"
+      :style="{ color: 'var(--text-white-color)' }"
     >
       Portfolio
     </div>
 
     <!-- Actions (Theme Switch) -->
-    <div class="order-2 md:order-3 flex justify-center md:justify-end">
+    <!-- <div class="order-2 md:order-3 flex justify-center md:justify-end">
       <a-switch
         :default-checked="isLightMode"
         @change="handleThemeChange"
@@ -25,7 +25,7 @@
           <i class="fa-regular fa-sun"></i>
         </template>
       </a-switch>
-    </div>
+    </div> -->
 
     <!-- Navigation Menu -->
     <nav
@@ -39,7 +39,7 @@
             :href="item.href"
             class="inline-block px-5 py-2 font-semibold transition-all duration-300 rounded-xl h-full hover:bg-[var(--theme-primary-color)] hover:text-white"
             :style="{
-              color: 'var(--text-black-color)',
+              color: 'var(--text-white-color)',
               background:
                 'linear-gradient(0deg, var(--theme-primary-color, #00bcd4) 1%, transparent 48%)',
               backgroundSize: '102% 200%',
@@ -69,29 +69,4 @@ const navItems: NavItem[] = [
   { label: 'Portfolio', href: '#my-work' },
   { label: 'Contact', href: '#contact-info' },
 ]
-
-const isLightMode = ref(false)
-
-const applyTheme = (light: boolean) => {
-  debugger
-  const root = document.documentElement
-  if (light) {
-    root.style.setProperty('--bg-primary-color', '#efefef')
-    root.style.setProperty('--text-black-color', '#000000')
-  } else {
-    root.style.setProperty('--bg-primary-color', '#000000')
-    root.style.setProperty('--text-black-color', '#ffffff')
-  }
-}
-
-const handleThemeChange = (checked: boolean) => {
-  isLightMode.value = checked
-  applyTheme(checked)
-  console.log(`[Theme] Mode changed to: ${checked ? 'Light' : 'Dark'}`)
-}
-
-
-onMounted(() => {
-  applyTheme(isLightMode.value)
-})
 </script>

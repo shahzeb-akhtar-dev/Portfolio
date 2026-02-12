@@ -8,6 +8,7 @@ import siteInfo from '@/utilies/siteInfo.json'
 import ContactCard from './ContactCard.vue'
 import SocialLinks from './SocialLinks.vue'
 import CustomButton from '../BasicComponents/CustomButton.vue'
+import SectionHeading from '../BasicComponents/SectionHeading.vue'
 const formRef = ref<FormInstance>()
 const isSubmitting = ref(false)
 const showSuccessModal = ref(false)
@@ -100,22 +101,7 @@ const submitForm = async () => {
         >
           <!-- Badge -->
           <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
-
-          <!-- Title -->
-          <h1
-            class="mb-6 animate-fade-in-up text-5xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
-          >
-            <span
-              class="block bg-gradient-to-r from-white via-orange-100 to-orange-300 bg-clip-text text-transparent drop-shadow-2xl"
-            >
-              Ready to Start
-            </span>
-            <span
-              class="block bg-gradient-to-r from-orange-400 via-pink-400 to-orange-500 bg-clip-text text-transparent animate-gradient-x"
-            >
-              Your Project?
-            </span>
-          </h1>
+          <SectionHeading first-part="Ready to start"   second-part="Your Project?" wrapperClass="!gap-4 justify-center"  />
 
           <!-- Description -->
           <p

@@ -17,6 +17,7 @@
         <SectionHeading
           first-part="Skills &"
           second-part="Technologies"
+          wrapper-class="justify-center"
         />
         <!-- Description -->
         <p class="max-w-2xl mx-auto text-lg leading-relaxed text-slate-300">

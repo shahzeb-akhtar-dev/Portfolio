@@ -4,7 +4,7 @@
       <div class="hero-content">
         <!-- Left: Enhanced User Image -->
         <div class="user-image-container">
-          <div class="image-backdrop"></div>
+          <!-- <div class="image-backdrop"></div> -->
           <div class="user-image">
             <img src="~/assets/images/user-image.png" alt="Shahzeb Akhtar" />
             <div class="image-border"></div>
@@ -179,7 +179,7 @@ import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 }
 
 .user-image:hover img {
-  @apply scale-105 grayscale-0 contrast-[120%];
+  @apply scale-105  contrast-[120%];
 }
 
 /* =============================

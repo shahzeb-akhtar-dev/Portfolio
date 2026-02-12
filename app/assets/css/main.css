@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
 :root {
   /* Typography */
   --logo-font-family: 'Saira Stencil One', sans-serif;
@@ -8,7 +8,7 @@
   --layout-header-height: 6.3rem;
 
   /* Base colors */
-  --bg-primary-color: #efefef;
+  --bg-primary-color: #000000;
   --text-secondary-color: #a19797;
   --text-black-color: #000000;
   --text-white-color: #ffffff;
@@ -19,7 +19,6 @@
   --theme-primary-light: rgb(249 115 22);
   --theme-primary-dark: rgb(255 75 0);
   --theme-secondary-color: rgb(236 72 153);
-  --theme-tertiary-color: rgb(168 85 247);
 
   /* Gradients */
   --theme-gradient-primary: linear-gradient(

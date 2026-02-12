@@ -51,7 +51,7 @@ const emit = defineEmits<{
 
 const variantClasses = computed(() => {
   const base =
-    'relative flex items-center justify-center overflow-hidden rounded-xl px-8 py-3.5 text-base font-semibold transition-all duration-500 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
+    'relative flex items-center justify-center overflow-hidden rounded-xl px-8 py-2 text-base font-semibold transition-all duration-500 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
     
   return [
     base,
@@ -190,19 +190,18 @@ const variantClasses = computed(() => {
   --gradient-color: linear-gradient(
     40deg,
     var(--theme-primary-color) 20%,
-    var(--bg-primary-color) 53%
+    transparent 53%
   );
 
   outline: none;
   border: 0.1rem solid #fff;
   text-shadow: 0rem 0rem 1.2rem black;
   color: var(--text-white-color);
-  height: 4rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  
+  border-radius: 0.7rem;
   background: var(--gradient-color);
   background-size: 240% 200%;
-  font-size: 1.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color);
   background-position: right;

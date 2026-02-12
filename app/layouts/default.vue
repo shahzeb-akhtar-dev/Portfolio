@@ -3,7 +3,7 @@
   <a-layout class="flex flex-col">
     <!-- Header -->
     <a-layout-header
-      class="relative top-0 z-[200] bg-[var(--bg-primary-color)] h-12"
+      class="relative top-0 z-[200] h-12"
     >
       <TheHeader />
     </a-layout-header>
