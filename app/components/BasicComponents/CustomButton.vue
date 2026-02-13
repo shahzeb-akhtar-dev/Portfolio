@@ -169,17 +169,15 @@ const variantClasses = computed(() => {
   box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.2);
 }
 
-/* Dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-  .btn-base:not(.border-orange-500) {
-    box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.5),
-                0 0 20px -5px rgba(249, 115, 22, 0.3);
-  }
-  
-  .btn-base:not(.border-orange-500):hover {
-    box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.7),
-                0 0 30px 0px rgba(249, 115, 22, 0.5);
-  }
+/* Dark mode enhancements - uses CSS variable theme */
+[data-theme='dark'] .btn-base:not(.border-orange-500) {
+  box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.5),
+              0 0 20px -5px rgba(249, 115, 22, 0.3);
+}
+
+[data-theme='dark'] .btn-base:not(.border-orange-500):hover {
+  box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.7),
+              0 0 30px 0px rgba(249, 115, 22, 0.5);
 }
 
 /* Smooth transitions for all interactive states */
@@ -194,9 +192,9 @@ const variantClasses = computed(() => {
   );
 
   outline: none;
-  border: 0.1rem solid #fff;
-  text-shadow: 0rem 0rem 1.2rem black;
-  color: var(--text-white-color);
+  border: 0.1rem solid var(--border-color);
+  text-shadow: none;
+  color: var(--text-primary-color);
   
   border-radius: 0.7rem;
   background: var(--gradient-color);

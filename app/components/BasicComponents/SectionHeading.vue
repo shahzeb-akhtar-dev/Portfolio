@@ -1,6 +1,7 @@
 <template>
   <h2
-    class="text-3xl md:text-4xl lg:text-5xl font-bold open-sans text-white mb-6 flex justify-left gap-1  mb-0"
+    class="text-3xl md:text-4xl lg:text-5xl font-bold open-sans mb-6 flex justify-left gap-1 mb-0"
+    :style="{ color: 'var(--text-primary-color)' }"
     :class="wrapperClass"
   >
     <p class="mb-0">{{ firstPart }}</p>

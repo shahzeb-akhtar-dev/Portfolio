@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import userImage from '@/assets/images/user-image.png'
 // strict typing & composition API
 import { ref } from 'vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
@@ -45,10 +44,7 @@ function scrollToContact(): void {
 </script>
 
 <template>
-  <section
-    aria-labelledby="about-heading"
-    class="py-16 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100"
-  >
+  <section aria-labelledby="about-heading" class="about-section py-16">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <!-- HERO -->
       <div
@@ -56,58 +52,7 @@ function scrollToContact(): void {
       >
         <!-- LEFT: portrait + stats -->
         <aside class="flex justify-center lg:justify-start">
-          <div
-            class="w-full max-w-[320px] mx-auto bg-white/80 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-700 rounded-xl p-4 shadow-lg"
-            role="region"
-            aria-label="Profile card"
-          >
-            <div
-              class="relative rounded-lg overflow-hidden mb-3"
-              style="
-                padding-top: 100%;
-                background: var(--theme-gradient-primary);
-              "
-              aria-hidden="true"
-            >
-              <img
-                :src="userImage"
-                alt="Shahzeb Akhtar"
-                class="absolute inset-0 w-full h-full object-cover object-center filter saturate-[0.98] contrast-[1.02]"
-              />
-            </div>
-
-            <ul
-              class="flex gap-2 justify-between list-none p-0 m-0 text-sm text-slate-600 dark:text-slate-300"
-              role="list"
-            >
-              <li
-                class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
-              >
-                <strong class="block text-orange-500 font-extrabold text-base">
-                  {{ siteInfo.dev.experience }}
-                </strong>
-                <span class="block mt-1 text-xs">Years</span>
-              </li>
-
-              <li
-                class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
-              >
-                <strong class="block text-orange-500 font-extrabold text-base">
-                  {{ siteInfo.dev.expertise }}
-                </strong>
-                <span class="block mt-1 text-xs">Specialist</span>
-              </li>
-
-              <li
-                class="flex-1 text-center bg-white/60 dark:bg-slate-700/60 border rounded-lg px-2 py-2"
-              >
-                <strong class="block text-orange-500 font-extrabold text-base"
-                  >Remote</strong
-                >
-                <span class="block mt-1 text-xs">Available</span>
-              </li>
-            </ul>
-          </div>
+          <img src="@/assets/images/about-user-img.png" alt="Shahzeb Akhtar" />
         </aside>
 
         <!-- RIGHT: content -->
@@ -116,7 +61,7 @@ function scrollToContact(): void {
 
           <h1
             id="about-heading"
-            class="text-4xl lg:text-5xl font-extrabold leading-tight mb-2"
+            class="about-heading text-4xl lg:text-5xl font-extrabold leading-tight mb-2"
           >
             Hi, I'm
             <span
@@ -126,30 +71,26 @@ function scrollToContact(): void {
             </span>
           </h1>
 
-          <p
-            class="text-sm font-semibold text-slate-600 dark:text-slate-300 mb-4"
-          >
+          <p class="about-subtitle text-sm font-semibold mb-4">
             {{ siteInfo.title }}
           </p>
 
           <p
-            class="text-base lg:text-lg text-slate-600 dark:text-slate-300 max-w-[60ch] leading-relaxed mb-6"
+            class="about-description text-base lg:text-lg max-w-[60ch] leading-relaxed mb-6"
           >
             {{ siteInfo.about }}
           </p>
 
           <!-- skill row -->
           <div class="flex flex-wrap gap-3 mb-5">
-            <!-- skill card -->
             <div
-              class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
+              class="about-skill-card flex items-center gap-3 rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
                 class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(var(--theme-primary-dark) ${90 * 1}%, var(--bg-primary-color) 0%)`,
-                  boxShadow:
-                    '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
+                  background: `conic-gradient(var(--theme-primary-dark) ${90}%, var(--bg-primary-color) 0%)`,
+                  boxShadow: 'var(--shadow-sm)',
                 }"
                 title="90%"
                 aria-hidden="true"
@@ -157,24 +98,23 @@ function scrollToContact(): void {
                 90%
               </div>
               <div class="min-w-0">
-                <div class="font-extrabold text-slate-900 dark:text-slate-100">
+                <div class="about-skill-name font-extrabold">
                   {{ siteInfo.dev.expertise }}
                 </div>
-                <div class="text-xs text-slate-500 dark:text-slate-300">
+                <div class="about-skill-sub text-xs">
                   Component Architecture
                 </div>
               </div>
             </div>
 
             <div
-              class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
+              class="about-skill-card flex items-center gap-3 rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
                 class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(var(--theme-primary-dark) ${85 * 1}%, var(--bg-primary-color) 0%)`,
-                  boxShadow:
-                    '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
+                  background: `conic-gradient(var(--theme-primary-dark) ${85}%, var(--bg-primary-color) 0%)`,
+                  boxShadow: 'var(--shadow-sm)',
                 }"
                 title="85%"
                 aria-hidden="true"
@@ -182,24 +122,19 @@ function scrollToContact(): void {
                 85%
               </div>
               <div class="min-w-0">
-                <div class="font-extrabold text-slate-900 dark:text-slate-100">
-                  Performance
-                </div>
-                <div class="text-xs text-slate-500 dark:text-slate-300">
-                  Optimizations
-                </div>
+                <div class="about-skill-name font-extrabold">Performance</div>
+                <div class="about-skill-sub text-xs">Optimizations</div>
               </div>
             </div>
 
             <div
-              class="flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 border rounded-xl p-3 min-w-[180px] shadow"
+              class="about-skill-card flex items-center gap-3 rounded-xl p-3 min-w-[180px] shadow"
             >
               <div
                 class="flex items-center justify-center rounded-full w-14 h-14 font-extrabold text-sm text-white"
                 :style="{
-                  background: `conic-gradient(var(--theme-primary-dark) ${70 * 1}%, #000 0%)`,
-                  boxShadow:
-                    '0 10px 30px rgba(255,90,1,0.08), inset 0 -4px 12px rgba(255,255,255,0.06)',
+                  background: `conic-gradient(var(--theme-primary-dark) ${70}%, var(--bg-primary-color) 0%)`,
+                  boxShadow: 'var(--shadow-sm)',
                 }"
                 title="70%"
                 aria-hidden="true"
@@ -207,19 +142,14 @@ function scrollToContact(): void {
                 70%
               </div>
               <div class="min-w-0">
-                <div class="font-extrabold text-slate-900 dark:text-slate-100">
-                  UI/UX
-                </div>
-                <div class="text-xs text-slate-500 dark:text-slate-300">
-                  Design Systems
-                </div>
+                <div class="about-skill-name font-extrabold">UI/UX</div>
+                <div class="about-skill-sub text-xs">Design Systems</div>
               </div>
             </div>
           </div>
 
           <!-- CTA -->
           <div class="flex flex-wrap gap-3">
-           
             <CustomButton
               variant="primary"
               @click="downloadCv"
@@ -236,54 +166,44 @@ function scrollToContact(): void {
 
       <!-- TIMELINE -->
       <div class="mt-10 grid gap-3">
-        <article
-          class="flex gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 border shadow"
-        >
+        <article class="about-timeline-item flex gap-4 p-4 rounded-xl shadow">
           <time
-            class="min-w-[64px] font-extrabold text-orange-500 bg-gradient-to-b from-orange-50 to-orange-25 rounded-md px-3 py-2 text-center"
+            class="about-timeline-time min-w-[64px] font-extrabold text-orange-500 rounded-md px-3 py-2 text-center"
             >2024</time
           >
           <div class="flex-1">
-            <h3 class="m-0 font-bold text-slate-900 dark:text-slate-100">
+            <h3 class="about-timeline-title m-0 font-bold">
               Frontend Engineer
             </h3>
-            <p class="m-0 text-sm text-slate-600 dark:text-slate-300">
+            <p class="about-timeline-desc m-0 text-sm">
               Built scalable Vue component libraries and shipped performance
               improvements.
             </p>
           </div>
         </article>
 
-        <article
-          class="flex gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 border shadow"
-        >
+        <article class="about-timeline-item flex gap-4 p-4 rounded-xl shadow">
           <time
-            class="min-w-[64px] font-extrabold text-orange-500 bg-gradient-to-b from-orange-50 to-orange-25 rounded-md px-3 py-2 text-center"
+            class="about-timeline-time min-w-[64px] font-extrabold text-orange-500 rounded-md px-3 py-2 text-center"
             >2023</time
           >
           <div class="flex-1">
-            <h3 class="m-0 font-bold text-slate-900 dark:text-slate-100">
-              UI/UX Projects
-            </h3>
-            <p class="m-0 text-sm text-slate-600 dark:text-slate-300">
+            <h3 class="about-timeline-title m-0 font-bold">UI/UX Projects</h3>
+            <p class="about-timeline-desc m-0 text-sm">
               Designed accessible interfaces and improved usability across
               products.
             </p>
           </div>
         </article>
 
-        <article
-          class="flex gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 border shadow"
-        >
+        <article class="about-timeline-item flex gap-4 p-4 rounded-xl shadow">
           <time
-            class="min-w-[64px] font-extrabold text-orange-500 bg-gradient-to-b from-orange-50 to-orange-25 rounded-md px-3 py-2 text-center"
+            class="about-timeline-time min-w-[64px] font-extrabold text-orange-500 rounded-md px-3 py-2 text-center"
             >2022</time
           >
           <div class="flex-1">
-            <h3 class="m-0 font-bold text-slate-900 dark:text-slate-100">
-              Focused on Vue
-            </h3>
-            <p class="m-0 text-sm text-slate-600 dark:text-slate-300">
+            <h3 class="about-timeline-title m-0 font-bold">Focused on Vue</h3>
+            <p class="about-timeline-desc m-0 text-sm">
               Adopted component-driven patterns and built multiple SPAs.
             </p>
           </div>
@@ -292,3 +212,72 @@ function scrollToContact(): void {
     </div>
   </section>
 </template>
+
+<style scoped>
+.about-section {
+  background-color: var(--bg-secondary-color);
+  color: var(--text-primary-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.about-card {
+  background: var(--bg-card-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.about-stat-list {
+  color: var(--text-secondary-color);
+}
+
+.about-stat-item {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-color);
+}
+
+.about-heading {
+  color: var(--text-primary-color);
+}
+
+.about-subtitle {
+  color: var(--text-secondary-color);
+}
+
+.about-description {
+  color: var(--text-secondary-color);
+}
+
+.about-skill-card {
+  background: var(--bg-card-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.about-skill-name {
+  color: var(--text-primary-color);
+}
+
+.about-skill-sub {
+  color: var(--text-secondary-color);
+}
+
+.about-timeline-item {
+  background: var(--bg-card-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.about-timeline-time {
+  background: var(--glow-primary);
+}
+
+.about-timeline-title {
+  color: var(--text-primary-color);
+}
+
+.about-timeline-desc {
+  color: var(--text-secondary-color);
+}
+</style>

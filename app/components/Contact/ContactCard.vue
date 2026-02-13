@@ -13,31 +13,24 @@ const props = withDefaults(defineProps<Props>(), {
 
 const colorClasses = {
   blue: {
-    gradient: 'from-blue-500/20 to-blue-500/5',
-    border: 'hover:border-blue-500/50',
-    iconBg: 'bg-gradient-to-br from-blue-500 to-blue-700 shadow-blue-500/50',
+    stripe: 'card-stripe-blue',
+    iconBg: 'card-icon-blue',
   },
   green: {
-    gradient: 'from-green-500/20 to-green-500/5',
-    border: 'hover:border-green-500/50',
-    iconBg: 'bg-gradient-to-br from-green-500 to-green-700 shadow-green-500/50',
+    stripe: 'card-stripe-green',
+    iconBg: 'card-icon-green',
   },
   purple: {
-    gradient: 'from-purple-500/20 to-purple-500/5',
-    border: 'hover:border-purple-500/50',
-    iconBg:
-      'bg-gradient-to-br from-purple-500 to-purple-700 shadow-purple-500/50',
+    stripe: 'card-stripe-purple',
+    iconBg: 'card-icon-purple',
   },
   pink: {
-    gradient: 'from-pink-500/20 to-pink-500/5',
-    border: 'hover:border-pink-500/50',
-    iconBg: 'bg-gradient-to-br from-pink-500 to-pink-700 shadow-pink-500/50',
+    stripe: 'card-stripe-pink',
+    iconBg: 'card-icon-pink',
   },
   orange: {
-    gradient: 'from-orange-500/20 to-orange-500/5',
-    border: 'hover:border-orange-500/50',
-    iconBg:
-      'bg-gradient-to-br from-orange-500 to-orange-700 shadow-orange-500/50',
+    stripe: 'card-stripe-orange',
+    iconBg: 'card-icon-orange',
   },
 }
 
@@ -45,28 +38,102 @@ const currentColor =
   colorClasses[props.color as keyof typeof colorClasses] || colorClasses.blue
 </script>
 
+<style scoped>
+.contact-card {
+  border: 1px solid var(--glass-border);
+  background: var(--surface-glass);
+  transition: transform 250ms ease, border-color 250ms ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--theme-primary-color);
+}
+
+.card-subtitle {
+  color: var(--text-muted-color);
+  letter-spacing: 0.08em;
+}
+
+.contact-card:hover .card-subtitle {
+  color: var(--text-primary-color);
+}
+
+.card-text {
+  color: var(--text-primary-color);
+}
+
+.card-stripe {
+  border-left: 3px solid transparent;
+}
+
+.card-stripe-blue {
+  border-left-color: var(--text-secondary-color);
+}
+
+.card-stripe-green {
+  border-left-color: var(--theme-primary-color);
+}
+
+.card-stripe-purple {
+  border-left-color: var(--theme-secondary-color);
+}
+
+.card-stripe-pink {
+  border-left-color: var(--theme-secondary-color);
+}
+
+.card-stripe-orange {
+  border-left-color: var(--theme-primary-color);
+}
+
+.card-icon {
+  border: 1px solid var(--glass-border);
+}
+
+.card-icon-blue {
+  color: var(--text-primary-color);
+  background: var(--white-transparent-10);
+}
+
+.card-icon-green {
+  color: var(--theme-primary-color);
+  background: var(--glow-primary);
+}
+
+.card-icon-purple {
+  color: var(--theme-secondary-color);
+  background: var(--white-transparent-10);
+}
+
+.card-icon-pink {
+  color: var(--theme-secondary-color);
+  background: var(--white-transparent-10);
+}
+
+.card-icon-orange {
+  color: var(--theme-primary-color);
+  background: var(--glow-primary);
+}
+</style>
+
 <template>
   <div
-    class="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
-    :class="[currentColor.gradient, currentColor.border]"
+    class="contact-card card-stripe group relative overflow-hidden rounded-2xl p-5"
+    :class="currentColor.stripe"
   >
-    <!-- Animated gradient overlay on hover -->
-    <div
-      class="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"
-    />
+    <div class="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-white/5 blur-2xl" />
 
-    <div class="flex items-center gap-4 relative z-10">
+    <div class="relative z-10 flex items-center gap-4">
       <div
-        class="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+        class="card-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110"
         :class="currentColor.iconBg"
       >
-        <i :class="props.icon + ' text-2xl'" />
+        <i :class="props.icon + ' text-lg'" />
       </div>
 
       <div class="min-w-0 flex-1">
-        <h4
-          class="mb-1 text-xs font-semibold uppercase tracking-wider text-white/70 transition-colors duration-300 group-hover:text-white/90"
-        >
+        <h4 class="card-subtitle mb-1 text-[11px] font-semibold uppercase transition-colors duration-300">
           {{ props.title }}
         </h4>
 
@@ -75,12 +142,12 @@ const currentColor =
           :href="props.link"
           target="_blank"
           rel="noopener noreferrer"
-          class="block text-lg font-bold text-white hover:underline decoration-2 underline-offset-2 transition-all duration-200"
+          class="card-text block text-base font-bold transition-all duration-200 hover:underline"
         >
           {{ props.text }}
           <i class="fas fa-external-link-alt ml-1 text-xs opacity-70" />
         </a>
-        <p v-else class="text-lg font-bold text-white">{{ props.text }}</p>
+        <p v-else class="card-text text-base font-bold">{{ props.text }}</p>
       </div>
     </div>
   </div>

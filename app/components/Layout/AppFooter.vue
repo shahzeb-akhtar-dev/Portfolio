@@ -16,12 +16,21 @@
   justify-content: space-between;
 }
 
+#footer {
+  background-color: var(--bg-secondary-color);
+  border-top: 1px solid var(--border-color);
+}
+
 #footer .logo {
   float: left;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 2rem;
   font-family: var(--logo-font-family);
-  color: var(--text-black-color) !important;
+  color: var(--text-primary-color) !important;
+}
+
+#footer .copyright {
+  color: var(--text-muted-color);
 }
 </style>

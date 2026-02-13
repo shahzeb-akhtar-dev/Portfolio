@@ -78,7 +78,8 @@ const submitForm = async () => {
       showSuccessModal.value = true
       formRef.value?.resetFields()
     } else {
-      throw new Error(response.error)
+      console.error('Error:', response.message)
+      throw new Error(response.message || 'Failed to send message. Please try again later.')
     }
   } catch (error: any) {
     console.error('Error:', error)
@@ -89,568 +90,377 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-slate-950">
-    <!-- Content -->
-    <div class="relative z-10">
-      <!-- Hero Section -->
-      <div
-        class="relative overflow-hidden border-b border-white/5 backdrop-blur-sm"
-      >
-        <div
-          class="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-32"
-        >
-          <!-- Badge -->
-          <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
-          <SectionHeading first-part="Ready to start"   second-part="Your Project?" wrapperClass="!gap-4 justify-center"  />
+  <section class="contact-section relative overflow-hidden py-20 lg:py-28">
+    <div class="contact-noise pointer-events-none absolute inset-0"></div>
 
-          <!-- Description -->
-          <p
-            class="mx-auto mb-10 max-w-3xl animate-fade-in text-lg text-gray-300 sm:text-xl lg:text-2xl"
-          >
-            Transform your ideas into reality with cutting-edge solutions.
-            <span class="block mt-2 text-orange-400 font-semibold"
-              >Let's create something extraordinary together.</span
-            >
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="contact-intro rounded-3xl p-6 sm:p-10">
+        <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
+        <SectionHeading first-part="Have an idea?" second-part="Let’s shape it." wrapperClass="!gap-4 !justify-start" />
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
+          <p class="contact-description max-w-2xl text-base leading-relaxed sm:text-lg">
+            I turn rough concepts into polished products with clear communication and reliable delivery.
+            <span class="mt-2 block contact-description-strong">Share your brief — I’ll reply with a practical plan.</span>
           </p>
 
-          <!-- Stats -->
-          <div
-            class="mx-auto mt-12 grid max-w-4xl grid-cols-3 gap-6 animate-fade-in-up"
-          >
-            <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-orange-500/50 hover:bg-white/10 hover:scale-105"
-            >
-              <div class="text-3xl font-black text-orange-400 mb-2">24h</div>
-              <div class="text-sm text-gray-400 font-medium">Response Time</div>
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent transition-all duration-300"
-              ></div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="contact-stat-card rounded-2xl p-4">
+              <p class="contact-stat-value">24h</p>
+              <p class="contact-stat-label">Typical reply</p>
             </div>
-            <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-pink-500/50 hover:bg-white/10 hover:scale-105"
-            >
-              <div class="text-3xl font-black text-pink-400 mb-2">100%</div>
-              <div class="text-sm text-gray-400 font-medium">Satisfaction</div>
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-pink-500/0 to-pink-500/0 group-hover:from-pink-500/10 group-hover:to-transparent transition-all duration-300"
-              ></div>
+            <div class="contact-stat-card rounded-2xl p-4">
+              <p class="contact-stat-value">100%</p>
+              <p class="contact-stat-label">Client focus</p>
             </div>
-            <div
-              class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-300 hover:border-purple-500/50 hover:bg-white/10 hover:scale-105"
-            >
-              <div class="text-3xl font-black text-purple-400 mb-2">
-                {{ siteInfo.projects.length }}+
-              </div>
-              <div class="text-sm text-gray-400 font-medium">Projects Done</div>
-              <div
-                class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent transition-all duration-300"
-              ></div>
+            <div class="contact-stat-card rounded-2xl p-4">
+              <p class="contact-stat-value">{{ siteInfo.projects.length }}+</p>
+              <p class="contact-stat-label">Projects</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Main Content -->
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <div class="grid gap-6 lg:grid-cols-12 lg:gap-6">
-          <!-- Form Column -->
-          <div class="lg:col-span-7 h-full">
-            <div
-              class="group relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:border-orange-500/30 sm:p-12 animate-slide-in-left"
-            >
-              <!-- Shine Effect -->
-              <div
-                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                ></div>
+      <div class="mt-8 grid gap-6 lg:grid-cols-12">
+        <div class="lg:col-span-8">
+          <div class="contact-form-card relative overflow-hidden rounded-3xl p-6 sm:p-10">
+            <!-- <div class="contact-form-decor absolute -right-16 -top-16 h-40 w-40 rounded-full"></div> -->
+
+            <div class="relative mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 class="contact-form-title text-3xl font-black sm:text-4xl">Project Intake</h2>
+                <p class="contact-form-subtitle mt-2">Tell me about your goals, timeline, and requirements.</p>
               </div>
-
-              <!-- Header -->
-              <div class="relative mb-10">
-                <h2 class="mb-3 text-4xl font-black text-white sm:text-5xl">
-                  <span
-                    class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                  >
-                    Drop Me a Line
-                  </span>
-                </h2>
-                <p class="flex items-center gap-2 text-base text-gray-400">
-                  <span class="relative flex h-3 w-3">
-                    <span
-                      class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
-                    ></span>
-                    <span
-                      class="relative inline-flex h-3 w-3 rounded-full bg-green-500"
-                    ></span>
-                  </span>
-                  Available now • Usually responds within 24 hours
-                </p>
+              <div class="contact-status inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
+                <span class="status-dot"></span>
+                Available now
               </div>
+            </div>
 
-              <!-- Form -->
-              <a-form
-                ref="formRef"
-                :model="formData"
-                :rules="validationRules"
-                layout="vertical"
-                @finish="submitForm"
-              >
-                <!-- Name & Email -->
-                <div class="grid gap-6 sm:grid-cols-2">
-                  <a-form-item name="name" class="group/item">
-                    <template #label>
-                      <span
-                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
-                      >
-                        <i class="fa-solid fa-user"></i>
-                        Your Name
-                      </span>
-                    </template>
-                    <a-input
-                      v-model:value="formData.name"
-                      size="large"
-                      placeholder="John Doe"
-                      class="custom-input"
-                    />
-                  </a-form-item>
-
-                  <a-form-item name="email" class="group/item">
-                    <template #label>
-                      <span
-                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
-                      >
-                        <i class="fa-solid fa-envelope"></i>
-                        Email Address
-                      </span>
-                    </template>
-                    <a-input
-                      v-model:value="formData.email"
-                      size="large"
-                      placeholder="john@example.com"
-                      class="custom-input"
-                    />
-                  </a-form-item>
-                </div>
-
-                <!-- Phone & Subject -->
-                <div class="grid gap-6 sm:grid-cols-2">
-                  <a-form-item name="phoneNumber" class="group/item">
-                    <template #label>
-                      <span
-                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
-                      >
-                        <i class="fa-solid fa-phone"></i>
-                        Phone Number
-                      </span>
-                    </template>
-                    <a-input
-                      v-model:value="formData.phoneNumber"
-                      size="large"
-                      placeholder="0320 8055453"
-                      class="custom-input"
-                    />
-                  </a-form-item>
-
-                  <a-form-item name="subject" class="group/item">
-                    <template #label>
-                      <span
-                        class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
-                      >
-                        <i class="fa-solid fa-bookmark"></i>
-                        Subject
-                      </span>
-                    </template>
-                    <a-input
-                      v-model:value="formData.subject"
-                      size="large"
-                      placeholder="Project Discussion"
-                      class="custom-input"
-                    />
-                  </a-form-item>
-                </div>
-
-                <!-- Message -->
-                <a-form-item name="message" class="group/item">
+            <a-form ref="formRef" :model="formData" :rules="validationRules" layout="vertical" @finish="submitForm">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <a-form-item name="name" class="group/item">
                   <template #label>
-                    <span
-                      class="flex items-center gap-2 text-sm font-bold text-gray-300 transition-colors group-focus-within/item:text-orange-400"
-                    >
-                      <i class="fa-solid fa-pen-to-square"></i>
-                      Your Message
+                    <span class="contact-label flex items-center gap-2 text-sm font-semibold transition-colors group-focus-within/item:text-[var(--theme-primary-color)]">
+                      <i class="fa-solid fa-user"></i> Your Name
                     </span>
                   </template>
-                  <a-textarea
-                    v-model:value="formData.message"
-                    :rows="6"
-                    placeholder="Tell me about your project, requirements, or any questions you have..."
-                    class="custom-input"
-                  />
+                  <a-input v-model:value="formData.name" size="large" placeholder="John Doe" class="custom-input" />
                 </a-form-item>
 
-                <!-- Submit -->
-                <a-form-item class="mb-0">
-                  <CustomButton :disabled="isSubmitting" type="submit" variant="primary" class="w-full">
-                    <span
-                      class="relative z-10 flex items-center justify-center gap-3"
-                    >
-                      <i
-                        v-if="!isSubmitting"
-                        class="fa-solid fa-rocket text-xl group-hover:rotate-45 transition-transform duration-300"
-                      ></i>
-                      <i
-                        v-else
-                        class="fa-solid fa-spinner animate-spin text-xl"
-                      ></i>
-                      {{
-                        isSubmitting
-                          ? 'Sending Your Message...'
-                          : 'Send Message'
-                      }}
+                <a-form-item name="email" class="group/item">
+                  <template #label>
+                    <span class="contact-label flex items-center gap-2 text-sm font-semibold transition-colors group-focus-within/item:text-[var(--theme-primary-color)]">
+                      <i class="fa-solid fa-envelope"></i> Email Address
                     </span>
-                  </CustomButton>
+                  </template>
+                  <a-input v-model:value="formData.email" size="large" placeholder="john@example.com" class="custom-input" />
                 </a-form-item>
-              </a-form>
-            </div>
+              </div>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                <a-form-item name="phoneNumber" class="group/item">
+                  <template #label>
+                    <span class="contact-label flex items-center gap-2 text-sm font-semibold transition-colors group-focus-within/item:text-[var(--theme-primary-color)]">
+                      <i class="fa-solid fa-phone"></i> Phone Number
+                    </span>
+                  </template>
+                  <a-input v-model:value="formData.phoneNumber" size="large" placeholder="0320 8055453" class="custom-input" />
+                </a-form-item>
+
+                <a-form-item name="subject" class="group/item">
+                  <template #label>
+                    <span class="contact-label flex items-center gap-2 text-sm font-semibold transition-colors group-focus-within/item:text-[var(--theme-primary-color)]">
+                      <i class="fa-solid fa-bookmark"></i> Subject
+                    </span>
+                  </template>
+                  <a-input v-model:value="formData.subject" size="large" placeholder="Project Discussion" class="custom-input" />
+                </a-form-item>
+              </div>
+
+              <a-form-item name="message" class="group/item">
+                <template #label>
+                  <span class="contact-label flex items-center gap-2 text-sm font-semibold transition-colors group-focus-within/item:text-[var(--theme-primary-color)]">
+                    <i class="fa-solid fa-pen-to-square"></i> Your Message
+                  </span>
+                </template>
+                <a-textarea v-model:value="formData.message" :rows="6" placeholder="Tell me about your project, requirements, or any questions you have..." class="custom-input" />
+              </a-form-item>
+
+              <a-form-item class="mb-0 mt-2">
+                <CustomButton :disabled="isSubmitting" type="submit" variant="primary" class="w-full">
+                  <span class="relative z-10 flex items-center justify-center gap-3">
+                    <i v-if="!isSubmitting" class="fa-solid fa-paper-plane text-base"></i>
+                    <i v-else class="fa-solid fa-spinner animate-spin text-base"></i>
+                    {{ isSubmitting ? 'Sending Your Message...' : 'Send Message' }}
+                  </span>
+                </CustomButton>
+              </a-form-item>
+            </a-form>
+          </div>
+        </div>
+
+        <div class="space-y-6 lg:col-span-4">
+          <div class="space-y-4">
+            <ContactCard icon="fa-solid fa-location-dot" title="Visit Me" :text="siteInfo.contact.address" color="blue" />
+            <ContactCard icon="fa-solid fa-phone-flip" title="Call Me" :text="siteInfo.contact.phoneNumber" color="green" :link="`tel:${siteInfo.contact.phoneNumber}`" />
+            <ContactCard icon="fa-solid fa-envelope-open-text" title="Email Me" :text="siteInfo.contact.email" color="orange" :link="`mailto:${siteInfo.contact.email}`" />
           </div>
 
-          <!-- Info Column -->
-          <div class="space-y-6 lg:col-span-5 animate-slide-in-right">
-            <!-- Contact Cards -->
-            <div class="space-y-4">
-              <!-- Location -->
-
-              <ContactCard
-                icon="fa-solid fa-location-dot"
-                title="Visit Me"
-                :text="siteInfo.contact.address"
-                color="blue"
-              />
-
-              <!-- Phone -->
-              <ContactCard
-                icon="fa-solid fa-phone-flip"
-                title="Call Me"
-                :text="siteInfo.contact.phoneNumber"
-                color="green"
-                :link="`tel:${siteInfo.contact.phoneNumber}`"
-              />
-              <!-- Email -->
-              <ContactCard
-                icon="fa-solid fa-envelope-open-text"
-                title="Email Me"
-                :text="siteInfo.contact.email"
-                color="orange"
-                :link="`mailto:${siteInfo.contact.email}`"
-              />
-            </div>
-
-            <!-- Why Work With Me -->
-            <div
-              class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-8 backdrop-blur-xl"
-            >
-              <h3 class="mb-6 text-2xl font-black text-white">
-                <span
-                  class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                >
-                  Why Work With Me?
-                </span>
-              </h3>
-              <div class="space-y-5">
-                <div
-                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
-                >
-                  <div
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-orange-500/20 to-orange-500/5 transition-all duration-300 group-hover:from-orange-500/30 group-hover:to-orange-500/10"
-                  >
-                    <i class="fa-solid fa-bolt text-xl text-orange-400"></i>
-                  </div>
+          <div class="contact-why-card rounded-2xl p-6">
+            <h3 class="contact-why-heading text-xl font-black sm:text-2xl">Why work with me</h3>
+            <div class="mt-5 space-y-4">
+              <div class="contact-why-item rounded-xl p-3">
+                <div class="flex items-start gap-3">
+                  <div class="why-icon why-icon-fast"><i class="fa-solid fa-bolt"></i></div>
                   <div>
-                    <h4 class="mb-1 font-bold text-white">Fast Response</h4>
-                    <p class="text-sm text-gray-400">
-                      Quick turnaround on all inquiries
-                    </p>
+                    <h4 class="contact-why-title">Fast Response</h4>
+                    <p class="contact-why-desc">Clear updates and quick turnaround.</p>
                   </div>
                 </div>
+              </div>
 
-                <div
-                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
-                >
-                  <div
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500/20 to-pink-500/5 transition-all duration-300 group-hover:from-pink-500/30 group-hover:to-pink-500/10"
-                  >
-                    <i class="fa-solid fa-trophy text-xl text-pink-400"></i>
-                  </div>
+              <div class="contact-why-item rounded-xl p-3">
+                <div class="flex items-start gap-3">
+                  <div class="why-icon why-icon-quality"><i class="fa-solid fa-trophy"></i></div>
                   <div>
-                    <h4 class="mb-1 font-bold text-white">Quality Work</h4>
-                    <p class="text-sm text-gray-400">
-                      Pixel-perfect & optimized solutions
-                    </p>
+                    <h4 class="contact-why-title">Quality Delivery</h4>
+                    <p class="contact-why-desc">Pixel-perfect and performance-focused implementation.</p>
                   </div>
                 </div>
+              </div>
 
-                <div
-                  class="group flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/5"
-                >
-                  <div
-                    class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 transition-all duration-300 group-hover:from-purple-500/30 group-hover:to-purple-500/10"
-                  >
-                    <i
-                      class="fa-solid fa-handshake text-xl text-purple-400"
-                    ></i>
-                  </div>
+              <div class="contact-why-item rounded-xl p-3">
+                <div class="flex items-start gap-3">
+                  <div class="why-icon why-icon-partner"><i class="fa-solid fa-handshake"></i></div>
                   <div>
-                    <h4 class="mb-1 font-bold text-white">Reliable Partner</h4>
-                    <p class="text-sm text-gray-400">
-                      Long-term collaboration focus
-                    </p>
+                    <h4 class="contact-why-title">Long-Term Partner</h4>
+                    <p class="contact-why-desc">Built for sustainable collaboration.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Social -->
-        <div class="mt-6">
-          <SocialLinks />
-        </div>
+      </div>
+
+      <div class="mt-6">
+        <SocialLinks />
       </div>
     </div>
 
-    <!-- Success Modal -->
-    <a-modal
-      v-model:open="showSuccessModal"
-      :footer="null"
-      :closable="false"
-      centered
-      width="450px"
-      wrap-class-name="custom-modal"
-    >
-      <div
-        class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 p-10 text-center"
-      >
-        <!-- Animated Background -->
-        <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--primary-transparent),transparent_50%)]"
-        ></div>
-
+    <a-modal v-model:open="showSuccessModal" :footer="null" :closable="false" centered width="450px" wrap-class-name="custom-modal">
+      <div class="contact-modal relative overflow-hidden rounded-2xl p-10 text-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--primary-transparent),transparent_52%)]"></div>
         <div class="relative">
-          <!-- Success Icon -->
-          <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center">
-            <div class="relative">
-              <div
-                class="absolute inset-0 animate-ping rounded-full bg-green-500/50"
-              ></div>
-              <div
-                class="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-emerald-600 shadow-2xl shadow-green-500/50 animate-scale-in"
-              >
-                <i class="fa-solid fa-circle-check text-5xl text-white"></i>
-              </div>
-            </div>
+          <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full contact-modal-icon">
+            <i class="fa-solid fa-circle-check text-4xl text-[var(--text-white-color)]"></i>
           </div>
-
-          <!-- Content -->
-          <h3 class="mb-3 text-3xl font-black text-white">Message Sent!</h3>
-          <p class="mb-8 text-base text-gray-300">
-            Thank you for reaching out. I'll get back to you within 24 hours.
-          </p>
-
-          <!-- Button -->
-          <button
-            @click="showSuccessModal = false"
-            class="group relative overflow-hidden rounded-xl bg-gradient-to-r from-orange-600 to-pink-600 px-8 py-4 text-lg font-bold text-white shadow-xl shadow-orange-500/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/60"
-          >
-            <span class="relative z-10">Great!</span>
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-orange-400 to-pink-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            ></div>
+          <h3 class="contact-modal-title mb-3 text-3xl font-black">Message Sent!</h3>
+          <p class="contact-modal-desc mb-8 text-base">Thank you for reaching out. I'll get back to you within 24 hours.</p>
+          <button @click="showSuccessModal = false" class="contact-modal-btn rounded-xl px-8 py-3 text-base font-bold text-[var(--text-white-color)] transition-transform duration-300 hover:scale-105">
+            Great!
           </button>
         </div>
       </div>
     </a-modal>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-/* Custom Animations */
-@keyframes gradient-x {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+.contact-section {
+  background-color: var(--bg-secondary-color);
 }
 
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.contact-noise {
+  background-image: radial-gradient(circle at 10% 10%, var(--glow-primary), transparent 30%),
+    radial-gradient(circle at 85% 15%, var(--white-transparent-05), transparent 28%),
+    radial-gradient(circle at 75% 85%, var(--glow-primary), transparent 26%);
 }
 
-@keyframes pulse-slower {
-  0%,
-  100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.4;
-  }
+.contact-intro {
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--surface-glass), transparent 70%);
 }
 
-@keyframes spin-slow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
+.contact-stat-card {
+  border: 1px solid var(--glass-border);
+  background: var(--white-transparent-03);
+  transition: transform 250ms ease, border-color 250ms ease;
 }
 
-@keyframes bounce-slow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+.contact-stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--theme-primary-color);
 }
 
-@keyframes fade-in-down {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.contact-stat-value {
+  color: var(--text-primary-color);
+  font-size: 1.65rem;
+  line-height: 1;
+  font-weight: 800;
 }
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.contact-stat-label {
+  color: var(--text-muted-color);
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.contact-description {
+  color: var(--text-secondary-color);
 }
 
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.contact-description-strong {
+  color: var(--text-primary-color);
+  font-weight: 600;
 }
 
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.contact-form-card {
+  border: 1px solid var(--glass-border);
+  background: var(--surface-glass);
 }
 
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.contact-form-decor {
+  border: 1px solid var(--glass-border);
+  background: radial-gradient(circle, var(--white-transparent-10), transparent 60%);
 }
 
-.animate-gradient-x {
-  background-size: 200% auto;
-  animation: gradient-x 3s ease infinite;
+.contact-form-title {
+  color: var(--text-primary-color);
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
+.contact-status {
+  background: var(--white-transparent-05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary-color);
+
 }
 
-.animate-pulse-slower {
-  animation: pulse-slower 6s ease-in-out infinite;
+.contact-form-subtitle {
+  color: var(--text-muted-color);
 }
 
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
+.status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: green;
+  box-shadow: 0 0 0 5px var(--glow-primary);
 }
 
-.animate-bounce-slow {
-  animation: bounce-slow 2s ease-in-out infinite;
+.contact-label {
+  color: var(--text-secondary-color);
 }
 
-.animate-fade-in-down {
-  animation: fade-in-down 0.8s ease-out;
+.contact-why-card {
+  border: 1px solid var(--glass-border);
+  background: var(--surface-glass);
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out 0.2s backwards;
+.contact-why-heading {
+  color: var(--text-primary-color);
 }
 
-.animate-fade-in {
-  animation: fade-in 1s ease-out 0.4s backwards;
+.contact-why-title {
+  color: var(--text-primary-color);
+  font-weight: 700;
 }
 
-.animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out;
+.contact-why-desc {
+  color: var(--text-muted-color);
 }
 
-.animate-slide-in-right {
-  animation: slide-in-right 0.8s ease-out 0.2s backwards;
+.contact-why-item {
+  border: 1px solid transparent;
+  background: var(--white-transparent-03);
+  transition: border-color 250ms ease, transform 250ms ease;
 }
 
-.animate-scale-in {
-  animation: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+.contact-why-item:hover {
+  border-color: var(--glass-border);
+  transform: translateX(4px);
 }
 
-/* Custom Input Styles */
+.why-icon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-border);
+}
+
+.why-icon-fast {
+  color: var(--theme-primary-color);
+  background: var(--glow-primary);
+}
+
+.why-icon-quality {
+  color: var(--theme-secondary-color);
+  background: var(--white-transparent-10);
+}
+
+.why-icon-partner {
+  color: var(--text-primary-color);
+  background: var(--white-transparent-05);
+}
+
+.contact-modal {
+  background: linear-gradient(to bottom right, var(--bg-card-color), var(--bg-secondary-color));
+}
+
+.contact-modal-icon {
+  background: var(--theme-gradient-primary);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-modal-btn {
+  background: var(--theme-gradient-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-modal-title {
+  color: var(--text-primary-color);
+}
+
+.contact-modal-desc {
+  color: var(--text-secondary-color);
+}
+
 :deep(.custom-input) {
-  @apply rounded-xl border-2 border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder-gray-500 backdrop-blur-sm transition-all duration-300;
+  border-radius: 0.75rem;
+  border: 1px solid var(--glass-border);
+  background: var(--white-transparent-03);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--text-primary-color);
+  transition: all 300ms ease;
+}
+
+:deep(.custom-input)::placeholder {
+  color: var(--text-muted-color);
 }
 
 :deep(.custom-input:hover) {
-  @apply border-white/20 bg-white/10;
+  border-color: var(--theme-primary-color);
 }
 
 :deep(.custom-input:focus),
 :deep(.custom-input.ant-input-focused) {
-  @apply border-orange-500/50 bg-white/10 shadow-lg shadow-orange-500/20;
+  border-color: var(--theme-primary-color);
+  background: var(--white-transparent-05);
+  box-shadow: 0 0 0 3px var(--glow-primary);
 }
 
 :deep(.ant-input-textarea textarea.custom-input) {
-  @apply min-h-[150px] resize-y;
+  min-height: 150px;
+  resize: vertical;
 }
 
-/* Scrollbar */
 :deep(.ant-input-textarea textarea)::-webkit-scrollbar {
   width: 8px;
 }
@@ -667,7 +477,6 @@ const submitForm = async () => {
   @apply bg-orange-500/70;
 }
 
-/* Form Item */
 :deep(.ant-form-item) {
   @apply mb-6;
 }
@@ -680,7 +489,6 @@ const submitForm = async () => {
   @apply text-pink-400;
 }
 
-/* Modal */
 :deep(.custom-modal .ant-modal-content) {
   @apply bg-transparent p-0 shadow-none;
 }
@@ -689,11 +497,9 @@ const submitForm = async () => {
   @apply p-0;
 }
 
-/* Responsive */
 @media (max-width: 640px) {
-  .animate-slide-in-left,
-  .animate-slide-in-right {
-    animation: fade-in 0.8s ease-out;
+  .contact-intro {
+    padding: 1.25rem;
   }
 }
 </style>

@@ -1,29 +1,29 @@
 <template>
   <!-- Layout Wrapper -->
-  <a-layout class="flex flex-col">
+  <a-layout class="flex flex-col layout-wrapper">
     <!-- Header -->
     <a-layout-header
-      class="relative top-0 z-[200] h-12"
+      class="layout-header relative top-0 z-[200] h-12"
     >
       <TheHeader />
     </a-layout-header>
-    <div id="scrollProgressBar" class="bg-black">
+    <div id="scrollProgressBar">
       <div class="progressBar" :style="{ width: `${scrollProgress}%` }"></div>
     </div>
     <!-- Body -->
     <a-layout-content
       id="BodyWrapper"
-      class="flex-1 overflow-y-auto custom-scrollbar  max-h-[calc(100vh-3.5rem)] scroll-smooth"
+      class="layout-content flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-3.5rem)] scroll-smooth"
       @scroll="handleScroll"
     >
       <div class="body-wrapper max-h-full">
         <NuxtPage />
       </div>
       <!-- Footer -->
-      <a-layout-footer class="relative !p-0">
+      <a-layout-footer class="layout-footer relative !p-0">
         <div class="scroll-button" v-if="scroll >= 200">
           <a-button shape="circle" @click="scrollToTop">
-            <i class="fa-solid fa-up-long text-gray-300 hover:text-white"></i>
+            <i class="fa-solid fa-up-long scroll-top-icon"></i>
           </a-button>
         </div>
         <TheFooter />
@@ -36,6 +36,9 @@
 import { ref, onMounted } from 'vue'
 import TheHeader from '../components/Layout/AppHeader.vue'
 import TheFooter from '../components/Layout/AppFooter.vue'
+import { useTheme } from '@/composables/useTheme'
+
+const { initTheme } = useTheme()
 
 const scroll = ref(0)
 const scrollProgress = ref(0)
@@ -57,20 +60,29 @@ const scrollToTop = () => {
 }
 
 onMounted(() => {
+  initTheme()
   contentEl = document.getElementById('BodyWrapper')
 })
 </script>
 
 <style scoped>
-.ant-layout-header {
+.layout-header {
   line-height: 6.4rem;
   padding: 0;
   height: fit-content;
   background-color: var(--bg-primary-color) !important;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.ant-layout-content {
+.layout-content {
   background-color: var(--bg-primary-color) !important;
+  transition: background-color 0.3s ease;
+}
+
+.layout-footer {
+  background-color: var(--bg-primary-color) !important;
+  transition: background-color 0.3s ease;
 }
 
 /* Scroll To Top Button */
@@ -83,28 +95,36 @@ onMounted(() => {
   height: fit-content;
   width: fit-content;
   padding: 0.5rem 1.5rem;
-  
-  background: linear-gradient(
-    0deg,
-    var(--theme-primary-color) 1%,
-    transparent 48%
-  );
-  background-size: 102% 200%;
-  background-position: top;
-  transition: background-position 0.3s ease, color 0.3s ease;
+  border: 1px solid var(--border-color);
+  background: var(--surface-glass);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
 .scroll-button .ant-btn:hover {
-  background-position: bottom;
-  color: #fff;
   border-color: var(--theme-primary-color);
+  background: var(--glow-primary);
+}
+
+.scroll-top-icon {
+  color: var(--text-secondary-color);
+  transition: color 0.3s ease;
+}
+
+.scroll-button .ant-btn:hover .scroll-top-icon {
+  color: var(--theme-primary-color);
 }
 
 /* Scroll Progress Bar */
+#scrollProgressBar {
+  background-color: var(--bg-secondary-color);
+  transition: background-color 0.3s ease;
+}
+
 #scrollProgressBar .progressBar {
   transition: width 0.1s ease;
-  background: var(--theme-gradient-primary-color);
-  height: 0.5rem;
+  background: var(--theme-gradient-primary);
+  height: 0.4rem;
   width: 0%;
   border-radius: 0 1rem 1rem 0;
 }

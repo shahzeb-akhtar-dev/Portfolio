@@ -1,30 +1,46 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
-:root {
+
+/* =============================
+     DARK THEME (Default)
+  ============================= */
+:root,
+[data-theme='dark'] {
   /* Typography */
   --logo-font-family: 'Saira Stencil One', sans-serif;
 
   /* Layout */
   --layout-header-height: 6.3rem;
 
-  /* Base colors */
-  --bg-primary-color: #000000;
+  /* Background colors */
+  --bg-primary-color: #0a0a0f;
+  --bg-secondary-color: #111118;
+  --bg-card-color: #16161e;
+  --bg-elevated-color: #1c1c26;
+
+  /* Text colors */
+  --text-primary-color: #f0f0f5;
   --text-secondary-color: #a19797;
+  --text-muted-color: #6b6b80;
   --text-black-color: #000000;
   --text-white-color: #ffffff;
+
+  /* Border & surface */
+  --border-color: rgba(255, 255, 255, 0.08);
+  --surface-glass: rgba(255, 255, 255, 0.04);
   --box-shadow-color: #a19797;
 
-  /* Theme colors */
-  --theme-primary-color: rgb(255 90 1);
+  /* Theme accent colors */
+  --theme-primary-color: #ff5900;
   --theme-primary-light: rgb(249 115 22);
   --theme-primary-dark: rgb(255 75 0);
   --theme-secondary-color: rgb(236 72 153);
 
   /* Gradients */
   --theme-gradient-primary: linear-gradient(
-    70deg,
-    var(--theme-primary-color) 53%,
-    var(--theme-primary-dark) 61%
+    135deg,
+    var(--theme-primary-color) 0%,
+    var(--theme-primary-dark) 100%
   );
 
   /* Transparencies */
@@ -42,10 +58,77 @@
 
   /* Overlays */
   --bg-overlay-dark: rgba(0, 0, 0, 0.6);
-  --bg-overlay-darker: rgba(15, 15, 35, 0.7);
+  --bg-overlay-darker: rgba(10, 10, 15, 0.75);
 
   /* Special effects */
   --glass-effect: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glow-primary: rgba(255, 90, 1, 0.15);
+  --glow-strong: rgba(255, 90, 1, 0.3);
+
+  /* Orbit system */
+  --orbit-ring-color: rgba(255, 255, 255, 0.06);
+  --orbit-icon-bg: rgba(255, 255, 255, 0.06);
+  --orbit-icon-border: rgba(255, 255, 255, 0.1);
+  --orbit-icon-hover-bg: rgba(255, 90, 1, 0.2);
+  --orbit-icon-hover-border: rgba(255, 90, 1, 0.4);
+
+  /* Hero section */
+  --hero-text-color: #f0f0f5;
+  --hero-text-muted: rgba(240, 240, 245, 0.7);
+  --hero-badge-bg: rgba(255, 255, 255, 0.06);
+  --hero-badge-border: rgba(255, 255, 255, 0.12);
+}
+
+/* =============================
+     LIGHT THEME
+  ============================= */
+[data-theme='light'] {
+  /* Background colors */
+  --bg-primary-color: #f8f9fc;
+  --bg-secondary-color: #ffffff;
+  --bg-card-color: #ffffff;
+  --bg-elevated-color: #f0f1f5;
+
+  /* Text colors */
+  --text-primary-color: #1a1a2e;
+  --text-secondary-color: #4a4a5a;
+  --text-muted-color: #8888a0;
+  --text-black-color: #000000;
+  --text-white-color: #ffffff;
+
+  /* Border & surface */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Shadows */
+  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 40px -10px rgba(255, 90, 1, 0.2);
+  --shadow-lg: 0 20px 60px -10px rgba(255, 90, 1, 0.3);
+
+  /* Overlays */
+  --bg-overlay-dark: rgba(255, 255, 255, 0.5);
+  --bg-overlay-darker: rgba(248, 249, 252, 0.8);
+
+  /* Special effects */
+  --glass-effect: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glow-primary: rgba(255, 90, 1, 0.08);
+  --glow-strong: rgba(255, 90, 1, 0.15);
+
+  /* Orbit system */
+  --orbit-ring-color: rgba(0, 0, 0, 0.06);
+  --orbit-icon-bg: rgba(255, 255, 255, 0.9);
+  --orbit-icon-border: rgba(0, 0, 0, 0.08);
+  --orbit-icon-hover-bg: rgba(255, 90, 1, 0.1);
+  --orbit-icon-hover-border: rgba(255, 90, 1, 0.3);
+
+  /* Hero section */
+  --hero-text-color: #1a1a2e;
+  --hero-text-muted: rgba(26, 26, 46, 0.65);
+  --hero-badge-bg: rgba(0, 0, 0, 0.04);
+  --hero-badge-border: rgba(0, 0, 0, 0.08);
 }
 
 @theme {

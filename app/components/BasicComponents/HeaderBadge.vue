@@ -20,12 +20,8 @@ defineProps<{
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 2rem;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 90, 1, 0.1) 0%,
-    rgba(255, 90, 1, 0.05) 100%
-  );
-  border: 2px solid rgba(255, 90, 1, 0.3);
+  background: var(--hero-badge-bg);
+  border: 2px solid var(--hero-badge-border);
   border-radius: 100px;
   margin-bottom: 2rem;
   font-size: 0.875rem;

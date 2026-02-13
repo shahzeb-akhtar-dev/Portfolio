@@ -1,6 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+
+  runtimeConfig: {
+    // Server-only keys (not exposed to client)
+    smtpHost: process.env.SMTP_HOST || '',
+    smtpPort: process.env.SMTP_PORT || '587',
+    smtpUser: process.env.SMTP_USER || '',
+    smtpPass: process.env.SMTP_PASS || '',
+    contactEmail: process.env.CONTACT_EMAIL || '',
+  },
+
   app: {
     head: {
       title: 'My Portfolio',
