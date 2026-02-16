@@ -1,11 +1,11 @@
 <template>
   <header
     id="main-header-wrapper"
-    class="header-wrapper max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between px-4 py-2 text-center mb-0 md:text-left max-h-12"
+    class="header-wrapper max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between px-4 py-0 text-center mb-0 md:text-left"
   >
     <!-- Logo -->
     <div
-      class="order-1 md:order-1 logo text-4xl md:text-5xl font-semibold uppercase transition-colors duration-300 logo-font-family"
+      class="order-1 md:order-1 logo text-3xl md:text-4xl font-semibold uppercase transition-colors duration-300 logo-font-family"
       :style="{ color: 'var(--text-primary-color)' }"
     >
       Portfolio
@@ -18,10 +18,10 @@
       <ul
         class="flex flex-wrap justify-center gap-3 md:gap-4 max-h-fit items-center mb-0"
       >
-        <li v-for="(item, i) in navItems" :key="i" class="max-h-full">
+        <li v-for="(item, i) in navItems">
           <a
             :href="item.href"
-            class="nav-link inline-block px-5 py-2 font-semibold transition-all duration-300 rounded-xl h-full"
+            class="nav-link inline-flex items-center justify-center px-4 py-1.5 font-semibold transition-all duration-300 rounded-xl"
           >
             {{ item.label }}
           </a>
@@ -66,24 +66,51 @@ const navItems: NavItem[] = [
 </script>
 
 <style scoped>
+.header-wrapper {
+  height: 3rem;
+  min-height: 3rem;
+  overflow-x: clip;
+}
+
 .nav-link {
+
+  --secondary-gradient: linear-gradient(
+    40deg,
+    var(--theme-primary-color) 20%,
+    transparent 53%
+  );
+  border-radius: 0;
+  max-height: 3rem;
+  position: relative;
+  min-height: 2.35rem;
+  border: 1px solid transparent;
+  /* box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color); */
+  border: 0;
   color: var(--text-primary-color);
-  background: linear-gradient(0deg, var(--theme-primary-color) 1%, transparent 48%);
-  background-size: 102% 200%;
-  background-position: center top;
+  background: var(--secondary-gradient);
+  background-size: 300% 200%;
+  background-position: right;
+  text-shadow: none;
 }
 
 .nav-link:hover {
-  background-color: var(--theme-primary-color);
-  color: #fff;
+  color: var(--text-white-color);
+  border-color: var(--theme-primary-color);
+  box-shadow: none;
+  background-position: left;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--theme-primary-color);
+  outline-offset: 2px;
 }
 
 .theme-toggle-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 12px;
   border: 1px solid var(--border-color);
   background: var(--surface-glass);
@@ -99,7 +126,7 @@ const navItems: NavItem[] = [
 }
 
 .theme-toggle-icon {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--theme-primary-color);
   transition: transform 0.4s ease;
 }

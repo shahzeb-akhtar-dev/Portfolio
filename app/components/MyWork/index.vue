@@ -11,15 +11,26 @@
     </div>
 
     <!-- Main Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div
+      class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24"
+    >
       <!-- Header Section -->
       <div class="text-center mb-20 space-y-8">
-        <HeaderBadge icon="fa-solid fa-diagram-project" heading="Portfolio Showcase" />
-        <SectionHeading first-part="Crafting Digital " second-part="Masterpieces" wrapper-class="justify-center" />
+        <HeaderBadge
+          icon="fa-solid fa-diagram-project"
+          heading="Portfolio Showcase"
+        />
+        <SectionHeading
+          first-part="Crafting Digital "
+          second-part="Masterpieces"
+          wrapper-class="justify-center"
+        />
 
         <p class="work-description max-w-3xl mx-auto text-lg leading-relaxed">
           Transforming ideas into
-          <span class="work-highlight font-semibold">stunning digital experiences</span>
+          <span class="work-highlight font-semibold"
+            >stunning digital experiences</span
+          >
           through innovative design, clean code, and cutting-edge technology.
           Each project is a testament to
           <span class="text-primary font-semibold">excellence</span> and
@@ -28,41 +39,75 @@
 
         <!-- Stats -->
         <div class="flex flex-wrap justify-center gap-6 pt-8">
-          <div class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50">
-            <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+          <div
+            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
+            ></div>
             <div class="relative flex items-center gap-4">
-              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl shadow-lg shadow-orange-500/50">
+              <div
+                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl shadow-lg shadow-orange-500/50"
+              >
                 <i class="fa-solid fa-rocket text-white text-xl"></i>
               </div>
               <div class="text-left">
-                <div class="work-stat-value text-3xl font-black">{{ myWork.length }}+</div>
-                <div class="work-stat-label text-sm font-semibold uppercase tracking-wide">Projects</div>
+                <div class="work-stat-value text-3xl font-black">
+                  {{ myWork.length }}+
+                </div>
+                <div
+                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
+                >
+                  Projects
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-500/50">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+          <div
+            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-500/50"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
+            ></div>
             <div class="relative flex items-center gap-4">
-              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl shadow-lg shadow-purple-500/50">
+              <div
+                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl shadow-lg shadow-purple-500/50"
+              >
                 <i class="fa-solid fa-users text-white text-xl"></i>
               </div>
               <div class="text-left">
                 <div class="work-stat-value text-3xl font-black">100%</div>
-                <div class="work-stat-label text-sm font-semibold uppercase tracking-wide">Satisfaction</div>
+                <div
+                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
+                >
+                  Satisfaction
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"></div>
+          <div
+            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
+            ></div>
             <div class="relative flex items-center gap-4">
-              <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/50">
+              <div
+                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/50"
+              >
                 <i class="fa-solid fa-award text-white text-xl"></i>
               </div>
               <div class="text-left">
-                <div class="work-stat-value text-3xl font-black">{{ siteInfo.dev.experience }}</div>
-                <div class="work-stat-label text-sm font-semibold uppercase tracking-wide">Years</div>
+                <div class="work-stat-value text-3xl font-black">
+                  {{ siteInfo.dev.experience }}
+                </div>
+                <div
+                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
+                >
+                  Years
+                </div>
               </div>
             </div>
           </div>
@@ -78,33 +123,49 @@
           class="work-project-card group relative backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50 animate-fade-in-up"
         >
           <!-- Gradient Overlay on Hover -->
-          <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-pink-500/0 to-purple-500/0 group-hover:from-orange-500/10 group-hover:via-pink-500/5 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none"></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-pink-500/0 to-purple-500/0 group-hover:from-orange-500/10 group-hover:via-pink-500/5 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none"
+          ></div>
 
           <!-- Shine Effect -->
-          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+            ></div>
           </div>
 
           <!-- Project Number Badge -->
-          <div class="work-badge absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 backdrop-blur-md border border-orange-500/30 rounded-full font-black text-orange-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+          <div
+            class="work-badge absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 backdrop-blur-md border border-orange-500/30 rounded-full font-black text-orange-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+          >
             {{ String(index + 1).padStart(2, '0') }}
           </div>
 
           <!-- Image -->
           <div class="work-img-wrapper relative h-56 overflow-hidden">
-            <img :src="project.image" :alt="project.name" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <img
+              :src="project.image"
+              :alt="project.name"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
             <div class="work-img-overlay absolute inset-0 opacity-60"></div>
           </div>
 
           <!-- Content -->
           <div class="relative p-6 space-y-4">
-            <h3 class="work-project-title text-2xl font-black group-hover:text-orange-400 transition-colors duration-300">
+            <h3
+              class="work-project-title text-2xl font-black group-hover:text-orange-400 transition-colors duration-300"
+            >
               {{ project.name }}
             </h3>
-            <p class="work-project-desc leading-relaxed line-clamp-3">{{ project.description }}</p>
+            <p class="work-project-desc leading-relaxed line-clamp-3">
+              {{ project.description }}
+            </p>
 
             <!-- Footer -->
-            <div class="flex items-center justify-between pt-4">
+            <!-- <div class="flex items-center justify-between pt-4">
               <a href="#" class="inline-flex items-center gap-2 text-orange-400 font-bold hover:gap-4 transition-all duration-300 group/link">
                 <span>View Project</span>
                 <i class="fa-solid fa-arrow-right group-hover/link:translate-x-1 transition-transform"></i>
@@ -112,34 +173,33 @@
               <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500/20 to-purple-500/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 <i class="fa-solid fa-code text-orange-400"></i>
               </div>
-            </div>
+            </div> -->
           </div>
-
-          <!-- Bottom Glow -->
-          <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
       </div>
 
       <!-- Load More / All Loaded -->
       <div class="flex justify-center">
-        <button
+        <CustomButton
+          variant="secondary"
           v-if="workDataLimit < myWork.length"
           @click="loadMore"
-          class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl font-bold text-white overflow-hidden hover:shadow-2xl hover:shadow-orange-500/50 hover:-translate-y-1 transition-all duration-300"
         >
-          <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-          <span class="relative flex items-center gap-3">
-            <span>Load More Projects</span>
-            <i class="fa-solid fa-chevron-down group-hover:animate-bounce"></i>
-          </span>
-        </button>
+          <div class="flex items-center gap-2">
+            Load More Projects
+            <i class="fa-solid fa-arrow-down ml-1 animate-bounce-slow"></i>
+          </div>
+        </CustomButton>
 
         <div v-else class="text-center space-y-4">
-          <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-xl border border-green-500/30 rounded-full animate-pulse-slow">
+          <div
+            class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-xl border border-green-500/30 rounded-full animate-pulse-slow"
+          >
             <i class="fa-solid fa-check-circle text-5xl text-green-400"></i>
           </div>
-          <p class="work-all-loaded text-xl font-bold">All projects loaded! 🎉</p>
+          <p class="work-all-loaded text-xl font-bold">
+            All projects loaded! 🎉
+          </p>
         </div>
       </div>
     </div>
@@ -151,6 +211,7 @@ import { ref, computed } from 'vue'
 import siteInfo from '@/utilies/siteInfo.json'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
+import CustomButton from '../BasicComponents/CustomButton.vue'
 // Types
 interface Project {
   id: number | string

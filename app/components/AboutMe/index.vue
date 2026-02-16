@@ -36,7 +36,6 @@ async function downloadCv(): Promise<void> {
     downloading.value = false
   }
 }
-
 </script>
 
 <template>
@@ -67,7 +66,6 @@ async function downloadCv(): Promise<void> {
             :second-part="siteInfo.name"
             wrapperClass="!gap-4"
           />
-
 
           <p class="about-subtitle text-sm font-semibold mb-4">
             {{ siteInfo.title }}
@@ -147,40 +145,6 @@ async function downloadCv(): Promise<void> {
                 <div class="min-w-0 mt-3 text-center">
                   <div class="about-skill-name">Performance</div>
                   <div class="about-skill-sub">Optimizations</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="about-skill-card group">
-              <div class="about-skill-card-inner">
-                <div class="about-progress-ring" title="70%" aria-hidden="true">
-                  <svg viewBox="0 0 80 80" class="w-16 h-16">
-                    <circle
-                      cx="40"
-                      cy="40"
-                      r="34"
-                      stroke="var(--border-color)"
-                      stroke-width="6"
-                      fill="none"
-                    />
-                    <circle
-                      cx="40"
-                      cy="40"
-                      r="34"
-                      stroke="var(--theme-primary-color)"
-                      stroke-width="6"
-                      fill="none"
-                      stroke-linecap="round"
-                      :stroke-dasharray="2 * Math.PI * 34"
-                      :stroke-dashoffset="2 * Math.PI * 34 * (1 - 0.7)"
-                      class="about-progress-circle"
-                    />
-                  </svg>
-                  <span class="about-progress-text">70%</span>
-                </div>
-                <div class="min-w-0 mt-3 text-center">
-                  <div class="about-skill-name">UI/UX</div>
-                  <div class="about-skill-sub">Design Systems</div>
                 </div>
               </div>
             </div>
@@ -491,13 +455,13 @@ async function downloadCv(): Promise<void> {
 .about-skill-name {
   font-size: 0.875rem;
   font-weight: 800;
-  color: #000000;
+  color: var(--theme-primary-color);
   letter-spacing: 0.01em;
 }
 
 .about-skill-sub {
   font-size: 0.75rem;
-  color: #1a1a1a;
+  color: var(--text-secondary-color);
   margin-top: 2px;
   opacity: 0.85;
 }
