@@ -73,39 +73,36 @@
       </div>
 
       <!-- Achievement Stats -->
-      <div class="flex justify-center gap-8 mt-16">
-        <div class="text-center group cursor-default">
-          <div
-            class="text-4xl font-black bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
-          >
-            {{ skills.length }}+
+      <div class="skills-kpi-grid mt-16">
+        <article class="skills-kpi-card">
+          <div class="skills-kpi-icon bg-gradient-to-br from-orange-500 to-pink-500 shadow-orange-500/35">
+            <i class="fa-solid fa-microchip text-white"></i>
           </div>
-          <div class="skills-stat-label text-sm font-semibold uppercase tracking-wide">
-            Technologies
+          <div class="skills-kpi-content">
+            <p class="skills-kpi-value">{{ skills.length }}+</p>
+            <p class="skills-kpi-label">Technologies</p>
           </div>
-        </div>
-        <div class="skills-divider w-px"></div>
-        <div class="text-center group cursor-default">
-          <div
-            class="text-4xl font-black bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
-          >
-            {{ siteInfo.dev.experience }}
+        </article>
+
+        <article class="skills-kpi-card">
+          <div class="skills-kpi-icon bg-gradient-to-br from-purple-500 to-blue-500 shadow-purple-500/35">
+            <i class="fa-solid fa-thumbs-up text-white"></i>
           </div>
-          <div class="skills-stat-label text-sm font-semibold uppercase tracking-wide">
-            Years Exp
+          <div class="skills-kpi-content">
+            <p class="skills-kpi-value">100%</p>
+            <p class="skills-kpi-label">Satisfaction</p>
           </div>
-        </div>
-        <div class="skills-divider w-px"></div>
-        <div class="text-center group cursor-default">
-          <div
-            class="text-4xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300"
-          >
-           {{siteInfo.projects.length}}+
+        </article>
+
+        <article class="skills-kpi-card">
+          <div class="skills-kpi-icon bg-gradient-to-br from-blue-500 to-cyan-500 shadow-blue-500/35">
+            <i class="fa-solid fa-calendar-check text-white"></i>
           </div>
-          <div class="skills-stat-label text-sm font-semibold uppercase tracking-wide">
-            Projects
+          <div class="skills-kpi-content">
+            <p class="skills-kpi-value">{{ siteInfo.dev.experience }}</p>
+            <p class="skills-kpi-label">Years</p>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </div>
@@ -171,12 +168,65 @@ const skills = ref<Skill[]>(siteInfo.skills)
   color: var(--theme-primary-color, #ff5a01);
 }
 
-.skills-stat-label {
-  color: var(--text-muted-color);
+.skills-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.skills-divider {
-  background: linear-gradient(to bottom, transparent, var(--border-color), transparent);
+.skills-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--bg-card-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.skills-kpi-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--theme-primary-color);
+  box-shadow: var(--shadow-md);
+}
+
+.skills-kpi-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 10px 22px -10px;
+  flex-shrink: 0;
+}
+
+.skills-kpi-content {
+  text-align: left;
+}
+
+.skills-kpi-value {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.3vw, 2.35rem);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary-color);
+}
+
+.skills-kpi-label {
+  margin: 0.32rem 0 0;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted-color);
 }
 
 /* Infinite Scroll Animation */
@@ -221,11 +271,30 @@ const skills = ref<Skill[]>(siteInfo.skills)
   .animate-scroll {
     animation-duration: 25s;
   }
+
+  .skills-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 480px) {
   .animate-scroll {
     animation-duration: 20s;
+  }
+
+  .skills-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .skills-kpi-card {
+    padding: 1rem;
+  }
+
+  .skills-kpi-icon {
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 0.75rem;
   }
 }
 </style>

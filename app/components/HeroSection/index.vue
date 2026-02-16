@@ -48,12 +48,11 @@
           </p>
 
           <div class="hero-actions">
-            <CustomButton>
-              <span class="btn-icon">🚀</span>
-              <span>Let's Work Together</span>
+            <CustomButton @click="scrollTo('contact-form')">
+              Let's Work Together
             </CustomButton>
 
-            <CustomButton variant="secondary" @click="navigateTo('#my-work')">
+            <CustomButton variant="secondary" @click="scrollTo('my-work')">
               View My Work
             </CustomButton>
           </div>
@@ -80,7 +79,9 @@
                 v-for="(skill, i) in outerOrbitSkills"
                 :key="'outer-' + i"
                 class="orbit-icon"
-                :style="{ '--angle': (360 / outerOrbitSkills.length) * i + 'deg' }"
+                :style="{
+                  '--angle': (360 / outerOrbitSkills.length) * i + 'deg',
+                }"
               >
                 <div class="orbit-icon-inner">
                   <img :src="skill.icon" :alt="skill.name" />
@@ -94,7 +95,9 @@
                 v-for="(skill, i) in innerOrbitSkills"
                 :key="'inner-' + i"
                 class="orbit-icon"
-                :style="{ '--angle': (360 / innerOrbitSkills.length) * i + 'deg' }"
+                :style="{
+                  '--angle': (360 / innerOrbitSkills.length) * i + 'deg',
+                }"
               >
                 <div class="orbit-icon-inner">
                   <img :src="skill.icon" :alt="skill.name" />
@@ -130,6 +133,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { scrollTo } from '@/composables/useScroll'
 import siteInfo from '@/utilies/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
@@ -144,6 +148,8 @@ const stats = computed(() => [
   { value: siteInfo.dev.experience, label: 'Years Exp' },
   { value: '100%', label: 'Satisfaction' },
 ])
+
+
 </script>
 
 <style>
@@ -182,7 +188,11 @@ const stats = computed(() => [
   height: 400px;
   bottom: -10%;
   left: -5%;
-  background: radial-gradient(circle, rgba(255, 90, 1, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 90, 1, 0.08) 0%,
+    transparent 70%
+  );
   animation: ambientFloat 15s ease-in-out infinite reverse;
 }
 
@@ -191,7 +201,11 @@ const stats = computed(() => [
   height: 300px;
   top: 40%;
   left: 30%;
-  background: radial-gradient(circle, rgba(255, 90, 1, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 90, 1, 0.05) 0%,
+    transparent 70%
+  );
   animation: ambientFloat 18s ease-in-out infinite 3s;
 }
 
@@ -295,9 +309,9 @@ const stats = computed(() => [
   @apply mb-10 flex flex-wrap gap-4;
 }
 
-.hero-actions button {
+/* .hero-actions button {
   @apply relative flex items-center gap-2 rounded-full border-0 px-8 py-4 text-[1rem] font-bold transition-all duration-300 ease-in-out cursor-pointer overflow-hidden;
-}
+} */
 
 .btn-primary {
   @apply text-white;
@@ -429,7 +443,8 @@ const stats = computed(() => [
   left: 50%;
   width: 0;
   height: 0;
-  transform: rotate(var(--angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--angle)));
+  transform: rotate(var(--angle)) translateX(var(--orbit-radius))
+    rotate(calc(-1 * var(--angle)));
 }
 
 .orbit-outer .orbit-icon {

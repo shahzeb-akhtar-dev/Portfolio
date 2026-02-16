@@ -56,7 +56,7 @@ const variantClasses = computed(() => {
   return [
     base,
     props.variant === 'secondary'
-      ? 'primary-btn'
+      ? 'primary-btn border border-primary-color'
       : 'border-2 border-transparent text-[var(--text-white-color)] shadow-[var(--shadow-md)] bg-gradient-to-br from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-primary-dark)] hover:shadow-[var(--shadow-lg)] hover:scale-[1.02] active:scale-[0.98] hover:from-[var(--theme-primary-light)] hover:via-[var(--theme-primary-color)] hover:to-[var(--theme-primary-dark)]',
   ]
 })
@@ -192,11 +192,11 @@ const variantClasses = computed(() => {
   );
 
   outline: none;
-  border: 0.1rem solid var(--border-color);
+ 
   text-shadow: none;
   color: var(--text-primary-color);
   
-  border-radius: 0.7rem;
+  /* border-radius: 0.7rem; */
   background: var(--gradient-color);
   background-size: 240% 200%;
   font-size: 0.9rem;
