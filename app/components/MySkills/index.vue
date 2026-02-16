@@ -73,9 +73,9 @@
       </div>
 
       <!-- Achievement Stats -->
-      <div class="skills-kpi-grid mt-16">
-        <article class="skills-kpi-card">
-          <div class="skills-kpi-icon bg-gradient-to-br from-orange-500 to-pink-500 shadow-orange-500/35">
+      <div class="skills-kpi-grid mt-16 mb-4">
+        <article class="skills-kpi-card skills-kpi-card--tech">
+          <div class="skills-kpi-icon skills-kpi-icon--tech">
             <i class="fa-solid fa-microchip text-white"></i>
           </div>
           <div class="skills-kpi-content">
@@ -84,8 +84,8 @@
           </div>
         </article>
 
-        <article class="skills-kpi-card">
-          <div class="skills-kpi-icon bg-gradient-to-br from-purple-500 to-blue-500 shadow-purple-500/35">
+        <article class="skills-kpi-card skills-kpi-card--satisfaction">
+          <div class="skills-kpi-icon skills-kpi-icon--satisfaction">
             <i class="fa-solid fa-thumbs-up text-white"></i>
           </div>
           <div class="skills-kpi-content">
@@ -94,8 +94,8 @@
           </div>
         </article>
 
-        <article class="skills-kpi-card">
-          <div class="skills-kpi-icon bg-gradient-to-br from-blue-500 to-cyan-500 shadow-blue-500/35">
+        <article class="skills-kpi-card skills-kpi-card--years">
+          <div class="skills-kpi-icon skills-kpi-icon--years">
             <i class="fa-solid fa-calendar-check text-white"></i>
           </div>
           <div class="skills-kpi-content">
@@ -178,6 +178,8 @@ const skills = ref<Skill[]>(siteInfo.skills)
 }
 
 .skills-kpi-card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -195,16 +197,98 @@ const skills = ref<Skill[]>(siteInfo.skills)
   box-shadow: var(--shadow-md);
 }
 
+.skills-kpi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  opacity: 0.8;
+}
+
+.skills-kpi-card--tech::before {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-primary-color),
+    var(--theme-primary-dark)
+  );
+}
+
+.skills-kpi-card--satisfaction::before {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-secondary-color),
+    var(--theme-primary-light)
+  );
+}
+
+.skills-kpi-card--years::before {
+  background: linear-gradient(
+    to bottom,
+    var(--theme-primary-light),
+    var(--theme-primary-color)
+  );
+}
+
 .skills-kpi-icon {
+  position: relative;
+  isolation: isolate;
   width: 3.25rem;
   height: 3.25rem;
-  border-radius: 0.85rem;
+  border-radius: 0.85rem 1rem 0.8rem 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.15rem;
-  box-shadow: 0 10px 22px -10px;
+  border: 1px solid var(--white-transparent-20);
+  box-shadow: var(--shadow-sm);
   flex-shrink: 0;
+}
+
+
+
+.skills-kpi-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    145deg,
+    var(--white-transparent-20),
+    transparent 45%
+  );
+  z-index: -1;
+}
+
+.skills-kpi-icon i {
+  color: var(--text-white-color);
+  text-shadow: 0 1px 1px var(--white-transparent-10);
+}
+
+.skills-kpi-icon--tech {
+  border-radius: 0.9rem 0.7rem 1rem 0.8rem;
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-color),
+    var(--theme-primary-dark)
+  );
+}
+
+.skills-kpi-icon--satisfaction {
+  border-radius: 0.75rem 1rem 0.8rem 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--theme-secondary-color),
+    var(--theme-primary-light)
+  );
+}
+
+.skills-kpi-icon--years {
+  border-radius: 1rem 0.8rem 0.95rem 0.75rem;
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-light),
+    var(--theme-primary-color)
+  );
 }
 
 .skills-kpi-content {
