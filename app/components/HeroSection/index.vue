@@ -159,6 +159,7 @@ const stats = computed(() => [
 .hero-wrapper {
   @apply relative flex items-center justify-center min-h-screen overflow-hidden;
   background-color: var(--bg-primary-color);
+  padding-top: calc(var(--layout-header-height) + 1rem);
 }
 
 /* =============================
@@ -363,7 +364,7 @@ const stats = computed(() => [
      SOCIAL PROOF
   ============================= */
 .social-proof {
-  @apply flex gap-10;
+  @apply flex flex-wrap gap-10;
 }
 
 .stat {
@@ -389,8 +390,17 @@ const stats = computed(() => [
 
 .orbit-system {
   @apply relative flex items-center justify-center;
-  width: 520px;
-  height: 520px;
+  --orbit-outer-size: clamp(290px, 46vw, 520px);
+  --orbit-inner-size: calc(var(--orbit-outer-size) * 0.72);
+  --orbit-outer-radius: calc(var(--orbit-outer-size) / 2);
+  --orbit-inner-radius: calc(var(--orbit-inner-size) / 2);
+  --orbit-icon-size: clamp(36px, 4.5vw, 50px);
+  --orbit-icon-image-size: calc(var(--orbit-icon-size) * 0.56);
+  --hero-image-size: clamp(128px, 18vw, 220px);
+  --hero-frame-size: calc(var(--hero-image-size) + 14px);
+  --hero-glow-size: calc(var(--hero-image-size) + 40px);
+  width: var(--orbit-outer-size);
+  height: var(--orbit-outer-size);
 }
 
 /* Orbit ring visuals */
@@ -403,13 +413,13 @@ const stats = computed(() => [
 }
 
 .orbit-ring-outer {
-  width: 500px;
-  height: 500px;
+  width: var(--orbit-outer-size);
+  height: var(--orbit-outer-size);
 }
 
 .orbit-ring-inner {
-  width: 360px;
-  height: 360px;
+  width: var(--orbit-inner-size);
+  height: var(--orbit-inner-size);
 }
 
 /* Orbit containers */
@@ -421,18 +431,18 @@ const stats = computed(() => [
 }
 
 .orbit-outer {
-  width: 500px;
-  height: 500px;
-  margin-top: -250px;
-  margin-left: -250px;
+  width: var(--orbit-outer-size);
+  height: var(--orbit-outer-size);
+  margin-top: calc(var(--orbit-outer-size) / -2);
+  margin-left: calc(var(--orbit-outer-size) / -2);
   animation: orbitRotate 25s linear infinite;
 }
 
 .orbit-inner {
-  width: 360px;
-  height: 360px;
-  margin-top: -180px;
-  margin-left: -180px;
+  width: var(--orbit-inner-size);
+  height: var(--orbit-inner-size);
+  margin-top: calc(var(--orbit-inner-size) / -2);
+  margin-left: calc(var(--orbit-inner-size) / -2);
   animation: orbitRotateReverse 20s linear infinite;
 }
 
@@ -448,11 +458,11 @@ const stats = computed(() => [
 }
 
 .orbit-outer .orbit-icon {
-  --orbit-radius: 250px;
+  --orbit-radius: var(--orbit-outer-radius);
 }
 
 .orbit-inner .orbit-icon {
-  --orbit-radius: 180px;
+  --orbit-radius: var(--orbit-inner-radius);
 }
 
 /* Counter-rotate icons to keep them upright */
@@ -467,10 +477,10 @@ const stats = computed(() => [
 /* Icon styling */
 .orbit-icon-inner {
   @apply flex items-center justify-center rounded-2xl shadow-lg backdrop-blur-md transition-all duration-300;
-  width: 50px;
-  height: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
+  width: var(--orbit-icon-size);
+  height: var(--orbit-icon-size);
+  margin-left: calc(var(--orbit-icon-size) / -2);
+  margin-top: calc(var(--orbit-icon-size) / -2);
   background: var(--orbit-icon-bg);
   border: 1px solid var(--orbit-icon-border);
 }
@@ -483,8 +493,8 @@ const stats = computed(() => [
 }
 
 .orbit-icon-inner img {
-  width: 28px;
-  height: 28px;
+  width: var(--orbit-icon-image-size);
+  height: var(--orbit-icon-image-size);
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
@@ -494,8 +504,8 @@ const stats = computed(() => [
   ============================= */
 .user-image {
   @apply absolute z-[5] flex items-center justify-center;
-  width: 260px;
-  height: 260px;
+  width: var(--hero-glow-size);
+  height: var(--hero-glow-size);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -504,12 +514,12 @@ const stats = computed(() => [
 /* Soft ambient glow behind the image */
 .image-glow {
   @apply absolute rounded-full z-[1];
-  width: 260px;
-  height: 260px;
+  width: var(--hero-glow-size);
+  height: var(--hero-glow-size);
   top: 50%;
   left: 50%;
-  margin-top: -130px;
-  margin-left: -130px;
+  margin-top: calc(var(--hero-glow-size) / -2);
+  margin-left: calc(var(--hero-glow-size) / -2);
   background: radial-gradient(
     circle,
     var(--glow-strong) 0%,
@@ -522,12 +532,12 @@ const stats = computed(() => [
 /* Animated gradient border frame */
 .image-frame {
   @apply absolute rounded-full z-[2];
-  width: 234px;
-  height: 234px;
+  width: var(--hero-frame-size);
+  height: var(--hero-frame-size);
   top: 50%;
   left: 50%;
-  margin-top: -117px;
-  margin-left: -117px;
+  margin-top: calc(var(--hero-frame-size) / -2);
+  margin-left: calc(var(--hero-frame-size) / -2);
   padding: 3px;
   background: conic-gradient(
     from 0deg,
@@ -547,8 +557,8 @@ const stats = computed(() => [
 
 .user-image img {
   @apply absolute -translate-x-1/2 -translate-y-1/2 rounded-full object-cover z-[3] transition-transform duration-700 ease-in-out;
-  width: 220px;
-  height: 220px;
+  width: var(--hero-image-size);
+  height: var(--hero-image-size);
   top: 50%;
   left: 50%;
 }
@@ -742,171 +752,114 @@ const stats = computed(() => [
      RESPONSIVE
   ============================= */
 @media screen and (max-width: 1024px) {
+  .hero-wrapper {
+    min-height: auto;
+  }
+
   .hero-content {
     gap: 3rem !important;
     padding: 2rem 1.5rem !important;
-  }
-
-  .orbit-system {
-    width: 420px;
-    height: 420px;
-  }
-
-  .orbit-ring-outer {
-    width: 400px;
-    height: 400px;
-  }
-
-  .orbit-ring-inner {
-    width: 290px;
-    height: 290px;
-  }
-
-  .orbit-outer {
-    width: 400px;
-    height: 400px;
-    margin-top: -200px;
-    margin-left: -200px;
-  }
-
-  .orbit-outer .orbit-icon {
-    --orbit-radius: 200px;
-  }
-
-  .orbit-inner {
-    width: 290px;
-    height: 290px;
-    margin-top: -145px;
-    margin-left: -145px;
-  }
-
-  .orbit-inner .orbit-icon {
-    --orbit-radius: 145px;
-  }
-
-  .user-image img {
-    width: 170px;
-    height: 170px;
-  }
-
-  .image-frame {
-    width: 184px;
-    height: 184px;
-  }
-
-  .image-glow {
-    width: 210px;
-    height: 210px;
-  }
-
-  .orbit-icon-inner {
-    width: 42px;
-    height: 42px;
-    margin-left: -21px;
-    margin-top: -21px;
-  }
-
-  .orbit-icon-inner img {
-    width: 22px;
-    height: 22px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .hero-content {
     grid-template-columns: 1fr !important;
-    gap: 3rem !important;
-    padding: 2rem !important;
+    gap: 2.5rem !important;
+    padding: 1.5rem 1rem 2rem !important;
   }
 
   /* On mobile, image goes on top (reorder) */
   .user-image-container {
     order: -1;
+    width: 100%;
   }
 
   .hero-text {
     text-align: center;
+    max-width: 100%;
+  }
+
+  .role-container {
+    margin-bottom: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
   }
 
   .tech-stack {
     justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .tech-tag {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
   }
 
   .hero-description {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .hero-actions {
     justify-content: center;
+    margin-bottom: 2rem;
   }
 
   .social-proof {
     justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
+  }
+
+  .status-indicator {
+    margin-top: 1.25rem;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-wrapper {
+    padding-top: calc(var(--layout-header-height) + 0.5rem);
+  }
+
+  .hero-content {
+    gap: 2rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+
+  .social-proof {
+    gap: 1.1rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
   }
 
   .orbit-system {
-    width: 340px;
-    height: 340px;
-  }
-
-  .orbit-ring-outer {
-    width: 320px;
-    height: 320px;
-  }
-
-  .orbit-ring-inner {
-    width: 230px;
-    height: 230px;
-  }
-
-  .orbit-outer {
-    width: 320px;
-    height: 320px;
-    margin-top: -160px;
-    margin-left: -160px;
-  }
-
-  .orbit-outer .orbit-icon {
-    --orbit-radius: 160px;
-  }
-
-  .orbit-inner {
-    width: 230px;
-    height: 230px;
-    margin-top: -115px;
-    margin-left: -115px;
-  }
-
-  .orbit-inner .orbit-icon {
-    --orbit-radius: 115px;
-  }
-
-  .user-image img {
-    width: 130px;
-    height: 130px;
-  }
-
-  .image-frame {
-    width: 144px;
-    height: 144px;
-  }
-
-  .image-glow {
-    width: 170px;
-    height: 170px;
-  }
-
-  .orbit-icon-inner {
-    width: 36px;
-    height: 36px;
-    margin-left: -18px;
-    margin-top: -18px;
-  }
-
-  .orbit-icon-inner img {
-    width: 18px;
-    height: 18px;
+    --orbit-outer-size: min(88vw, 360px);
+    --orbit-icon-size: clamp(34px, 9vw, 40px);
   }
 }
 </style>
