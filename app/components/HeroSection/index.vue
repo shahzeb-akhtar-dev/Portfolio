@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-wrapper py-4 md:py-t pb-24" id="hero-section">
+  <section class="hero-wrapper py-4  pb-24" id="hero-section">
     <!-- Ambient background glow effects -->
     <div class="hero-ambient">
       <div class="ambient-orb ambient-orb-1"></div>
@@ -157,11 +157,9 @@ const stats = computed(() => [
      HERO WRAPPER
   ============================= */
 .hero-wrapper {
-  @apply relative flex items-center justify-center min-h-screen overflow-hidden;
+  @apply relative flex items-center justify-center min-h-screen overflow-hidden pt-4 md:pt-12;
   background-color: var(--bg-primary-color);
-  padding-top: calc(var(--layout-header-height) + 1rem);
 }
-
 /* =============================
      AMBIENT BACKGROUND EFFECTS
   ============================= */
@@ -832,9 +830,6 @@ const stats = computed(() => [
 }
 
 @media screen and (max-width: 480px) {
-  .hero-wrapper {
-    padding-top: calc(var(--layout-header-height) + 0.5rem);
-  }
 
   .hero-content {
     gap: 2rem !important;

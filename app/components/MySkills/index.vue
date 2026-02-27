@@ -7,11 +7,11 @@
         <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
           <span class="block mb-2"> </span>
         </h1>
-        <HeaderBadge icon="fa-solid fa-microchip" heading="Technologies"/>
+        <HeaderBadge icon="fa-solid fa-microchip" heading="Technologies" class=" !mx-auto"/>
         <SectionHeading
           first-part="Skills &"
           second-part="Technologies"
-          wrapper-class="justify-center"
+          wrapper-class="!justify-center"
         />
         <p class="skills-description max-w-2xl mx-auto text-lg leading-relaxed">
           Tools I use to build, ship, and scale.

@@ -67,9 +67,10 @@ onMounted(() => {
 
 <style scoped>
 .layout-header {
-  line-height: 6.4rem;
+  line-height: 1.2;
   padding: 0;
-  height: fit-content;
+  min-height: auto;
+  height: auto;
   background-color: var(--bg-primary-color) !important;
   border-bottom: 1px solid var(--border-color);
   transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -87,14 +88,14 @@ onMounted(() => {
 
 /* Scroll To Top Button */
 .scroll-button .ant-btn {
-  font-size: 2rem;
+  font-size: 1.2rem;
   position: fixed;
   z-index: 999;
   bottom: 7.5rem;
   right: 4rem;
   height: fit-content;
   width: fit-content;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.1rem;
   border: 1px solid var(--border-color);
   background: var(--surface-glass);
   backdrop-filter: blur(10px);

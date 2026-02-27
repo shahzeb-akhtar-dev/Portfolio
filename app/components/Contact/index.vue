@@ -96,10 +96,10 @@ const submitForm = async () => {
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="contact-intro rounded-3xl p-6 sm:p-10">
         <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
-        <SectionHeading first-part="Have an idea?" second-part="Let’s shape it." wrapperClass="!gap-4 !justify-start" />
+        <SectionHeading first-part="Have an idea?" second-part="Let’s shape it." wrapperClass="!gap-4" />
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
-          <p class="contact-description max-w-2xl text-base leading-relaxed sm:text-lg">
+          <p class="contact-description max-w-2xl text-base leading-relaxed sm:text-lg text-center md:text-left">
             I turn rough concepts into polished products with clear communication and reliable delivery.
             <span class="mt-2 block contact-description-strong">Share your brief — I’ll reply with a practical plan.</span>
           </p>

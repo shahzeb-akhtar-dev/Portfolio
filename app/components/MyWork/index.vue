@@ -19,11 +19,12 @@
         <HeaderBadge
           icon="fa-solid fa-diagram-project"
           heading="Portfolio Showcase"
+          class="!mx-auto"
         />
         <SectionHeading
           first-part="Crafting Digital "
           second-part="Masterpieces"
-          wrapper-class="justify-center"
+          wrapper-class=" !justify-center"
         />
 
         <p class="work-description max-w-3xl mx-auto text-lg leading-relaxed">
@@ -187,7 +188,7 @@
         >
           <div class="flex items-center gap-2">
             Load More Projects
-            <i class="fa-solid fa-arrow-down ml-1 animate-bounce-slow"></i>
+            <i class="fa-solid fa-arrow-down ml-1 animate-bounce-slow my-2 -mb-[1rem]"></i>
           </div>
         </CustomButton>
 
@@ -198,7 +199,7 @@
             <i class="fa-solid fa-check-circle text-5xl text-green-400"></i>
           </div>
           <p class="work-all-loaded text-xl font-bold">
-            All projects loaded! 🎉
+            All projects loaded!
           </p>
         </div>
       </div>

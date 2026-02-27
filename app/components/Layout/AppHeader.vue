@@ -6,7 +6,7 @@
   >
     <div class="header-top flex items-center justify-between">
       <div
-        class="logo text-3xl md:text-4xl font-semibold uppercase transition-colors duration-300 logo-font-family"
+        class="logo text-2xl md:text-3xl font-semibold uppercase transition-colors duration-300 logo-font-family"
         :style="{ color: 'var(--text-primary-color)' }"
       >
         Portfolio
@@ -61,11 +61,11 @@
       :aria-hidden="!isMenuOpen"
     >
       <nav>
-        <ul class="flex flex-col gap-2 pt-3 pb-2">
+        <ul class="mobile-nav-list">
           <li v-for="(item, i) in navItems" :key="`mobile-${i}`">
             <a
               :href="item.href"
-              class="mobile-nav-link inline-flex w-full items-center px-3 py-2.5 font-semibold transition-all duration-300"
+              class="mobile-nav-link inline-flex w-full items-center px-3 py-2 font-semibold transition-all duration-300"
               :class="{ 'is-active': activeNavHref === item.href }"
               @click="setActiveAndClose(item.href)"
             >
@@ -141,13 +141,18 @@ onUnmounted(() => {
 <style scoped>
 .header-wrapper {
   height: auto;
-  min-height: 3rem;
+  min-height: 2.75rem;
   overflow: visible;
-  border-radius: 0.9rem;
+  border-radius: 0.7rem;
 }
 
 .header-top {
-  min-height: 3.2rem;
+  min-height: 2.75rem;
+}
+
+.logo {
+  font-size: 1.95rem;
+  line-height: 1;
 }
 
 .desktop-nav-list {
@@ -189,9 +194,9 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   background: var(--surface-glass);
   backdrop-filter: blur(10px);
@@ -215,13 +220,19 @@ onUnmounted(() => {
   transform: rotate(30deg);
 }
 
+:deep(.theme-toggle-btn.ant-btn),
+:deep(.drawer-toggle-btn.ant-btn) {
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
 .drawer-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   background: var(--surface-glass);
   backdrop-filter: blur(10px);
@@ -244,21 +255,30 @@ onUnmounted(() => {
 }
 
 .mobile-nav-inline.open {
-  max-height: 70vh;
+  max-height: 18rem;
   opacity: 1;
   overflow-y: auto;
 }
 
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .mobile-nav-link {
-  min-height: 2.5rem;
+  min-height: 2.2rem;
   border-radius: 0.5rem;
  
   background: var(--white-transparent-03);
   color: var(--text-primary-color);
   justify-content: flex-start;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   letter-spacing: 0.01em;
-  line-height: 1.3;
+  line-height: 1.15;
 }
 
 .mobile-nav-link:hover {

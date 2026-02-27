@@ -15,18 +15,11 @@ defineProps<{
 
 <style>
 .header-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 2rem;
+  @apply relative flex items-center mx-auto md:mx-0 w-fit gap-3 px-8 py-3 rounded-full mb-8 text-sm font-extrabold tracking-widest text-[var(--theme-primary-color)] overflow-hidden;
+ 
   background: var(--hero-badge-bg);
   border: 2px solid var(--hero-badge-border);
-  border-radius: 100px;
-  margin-bottom: 2rem;
-  font-size: 0.875rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
+  
   color: var(--theme-primary-color);
   overflow: hidden;
 }

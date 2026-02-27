@@ -59,7 +59,7 @@ async function downloadCv(): Promise<void> {
         </aside>
 
         <!-- RIGHT: content -->
-        <div class="pt-1">
+        <div class="pt-1 text-center md:text-left">
           <HeaderBadge icon="fa-solid fa-circle-user" heading="About Me" />
           <SectionHeading
             first-part="I'm "
@@ -67,18 +67,18 @@ async function downloadCv(): Promise<void> {
             wrapperClass="!gap-4"
           />
 
-          <p class="about-subtitle text-sm font-semibold mb-4">
+          <p class="about-subtitle text-sm font-semibold mb-4  ">
             {{ siteInfo.title }}
           </p>
 
           <p
-            class="about-description text-base lg:text-lg max-w-[58ch] leading-relaxed mb-10"
+            class="about-description text-base lg:text-lg max-w-[58ch] leading-relaxed mb-10 mx-auto md:mx-0"
           >
             {{ siteInfo.about }}
           </p>
 
           <!-- skill row — glass cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 ">
             <div class="about-skill-card group">
               <div class="about-skill-card-inner">
                 <div class="about-progress-ring" title="90%" aria-hidden="true">
@@ -151,7 +151,7 @@ async function downloadCv(): Promise<void> {
           </div>
 
           <!-- CTA -->
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
             <CustomButton
               variant="primary"
               @click="downloadCv"
