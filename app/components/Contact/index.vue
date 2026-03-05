@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import type { Rule } from 'ant-design-vue/es/form'
 import type { FormInstance } from 'ant-design-vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
@@ -9,9 +9,31 @@ import ContactCard from './ContactCard.vue'
 import SocialLinks from './SocialLinks.vue'
 import CustomButton from '../BasicComponents/CustomButton.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
+import KpiCards, { type KpiItem } from '../BasicComponents/KpiCards.vue'
 const formRef = ref<FormInstance>()
 const isSubmitting = ref(false)
 const showSuccessModal = ref(false)
+
+const contactKpis = computed<KpiItem[]>(() => [
+  {
+    id: 'reply',
+    value: '24h',
+    label: 'Typical reply',
+    icon: 'fa-solid fa-clock',
+  },
+  {
+    id: 'focus',
+    value: '100%',
+    label: 'Client focus',
+    icon: 'fa-solid fa-bullseye',
+  },
+  {
+    id: 'projects',
+    value: `${siteInfo.projects.length}+`,
+    label: 'Projects',
+    icon: 'fa-solid fa-diagram-project',
+  },
+])
 
 const formData = reactive({
   name: '',
@@ -98,26 +120,13 @@ const submitForm = async () => {
         <HeaderBadge icon="fa-brands fa-nfc-symbol" heading="Let's Connect" />
         <SectionHeading first-part="Have an idea?" second-part="Let’s shape it." wrapperClass="!gap-4" />
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
+        <div class="mt-8 ">
           <p class="contact-description max-w-2xl text-base leading-relaxed sm:text-lg text-center md:text-left">
             I turn rough concepts into polished products with clear communication and reliable delivery.
             <span class="mt-2 block contact-description-strong">Share your brief — I’ll reply with a practical plan.</span>
           </p>
 
-          <div class="grid grid-cols-3 gap-3">
-            <div class="contact-stat-card rounded-2xl p-4">
-              <p class="contact-stat-value">24h</p>
-              <p class="contact-stat-label">Typical reply</p>
-            </div>
-            <div class="contact-stat-card rounded-2xl p-4">
-              <p class="contact-stat-value">100%</p>
-              <p class="contact-stat-label">Client focus</p>
-            </div>
-            <div class="contact-stat-card rounded-2xl p-4">
-              <p class="contact-stat-value">{{ siteInfo.projects.length }}+</p>
-              <p class="contact-stat-label">Projects</p>
-            </div>
-          </div>
+          <KpiCards :items="contactKpis" />
         </div>
       </div>
 
@@ -283,31 +292,7 @@ const submitForm = async () => {
   background: linear-gradient(135deg, var(--surface-glass), transparent 70%);
 }
 
-.contact-stat-card {
-  border: 1px solid var(--glass-border);
-  background: var(--white-transparent-03);
-  transition: transform 250ms ease, border-color 250ms ease;
-}
 
-.contact-stat-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--theme-primary-color);
-}
-
-.contact-stat-value {
-  color: var(--text-primary-color);
-  font-size: 1.65rem;
-  line-height: 1;
-  font-weight: 800;
-}
-
-.contact-stat-label {
-  color: var(--text-muted-color);
-  margin-top: 0.45rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
 
 .contact-description {
   color: var(--text-secondary-color);

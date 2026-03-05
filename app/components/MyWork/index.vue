@@ -39,80 +39,7 @@
         </p>
 
         <!-- Stats -->
-        <div class="flex flex-wrap justify-center gap-6 pt-8">
-          <div
-            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
-            ></div>
-            <div class="relative flex items-center gap-4">
-              <div
-                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl shadow-lg shadow-orange-500/50"
-              >
-                <i class="fa-solid fa-rocket text-white text-xl"></i>
-              </div>
-              <div class="text-left">
-                <div class="work-stat-value text-3xl font-black">
-                  {{ myWork.length }}+
-                </div>
-                <div
-                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
-                >
-                  Projects
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 hover:border-purple-500/50"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
-            ></div>
-            <div class="relative flex items-center gap-4">
-              <div
-                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl shadow-lg shadow-purple-500/50"
-              >
-                <i class="fa-solid fa-users text-white text-xl"></i>
-              </div>
-              <div class="text-left">
-                <div class="work-stat-value text-3xl font-black">100%</div>
-                <div
-                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
-                >
-                  Satisfaction
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="work-stat-card group relative backdrop-blur-xl rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:to-transparent rounded-2xl transition-all duration-300"
-            ></div>
-            <div class="relative flex items-center gap-4">
-              <div
-                class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl shadow-lg shadow-blue-500/50"
-              >
-                <i class="fa-solid fa-award text-white text-xl"></i>
-              </div>
-              <div class="text-left">
-                <div class="work-stat-value text-3xl font-black">
-                  {{ siteInfo.dev.experience }}
-                </div>
-                <div
-                  class="work-stat-label text-sm font-semibold uppercase tracking-wide"
-                >
-                  Years
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <KpiCards :items="workKpis" />
       </div>
 
       <!-- Projects Grid -->
@@ -121,25 +48,11 @@
           v-for="(project, index) in recentProjects"
           :key="project.id"
           :style="{ animationDelay: `${index * 100}ms` }"
-          class="work-project-card group relative backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50 animate-fade-in-up"
+          class="work-project-card group relative backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 hover:border-orange-500/50"
         >
-          <!-- Gradient Overlay on Hover -->
-          <div
-            class="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-pink-500/0 to-purple-500/0 group-hover:from-orange-500/10 group-hover:via-pink-500/5 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none"
-          ></div>
-
-          <!-- Shine Effect -->
-          <div
-            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-            ></div>
-          </div>
-
           <!-- Project Number Badge -->
           <div
-            class="work-badge absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 backdrop-blur-md border border-orange-500/30 rounded-full font-black text-orange-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+            class="work-badge absolute top-4 right-4 z-10 flex items-center justify-center w-12 h-12 backdrop-blur-md border border-orange-500/30 rounded-full font-black text-orange-400 group-hover:scale-110 transition-all duration-300"
           >
             {{ String(index + 1).padStart(2, '0') }}
           </div>
@@ -157,13 +70,28 @@
           <!-- Content -->
           <div class="relative p-6 space-y-4">
             <h3
-              class="work-project-title text-2xl font-black group-hover:text-orange-400 transition-colors duration-300"
+              class="work-project-title text-2xl font-black group-hover:text-orange-500 transition-colors duration-300"
             >
               {{ project.name }}
             </h3>
-            <p class="work-project-desc leading-relaxed line-clamp-3">
+            <p
+              class="work-project-desc group-hover:text-orange-400 leading-relaxed line-clamp-3"
+            >
               {{ project.description }}
             </p>
+
+            <div
+              v-if="project.skills?.length"
+              class="work-skills-wrap flex flex-wrap gap-2 pt-1"
+            >
+              <span
+                v-for="skill in project.skills"
+                :key="`${project.id}-${skill}`"
+                class="work-skill-tag text-[var(--theme-primary-dark)] inline-flex bg-[#ff4d001e] items-center rounded-full px-3 py-1 text-xs font-semibold transition-colors duration-300"
+              >
+                {{ skill }}
+              </span>
+            </div>
 
             <!-- Footer -->
             <!-- <div class="flex items-center justify-between pt-4">
@@ -188,7 +116,9 @@
         >
           <div class="flex items-center gap-2">
             Load More Projects
-            <i class="fa-solid fa-arrow-down ml-1 animate-bounce-slow my-2 -mb-[1rem]"></i>
+            <i
+              class="fa-solid fa-arrow-down ml-1 animate-bounce-slow my-2 -mb-[1rem]"
+            ></i>
           </div>
         </CustomButton>
 
@@ -198,9 +128,7 @@
           >
             <i class="fa-solid fa-check-circle text-5xl text-green-400"></i>
           </div>
-          <p class="work-all-loaded text-xl font-bold">
-            All projects loaded!
-          </p>
+          <p class="work-all-loaded text-xl font-bold">All projects loaded!</p>
         </div>
       </div>
     </div>
@@ -213,16 +141,39 @@ import siteInfo from '@/utilies/siteInfo.json'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import CustomButton from '../BasicComponents/CustomButton.vue'
+import KpiCards, { type KpiItem } from '../BasicComponents/KpiCards.vue'
 // Types
 interface Project {
   id: number | string
   name: string
   description: string
+  skills?: string[]
   image: string
 }
 
 // Project data with relevant images
 const myWork = ref<Project[]>(siteInfo.projects || [])
+
+const workKpis = computed<KpiItem[]>(() => [
+  {
+    id: 'projects',
+    value: `${myWork.value.length}+`,
+    label: 'Projects',
+    icon: 'fa-solid fa-rocket',
+  },
+  {
+    id: 'satisfaction',
+    value: '100%',
+    label: 'Satisfaction',
+    icon: 'fa-solid fa-users',
+  },
+  {
+    id: 'experience',
+    value: siteInfo.dev.experience,
+    label: 'Years',
+    icon: 'fa-solid fa-award',
+  },
+])
 
 const workDataLimit = ref<number>(6)
 
@@ -279,7 +230,7 @@ const loadMore = () => {
 }
 
 .work-img-overlay {
-  background: linear-gradient(to top, var(--bg-primary-color), transparent);
+  background: rgba(0, 0, 0, 0.137);
 }
 
 .work-project-title {
@@ -288,6 +239,14 @@ const loadMore = () => {
 
 .work-project-desc {
   color: var(--text-secondary-color);
+}
+
+.work-skill-tag {
+  border: 1px solid var(--glass-border);
+}
+
+.work-project-card:hover .work-skill-tag {
+  border-color: rgb(249 115 22 / 0.35);
 }
 
 .work-all-loaded {

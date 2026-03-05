@@ -73,46 +73,17 @@
       </div>
 
       <!-- Achievement Stats -->
-      <div class="skills-kpi-grid mt-16 mb-4">
-        <article class="skills-kpi-card skills-kpi-card--tech">
-          <div class="skills-kpi-icon skills-kpi-icon--tech">
-            <i class="fa-solid fa-microchip text-white"></i>
-          </div>
-          <div class="skills-kpi-content">
-            <p class="skills-kpi-value">{{ skills.length }}+</p>
-            <p class="skills-kpi-label">Technologies</p>
-          </div>
-        </article>
-
-        <article class="skills-kpi-card skills-kpi-card--satisfaction">
-          <div class="skills-kpi-icon skills-kpi-icon--satisfaction">
-            <i class="fa-solid fa-thumbs-up text-white"></i>
-          </div>
-          <div class="skills-kpi-content">
-            <p class="skills-kpi-value">100%</p>
-            <p class="skills-kpi-label">Satisfaction</p>
-          </div>
-        </article>
-
-        <article class="skills-kpi-card skills-kpi-card--years">
-          <div class="skills-kpi-icon skills-kpi-icon--years">
-            <i class="fa-solid fa-calendar-check text-white"></i>
-          </div>
-          <div class="skills-kpi-content">
-            <p class="skills-kpi-value">{{ siteInfo.dev.experience }}</p>
-            <p class="skills-kpi-label">Years</p>
-          </div>
-        </article>
-      </div>
+      <KpiCards :items="skillKpis" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import siteInfo from '~/utilies/siteInfo.json'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
+import KpiCards, { type KpiItem } from '../BasicComponents/KpiCards.vue'
 
 // Types
 interface Skill {
@@ -122,6 +93,27 @@ interface Skill {
 
 // Skills data from JSON
 const skills = ref<Skill[]>(siteInfo.skills)
+
+const skillKpis = computed<KpiItem[]>(() => [
+  {
+    id: 'technologies',
+    value: `${skills.value.length}+`,
+    label: 'Technologies',
+    icon: 'fa-solid fa-microchip',
+  },
+  {
+    id: 'satisfaction',
+    value: '100%',
+    label: 'Satisfaction',
+    icon: 'fa-solid fa-thumbs-up',
+  },
+  {
+    id: 'years',
+    value: siteInfo.dev.experience,
+    label: 'Years',
+    icon: 'fa-solid fa-calendar-check',
+  },
+])
 </script>
 
 <style scoped>
@@ -168,150 +160,7 @@ const skills = ref<Skill[]>(siteInfo.skills)
   color: var(--theme-primary-color, #ff5a01);
 }
 
-.skills-kpi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.skills-kpi-card {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  background: var(--bg-card-color);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.skills-kpi-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--theme-primary-color);
-  box-shadow: var(--shadow-md);
-}
-
-.skills-kpi-card::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  opacity: 0.8;
-}
-
-.skills-kpi-card--tech::before {
-  background: linear-gradient(
-    to bottom,
-    var(--theme-primary-color),
-    var(--theme-primary-dark)
-  );
-}
-
-.skills-kpi-card--satisfaction::before {
-  background: linear-gradient(
-    to bottom,
-    var(--theme-secondary-color),
-    var(--theme-primary-light)
-  );
-}
-
-.skills-kpi-card--years::before {
-  background: linear-gradient(
-    to bottom,
-    var(--theme-primary-light),
-    var(--theme-primary-color)
-  );
-}
-
-.skills-kpi-icon {
-  position: relative;
-  isolation: isolate;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 0.85rem 1rem 0.8rem 0.95rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.15rem;
-  border: 1px solid var(--white-transparent-20);
-  box-shadow: var(--shadow-sm);
-  flex-shrink: 0;
-}
-
-
-
-.skills-kpi-icon::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    145deg,
-    var(--white-transparent-20),
-    transparent 45%
-  );
-  z-index: -1;
-}
-
-.skills-kpi-icon i {
-  color: var(--text-white-color);
-  text-shadow: 0 1px 1px var(--white-transparent-10);
-}
-
-.skills-kpi-icon--tech {
-  border-radius: 0.9rem 0.7rem 1rem 0.8rem;
-  background: linear-gradient(
-    135deg,
-    var(--theme-primary-color),
-    var(--theme-primary-dark)
-  );
-}
-
-.skills-kpi-icon--satisfaction {
-  border-radius: 0.75rem 1rem 0.8rem 1rem;
-  background: linear-gradient(
-    135deg,
-    var(--theme-secondary-color),
-    var(--theme-primary-light)
-  );
-}
-
-.skills-kpi-icon--years {
-  border-radius: 1rem 0.8rem 0.95rem 0.75rem;
-  background: linear-gradient(
-    135deg,
-    var(--theme-primary-light),
-    var(--theme-primary-color)
-  );
-}
-
-.skills-kpi-content {
-  text-align: left;
-}
-
-.skills-kpi-value {
-  margin: 0;
-  font-size: clamp(1.9rem, 2.3vw, 2.35rem);
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: var(--text-primary-color);
-}
-
-.skills-kpi-label {
-  margin: 0.32rem 0 0;
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted-color);
-}
 
 /* Infinite Scroll Animation */
 @keyframes scroll {
@@ -355,30 +204,11 @@ const skills = ref<Skill[]>(siteInfo.skills)
   .animate-scroll {
     animation-duration: 25s;
   }
-
-  .skills-kpi-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 480px) {
   .animate-scroll {
     animation-duration: 20s;
-  }
-
-  .skills-kpi-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-  }
-
-  .skills-kpi-card {
-    padding: 1rem;
-  }
-
-  .skills-kpi-icon {
-    width: 2.9rem;
-    height: 2.9rem;
-    border-radius: 0.75rem;
   }
 }
 </style>
