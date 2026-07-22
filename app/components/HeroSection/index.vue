@@ -1,5 +1,9 @@
 <template>
-  <section class="hero-wrapper py-4  pb-24" id="hero-section">
+  <section
+    class="hero-wrapper"
+    id="hero-section"
+    data-hero-container
+  >
     <!-- Ambient background glow effects -->
     <div class="hero-ambient">
       <div class="ambient-orb ambient-orb-1"></div>
@@ -7,7 +11,22 @@
       <div class="ambient-orb ambient-orb-3"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto w-full relative z-[3]">
+    <HeroScrollCanvas />
+
+    <div
+      ref="introRef"
+      class="hero-intro"
+      :style="{ opacity: 1 - introProgress * 2.5, transform: `translateY(${introProgress * 60}px) scale(${1 - introProgress * 0.08})` }"
+    >
+      <div class="hero-intro-content">
+        <h1 class="hero-intro-name">Shahzeb Akhtar</h1>
+        <span class="hero-intro-role">Full-Stack Developer</span>
+        <div class="hero-intro-divider" />
+        <p class="hero-intro-tagline">Crafting scalable, beautiful web experiences</p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto w-full sticky top-0 z-[5] h-screen flex items-center">
       <div class="hero-content">
         <!-- Left: Enhanced User Image -->
         <!-- <div class="user-image-container">
@@ -21,8 +40,8 @@
           </div>
         </div> -->
 
-        <!-- Right: Enhanced Text Content -->
-        <div class="hero-text">
+        <!-- Left: Text Content -->
+        <div class="hero-text glass-panel">
           <HeaderBadge icon="fa-solid fa-hand" heading="Hello there!" />
           <SectionHeading
             first-part="I'm "
@@ -67,7 +86,7 @@
         </div>
 
         <!-- RIGHT: Image with Orbiting Icons -->
-        <div class="user-image-container">
+        <div class="user-image-container glass-panel">
           <div class="orbit-system">
             <!-- Orbit ring visuals -->
             <div class="orbit-ring orbit-ring-outer"></div>
@@ -132,14 +151,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { scrollTo } from '@/composables/useScroll'
 import siteInfo from '@/utilies/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
+import HeroScrollCanvas from './HeroScrollCanvas.vue'
 
-// Split skills into two orbits
 const outerOrbitSkills = computed(() => siteInfo.skills.slice(0, 6))
 const innerOrbitSkills = computed(() => siteInfo.skills.slice(6, 12))
 
@@ -149,7 +168,33 @@ const stats = computed(() => [
   { value: '100%', label: 'Satisfaction' },
 ])
 
+const introRef = ref<HTMLDivElement>()
+const introProgress = ref(0)
 
+let scrollContainer: HTMLElement | null = null
+let heroEl: HTMLElement | null = null
+
+function updateIntroProgress() {
+  if (!heroEl) return
+  const rect = heroEl.getBoundingClientRect()
+  const viewportH = window.innerHeight
+  const scrollableH = rect.height - viewportH
+  if (scrollableH <= 0) return
+  introProgress.value = Math.max(0, Math.min(1, -rect.top / scrollableH))
+}
+
+onMounted(() => {
+  scrollContainer = document.getElementById('BodyWrapper')
+  heroEl = introRef.value?.closest('[data-hero-container]') as HTMLElement | null
+  const scrollTarget = scrollContainer || window
+  scrollTarget.addEventListener('scroll', updateIntroProgress, { passive: true })
+  updateIntroProgress()
+})
+
+onBeforeUnmount(() => {
+  const scrollTarget = scrollContainer || window
+  scrollTarget.removeEventListener('scroll', updateIntroProgress)
+})
 </script>
 
 <style>
@@ -157,7 +202,8 @@ const stats = computed(() => [
      HERO WRAPPER
   ============================= */
 .hero-wrapper {
-  @apply relative flex items-center justify-center min-h-screen overflow-hidden pt-4 md:pt-12;
+  @apply relative flex flex-col;
+  min-height: 300vh;
   background-color: var(--bg-primary-color);
 }
 /* =============================
@@ -209,11 +255,77 @@ const stats = computed(() => [
 }
 
 /* =============================
+     HERO INTRO OVERLAY
+  ============================= */
+.hero-intro {
+  @apply sticky top-0 z-[3] flex items-center justify-center w-full;
+  height: 100vh;
+  margin-top: -100vh;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.hero-intro-content {
+  @apply flex flex-col items-center text-center gap-2 max-w-[700px] px-4;
+}
+
+.hero-intro-name {
+  font-family: var(--logo-font-family);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 400;
+  color: var(--text-primary-color);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 0 0 80px var(--glow-strong);
+  animation: intro-name-in 1s ease-out both;
+}
+
+.hero-intro-role {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--theme-primary-color);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  animation: intro-fade-up 0.8s ease-out 0.25s both;
+}
+
+.hero-intro-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--theme-gradient-primary);
+  margin: 0.5rem 0;
+  animation: intro-line 1s ease-out 0.4s both;
+}
+
+.hero-intro-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  font-weight: 300;
+  color: var(--text-secondary-color);
+  letter-spacing: 0.08em;
+  margin: 0;
+  animation: intro-fade-up 0.8s ease-out 0.5s both;
+}
+
+/* =============================
      HERO CONTENT GRID
   ============================= */
 .hero-content {
-  @apply relative z-[3] grid items-center max-w-[1400px] w-full gap-16 px-8;
+  @apply relative z-[4] grid items-center max-w-[1400px] w-full gap-16 px-8;
   grid-template-columns: 1fr auto;
+  min-height: 100vh;
+}
+
+/* =============================
+     GLASS PANEL OVERLAY
+   ============================= */
+.glass-panel {
+  @apply backdrop-blur-xl rounded-2xl p-8;
+  background: rgba(10, 10, 15, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* =============================
@@ -585,7 +697,7 @@ const stats = computed(() => [
      SCROLL INDICATOR
   ============================= */
 .scroll-indicator {
-  @apply absolute bottom-[0.5rem] left-1/2 flex flex-col items-center gap-2 text-[0.85rem] z-[4];
+  @apply fixed bottom-[1rem] left-1/2 flex flex-col items-center gap-2 text-[0.85rem] z-[10];
   transform: translateX(-50%);
   color: var(--hero-text-muted);
 }
@@ -707,6 +819,35 @@ const stats = computed(() => [
   }
 }
 
+@keyframes intro-name-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes intro-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-line {
+  from { width: 0; opacity: 0; }
+  to { width: 60px; opacity: 1; }
+}
+
 /* =============================
      ORBIT ANIMATIONS
   ============================= */
@@ -751,7 +892,7 @@ const stats = computed(() => [
   ============================= */
 @media screen and (max-width: 1024px) {
   .hero-wrapper {
-    min-height: auto;
+    min-height: 250vh;
   }
 
   .hero-content {
@@ -761,10 +902,19 @@ const stats = computed(() => [
 }
 
 @media screen and (max-width: 768px) {
+  .hero-wrapper {
+    min-height: 200vh;
+  }
+
+  .glass-panel {
+    @apply p-5 rounded-xl;
+  }
+
   .hero-content {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
     padding: 1.5rem 1rem 2rem !important;
+    min-height: 100vh;
   }
 
   /* On mobile, image goes on top (reorder) */
