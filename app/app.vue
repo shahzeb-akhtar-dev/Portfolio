@@ -1,10 +1,12 @@
 <template>
-  <Preloader3D v-if="showPreloader" @complete="showPreloader = false" />
-  <NuxtLayout v-show="!showPreloader"> <NuxtPage/> </NuxtLayout>
+  <Preloader3D v-if="showPreloader" @complete="hide" />
+  <div v-show="!showPreloader">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
-const showPreloader = ref(true)
+const { showPreloader, hide } = usePreloader()
 </script>

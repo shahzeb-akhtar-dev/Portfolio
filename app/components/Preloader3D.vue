@@ -118,7 +118,7 @@ onMounted(() => {
 
 .brand-name {
   font-family: var(--logo-font-family);
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
   color: var(--text-primary-color);
   letter-spacing: 0.12em;

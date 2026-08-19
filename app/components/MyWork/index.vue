@@ -17,7 +17,7 @@
           <span class="work-highlight font-semibold">stunning digital experiences</span>
           through innovative design, clean code, and cutting-edge technology.
         </p>
-        <KpiCards :items="workKpis" />
+        <!-- <KpiCards :items="workKpis" /> -->
       </div>
     </div>
 
@@ -51,26 +51,26 @@ interface Project {
 
 const myWork = ref<Project[]>(siteInfo.projects || [])
 
-const workKpis = computed<KpiItem[]>(() => [
-  {
-    id: 'projects',
-    value: `${myWork.value.length}+`,
-    label: 'Projects',
-    icon: 'fa-solid fa-rocket',
-  },
-  {
-    id: 'satisfaction',
-    value: '100%',
-    label: 'Satisfaction',
-    icon: 'fa-solid fa-users',
-  },
-  {
-    id: 'experience',
-    value: siteInfo.dev.experience,
-    label: 'Years',
-    icon: 'fa-solid fa-award',
-  },
-])
+// const workKpis = computed<KpiItem[]>(() => [
+//   {
+//     id: 'projects',
+//     value: `${myWork.value.length}+`,
+//     label: 'Projects',
+//     icon: 'fa-solid fa-rocket',
+//   },
+//   {
+//     id: 'satisfaction',
+//     value: '100%',
+//     label: 'Satisfaction',
+//     icon: 'fa-solid fa-users',
+//   },
+//   {
+//     id: 'experience',
+//     value: siteInfo.dev.experience,
+//     label: 'Years',
+//     icon: 'fa-solid fa-award',
+//   },
+// ])
 </script>
 
 <style scoped>

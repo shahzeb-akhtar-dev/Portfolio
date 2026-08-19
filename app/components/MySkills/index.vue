@@ -100,18 +100,24 @@ const skillKpis = computed<KpiItem[]>(() => [
     value: `${skills.value.length}+`,
     label: 'Technologies',
     icon: 'fa-solid fa-microchip',
+    iconBgClass: 'bg-[var(--theme-primary-light)]/10',
+    iconClass: 'text-[var(--theme-primary-light)]',
   },
   {
     id: 'satisfaction',
     value: '100%',
     label: 'Satisfaction',
     icon: 'fa-solid fa-thumbs-up',
+    iconBgClass: 'bg-[var(--theme-secondary-color)]/10',
+    iconClass: 'text-[var(--theme-secondary-color)]',
   },
   {
     id: 'years',
     value: siteInfo.dev.experience,
     label: 'Years',
     icon: 'fa-solid fa-calendar-check',
+    iconBgClass: 'bg-[var(--theme-primary-color)]/10',
+    iconClass: 'text-[var(--theme-primary-color)]',
   },
 ])
 </script>

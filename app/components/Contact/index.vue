@@ -20,18 +20,24 @@ const contactKpis = computed<KpiItem[]>(() => [
     value: '24h',
     label: 'Typical reply',
     icon: 'fa-solid fa-clock',
+    iconBgClass: 'bg-[var(--theme-primary-color)]/10',
+    iconClass: 'text-[var(--theme-primary-color)]',
   },
   {
     id: 'focus',
     value: '100%',
     label: 'Client focus',
     icon: 'fa-solid fa-bullseye',
+    iconBgClass: 'bg-[var(--theme-primary-light)]/10',
+    iconClass: 'text-[var(--theme-primary-light)]',
   },
   {
     id: 'projects',
     value: `${siteInfo.projects.length}+`,
     label: 'Projects',
     icon: 'fa-solid fa-diagram-project',
+    iconBgClass: 'bg-[var(--theme-secondary-color)]/10',
+    iconClass: 'text-[var(--theme-secondary-color)]',
   },
 ])
 

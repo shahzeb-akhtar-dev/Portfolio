@@ -1,16 +1,17 @@
 {
   "name": "Shahzeb Akhtar",
-  "title": "Full Stack Developer",
+  "title": "Senior Vue.js Developer",
   "hero": {
     "techStack": ["Vue.js", "TypeScript", "Laravel"],
     "description": "Crafting scalable, beautiful web applications with modern technologies. Passionate about clean code and exceptional user experiences."
   },
   "dev": {
-    "experience": "3+",
+    "experience": "4+",
+    "projects": "15+",
     "expertise": "Vue/Nuxt",
-    "email": ""
+    "email": "shahzebakhtar.dev@gmail.com"
   },
-  "about": "Experienced developer specializing in modern web technologies, passionate about building scalable and performant applications.",
+  "about": "Senior Vue.js Developer with 3+ years of experience building modern, scalable and user-focused web applications. I specialize in Vue.js ecosystem, performance optimization and clean, maintainable code.",
   "skills": [
     { "name": "Bootstrap", "icon": "/images/skill-icon/bootstrap.png" },
     { "name": "Click Up", "icon": "/images/skill-icon/clickup.png" },

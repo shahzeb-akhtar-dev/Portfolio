@@ -636,7 +636,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .gallery3d-section {
   position: relative;
-  background: #0a0a0f;
+  background: transparent;
 }
 
 .gallery3d-sticky {
