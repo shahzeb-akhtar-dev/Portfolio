@@ -13,7 +13,7 @@
     <!-- Body -->
     <a-layout-content
       id="BodyWrapper"
-      class="layout-content flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-3.5rem)] scroll-smooth"
+      class="layout-content flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-5rem)] scroll-smooth"
       @scroll="handleScroll"
     >
       <div class="body-wrapper max-h-full">

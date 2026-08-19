@@ -26,12 +26,12 @@
            199.3.1 19.9-16 36-35.9 36z"
       />
     </svg>
-    
+
     <!-- Button content -->
-    <span class="relative z-10">
+    <span class="relative z-10 flex items-center gap-2">
       <slot />
     </span>
-    
+
     <!-- Shine effect for primary -->
     <span v-if="variant !== 'secondary'" class="shine"></span>
   </button>
@@ -51,13 +51,13 @@ const emit = defineEmits<{
 
 const variantClasses = computed(() => {
   const base =
-    'relative flex items-center justify-center overflow-hidden rounded-xl px-8 py-2 text-base font-semibold transition-all duration-500 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
-    
+    'relative flex items-center justify-center overflow-hidden rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
+
   return [
     base,
     props.variant === 'secondary'
-      ? 'primary-btn border border-primary-color'
-      : 'border-2 border-transparent text-[var(--text-white-color)] shadow-[var(--shadow-md)] bg-gradient-to-br from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-primary-dark)] hover:shadow-[var(--shadow-lg)] hover:scale-[1.02] active:scale-[0.98] hover:from-[var(--theme-primary-light)] hover:via-[var(--theme-primary-color)] hover:to-[var(--theme-primary-dark)]',
+      ? 'secondary-btn border border-[var(--border-color)] text-[var(--text-primary-color)] bg-transparent hover:border-[var(--theme-primary-color)] hover:text-[var(--theme-primary-color)] hover:bg-[var(--glow-primary)]'
+      : 'primary-btn border border-transparent text-white shadow-[var(--shadow-md)] bg-gradient-to-r from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-secondary-color)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 active:translate-y-0',
   ]
 })
 </script>
@@ -79,7 +79,7 @@ const variantClasses = computed(() => {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.25),
     transparent
   );
   transition: left 0.6s ease;
@@ -97,7 +97,7 @@ const variantClasses = computed(() => {
   border-radius: inherit;
   background: radial-gradient(
     circle at center,
-    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.25) 0%,
     transparent 70%
   );
   opacity: 0;
@@ -111,52 +111,22 @@ const variantClasses = computed(() => {
   transition: transform 0s, opacity 0s;
 }
 
-/* Glow pulse animation for primary */
-.btn-base:not(.border-orange-500) {
-  animation: pulse-glow 3s ease-in-out infinite;
+/* Primary button glow */
+.primary-btn {
+  box-shadow: 0 8px 25px -8px rgba(59, 130, 246, 0.4);
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.4);
-  }
-  50% {
-    box-shadow: 0 10px 50px -5px rgba(249, 115, 22, 0.6);
-  }
+.primary-btn:hover {
+  box-shadow: 0 12px 35px -8px rgba(59, 130, 246, 0.55);
 }
 
-.btn-base:hover {
-  animation: none;
+/* Secondary button */
+.secondary-btn i {
+  transition: transform 0.3s ease;
 }
 
-/* Secondary button border glow */
-.border-orange-500::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(45deg, 
-    transparent,
-    rgba(249, 115, 22, 0.4),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-  animation: border-rotate 3s linear infinite;
-}
-
-.border-orange-500:hover::after {
-  opacity: 1;
-}
-
-@keyframes border-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.secondary-btn:hover i {
+  transform: translateY(1px);
 }
 
 /* Loading state adjustments */
@@ -165,65 +135,8 @@ const variantClasses = computed(() => {
   animation: none !important;
 }
 
-.btn-base:disabled:hover {
-  box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.2);
-}
-
-/* Dark mode enhancements - uses CSS variable theme */
-[data-theme='dark'] .btn-base:not(.border-orange-500) {
-  box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.5),
-              0 0 20px -5px rgba(249, 115, 22, 0.3);
-}
-
-[data-theme='dark'] .btn-base:not(.border-orange-500):hover {
-  box-shadow: 0 20px 60px -10px rgba(249, 115, 22, 0.7),
-              0 0 30px 0px rgba(249, 115, 22, 0.5);
-}
-
 /* Smooth transitions for all interactive states */
 .btn-base * {
   transition: inherit;
-}
-.primary-btn {
-  --gradient-color: linear-gradient(
-    40deg,
-    var(--theme-primary-color) 20%,
-    transparent 53%
-  );
-
-  outline: none;
- 
-  text-shadow: none;
-  color: var(--text-primary-color);
-  
-  /* border-radius: 0.7rem; */
-  background: var(--gradient-color);
-  background-size: 240% 200%;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color);
-  background-position: right;
-  transition: all 0.3s ease-out;
-  text-transform: uppercase;
-  &:hover {
-    border: 0.1rem solid var(--gradient-color);
-    box-shadow: none;
-    text-shadow: none;
-    background-position: left;
-    color: var(--text-white-color);
-  }
-  &:disabled:hover {
-    cursor: no-drop;
-    background-position: right;
-    box-shadow: 0rem 0rem 1rem -0.3rem var(--box-shadow-color);
-    text-shadow: 0rem 0rem 1.2rem black;
-  }
-
-  i {
-    color: #beb6b6;
-    font-size: 3rem;
-    margin-right: 0.7rem;
-    vertical-align: 0;
-  }
 }
 </style>

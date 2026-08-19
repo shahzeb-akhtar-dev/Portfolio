@@ -13,13 +13,13 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'My Portfolio',
+      title: 'Shahzeb Akhtar | Senior Vue.js Developer',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { charset: 'utf-8' },
         {
           name: 'description',
-          content: 'Portfolio built with Nuxt 3 + Ant Design Vue',
+          content: 'Shahzeb Akhtar - Senior Vue.js Developer. I build modern, responsive and user-focused web applications with clean code and great user experience.',
         },
       ],
       link: [

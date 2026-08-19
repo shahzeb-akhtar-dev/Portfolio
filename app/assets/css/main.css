@@ -1,134 +1,134 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira+Stencil+One&display=swap');
 
 /* =============================
-     DARK THEME (Default)
+     LIGHT THEME (Default)
   ============================= */
 :root,
-[data-theme='dark'] {
+[data-theme='light'] {
   /* Typography */
-  --logo-font-family: 'Saira Stencil One', sans-serif;
+  --logo-font-family: 'Inter', sans-serif;
 
   /* Layout */
-  --layout-header-height: 6.3rem;
+  --layout-header-height: 5rem;
 
   /* Background colors */
-  --bg-primary-color: #0a0a0f;
-  --bg-secondary-color: #111118;
-  --bg-card-color: #16161e;
-  --bg-elevated-color: #1c1c26;
+  --bg-primary-color: #f8fafc;
+  --bg-secondary-color: #ffffff;
+  --bg-card-color: #ffffff;
+  --bg-elevated-color: #f1f5f9;
 
   /* Text colors */
-  --text-primary-color: #f0f0f5;
-  --text-secondary-color: #a19797;
-  --text-muted-color: #6b6b80;
+  --text-primary-color: #0f172a;
+  --text-secondary-color: #475569;
+  --text-muted-color: #64748b;
+  --text-black-color: #000000;
+  --text-white-color: #ffffff;
+
+  /* Border & surface */
+  --border-color: rgba(15, 23, 42, 0.08);
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --box-shadow-color: rgba(15, 23, 42, 0.08);
+
+  /* Theme accent colors */
+  --theme-primary-color: #3b82f6;
+  --theme-primary-light: #14b8a6;
+  --theme-primary-dark: #6366f1;
+  --theme-secondary-color: #8b5cf6;
+
+  /* Gradients */
+  --theme-gradient-primary: linear-gradient(
+    135deg,
+    var(--theme-primary-light) 0%,
+    var(--theme-primary-color) 50%,
+    var(--theme-secondary-color) 100%
+  );
+
+  /* Transparencies */
+  --primary-transparent: rgba(59, 130, 246, 0.93);
+  --white-transparent-03: rgba(15, 23, 42, 0.03);
+  --white-transparent-05: rgba(15, 23, 42, 0.05);
+  --white-transparent-10: rgba(15, 23, 42, 0.1);
+  --white-transparent-20: rgba(15, 23, 42, 0.2);
+  --white-transparent-30: rgba(15, 23, 42, 0.3);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
+  --shadow-lg: 0 20px 50px -10px rgba(59, 130, 246, 0.35);
+
+  /* Overlays */
+  --bg-overlay-dark: rgba(15, 23, 42, 0.5);
+  --bg-overlay-darker: rgba(15, 23, 42, 0.8);
+
+  /* Special effects */
+  --glass-effect: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(15, 23, 42, 0.06);
+  --glow-primary: rgba(59, 130, 246, 0.12);
+  --glow-strong: rgba(59, 130, 246, 0.25);
+
+  /* Orbit system */
+  --orbit-ring-color: rgba(15, 23, 42, 0.06);
+  --orbit-icon-bg: rgba(255, 255, 255, 0.9);
+  --orbit-icon-border: rgba(15, 23, 42, 0.08);
+  --orbit-icon-hover-bg: rgba(59, 130, 246, 0.1);
+  --orbit-icon-hover-border: rgba(59, 130, 246, 0.3);
+
+  /* Hero section */
+  --hero-text-color: #0f172a;
+  --hero-text-muted: #64748b;
+  --hero-badge-bg: rgba(255, 255, 255, 0.8);
+  --hero-badge-border: rgba(15, 23, 42, 0.08);
+}
+
+/* =============================
+     DARK THEME
+  ============================= */
+[data-theme='dark'] {
+  /* Background colors */
+  --bg-primary-color: #0f172a;
+  --bg-secondary-color: #1e293b;
+  --bg-card-color: #1e293b;
+  --bg-elevated-color: #334155;
+
+  /* Text colors */
+  --text-primary-color: #f8fafc;
+  --text-secondary-color: #cbd5e1;
+  --text-muted-color: #94a3b8;
   --text-black-color: #000000;
   --text-white-color: #ffffff;
 
   /* Border & surface */
   --border-color: rgba(255, 255, 255, 0.08);
-  --surface-glass: rgba(255, 255, 255, 0.04);
-  --box-shadow-color: #a19797;
-
-  /* Theme accent colors */
-  --theme-primary-color: #ff5900;
-  --theme-primary-light: rgb(249 115 22);
-  --theme-primary-dark: rgb(255 75 0);
-  --theme-secondary-color: rgb(236 72 153);
-
-  /* Gradients */
-  --theme-gradient-primary: linear-gradient(
-    135deg,
-    var(--theme-primary-color) 0%,
-    var(--theme-primary-dark) 100%
-  );
-
-  /* Transparencies */
-  --primary-transparent: rgb(255 90 1 / 93%);
-  --white-transparent-03: rgba(255, 255, 255, 0.03);
-  --white-transparent-05: rgba(255, 255, 255, 0.05);
-  --white-transparent-10: rgba(255, 255, 255, 0.1);
-  --white-transparent-20: rgba(255, 255, 255, 0.2);
-  --white-transparent-30: rgba(255, 255, 255, 0.3);
+  --surface-glass: rgba(30, 41, 59, 0.7);
+  --box-shadow-color: rgba(0, 0, 0, 0.25);
 
   /* Shadows */
-  --shadow-sm: 0 10px 30px rgba(255, 90, 1, 0.08);
-  --shadow-md: 0 10px 40px -10px rgba(249, 115, 22, 0.4);
-  --shadow-lg: 0 20px 60px -10px rgba(249, 115, 22, 0.6);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
+  --shadow-lg: 0 20px 50px -10px rgba(59, 130, 246, 0.35);
 
   /* Overlays */
-  --bg-overlay-dark: rgba(0, 0, 0, 0.6);
-  --bg-overlay-darker: rgba(10, 10, 15, 0.75);
+  --bg-overlay-dark: rgba(0, 0, 0, 0.5);
+  --bg-overlay-darker: rgba(15, 23, 42, 0.9);
 
   /* Special effects */
-  --glass-effect: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glow-primary: rgba(255, 90, 1, 0.15);
-  --glow-strong: rgba(255, 90, 1, 0.3);
+  --glass-effect: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glow-primary: rgba(59, 130, 246, 0.15);
+  --glow-strong: rgba(59, 130, 246, 0.3);
 
   /* Orbit system */
   --orbit-ring-color: rgba(255, 255, 255, 0.06);
-  --orbit-icon-bg: rgba(255, 255, 255, 0.06);
-  --orbit-icon-border: rgba(255, 255, 255, 0.1);
-  --orbit-icon-hover-bg: rgba(255, 90, 1, 0.2);
-  --orbit-icon-hover-border: rgba(255, 90, 1, 0.4);
+  --orbit-icon-bg: rgba(30, 41, 59, 0.9);
+  --orbit-icon-border: rgba(255, 255, 255, 0.08);
+  --orbit-icon-hover-bg: rgba(59, 130, 246, 0.2);
+  --orbit-icon-hover-border: rgba(59, 130, 246, 0.4);
 
   /* Hero section */
-  --hero-text-color: #f0f0f5;
-  --hero-text-muted: rgba(240, 240, 245, 0.7);
-  --hero-badge-bg: rgba(255, 255, 255, 0.06);
-  --hero-badge-border: rgba(255, 255, 255, 0.12);
-}
-
-/* =============================
-     LIGHT THEME
-  ============================= */
-[data-theme='light'] {
-  /* Background colors */
-  --bg-primary-color: #f8f9fc;
-  --bg-secondary-color: #ffffff;
-  --bg-card-color: #ffffff;
-  --bg-elevated-color: #f0f1f5;
-
-  /* Text colors */
-  --text-primary-color: #1a1a2e;
-  --text-secondary-color: #4a4a5a;
-  --text-muted-color: #8888a0;
-  --text-black-color: #000000;
-  --text-white-color: #ffffff;
-
-  /* Border & surface */
-  --border-color: rgba(0, 0, 0, 0.08);
-  --surface-glass: rgba(255, 255, 255, 0.7);
-  --box-shadow-color: rgba(0, 0, 0, 0.1);
-
-  /* Shadows */
-  --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 40px -10px rgba(255, 90, 1, 0.2);
-  --shadow-lg: 0 20px 60px -10px rgba(255, 90, 1, 0.3);
-
-  /* Overlays */
-  --bg-overlay-dark: rgba(255, 255, 255, 0.5);
-  --bg-overlay-darker: rgba(248, 249, 252, 0.8);
-
-  /* Special effects */
-  --glass-effect: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --glow-primary: rgba(255, 90, 1, 0.08);
-  --glow-strong: rgba(255, 90, 1, 0.15);
-
-  /* Orbit system */
-  --orbit-ring-color: rgba(0, 0, 0, 0.06);
-  --orbit-icon-bg: rgba(255, 255, 255, 0.9);
-  --orbit-icon-border: rgba(0, 0, 0, 0.08);
-  --orbit-icon-hover-bg: rgba(255, 90, 1, 0.1);
-  --orbit-icon-hover-border: rgba(255, 90, 1, 0.3);
-
-  /* Hero section */
-  --hero-text-color: #1a1a2e;
-  --hero-text-muted: rgba(26, 26, 46, 0.65);
-  --hero-badge-bg: rgba(0, 0, 0, 0.04);
-  --hero-badge-border: rgba(0, 0, 0, 0.08);
+  --hero-text-color: #f8fafc;
+  --hero-text-muted: #94a3b8;
+  --hero-badge-bg: rgba(255, 255, 255, 0.05);
+  --hero-badge-border: rgba(255, 255, 255, 0.1);
 }
 
 @theme {
@@ -136,16 +136,19 @@
   --color-primary-light: var(--theme-primary-light);
   --color-primary-dark: var(--theme-primary-dark);
 }
+
 .logo-font-family {
   font-family: var(--logo-font-family);
   font-size: 2.5rem;
   color: var(--text-secondary-color);
   font-weight: 400;
 }
+
 .title {
   color: var(--text-secondary-color);
   position: relative;
 }
+
 .title .text-line {
   width: 0.12rem;
   background-color: var(--text-secondary-color);
@@ -153,6 +156,7 @@
   display: flex;
   justify-content: center;
 }
+
 .title .text-line .text {
   background: var(--bg-primary-color);
   transform: rotate(-90deg);
@@ -168,6 +172,7 @@
   color: var(--text-secondary-color);
   position: relative;
 }
+
 .title-h .text-line {
   width: 100%;
   background-color: var(--text-secondary-color);
@@ -176,6 +181,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .title-h .text-line .text {
   background: var(--bg-primary-color);
   width: max-content;
@@ -198,11 +204,13 @@
   text-align: center;
   margin: 0 auto;
 }
+
 .description h1 {
   text-transform: capitalize;
   color: var(--text-black-color);
   margin-bottom: 3rem;
 }
+
 .description p {
   padding-left: 1rem;
   margin: 1rem;
@@ -210,6 +218,7 @@
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+
   .col-5,
   .col,
   .col-6 {
@@ -220,11 +229,13 @@
   .title {
     position: absolute;
   }
+
   .title .text-line {
     width: 100%;
     height: 0.1rem;
     align-items: center;
   }
+
   .title .text-line .text {
     transform: none;
     top: -1.5rem;
@@ -240,11 +251,6 @@
   }
 }
 
-/* @media screen and (max-width: 1024px) {
-  html {
-    font-size: 6px !important;
-  }
-} */
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: var(--theme-primary-color) var(--bg-primary-color);
@@ -265,7 +271,7 @@
   background: linear-gradient(
     180deg,
     var(--theme-primary-color),
-    var(--theme-gradient-primary-color)
+    var(--theme-primary-dark)
   );
   border-radius: 1rem;
   transition: background 0.3s ease;
@@ -274,7 +280,7 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(
     180deg,
-    var(--theme-gradient-primary-color),
+    var(--theme-primary-dark),
     var(--theme-primary-color)
   );
 }

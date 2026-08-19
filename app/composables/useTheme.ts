@@ -2,7 +2,7 @@ import { ref, watch, onMounted } from 'vue'
 
 type Theme = 'dark' | 'light'
 
-const theme = ref<Theme>('dark')
+const theme = ref<Theme>('light')
 
 export function useTheme() {
   const setTheme = (newTheme: Theme) => {
@@ -23,8 +23,8 @@ export function useTheme() {
     if (saved) {
       setTheme(saved)
     } else {
-      // Default to dark
-      setTheme('dark')
+      // Default to light to match the new hero design
+      setTheme('light')
     }
   }
 

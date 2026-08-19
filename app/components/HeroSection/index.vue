@@ -1,1010 +1,605 @@
 <template>
-  <section
-    class="hero-wrapper"
-    id="hero-section"
-    data-hero-container
-  >
-    <!-- Ambient background glow effects -->
-    <div class="hero-ambient">
-      <div class="ambient-orb ambient-orb-1"></div>
-      <div class="ambient-orb ambient-orb-2"></div>
-      <div class="ambient-orb ambient-orb-3"></div>
-    </div>
+  <section class="hero-section" id="hero-section">
+    <div class="hero-container">
+      <div class="hero-grid">
+        <!-- Left Content -->
+        <div class="hero-content-left">
+          <HeaderBadge heading="Senior Vue.js Developer" />
 
-    <HeroScrollCanvas />
+          <h1 class="hero-title">
+            <span class="title-greeting">Hi, I'm</span>
+            <span class="title-name">Shahzeb Akhtar</span>
+          </h1>
 
-    <div
-      ref="introRef"
-      class="hero-intro"
-      :style="{ opacity: 1 - introProgress * 2.5, transform: `translateY(${introProgress * 60}px) scale(${1 - introProgress * 0.08})` }"
-    >
-      <div class="hero-intro-content">
-        <h1 class="hero-intro-name">Shahzeb Akhtar</h1>
-        <span class="hero-intro-role">Full-Stack Developer</span>
-        <div class="hero-intro-divider" />
-        <p class="hero-intro-tagline">Crafting scalable, beautiful web experiences</p>
-      </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto w-full sticky top-0 z-[5] h-screen flex items-center">
-      <div class="hero-content">
-        <!-- Left: Enhanced User Image -->
-        <!-- <div class="user-image-container">
-          <div class="user-image">
-            <img src="~/assets/images/user-image.png" alt="Shahzeb Akhtar" />
-            <div class="image-border"></div>
-          </div>
-          <div class="status-indicator">
-            <div class="status-dot"></div>
-            <span>Available for hire</span>
-          </div>
-        </div> -->
-
-        <!-- Left: Text Content -->
-        <div class="hero-text glass-panel">
-          <HeaderBadge icon="fa-solid fa-hand" heading="Hello there!" />
-          <SectionHeading
-            first-part="I'm "
-            second-part=" Shahzeb Akhtar"
-            wrapperClass="!gap-4"
-          />
-
-          <div class="role-container">
-            <p class="subtitle">Full-Stack Developer</p>
-            <div class="tech-stack">
-              <span
-                class="tech-tag"
-                v-for="tech in siteInfo.hero.techStack"
-                :key="tech"
-              >
-                {{ tech }}
-              </span>
-            </div>
-          </div>
+          <div class="title-underline"></div>
 
           <p class="hero-description">
-            {{ siteInfo.hero.description }}
+            I build modern, responsive and user-focused web applications with clean code and
+            great user experience.
           </p>
 
           <div class="hero-actions">
-            <CustomButton @click="scrollTo('contact-form')">
-              Let's Work Together
-            </CustomButton>
-
-            <CustomButton variant="secondary" @click="scrollTo('my-work')">
+            <CustomButton @click="scrollTo('my-work')">
               View My Work
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </CustomButton>
+
+            <CustomButton variant="secondary" @click="downloadCV">
+              Download CV
+              <i class="fa-solid fa-download"></i>
             </CustomButton>
           </div>
 
-          <!-- Social proof -->
-          <div class="social-proof">
-            <div class="stat" v-for="item in stats" :key="item.label">
-              <span class="stat-number">{{ item.value }}</span>
-              <span class="stat-label">{{ item.label }}</span>
+          <div class="hero-social">
+            <span class="social-label">Let's connect</span>
+            <div class="social-links">
+              <a
+                v-for="link in socialLinks"
+                :key="link.name"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                :aria-label="link.name"
+              >
+                <i :class="link.icon"></i>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT: Image with Orbiting Icons -->
-        <div class="user-image-container glass-panel">
-          <div class="orbit-system">
-            <!-- Orbit ring visuals -->
-            <div class="orbit-ring orbit-ring-outer"></div>
-            <div class="orbit-ring orbit-ring-inner"></div>
+        <!-- Right Content -->
+        <div class="hero-content-right">
+          <!-- Decorative dots -->
+          <div class="decoration decoration-dots-top">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <pattern id="dots-top" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="2" fill="currentColor" opacity="0.25"/>
+              </pattern>
+              <rect width="80" height="80" fill="url(#dots-top)"/>
+            </svg>
+          </div>
 
-            <!-- Outer orbit: clockwise -->
-            <div class="orbit orbit-outer">
-              <div
-                v-for="(skill, i) in outerOrbitSkills"
-                :key="'outer-' + i"
-                class="orbit-icon"
-                :style="{
-                  '--angle': (360 / outerOrbitSkills.length) * i + 'deg',
-                }"
-              >
-                <div class="orbit-icon-inner">
-                  <img :src="skill.icon" :alt="skill.name" />
-                </div>
-              </div>
+          <div class="decoration decoration-dots-bottom">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+              <pattern id="dots-bottom" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="2" fill="currentColor" opacity="0.25"/>
+              </pattern>
+              <rect width="80" height="80" fill="url(#dots-bottom)"/>
+            </svg>
+          </div>
+
+          <!-- Main image with blob background -->
+          <div class="hero-image-wrapper">
+            <div class="hero-image-bg"></div>
+            <div class="hero-image-shape">
+              <img
+                src="~/assets/images/user-image.png"
+                alt="Shahzeb Akhtar"
+                class="hero-image"
+              />
             </div>
 
-            <!-- Inner orbit: counter-clockwise -->
-            <div class="orbit orbit-inner">
-              <div
-                v-for="(skill, i) in innerOrbitSkills"
-                :key="'inner-' + i"
-                class="orbit-icon"
-                :style="{
-                  '--angle': (360 / innerOrbitSkills.length) * i + 'deg',
-                }"
-              >
-                <div class="orbit-icon-inner">
-                  <img :src="skill.icon" :alt="skill.name" />
-                </div>
+            <!-- Specialized card -->
+            <div class="specialized-card">
+              <div class="specialized-icon">
+                <svg viewBox="0 0 128 128" width="32" height="32">
+                  <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110H78.8z"/>
+                  <path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"/>
+                </svg>
               </div>
-            </div>
-
-            <!-- Center: User image with premium frame -->
-            <div class="user-image">
-              <div class="image-glow"></div>
-              <div class="image-frame">
-                <div class="image-frame-inner"></div>
+              <div class="specialized-text">
+                <span class="specialized-label">Specialized In</span>
+                <span class="specialized-value">
+                  <em>Vue.js</em> Development
+                </span>
               </div>
-              <img src="~/assets/images/user-image.png" alt="Shahzeb Akhtar" />
             </div>
           </div>
 
-          <div class="status-indicator">
-            <div class="status-dot"></div>
-            <span>Available for hire</span>
+          <!-- Stats cards -->
+          <div class="stats-cards">
+            <div v-for="stat in stats" :key="stat.label" class="stat-card">
+              <div class="stat-icon" v-html="stat.icon"></div>
+              <div class="stat-info">
+                <span class="stat-number">{{ stat.value }}</span>
+                <span class="stat-label">{{ stat.label }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Scroll indicator -->
-      <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll to explore</span>
-      </div>
+    <!-- Technologies strip -->
+    <div class="hero-tech-strip">
+      <TechStrip />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { scrollTo } from '@/composables/useScroll'
 import siteInfo from '@/utilies/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
-import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
-import HeroScrollCanvas from './HeroScrollCanvas.vue'
+import TechStrip from './TechStrip.vue'
 
-const outerOrbitSkills = computed(() => siteInfo.skills.slice(0, 6))
-const innerOrbitSkills = computed(() => siteInfo.skills.slice(6, 12))
+const stats = [
+  {
+    value: `${siteInfo.dev.experience}`,
+    label: 'Years\nExperience',
+    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`
+  },
+  {
+    value: '15+',
+    label: 'Projects\nCompleted',
+    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`
+  },
+  {
+    value: '20+',
+    label: 'Happy\nClients',
+    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`
+  }
+]
 
-const stats = computed(() => [
-  { value: `${siteInfo.projects.length}+`, label: 'Projects' },
-  { value: siteInfo.dev.experience, label: 'Years Exp' },
-  { value: '100%', label: 'Satisfaction' },
-])
+const socialLinks = [
+  {
+    name: 'GitHub',
+    icon: 'fa-brands fa-github',
+    url: siteInfo.socialLinks.github
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'fa-brands fa-linkedin-in',
+    url: siteInfo.socialLinks.linkedin
+  },
+  {
+    name: 'Email',
+    icon: 'fa-regular fa-envelope',
+    url: `mailto:${siteInfo.contact.email}`
+  }
+]
 
-const introRef = ref<HTMLDivElement>()
-const introProgress = ref(0)
-
-let scrollContainer: HTMLElement | null = null
-let heroEl: HTMLElement | null = null
-
-function updateIntroProgress() {
-  if (!heroEl) return
-  const rect = heroEl.getBoundingClientRect()
-  const viewportH = window.innerHeight
-  const scrollableH = rect.height - viewportH
-  if (scrollableH <= 0) return
-  introProgress.value = Math.max(0, Math.min(1, -rect.top / scrollableH))
+const downloadCV = () => {
+  // Placeholder for CV download - can be replaced with actual CV path
+  alert('CV download coming soon!')
 }
-
-onMounted(() => {
-  scrollContainer = document.getElementById('BodyWrapper')
-  heroEl = introRef.value?.closest('[data-hero-container]') as HTMLElement | null
-  const scrollTarget = scrollContainer || window
-  scrollTarget.addEventListener('scroll', updateIntroProgress, { passive: true })
-  updateIntroProgress()
-})
-
-onBeforeUnmount(() => {
-  const scrollTarget = scrollContainer || window
-  scrollTarget.removeEventListener('scroll', updateIntroProgress)
-})
 </script>
 
-<style>
-/* =============================
-     HERO WRAPPER
-  ============================= */
-.hero-wrapper {
-  @apply relative flex flex-col;
-  min-height: 300vh;
-  background-color: var(--bg-primary-color);
-}
-/* =============================
-     AMBIENT BACKGROUND EFFECTS
-  ============================= */
-.hero-ambient {
-  @apply absolute inset-0 z-[1] overflow-hidden;
+<style scoped>
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  background: var(--bg-primary-color);
+  overflow: hidden;
 }
 
-.ambient-orb {
-  @apply absolute rounded-full;
-  filter: blur(120px);
-  opacity: 0.4;
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.ambient-orb-1 {
-  width: 600px;
-  height: 600px;
-  top: -15%;
-  right: -5%;
-  background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
-  animation: ambientFloat 12s ease-in-out infinite;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  min-height: calc(100vh - 12rem);
 }
 
-.ambient-orb-2 {
-  width: 400px;
-  height: 400px;
-  bottom: -10%;
-  left: -5%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 90, 1, 0.08) 0%,
-    transparent 70%
-  );
-  animation: ambientFloat 15s ease-in-out infinite reverse;
+/* Left Content */
+.hero-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  z-index: 2;
 }
 
-.ambient-orb-3 {
-  width: 300px;
-  height: 300px;
-  top: 40%;
-  left: 30%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 90, 1, 0.05) 0%,
-    transparent 70%
-  );
-  animation: ambientFloat 18s ease-in-out infinite 3s;
-}
-
-/* =============================
-     HERO INTRO OVERLAY
-  ============================= */
-.hero-intro {
-  @apply sticky top-0 z-[3] flex items-center justify-center w-full;
-  height: 100vh;
-  margin-top: -100vh;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.hero-intro-content {
-  @apply flex flex-col items-center text-center gap-2 max-w-[700px] px-4;
-}
-
-.hero-intro-name {
-  font-family: var(--logo-font-family);
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  font-weight: 400;
-  color: var(--text-primary-color);
-  letter-spacing: 0.06em;
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
   line-height: 1.1;
-  margin: 0;
-  text-shadow: 0 0 80px var(--glow-strong);
-  animation: intro-name-in 1s ease-out both;
 }
 
-.hero-intro-role {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  font-weight: 500;
-  color: var(--theme-primary-color);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  animation: intro-fade-up 0.8s ease-out 0.25s both;
+.title-greeting {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--text-primary-color);
+  letter-spacing: -0.03em;
 }
 
-.hero-intro-divider {
-  width: 60px;
-  height: 1px;
-  background: var(--theme-gradient-primary);
-  margin: 0.5rem 0;
-  animation: intro-line 1s ease-out 0.4s both;
+.title-name {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-intro-tagline {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
-  font-weight: 300;
-  color: var(--text-secondary-color);
-  letter-spacing: 0.08em;
-  margin: 0;
-  animation: intro-fade-up 0.8s ease-out 0.5s both;
+.title-underline {
+  width: 70px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 50%, #8b5cf6 100%);
+  margin-top: -0.25rem;
+  margin-bottom: 0.5rem;
 }
 
-/* =============================
-     HERO CONTENT GRID
-  ============================= */
-.hero-content {
-  @apply relative z-[4] grid items-center max-w-[1400px] w-full gap-16 px-8;
-  grid-template-columns: 1fr auto;
-  min-height: 100vh;
-}
-
-/* =============================
-     GLASS PANEL OVERLAY
-   ============================= */
-.glass-panel {
-  @apply backdrop-blur-xl rounded-2xl p-8;
-  background: rgba(10, 10, 15, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* =============================
-     HERO TEXT (LEFT SIDE)
-  ============================= */
-.hero-text {
-  @apply max-w-[620px];
-  color: var(--hero-text-color);
-}
-
-.greeting {
-  @apply flex items-center gap-2 mb-4 text-[1.1rem];
-  color: var(--hero-text-muted);
-}
-
-.wave {
-  animation: wave 2s ease-in-out infinite;
-}
-
-.title {
-  @apply relative mb-4 font-black leading-[1.1];
-  font-size: 4.5rem;
-  color: var(--hero-text-color);
-}
-
-.name-highlight {
-  @apply bg-clip-text text-transparent;
-  color: var(--theme-primary-color);
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
-}
-
-.title-decoration {
-  @apply absolute bottom-[-10px] left-0 w-[60px] h-[4px] rounded;
-  background: var(--theme-gradient-primary);
-}
-
-@screen lg {
-  .title {
-    @apply text-[3.5rem];
-  }
-}
-
-@screen sm {
-  .title {
-    @apply text-[2.5rem];
-  }
-}
-
-/* =============================
-     ROLES & TECH STACK
-  ============================= */
-.role-container {
-  @apply mb-8;
-}
-
-.subtitle {
-  @apply mb-4 text-[1.8rem] font-semibold;
-  color: var(--hero-text-muted);
-}
-
-.tech-stack {
-  @apply flex flex-wrap gap-3;
-}
-
-.tech-tag {
-  @apply rounded-full px-4 py-2 text-[0.85rem] font-medium backdrop-blur-md transition-all duration-300 ease-in-out;
-  background: var(--hero-badge-bg);
-  border: 1px solid var(--hero-badge-border);
-  color: var(--theme-primary-color);
-}
-
-.tech-tag:hover {
-  @apply -translate-y-[2px];
-  background: var(--orbit-icon-hover-bg);
-  border-color: var(--orbit-icon-hover-border);
-  box-shadow: 0 4px 15px var(--glow-primary);
-}
-
-/* =============================
-     DESCRIPTION
-  ============================= */
 .hero-description {
-  @apply mb-10 max-w-[500px] text-[1.15rem] leading-[1.7];
-  color: var(--hero-text-muted);
+  max-width: 460px;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text-muted-color);
+  margin: 0;
 }
 
-/* =============================
-     BUTTONS
-  ============================= */
 .hero-actions {
-  @apply mb-10 flex flex-wrap gap-4;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
-/* .hero-actions button {
-  @apply relative flex items-center gap-2 rounded-full border-0 px-8 py-4 text-[1rem] font-bold transition-all duration-300 ease-in-out cursor-pointer overflow-hidden;
-} */
-
-.btn-primary {
-  @apply text-white;
-  background: var(--theme-gradient-primary);
-  box-shadow: 0 10px 30px var(--glow-strong);
+.hero-actions :deep(.btn-base) {
+  gap: 0.6rem;
 }
 
-.btn-shine {
-  @apply absolute top-0 left-[-100%] w-full h-full transition-all duration-500;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+.hero-actions :deep(.btn-base i) {
+  font-size: 0.85rem;
 }
 
-.btn-primary:hover {
-  @apply -translate-y-[3px];
-  box-shadow: 0 15px 40px var(--glow-strong);
+.hero-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-.btn-primary:hover .btn-shine {
-  left: 100%;
+.social-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary-color);
 }
 
-.btn-secondary {
-  @apply border-2 bg-transparent backdrop-blur-lg;
-  border-color: var(--glass-border);
-  color: var(--hero-text-color);
+.social-links {
+  display: flex;
+  gap: 0.75rem;
 }
 
-.btn-secondary:hover {
-  @apply -translate-y-[2px];
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary-color);
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.social-link:hover {
   border-color: var(--theme-primary-color);
+  color: var(--theme-primary-color);
   background: var(--glow-primary);
+  transform: translateY(-2px);
 }
 
-.btn-contact {
-  @apply flex h-[60px] w-[60px] items-center justify-center rounded-full text-white;
-  background: var(--theme-gradient-primary);
+/* Right Content */
+.hero-content-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 560px;
+  z-index: 2;
 }
 
-.btn-contact:hover {
-  @apply -translate-y-[3px] rotate-[10deg];
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* =============================
-     SOCIAL PROOF
-  ============================= */
-.social-proof {
-  @apply flex flex-wrap gap-10;
+.hero-image-bg {
+  position: absolute;
+  width: 90%;
+  aspect-ratio: 1;
+  border-radius: 60% 40% 55% 45% / 55% 45% 60% 40%;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(59, 130, 246, 0.12) 100%);
+  box-shadow: inset 0 0 80px rgba(59, 130, 246, 0.08);
 }
 
-.stat {
-  @apply text-center;
+.hero-image-shape {
+  position: relative;
+  width: 85%;
+  aspect-ratio: 1;
+  border-radius: 55% 45% 50% 50% / 50% 55% 45% 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.05);
+}
+
+/* Specialized card */
+.specialized-card {
+  position: absolute;
+  bottom: 1.5rem;
+  left: -1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px -12px rgba(15, 23, 42, 0.12);
+  z-index: 10;
+}
+
+.specialized-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background: rgba(20, 184, 166, 0.1);
+}
+
+.specialized-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.specialized-label {
+  font-size: 0.8rem;
+  color: var(--text-muted-color);
+}
+
+.specialized-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary-color);
+}
+
+.specialized-value em {
+  font-style: normal;
+  color: #14b8a6;
+}
+
+/* Stats cards */
+.stats-cards {
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  min-width: 170px;
+  background: var(--bg-secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px -12px rgba(15, 23, 42, 0.12);
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateX(-4px);
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.65rem;
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--theme-primary-color);
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
 .stat-number {
-  @apply mb-1 block text-[2rem] font-black;
-  color: var(--theme-primary-color);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary-color);
+  line-height: 1;
 }
 
 .stat-label {
-  @apply text-[0.85rem] uppercase tracking-wider font-medium;
-  color: var(--hero-text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted-color);
+  line-height: 1.3;
+  white-space: pre-line;
 }
 
-/* =============================
-     USER IMAGE & ORBIT SYSTEM
-  ============================= */
-.user-image-container {
-  @apply relative flex flex-col items-center;
+/* Decorations */
+.decoration {
+  position: absolute;
+  color: var(--text-muted-color);
+  z-index: 1;
+  pointer-events: none;
 }
 
-.orbit-system {
-  @apply relative flex items-center justify-center;
-  --orbit-outer-size: clamp(290px, 46vw, 520px);
-  --orbit-inner-size: calc(var(--orbit-outer-size) * 0.72);
-  --orbit-outer-radius: calc(var(--orbit-outer-size) / 2);
-  --orbit-inner-radius: calc(var(--orbit-inner-size) / 2);
-  --orbit-icon-size: clamp(36px, 4.5vw, 50px);
-  --orbit-icon-image-size: calc(var(--orbit-icon-size) * 0.56);
-  --hero-image-size: clamp(128px, 18vw, 220px);
-  --hero-frame-size: calc(var(--hero-image-size) + 14px);
-  --hero-glow-size: calc(var(--hero-image-size) + 40px);
-  width: var(--orbit-outer-size);
-  height: var(--orbit-outer-size);
+.decoration-dots-top {
+  top: 0;
+  right: 0;
 }
 
-/* Orbit ring visuals */
-.orbit-ring {
-  @apply absolute rounded-full;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px dashed var(--orbit-ring-color);
+.decoration-dots-bottom {
+  bottom: 4rem;
+  left: 0;
 }
 
-.orbit-ring-outer {
-  width: var(--orbit-outer-size);
-  height: var(--orbit-outer-size);
+/* Tech strip */
+.hero-tech-strip {
+  margin-top: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
-.orbit-ring-inner {
-  width: var(--orbit-inner-size);
-  height: var(--orbit-inner-size);
-}
-
-/* Orbit containers */
-.orbit {
-  @apply absolute rounded-full;
-  top: 50%;
-  left: 50%;
-  transform-origin: center center;
-}
-
-.orbit-outer {
-  width: var(--orbit-outer-size);
-  height: var(--orbit-outer-size);
-  margin-top: calc(var(--orbit-outer-size) / -2);
-  margin-left: calc(var(--orbit-outer-size) / -2);
-  animation: orbitRotate 25s linear infinite;
-}
-
-.orbit-inner {
-  width: var(--orbit-inner-size);
-  height: var(--orbit-inner-size);
-  margin-top: calc(var(--orbit-inner-size) / -2);
-  margin-left: calc(var(--orbit-inner-size) / -2);
-  animation: orbitRotateReverse 20s linear infinite;
-}
-
-/* Individual icon positioning */
-.orbit-icon {
-  @apply absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  transform: rotate(var(--angle)) translateX(var(--orbit-radius))
-    rotate(calc(-1 * var(--angle)));
-}
-
-.orbit-outer .orbit-icon {
-  --orbit-radius: var(--orbit-outer-radius);
-}
-
-.orbit-inner .orbit-icon {
-  --orbit-radius: var(--orbit-inner-radius);
-}
-
-/* Counter-rotate icons to keep them upright */
-.orbit-outer .orbit-icon .orbit-icon-inner {
-  animation: orbitCounterRotate 25s linear infinite;
-}
-
-.orbit-inner .orbit-icon .orbit-icon-inner {
-  animation: orbitCounterRotateReverse 20s linear infinite;
-}
-
-/* Icon styling */
-.orbit-icon-inner {
-  @apply flex items-center justify-center rounded-2xl shadow-lg backdrop-blur-md transition-all duration-300;
-  width: var(--orbit-icon-size);
-  height: var(--orbit-icon-size);
-  margin-left: calc(var(--orbit-icon-size) / -2);
-  margin-top: calc(var(--orbit-icon-size) / -2);
-  background: var(--orbit-icon-bg);
-  border: 1px solid var(--orbit-icon-border);
-}
-
-.orbit-icon-inner:hover {
-  @apply scale-125;
-  background: var(--orbit-icon-hover-bg);
-  border-color: var(--orbit-icon-hover-border);
-  box-shadow: 0 0 25px var(--glow-strong);
-}
-
-.orbit-icon-inner img {
-  width: var(--orbit-icon-image-size);
-  height: var(--orbit-icon-image-size);
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-}
-
-/* =============================
-     CENTER USER IMAGE — PREMIUM FRAME
-  ============================= */
-.user-image {
-  @apply absolute z-[5] flex items-center justify-center;
-  width: var(--hero-glow-size);
-  height: var(--hero-glow-size);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Soft ambient glow behind the image */
-.image-glow {
-  @apply absolute rounded-full z-[1];
-  width: var(--hero-glow-size);
-  height: var(--hero-glow-size);
-  top: 50%;
-  left: 50%;
-  margin-top: calc(var(--hero-glow-size) / -2);
-  margin-left: calc(var(--hero-glow-size) / -2);
-  background: radial-gradient(
-    circle,
-    var(--glow-strong) 0%,
-    var(--glow-primary) 40%,
-    transparent 70%
-  );
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-/* Animated gradient border frame */
-.image-frame {
-  @apply absolute rounded-full z-[2];
-  width: var(--hero-frame-size);
-  height: var(--hero-frame-size);
-  top: 50%;
-  left: 50%;
-  margin-top: calc(var(--hero-frame-size) / -2);
-  margin-left: calc(var(--hero-frame-size) / -2);
-  padding: 3px;
-  background: conic-gradient(
-    from 0deg,
-    var(--theme-primary-color),
-    var(--theme-primary-dark),
-    var(--theme-primary-light),
-    var(--theme-secondary-color),
-    var(--theme-primary-color)
-  );
-  animation: rotate 6s linear infinite;
-}
-
-.image-frame-inner {
-  @apply w-full h-full rounded-full;
-  background: var(--bg-primary-color);
-}
-
-.user-image img {
-  @apply absolute -translate-x-1/2 -translate-y-1/2 rounded-full object-cover z-[3] transition-transform duration-700 ease-in-out;
-  width: var(--hero-image-size);
-  height: var(--hero-image-size);
-  top: 50%;
-  left: 50%;
-}
-
-.user-image:hover img {
-  @apply scale-105;
-}
-
-/* =============================
-     STATUS INDICATOR
-  ============================= */
-.status-indicator {
-  @apply mt-6 flex items-center gap-2 rounded-full px-4 py-2 text-[0.85rem] backdrop-blur-lg font-medium;
-  background: var(--hero-badge-bg);
-  border: 1px solid var(--hero-badge-border);
-  color: var(--hero-text-color);
-}
-
-.status-dot {
-  @apply w-2.5 h-2.5 rounded-full bg-emerald-500;
-  animation: statusPulse 2s ease-in-out infinite;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-}
-
-/* =============================
-     SCROLL INDICATOR
-  ============================= */
-.scroll-indicator {
-  @apply fixed bottom-[1rem] left-1/2 flex flex-col items-center gap-2 text-[0.85rem] z-[10];
-  transform: translateX(-50%);
-  color: var(--hero-text-muted);
-}
-
-.scroll-line {
-  @apply w-[1px] h-[40px];
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--theme-primary-color),
-    transparent
-  );
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-/* =============================
-     ANIMATIONS
-  ============================= */
-@keyframes ambientFloat {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -20px) scale(1.05);
-  }
-  66% {
-    transform: translate(-20px, 15px) scale(0.95);
-  }
-}
-
-@keyframes glowPulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes statusPulse {
-  0%,
-  100% {
-    opacity: 1;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
-  }
-  50% {
-    opacity: 0.7;
-    box-shadow: 0 0 14px rgba(16, 185, 129, 0.7);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.5;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes wave {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  75% {
-    transform: rotate(-10deg);
-  }
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes scrollPulse {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes intro-name-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    filter: blur(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes intro-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes intro-line {
-  from { width: 0; opacity: 0; }
-  to { width: 60px; opacity: 1; }
-}
-
-/* =============================
-     ORBIT ANIMATIONS
-  ============================= */
-@keyframes orbitRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbitRotateReverse {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes orbitCounterRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes orbitCounterRotateReverse {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* =============================
-     RESPONSIVE
-  ============================= */
+/* Responsive */
 @media screen and (max-width: 1024px) {
-  .hero-wrapper {
-    min-height: 250vh;
+  .hero-grid {
+    gap: 2rem;
   }
 
-  .hero-content {
-    gap: 3rem !important;
-    padding: 2rem 1.5rem !important;
+  .hero-content-right {
+    min-height: 480px;
+  }
+
+  .stats-cards {
+    right: -1rem;
+  }
+
+  .stat-card {
+    min-width: 150px;
+    padding: 0.75rem 0.85rem;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .hero-wrapper {
-    min-height: 200vh;
-  }
-
-  .glass-panel {
-    @apply p-5 rounded-xl;
-  }
-
-  .hero-content {
-    grid-template-columns: 1fr !important;
-    gap: 2.5rem !important;
-    padding: 1.5rem 1rem 2rem !important;
-    min-height: 100vh;
-  }
-
-  /* On mobile, image goes on top (reorder) */
-  .user-image-container {
-    order: -1;
-    width: 100%;
-  }
-
-  .hero-text {
+@media screen and (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
     text-align: center;
-    max-width: 100%;
+    gap: 2.5rem;
+    min-height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
-  .role-container {
-    margin-bottom: 1.25rem;
-  }
-
-  .subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 0.9rem;
-  }
-
-  .tech-stack {
-    justify-content: center;
-    gap: 0.6rem;
-  }
-
-  .tech-tag {
-    padding: 0.45rem 0.8rem;
-    font-size: 0.78rem;
+  .hero-content-left {
+    align-items: center;
   }
 
   .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    max-width: 100%;
-    font-size: 1rem;
-    line-height: 1.65;
+    max-width: 500px;
   }
 
-  .hero-actions {
+  .hero-social {
+    align-items: center;
+  }
+
+  .hero-content-right {
+    min-height: 420px;
+  }
+
+  .specialized-card {
+    left: 0;
+    bottom: 0.5rem;
+  }
+
+  .stats-cards {
+    right: -0.5rem;
+  }
+
+  .decoration-dots-top {
+    right: -1rem;
+  }
+
+  .decoration-dots-bottom {
+    left: -1rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hero-section {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-container {
+    padding: 0 1rem;
+  }
+
+  .hero-content-right {
+    min-height: 360px;
+  }
+
+  .specialized-card {
+    padding: 0.7rem 0.9rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -0.5rem;
+  }
+
+  .stats-cards {
+    position: static;
+    transform: none;
+    flex-direction: row;
     justify-content: center;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    gap: 0.75rem;
   }
 
-  .social-proof {
-    justify-content: center;
-    gap: 1.5rem;
+  .stat-card {
+    min-width: auto;
+    flex: 1 1 140px;
+    max-width: 160px;
   }
 
-  .stat-number {
-    font-size: 1.75rem;
+  .stat-card:hover {
+    transform: translateY(-3px);
   }
 
-  .status-indicator {
-    margin-top: 1.25rem;
-  }
-
-  .scroll-indicator {
+  .decoration {
     display: none;
+  }
+
+  .hero-tech-strip {
+    margin-top: 2.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-
-  .hero-content {
-    gap: 2rem !important;
-    padding-top: 1rem !important;
-  }
-
   .hero-actions {
-    gap: 0.75rem;
+    width: 100%;
+    justify-content: center;
   }
 
-  .social-proof {
-    gap: 1.1rem;
-  }
-
-  .stat-number {
-    font-size: 1.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.72rem;
-  }
-
-  .orbit-system {
-    --orbit-outer-size: min(88vw, 360px);
-    --orbit-icon-size: clamp(34px, 9vw, 40px);
+  .hero-actions :deep(.btn-base) {
+    flex: 1 1 100%;
+    max-width: 220px;
   }
 }
 </style>
