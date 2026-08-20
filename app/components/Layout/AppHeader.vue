@@ -8,10 +8,7 @@
       <div class="header-top flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink to="/" class="logo-link flex items-center gap-3">
-          <div class="logo-mark">
-            <span class="logo-text">SA</span>
-          </div>
-          <span class="logo-name">Shahzeb Akhtar</span>
+          <img scr="/images/app-logo.png" class="size-full"  alt="logo"/>
         </NuxtLink>
 
         <!-- Desktop Navigation -->
@@ -61,7 +58,9 @@
             @click="toggleMenu"
             type="text"
           >
-            <i :class="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+            <i
+              :class="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
+            ></i>
           </a-button>
         </div>
       </div>
@@ -164,7 +163,9 @@ onUnmounted(() => {
 .header-wrapper {
   background-color: var(--bg-primary-color);
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .header-inner {
@@ -312,7 +313,9 @@ onUnmounted(() => {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.28s ease, opacity 0.2s ease;
+  transition:
+    max-height 0.28s ease,
+    opacity 0.2s ease;
 }
 
 .mobile-nav-inline.open {

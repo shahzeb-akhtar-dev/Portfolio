@@ -1,6 +1,8 @@
 <template>
-  <section id="my-work" class="work-section relative ">
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24">
+  <section id="my-work" class="work-section relative">
+    <div
+      class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24"
+    >
       <div class="text-center mb-12 space-y-8">
         <HeaderBadge
           icon="fa-solid fa-diagram-project"
@@ -14,21 +16,14 @@
         />
         <p class="work-description max-w-3xl mx-auto text-lg leading-relaxed">
           Transforming ideas into
-          <span class="work-highlight font-semibold">stunning digital experiences</span>
+          <span class="work-highlight font-semibold"
+            >stunning digital experiences</span
+          >
           through innovative design, clean code, and cutting-edge technology.
         </p>
       </div>
     </div>
-
-    <WorkGallery :projects="myWork" />
-
-    <div class="relative z-10 flex justify-center pb-20 -mt-6">
-      <div class="flex items-center gap-2 text-sm" style="color: var(--text-muted-color)">
-        <span>{{ myWork.length }} projects</span>
-        <span class="opacity-40">·</span>
-        <span>Scroll to explore</span>
-      </div>
-    </div>
+    <WorkGallery :slides="carouselSlides" />
   </section>
 </template>
 
@@ -37,8 +32,8 @@ import { ref, computed } from 'vue'
 import siteInfo from '@/utils/siteInfo.json'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
-import KpiCards, { type KpiItem } from '../BasicComponents/KpiCards.vue'
 import WorkGallery from './WorkGallery.vue'
+
 
 interface Project {
   id: number | string
@@ -49,6 +44,15 @@ interface Project {
 }
 
 const myWork = ref<Project[]>(siteInfo.projects || [])
+
+// Transform projects data into carousel slides format
+const carouselSlides = computed(() =>
+  myWork.value.map((project) => ({
+    image: project.image,
+    title: project.name,
+    description: project.description,
+  })),
+)
 </script>
 
 <style scoped>

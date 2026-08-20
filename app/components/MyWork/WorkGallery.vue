@@ -1,57 +1,163 @@
 <template>
-  <div
-    ref="sectionRef"
-    class="relative bg-slate-50 dark:bg-[#0a0a0f] transition-colors duration-500"
-    :style="{ minHeight: `${sectionHeight}px` }"
+  <section
+    class="relative w-full overflow-hidden bg-slate-50 py-16 sm:py-20 lg:py-24"
   >
-    <div ref="stickyRef" class="sticky top-0 w-full h-screen overflow-hidden">
-      <canvas
-        ref="canvasRef"
-        class="block w-full h-full touch-none"
-        :class="isDragging ? 'cursor-grabbing' : 'cursor-grab'"
-        @mousedown.prevent="onPointerDown"
-        @mousemove.prevent="onPointerMove"
-        @mouseup.prevent="onPointerUp"
-        @mouseleave="onPointerUp"
-        @touchstart.prevent="onPointerDown"
-        @touchmove.prevent="onPointerMove"
-        @touchend.prevent="onPointerUp"
-      />
-      <div
-        class="pointer-events-none select-none absolute left-1/2 bottom-6 sm:bottom-8 -translate-x-1/2 flex items-center gap-2 text-xs sm:text-[13px] tracking-wide text-slate-500/70 dark:text-slate-300/50 animate-[hintPulse_3s_ease-in-out_infinite]"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-        <span>Scroll &amp; drag to explore</span>
+    <!-- 3D Carousel -->
+    <div class="relative w-full">
+      <!-- Carousel viewport -->
+      <div class="relative mx-auto w-full max-w-[1500px] overflow-hidden">
+        <swiper
+          :modules="modules"
+          effect="coverflow"
+          :grab-cursor="true"
+          :centered-slides="true"
+          :slides-per-view="'auto'"
+          :space-between="0"
+          :coverflow-effect="coverflowEffect"
+          :loop="slides.length > 7"
+          :speed="700"
+          :autoplay="{
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }"
+          :watch-slides-progress="true"
+          :allow-touch-move="true"
+          :observer="true"
+          :observe-parents="true"
+          class="!w-full !overflow-visible !py-8 sm:!py-12"
+        >
+          <swiper-slide
+            v-for="(slide, index) in slides"
+            :key="`${slide.title}-${index}`"
+            v-slot="{ isActive, isPrev, isNext }"
+            class="!h-[390px] !w-[280px] sm:!h-[470px] sm:!w-[330px] lg:!h-[560px] lg:!w-[420px]"
+          >
+            <article
+              class="group relative h-full w-full overflow-hidden rounded-2xl border bg-white transition-all duration-500 ease-out"
+              :class="
+                isActive
+                  ? 'border-blue-200 shadow-[0_30px_80px_rgba(37,99,235,0.22)]'
+                  : isPrev || isNext
+                    ? 'border-slate-200 shadow-[0_20px_50px_rgba(15,23,42,0.14)]'
+                    : 'border-slate-200 shadow-xl'
+              "
+            >
+              <!-- Project image -->
+              <img
+                :src="slide.image"
+                :alt="slide.title"
+                loading="lazy"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out"
+                :class="
+                  isActive
+                    ? 'scale-[1.025] group-hover:scale-[1.045]'
+                    : 'scale-100'
+                "
+              />
+
+              <!-- Image color treatment -->
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-slate-950/0 via-slate-950/5 to-slate-950/75"
+              />
+
+              <!-- Active blue glow -->
+              <div
+                v-if="isActive"
+                class="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-indigo-500/20"
+              />
+
+              <!-- Project content -->
+              <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-7">
+                <div
+                  class="mb-3 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md sm:text-xs"
+                >
+                  {{ slide.category || 'Web Application' }}
+                </div>
+
+                <h3
+                  class="text-xl font-bold leading-tight text-white sm:text-2xl"
+                >
+                  {{ slide.title }}
+                </h3>
+
+                <p
+                  v-if="slide.description"
+                  class="mt-2 line-clamp-3 text-xs leading-5 text-slate-200 sm:text-sm sm:leading-6"
+                >
+                  {{ slide.description }}
+                </p>
+
+                <!-- Technologies -->
+                <div
+                  v-if="slide.technologies?.length"
+                  class="mt-4 flex flex-wrap gap-2"
+                >
+                  <span
+                    v-for="technology in slide.technologies.slice(0, 4)"
+                    :key="technology"
+                    class="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-medium text-white backdrop-blur-md sm:text-xs"
+                  >
+                    {{ technology }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Active card indicator -->
+              <div
+                v-if="isActive"
+                class="absolute left-5 top-5 h-1 w-10 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 shadow-lg sm:left-6 sm:top-6"
+              />
+            </article>
+          </swiper-slide>
+        </swiper>
       </div>
+
+      <!-- Decorative side gradients -->
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-32 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent lg:block"
+      />
+
+      <div
+        class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-32 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent lg:block"
+      />
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useGallery3D } from '@/composables/useGallery3D'
-import type { Project } from '@/utils/cardTexture'
+import { Swiper, SwiperSlide } from 'swiper/vue'
 
-const props = defineProps<{ projects: Project[] }>()
-const projects = computed(() => props.projects)
+import {
+  Autoplay,
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+} from 'swiper/modules'
 
-const {
-  sectionRef,
-  stickyRef,
-  canvasRef,
-  sectionHeight,
-  isDragging,
-  onPointerDown,
-  onPointerMove,
-  onPointerUp,
-} = useGallery3D(projects)
-</script>
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
 
-<style scoped>
-@keyframes hintPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.85; }
+interface Slide {
+  image: string
+  title: string
+  description?: string
+  category?: string
+  technologies?: string[]
 }
-</style>
+
+const props = defineProps<{
+  slides: Slide[]
+}>()
+
+const modules = [Autoplay, EffectCoverflow, Navigation, Pagination]
+
+const coverflowEffect = {
+  rotate: 35,
+  stretch: -20,
+  depth: 350,
+  modifier: 1.2,
+  scale: 0.8,
+  slideShadows: true,
+}
+</script>
