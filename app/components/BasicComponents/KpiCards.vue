@@ -1,7 +1,6 @@
 <template>
   <div
-    class="rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
-    style="background: linear-gradient(to right, rgba(20, 184, 166, 0.06), rgba(255, 255, 255, 0.9), rgba(139, 92, 246, 0.06));"
+    class="rounded-2xl border border-gray-100 shadow-sm overflow-hidden bg-gradient-to-r from-[#3b83f62c] to-[#3b83f610]"
     :class="wrapperClass"
   >
     <div class="flex flex-col md:flex-row">
@@ -15,18 +14,18 @@
         }"
       >
         <div
-          class="flex items-center justify-center w-16 h-16 rounded-full shrink-0"
-          :class="item.iconBgClass || 'bg-teal-100'"
+          class="flex items-center justify-center w-16 h-16 rounded-full shrink-0 bg-[var(--theme-primary-light)]"
+          :class="item.iconBgClass"
         >
           <i
             v-if="item.icon"
             class="text-xl"
-            :class="`${item.icon} ${item.iconClass} text-teal-600`"
+            :class="`${item.icon} ${item.iconClass} text-[var(--theme-primary-color)]`"
           ></i>
           <span
             v-else-if="item.iconHtml"
-            class="text-xl"
-            :class="item.iconClass || 'text-teal-600'"
+            class="text-xl text-[var(--theme-primary-color)]"
+            :class="item.iconClass"
             v-html="item.iconHtml"
           ></span>
         </div>

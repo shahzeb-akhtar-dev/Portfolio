@@ -17,11 +17,10 @@
           <span class="work-highlight font-semibold">stunning digital experiences</span>
           through innovative design, clean code, and cutting-edge technology.
         </p>
-        <!-- <KpiCards :items="workKpis" /> -->
       </div>
     </div>
 
-    <WorkGallery3D :projects="myWork" />
+    <WorkGallery :projects="myWork" />
 
     <div class="relative z-10 flex justify-center pb-20 -mt-6">
       <div class="flex items-center gap-2 text-sm" style="color: var(--text-muted-color)">
@@ -35,11 +34,11 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import siteInfo from '@/utilies/siteInfo.json'
+import siteInfo from '@/utils/siteInfo.json'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import KpiCards, { type KpiItem } from '../BasicComponents/KpiCards.vue'
-import WorkGallery3D from './WorkGallery3D.vue'
+import WorkGallery from './WorkGallery.vue'
 
 interface Project {
   id: number | string
@@ -50,27 +49,6 @@ interface Project {
 }
 
 const myWork = ref<Project[]>(siteInfo.projects || [])
-
-// const workKpis = computed<KpiItem[]>(() => [
-//   {
-//     id: 'projects',
-//     value: `${myWork.value.length}+`,
-//     label: 'Projects',
-//     icon: 'fa-solid fa-rocket',
-//   },
-//   {
-//     id: 'satisfaction',
-//     value: '100%',
-//     label: 'Satisfaction',
-//     icon: 'fa-solid fa-users',
-//   },
-//   {
-//     id: 'experience',
-//     value: siteInfo.dev.experience,
-//     label: 'Years',
-//     icon: 'fa-solid fa-award',
-//   },
-// ])
 </script>
 
 <style scoped>

@@ -30,8 +30,9 @@
   --box-shadow-color: rgba(15, 23, 42, 0.08);
 
   /* Theme accent colors */
-  --theme-primary-color: #3b82f6;
-  --theme-primary-light: #14b8a6;
+  
+  --theme-primary-color: #3480fa;
+  --theme-primary-light: #bad2fa;
   --theme-primary-dark: #6366f1;
   --theme-secondary-color: #8b5cf6;
 

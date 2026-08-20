@@ -92,7 +92,7 @@
 </template>
 
 <script setup lang="ts">
-import siteInfo from '@/utilies/siteInfo.json'
+import siteInfo from '@/utils/siteInfo.json'
 
 
 </script>

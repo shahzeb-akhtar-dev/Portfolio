@@ -82,71 +82,18 @@
           class="relative flex items-center justify-center min-h-[560px] z-[2] lg:min-h-[480px] md:min-h-[420px] max-sm:min-h-[360px]"
           ref="heroRightRef"
         >
-          <!-- Decorative dots -->
-          <div
-            class="absolute text-[var(--text-muted-color)] z-[1] pointer-events-none top-0 right-0 md:-right-4 max-sm:hidden opacity-0"
-            ref="dotsTopRef"
-          >
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-              <pattern
-                id="dots-top"
-                x="0"
-                y="0"
-                width="16"
-                height="16"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="2"
-                  cy="2"
-                  r="2"
-                  fill="currentColor"
-                  opacity="0.25"
-                />
-              </pattern>
-              <rect width="80" height="80" fill="url(#dots-top)" />
-            </svg>
-          </div>
-
-          <div
-            class="absolute text-[var(--text-muted-color)] z-[1] pointer-events-none bottom-16 left-0 md:-left-4 max-sm:hidden opacity-0"
-            ref="dotsBottomRef"
-          >
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-              <pattern
-                id="dots-bottom"
-                x="0"
-                y="0"
-                width="16"
-                height="16"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle
-                  cx="2"
-                  cy="2"
-                  r="2"
-                  fill="currentColor"
-                  opacity="0.25"
-                />
-              </pattern>
-              <rect width="80" height="80" fill="url(#dots-bottom)" />
-            </svg>
-          </div>
-
-          <!-- Main image with blob background -->
+      
+          <!-- Main image -->
           <div
             class="relative w-full max-w-[480px] flex items-center justify-center"
           >
-            <div
+            <!-- <div
               class="absolute w-[90%] aspect-square rounded-[60%_40%_55%_45%/55%_45%_60%_40%] bg-gradient-to-br from-teal-500/[0.12] to-blue-500/[0.12] shadow-[inset_0_0_80px_rgba(59,130,246,0.08)] opacity-0"
               ref="imageBgRef"
-            ></div>
-            <div
-              class="relative w-[85%] aspect-square rounded-[55%_45%_50%_50%/50%_55%_45%_50%] overflow-hidden bg-gradient-to-br from-teal-500/[0.08] to-violet-500/[0.08] border border-blue-500/10 opacity-0"
-              ref="imageShapeRef"
-            >
+            ></div> -->
+            <div class="relative opacity-0" ref="imageShapeRef">
               <img
-                src="~/assets/images/user-image.png"
+                src="/images/hero-user.png"
                 alt="Shahzeb Akhtar"
                 class="w-full h-full object-cover object-top scale-105"
               />
@@ -238,7 +185,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CSSPlugin } from 'gsap/CSSPlugin'
 import { scrollTo } from '@/composables/useScroll'
-import siteInfo from '@/utilies/siteInfo.json'
+import siteInfo from '@/utils/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import TechStrip from './TechStrip.vue'

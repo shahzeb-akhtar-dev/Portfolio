@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
-import siteInfo from '@/utilies/siteInfo.json'
+import siteInfo from '@/utils/siteInfo.json'
 import CustomButton from '../BasicComponents/CustomButton.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
 import { scrollTo } from '@/composables/useScroll'
@@ -27,7 +27,7 @@ const techStack = [
         <!-- LEFT: portrait with blob splash -->
         <aside class="flex relative justify-center lg:justify-start">
           <div
-            class="flex items-center justify-center w-[340px] h-[380px] md:w-[400px] md:h-[440px] lg:w-[460px] lg:h-[500px]"
+            class="flex items-center justify-center w-[440px] h-[480px] md:w-[500px] md:h-[540px] lg:w-[560px] lg:h-[700px]"
           >
             <img
               src="/images/about-user-img.png"
@@ -71,7 +71,7 @@ const techStack = [
                 <div
                   class="text-xl md:text-2xl font-extrabold text-[var(--text-primary-color)] leading-[1.2]"
                 >
-                  {{ siteInfo.dev.experience }}+
+                  {{ siteInfo.dev.experience }}
                 </div>
                 <div
                   class="text-sm text-[var(--text-secondary-color)] leading-[1.3]"
@@ -92,7 +92,7 @@ const techStack = [
                 <div
                   class="text-xl md:text-2xl font-extrabold text-[var(--text-primary-color)] leading-[1.2]"
                 >
-                  {{ siteInfo.dev.projects }}+
+                  {{ siteInfo.dev.projects }}
                 </div>
                 <div
                   class="text-sm text-[var(--text-secondary-color)] leading-[1.3]"

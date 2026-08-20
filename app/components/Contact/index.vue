@@ -4,7 +4,7 @@ import type { Rule } from 'ant-design-vue/es/form'
 import type { FormInstance } from 'ant-design-vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 
-import siteInfo from '@/utilies/siteInfo.json'
+import siteInfo from '@/utils/siteInfo.json'
 import ContactCard from './ContactCard.vue'
 import SocialLinks from './SocialLinks.vue'
 import CustomButton from '../BasicComponents/CustomButton.vue'
@@ -20,24 +20,18 @@ const contactKpis = computed<KpiItem[]>(() => [
     value: '24h',
     label: 'Typical reply',
     icon: 'fa-solid fa-clock',
-    iconBgClass: 'bg-[var(--theme-primary-color)]/10',
-    iconClass: 'text-[var(--theme-primary-color)]',
   },
   {
     id: 'focus',
     value: '100%',
     label: 'Client focus',
     icon: 'fa-solid fa-bullseye',
-    iconBgClass: 'bg-[var(--theme-primary-light)]/10',
-    iconClass: 'text-[var(--theme-primary-light)]',
   },
   {
     id: 'projects',
     value: `${siteInfo.projects.length}+`,
     label: 'Projects',
     icon: 'fa-solid fa-diagram-project',
-    iconBgClass: 'bg-[var(--theme-secondary-color)]/10',
-    iconClass: 'text-[var(--theme-secondary-color)]',
   },
 ])
 
