@@ -51,13 +51,13 @@ const emit = defineEmits<{
 
 const variantClasses = computed(() => {
   const base =
-    'relative flex items-center justify-center overflow-hidden rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
+    'relative flex items-center justify-center overflow-hidden rounded-full px-5 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm font-semibold transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale group'
 
   return [
     base,
     props.variant === 'secondary'
       ? 'secondary-btn border border-[var(--border-color)] text-[var(--text-primary-color)] bg-transparent hover:border-[var(--theme-primary-color)] hover:text-[var(--theme-primary-color)] hover:bg-[var(--glow-primary)]'
-      : 'primary-btn border border-transparent text-white shadow-[var(--shadow-md)] bg-gradient-to-r from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-secondary-color)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 active:translate-y-0',
+      : 'primary-btn !border-0 text-white shadow-[var(--shadow-md)] bg-gradient-to-r from-[var(--theme-primary-light)] via-[var(--theme-primary-color)] to-[var(--theme-secondary-color)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 active:translate-y-0',
   ]
 })
 </script>

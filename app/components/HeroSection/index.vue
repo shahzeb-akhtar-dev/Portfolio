@@ -1,15 +1,15 @@
 <template>
   <section
-    class="relative w-full pt-8 pb-12 min-h-[calc(100dvh)] bg-[var(--bg-primary-color)] overflow-hidden max-sm:pt-6 max-sm:pb-8"
+    class="relative w-full pt-8 pb-12 min-h-[calc(100dvh)] bg-[var(--bg-primary-color)] overflow-hidden max-sm:pt-6 max-sm:pb-4 max-sm:min-h-[auto]"
     id="hero-section"
   >
-    <div class="max-w-[1280px] mx-auto px-6 max-sm:px-4">
+    <div class="max-w-7xl mx-auto px-6 max-sm:px-4 max-[380px]:px-3">
       <div
-        class="grid grid-cols-2 items-center gap-12 lg:gap-8 md:grid-cols-2 md:text-center md:gap-10 md:min-h-0 md:pt-4 md:pb-4"
+        class="grid grid-cols-1 md:grid-cols-2 items-center gap-4 md:gap-10 lg:gap-12 max-sm:text-center"
       >
-        <!-- Left Content -->
+        <!-- Left Content (Text) -->
         <div
-          class="flex flex-col items-start gap-5 z-[2] md:items-center"
+          class="flex flex-col items-center md:items-start gap-4 sm:gap-5 z-[2] order-1"
           ref="heroLeftRef"
         >
           <div ref="badgeRef" class="opacity-0">
@@ -21,17 +21,17 @@
               <SectionHeading
                 first-part="Hi, I'm"
                 second-part="Shahzeb Akhtar"
-                wrapper-class="!mb-0 !flex-col !items-start !self-center"
+                wrapper-class="!mb-0 !flex-col !items-center md:!items-start !self-center"
               />
               <div
-                class="w-[70px] h-1 rounded-sm bg-gradient-to-br from-teal-500 via-blue-500 to-violet-500 my-2 opacity-0 rounded"
+                class="w-[70px] h-1 rounded-sm bg-gradient-to-br from-teal-500 via-blue-500 to-violet-500 my-2 mx-auto md:mx-0 opacity-0 rounded"
                 ref="underlineRef"
               ></div>
             </div>
           </h1>
 
           <p
-            class="max-w-[460px] text-[1.1rem] leading-7 text-[var(--text-muted-color)] m-0 md:max-w-[500px] opacity-0"
+            class="max-w-[460px] text-[0.95rem] sm:text-[1.05rem] leading-6 sm:leading-7 text-[var(--text-muted-color)] m-0 md:max-w-[500px] opacity-0"
             ref="descRef"
           >
             I build modern, responsive and user-focused web applications with
@@ -39,7 +39,7 @@
           </p>
 
           <div
-            class="flex flex-wrap gap-4 mt-2 sm:w-full sm:justify-center max-sm:[&_.btn-base]:flex-1 max-sm:[&_.btn-base]:max-w-[220px] [&_.btn-base]:gap-2.5 [&_.btn-base_i]:text-[0.85rem] opacity-0"
+            class="flex flex-wrap gap-3 sm:gap-4 mt-1 w-full justify-center md:justify-start max-sm:[&_.btn-base]:flex-1 max-sm:[&_.btn-base]:max-w-[220px] [&_.btn-base]:gap-2.5 [&_.btn-base_i]:text-[0.85rem] opacity-0"
             ref="actionsRef"
           >
             <CustomButton @click="scrollTo('my-work')">
@@ -54,7 +54,7 @@
           </div>
 
           <div
-            class="flex flex-col gap-3 mt-4 md:items-center opacity-0"
+            class="flex flex-col gap-3 mt-2 sm:mt-3 items-center md:items-start opacity-0"
             ref="socialRef"
           >
             <span
@@ -77,37 +77,32 @@
           </div>
         </div>
 
-        <!-- Right Content -->
+        <!-- Right Content (Image) -->
         <div
-          class="relative flex items-center justify-center min-h-[560px] z-[2] lg:min-h-[480px] md:min-h-[420px] max-sm:min-h-[360px]"
+          class="relative flex items-center justify-center z-[2] order-2"
           ref="heroRightRef"
         >
-      
           <!-- Main image -->
           <div
-            class="relative w-full max-w-[480px] flex items-center justify-center"
+            class="relative w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[460px] flex items-center justify-center"
           >
-            <!-- <div
-              class="absolute w-[90%] aspect-square rounded-[60%_40%_55%_45%/55%_45%_60%_40%] bg-gradient-to-br from-teal-500/[0.12] to-blue-500/[0.12] shadow-[inset_0_0_80px_rgba(59,130,246,0.08)] opacity-0"
-              ref="imageBgRef"
-            ></div> -->
-            <div class="relative opacity-0" ref="imageShapeRef">
+            <div class="relative opacity-0 w-full" ref="imageShapeRef">
               <img
                 src="/images/hero-user.png"
                 alt="Shahzeb Akhtar"
-                class="w-full h-full object-cover object-top scale-105"
+                class="w-full h-auto object-cover object-top"
               />
             </div>
 
             <!-- Specialized card -->
             <div
-              class="absolute bottom-6 -left-4 flex items-center gap-3.5 py-[0.9rem] px-[1.1rem] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] z-10 md:left-0 md:bottom-2 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:bottom-[-0.5rem] max-sm:py-[0.7rem] max-sm:px-[0.9rem] opacity-0"
+              class="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-3 py-[0.6rem] sm:py-[0.85rem] px-[0.8rem] sm:px-[1.1rem] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] z-10 md:left-0 md:-right-4 md:bottom-4 md:-translate-x-0 md:py-[0.9rem] md:px-[1.1rem] opacity-0"
               ref="specializedCardRef"
             >
               <div
-                class="flex items-center justify-center w-11 h-11 rounded-xl bg-teal-500/10"
+                class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-teal-500/10 shrink-0"
               >
-                <svg viewBox="0 0 128 128" width="32" height="32">
+                <svg viewBox="0 0 128 128" width="24" height="24" class="sm:w-7 sm:h-7">
                   <path
                     fill="#42b883"
                     d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110H78.8z"
@@ -118,12 +113,12 @@
                   />
                 </svg>
               </div>
-              <div class="flex flex-col gap-[0.15rem]">
-                <span class="text-[0.8rem] text-[var(--text-muted-color)]"
+              <div class="flex flex-col gap-[0.05rem] sm:gap-[0.15rem]">
+                <span class="text-[0.65rem] sm:text-[0.8rem] text-[var(--text-muted-color)]"
                   >Specialized In</span
                 >
                 <span
-                  class="text-[0.95rem] font-bold text-[var(--text-primary-color)] [&_em]:not-italic [&_em]:text-teal-500"
+                  class="text-[0.75rem] sm:text-[0.95rem] font-bold text-[var(--text-primary-color)] [&_em]:not-italic [&_em]:text-teal-500"
                 >
                   <em>Vue.js</em> Development
                 </span>
@@ -131,15 +126,15 @@
             </div>
           </div>
 
-          <!-- Stats cards -->
+          <!-- Stats cards (hidden on mobile) -->
           <div
-            class="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 lg:-right-4 lg:[&_.stat-card]:min-w-[150px] lg:[&_.stat-card]:py-3 lg:[&_.stat-card]:px-3.5 md:-right-2 max-sm:static max-sm:translate-y-0 max-sm:flex-row max-sm:justify-center max-sm:flex-wrap max-sm:mt-6 max-sm:gap-3 opacity-0"
+            class="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 hidden lg:flex lg:-right-4 lg:[&_.stat-card]:min-w-[150px] lg:[&_.stat-card]:py-3 lg:[&_.stat-card]:px-3.5 md:-right-2 opacity-0"
             ref="statsRef"
           >
             <div
               v-for="stat in stats"
               :key="stat.label"
-              class="stat-card flex items-center gap-3.5 py-[0.85rem] px-4 min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1 max-sm:min-w-0 max-sm:flex-1 max-sm:max-w-[160px] max-sm:hover:-translate-y-1"
+              class="stat-card flex items-center gap-3.5 py-[0.85rem] px-4 min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1"
             >
               <div
                 class="flex items-center justify-center w-10 h-10 rounded-[0.65rem] bg-blue-500/[0.08] text-[var(--theme-primary-color)] shrink-0"
@@ -163,7 +158,7 @@
 
     <!-- Technologies strip -->
     <div
-      class="mt-16 mb-8 relative z-[2] max-sm:mt-10 max-sm:mb-12"
+      class="mt-4 sm:mt-14 mb-4 sm:mb-8 relative z-[2]"
       ref="techStripRef"
     >
       <TechStrip />
@@ -174,7 +169,7 @@
       ref="heroWavesRef"
       src="/images/hero-waves.png"
       alt=""
-      class="absolute bottom-0 left-0 w-full h-[500px] object-cover pointer-events-none z-[1] max-sm:-bottom-2"
+      class="absolute bottom-0 left-0 w-full h-[120px] sm:h-[300px] md:h-[500px] object-cover pointer-events-none z-[1]"
     />
   </section>
 </template>

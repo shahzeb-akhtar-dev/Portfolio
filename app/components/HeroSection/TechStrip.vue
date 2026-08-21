@@ -48,7 +48,7 @@ const technologies = [
 <style scoped>
 .tech-strip {
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
 }
 
 .tech-strip-inner {
@@ -56,11 +56,11 @@ const technologies = [
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.25rem 1.75rem;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
   background: var(--bg-secondary-color);
   border: 1px solid var(--border-color);
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   box-shadow: var(--shadow-sm);
 }
 
@@ -131,8 +131,9 @@ const technologies = [
   .tech-strip-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.875rem;
   }
 
   .tech-strip-divider {
@@ -142,6 +143,43 @@ const technologies = [
 
   .tech-items {
     justify-content: flex-start;
+    gap: 0.75rem 1rem;
+  }
+
+  .tech-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .tech-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .tech-strip-inner {
+    padding: 0.875rem;
+  }
+
+  .tech-items {
+    gap: 0.6rem 0.75rem;
+  }
+
+  .label-title {
+    font-size: 0.85rem;
+  }
+
+  .label-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .tech-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .tech-name {
+    font-size: 0.75rem;
   }
 }
 </style>

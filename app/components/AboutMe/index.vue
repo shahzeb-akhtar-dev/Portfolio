@@ -18,9 +18,9 @@ const techStack = [
 <template>
   <section
     aria-labelledby="about-heading"
-    class="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-28 bg-[var(--bg-primary-color)] text-[var(--text-primary-color)] transition-[background-color,color] duration-300 ease-in-out"
+    class="relative overflow-hidden pt-8 pb-20 sm:pt-16 md:pt-24 md:pb-28 bg-[var(--bg-primary-color)] text-[var(--text-primary-color)] transition-[background-color,color] duration-300 ease-in-out"
   >
-    <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="max-w-7xl mx-auto px-6">
       <div
         class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
       >

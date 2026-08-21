@@ -19,16 +19,24 @@ defineProps<{
 .header-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.1rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
   border-radius: 999px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-primary-color);
   background: var(--hero-badge-bg);
   border: 1px solid var(--hero-badge-border);
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
+}
+
+@media screen and (min-width: 640px) {
+  .header-badge {
+    gap: 0.6rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+  }
 }
 
 .badge-dot {
