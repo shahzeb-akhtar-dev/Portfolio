@@ -1,13 +1,24 @@
 <template>
-  <div id="footer" class="container !h-10 max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-    <div class="logo">Portfolio</div>
-    <div class="copyright">@{{ new Date().getFullYear()}} Powered by Shahzeb Akhtar</div>
-
+  <div id="footer" class="!h-10 px-4 py-2 ">
+    <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+      <div class="logo">
+        <img
+          :src="isDark ? '/images/dark-logo.png' : '/images/light-logo.png'"
+          class="h-[3rem] py-1"
+          alt="logo"
+        />
+      </div>
+      <div class="copyright">
+        @{{ new Date().getFullYear() }} Powered by Shahzeb Akhtar
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useTheme } from '@/composables/useTheme'
 
+const { isDark } = useTheme()
 </script>
 
 <style>

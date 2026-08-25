@@ -213,4 +213,10 @@ const skillKpis = computed<KpiItem[]>(() => [
     animation-duration: 20s;
   }
 }
+
+@media (max-width: 1023px) {
+  .animate-scroll {
+    animation: none !important;
+  }
+}
 </style>

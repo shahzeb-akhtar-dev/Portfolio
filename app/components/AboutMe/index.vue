@@ -25,7 +25,7 @@ const techStack = [
         class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
       >
         <!-- LEFT: portrait with blob splash -->
-        <aside class="flex relative justify-center lg:justify-start">
+        <aside class="hidden lg:flex relative justify-center lg:justify-start">
           <div
             class="flex items-center justify-center w-[440px] h-[480px] md:w-[500px] md:h-[540px] lg:w-[560px] lg:h-[700px]"
           >

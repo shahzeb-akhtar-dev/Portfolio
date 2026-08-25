@@ -47,6 +47,11 @@ export function useScrollAnimation(
   const init = () => {
     if (!target.value) return
 
+    if (window.innerWidth < 1024) {
+      gsap.set(target.value, { opacity: 1, y: 0, x: 0, scale: 1 })
+      return
+    }
+
     kill()
 
     const el = target.value

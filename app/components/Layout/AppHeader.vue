@@ -8,7 +8,7 @@
       <div class="header-top flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink to="/" class="logo-link flex items-center gap-3">
-          <img src="/images/app-logo.png" class="h-[5.5rem] py-1"  alt="logo"/>
+          <img :src="isDark ? '/images/dark-logo.png' : '/images/light-logo.png'" class="h-[5rem] py-1" alt="logo"/>
         </NuxtLink>
 
         <!-- Desktop Navigation -->

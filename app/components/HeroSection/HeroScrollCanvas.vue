@@ -167,6 +167,8 @@ async function preloadFrames() {
 }
 
 onMounted(async () => {
+  if (window.innerWidth < 1024) return
+
   const canvas = canvasRef.value
   if (!canvas) return
 

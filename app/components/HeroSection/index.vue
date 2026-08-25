@@ -79,12 +79,12 @@
 
         <!-- Right Content (Image) -->
         <div
-          class="relative flex items-center justify-center z-[2] order-2"
+          class="relative flex items-center justify-start md:justify-center z-[2] order-2"
           ref="heroRightRef"
         >
           <!-- Main image -->
           <div
-            class="relative w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[460px] flex items-center justify-center"
+            class="relative w-full max-w-[260px]  md:max-w-[380px] lg:max-w-[460px] flex items-center justify-center"
           >
             <div class="relative opacity-0 w-full" ref="imageShapeRef">
               <img
@@ -96,7 +96,7 @@
 
             <!-- Specialized card -->
             <div
-              class="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-3 py-[0.6rem] sm:py-[0.85rem] px-[0.8rem] sm:px-[1.1rem] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] z-10 md:left-0 md:-right-4 md:bottom-4 md:-translate-x-0 md:py-[0.9rem] md:px-[1.1rem] opacity-0"
+              class="absolute !bottom-[-1rem] left-0 lg:left-1/2 lg:-translate-x-1/2 flex items-center gap-2 sm:gap-3 py-[0.6rem] sm:py-[0.85rem] px-[0.8rem] sm:px-[1.1rem] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] z-10 md:left-0 md:-right-4 md:bottom-4 md:-translate-x-0 md:py-[0.9rem] md:px-[1.1rem] opacity-0"
               ref="specializedCardRef"
             >
               <div
@@ -128,21 +128,21 @@
 
           <!-- Stats cards (hidden on mobile) -->
           <div
-            class="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 hidden lg:flex lg:-right-4 lg:[&_.stat-card]:min-w-[150px] lg:[&_.stat-card]:py-3 lg:[&_.stat-card]:px-3.5 md:-right-2 opacity-0"
+            class="absolute -right-2 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10 flex lg:-right-4 lg:[&_.stat-card]:min-w-[150px] lg:[&_.stat-card]:py-3 lg:[&_.stat-card]:px-3.5 md:-right-2 opacity-0"
             ref="statsRef"
           >
             <div
               v-for="stat in stats"
               :key="stat.label"
-              class="stat-card flex items-center gap-3.5 py-[0.85rem] px-4 min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1"
+              class="stat-card flex items-center lg:gap-3.5 py-[0.85rem] px-4 lg:min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1"
             >
               <div
-                class="flex items-center justify-center w-10 h-10 rounded-[0.65rem] bg-blue-500/[0.08] text-[var(--theme-primary-color)] shrink-0"
+                class="flex items-center justify-center lg:size-10 rounded-[0.65rem] bg-blue-500/[0.08] text-[var(--theme-primary-color)] shrink-0"
                 v-html="stat.icon"
               ></div>
               <div class="flex flex-col gap-[0.1rem]">
                 <span
-                  class="text-xl font-extrabold text-[var(--text-primary-color)] leading-none"
+                  class=" lg:text-xl font-extrabold text-[var(--text-primary-color)] leading-none"
                   >{{ stat.value }}</span
                 >
                 <span
@@ -256,6 +256,28 @@ const downloadCV = () => {
 function startAnimations() {
   if (animationStarted) return
   animationStarted = true
+
+  if (window.innerWidth < 1024) {
+    const elements = [
+      badgeRef.value,
+      greetingRef.value,
+      nameRef.value,
+      underlineRef.value,
+      descRef.value,
+      actionsRef.value,
+      socialRef.value,
+      imageBgRef.value,
+      imageShapeRef.value,
+      specializedCardRef.value,
+      statsRef.value,
+      dotsTopRef.value,
+      dotsBottomRef.value,
+    ]
+    elements.forEach((el) => {
+      if (el) el.style.opacity = '1'
+    })
+    return
+  }
 
   const scroller = document.getElementById('BodyWrapper') || window
 
