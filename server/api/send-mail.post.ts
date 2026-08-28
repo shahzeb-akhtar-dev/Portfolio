@@ -80,7 +80,7 @@ export default defineEventHandler(async (event) => {
     console.error('Mail send error:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to send email. Please try again later.',
+      statusMessage: error.message||'Failed to send email. Please try again later.',
     })
   }
 })
