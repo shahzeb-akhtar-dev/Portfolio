@@ -4,11 +4,11 @@
     class="header-wrapper w-full px-4 md:px-6 lg:px-8"
     :class="{ 'is-expanded': isMenuOpen }"
   >
-    <div class="header-inner max-w-7xl px-6 mx-auto">
+    <div class="header-inner max-w-7xl px-2 md:px-6 mx-auto">
       <div class="header-top flex items-center justify-between h-20">
         <!-- Logo -->
-        <NuxtLink to="/" class="logo-link flex items-center gap-3">
-          <img :src="isDark ? '/images/dark-logo.png' : '/images/light-logo.png'" class="h-[5rem] py-1" alt="logo"/>
+        <NuxtLink to="/" class="logo-link flex items-center">
+          <img :src="isDark ? '/images/dark-logo.png' : '/images/light-logo.png'" class="h-[4rem] md:h-[5rem] py-1" alt="logo"/>
         </NuxtLink>
 
         <!-- Desktop Navigation -->

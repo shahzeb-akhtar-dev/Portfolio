@@ -1,28 +1,41 @@
 <template>
   <section class="work-gallery-wrapper">
-    <div ref="galleryContainer" class="gallery-container">
+    <div class="gallery-container">
       <article
         v-for="(project, index) in projects"
         :key="project.id"
         ref="cardRefs"
         class="project-card"
       >
-        <div class="card-inner">
+        <div class="card-inner gap-4 md:gap-10 p-4 md:p-12">
           <!-- Left: Number + Category -->
           <div class="card-number-col">
             <div class="number-group">
-              <span class="project-number">{{ String(index + 1).padStart(2, '0') }}</span>
-              <span class="project-total">/{{ String(projects.length).padStart(2, '0') }}</span>
+              <span class="project-number">{{
+                String(index + 1).padStart(2, '0')
+              }}</span>
+              <span class="project-total"
+                >/{{ String(projects.length).padStart(2, '0') }}</span
+              >
             </div>
-            <span class="project-category">{{ project.category || 'Web Application' }}</span>
+            <span class="project-category">{{
+              project.category || 'Web Application'
+            }}</span>
           </div>
 
           <!-- Center: Content -->
           <div class="card-content-col">
             <div class="featured-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 8v4l2 2"/>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4l2 2" />
               </svg>
               <span>Featured Project</span>
             </div>
@@ -31,7 +44,10 @@
             <p class="project-description">{{ project.description }}</p>
 
             <!-- Feature badges -->
-            <div v-if="project.features?.length" class="feature-badges">
+            <div
+              v-if="project.features?.length"
+              class="hidden md:flex flex-wrap mt-1 gap-2"
+            >
               <div
                 v-for="feature in project.features"
                 :key="feature.label"
@@ -43,7 +59,10 @@
             </div>
 
             <!-- Tech tags -->
-            <div v-if="project.skills?.length" class="tech-tags">
+            <div
+              v-if="project.skills?.length"
+              class="hidden md:flex flex-wrap gap-2"
+            >
               <span
                 v-for="tech in project.skills.slice(0, 5)"
                 :key="tech"
@@ -110,17 +129,20 @@ const props = defineProps<{
   projects: Project[]
 }>()
 
-const galleryContainer = ref<HTMLElement | null>(null)
 const cardRefs = ref<HTMLElement[]>([])
 
-const STICKY_TOP = 80
-const STICKY_OFFSET = 24
+const STICKY_TOP = computed(() => {
+  return window.innerWidth > 768 ? 80 : 10
+})
+const STICKY_OFFSET = computed(() => {
+  return window.innerWidth > 768 ? 24 : 10
+})
 
 onMounted(() => {
   nextTick(() => {
     const cards = cardRefs.value.filter(Boolean)
     cards.forEach((card, i) => {
-      const topValue = STICKY_TOP + i * STICKY_OFFSET
+      const topValue = STICKY_TOP.value + i * STICKY_OFFSET.value
       card.style.position = 'sticky'
       card.style.top = `${topValue}px`
       card.style.zIndex = `${i + 1}`
@@ -153,13 +175,13 @@ onMounted(() => {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr 1.2fr;
-  gap: 2.5rem;
   align-items: start;
   background: var(--bg-card-color);
   border-radius: 1.5rem;
-  padding: 3rem;
   border: 1px solid var(--border-color);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 40px -10px rgba(0, 0, 0, 0.15),
+    0 2px 10px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: box-shadow 0.4s ease;
 }
@@ -187,7 +209,11 @@ onMounted(() => {
   font-size: 3rem;
   font-weight: 800;
   line-height: 1;
-  background: linear-gradient(135deg, var(--theme-primary-color), var(--theme-primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-color),
+    var(--theme-primary-dark)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -246,14 +272,6 @@ onMounted(() => {
   max-width: 420px;
 }
 
-/* Feature Badges */
-.feature-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 0.25rem;
-}
-
 .feature-badge {
   display: inline-flex;
   align-items: center;
@@ -270,13 +288,6 @@ onMounted(() => {
 .feature-badge i {
   font-size: 0.85rem;
   color: var(--theme-primary-color);
-}
-
-/* Tech Tags */
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
 }
 
 .tech-tag {
@@ -312,7 +323,11 @@ onMounted(() => {
 
 .cta-btn.primary {
   color: #fff;
-  background: linear-gradient(135deg, var(--theme-primary-color), var(--theme-primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-color),
+    var(--theme-primary-dark)
+  );
   box-shadow: 0 6px 20px -6px rgba(59, 130, 246, 0.4);
 }
 
@@ -364,7 +379,11 @@ onMounted(() => {
 .preview-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.04), rgba(139, 92, 246, 0.06));
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.04),
+    rgba(139, 92, 246, 0.06)
+  );
   pointer-events: none;
 }
 
@@ -372,8 +391,6 @@ onMounted(() => {
 @media (max-width: 1024px) {
   .card-inner {
     grid-template-columns: auto 1fr;
-    gap: 2rem;
-    padding: 2rem;
   }
 
   .card-preview-col {
@@ -389,8 +406,6 @@ onMounted(() => {
 @media (max-width: 768px) {
   .card-inner {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
   }
 
   .card-number-col {

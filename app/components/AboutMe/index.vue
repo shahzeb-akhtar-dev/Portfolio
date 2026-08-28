@@ -44,7 +44,7 @@ const techStack = [
           <SectionHeading
             first-part="I'm "
             :second-part="siteInfo.name"
-            wrapperClass="!gap-4"
+            wrapperClass="!gap-4 !mb-0 md:!mb-6 !justify-center lg:!justify-start"
           />
 
           <p class="text-lg font-bold mb-4 text-[var(--text-primary-color)]">

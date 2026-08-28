@@ -1,6 +1,6 @@
 <template>
   <section
-    class="relative w-full pt-8 pb-12 min-h-[calc(100dvh)] bg-[var(--bg-primary-color)] overflow-hidden max-sm:pt-6 max-sm:pb-4 max-sm:min-h-[auto]"
+    class="relative w-full pt-20 pb-12 min-h-[calc(100dvh)] bg-[var(--bg-primary-color)] overflow-hidden max-sm:pt-6 max-sm:!pb-16 max-sm:min-h-[auto]"
     id="hero-section"
   >
     <div class="max-w-7xl mx-auto px-6 max-sm:px-4 max-[380px]:px-3">
@@ -79,12 +79,12 @@
 
         <!-- Right Content (Image) -->
         <div
-          class="relative flex items-center justify-start md:justify-center z-[2] order-2"
+          class="relative my-10 md:mt-0 flex items-center justify-start md:justify-center z-[2] order-2"
           ref="heroRightRef"
         >
           <!-- Main image -->
           <div
-            class="relative w-full max-w-[260px]  md:max-w-[380px] lg:max-w-[460px] flex items-center justify-center"
+            class="relative w-full max-w-[260px] md:max-w-[380px] lg:max-w-[460px] flex items-center justify-center"
           >
             <div class="relative opacity-0 w-full" ref="imageShapeRef">
               <img
@@ -102,7 +102,12 @@
               <div
                 class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-teal-500/10 shrink-0"
               >
-                <svg viewBox="0 0 128 128" width="24" height="24" class="sm:w-7 sm:h-7">
+                <svg
+                  viewBox="0 0 128 128"
+                  width="24"
+                  height="24"
+                  class="sm:w-7 sm:h-7"
+                >
                   <path
                     fill="#42b883"
                     d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110H78.8z"
@@ -114,7 +119,8 @@
                 </svg>
               </div>
               <div class="flex flex-col gap-[0.05rem] sm:gap-[0.15rem]">
-                <span class="text-[0.65rem] sm:text-[0.8rem] text-[var(--text-muted-color)]"
+                <span
+                  class="text-[0.65rem] sm:text-[0.8rem] text-[var(--text-muted-color)]"
                   >Specialized In</span
                 >
                 <span
@@ -134,21 +140,27 @@
             <div
               v-for="stat in stats"
               :key="stat.label"
-              class="stat-card flex items-center lg:gap-3.5 py-[0.85rem] px-4 lg:min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1"
+              class="stat-card flex items-center gap-2 lg:gap-3.5 py-[0.85rem] px-4 lg:min-w-[170px] bg-[var(--bg-secondary-color)] border border-[var(--border-color)] rounded-2xl shadow-[0_12px_40px_-12px_rgba(15,23,42,0.12)] transition-transform duration-[250ms] ease-in-out hover:-translate-x-1"
             >
               <div
-                class="flex items-center justify-center lg:size-10 rounded-[0.65rem] bg-blue-500/[0.08] text-[var(--theme-primary-color)] shrink-0"
-                v-html="stat.icon"
-              ></div>
+                class="flex items-center justify-center rounded-[0.65rem] bg-blue-500/[0.08] shrink-0"
+              >
+                <Icon
+                  :icon="stat.icon"
+                  class="text-[var(--theme-primary-color)] size-7 lg:size-10"
+                />
+              </div>
               <div class="flex flex-col gap-[0.1rem]">
                 <span
-                  class=" lg:text-xl font-extrabold text-[var(--text-primary-color)] leading-none"
-                  >{{ stat.value }}</span
+                  class="lg:text-xl font-bold md:font-extrabold text-[var(--text-primary-color)] leading-none"
                 >
+                  {{ stat.value }}
+                </span>
                 <span
                   class="text-[0.78rem] font-medium text-[var(--text-muted-color)] leading-tight whitespace-pre-line"
-                  >{{ stat.label }}</span
                 >
+                  {{ stat.label }}
+                </span>
               </div>
             </div>
           </div>
@@ -157,10 +169,7 @@
     </div>
 
     <!-- Technologies strip -->
-    <div
-      class="mt-4 sm:mt-14 mb-4 sm:mb-8 relative z-[2]"
-      ref="techStripRef"
-    >
+    <div class="mt-4 sm:mt-14 mb-4 sm:mb-8 relative z-[2]" ref="techStripRef">
       <TechStrip />
     </div>
 
@@ -169,7 +178,7 @@
       ref="heroWavesRef"
       src="/images/hero-waves.png"
       alt=""
-      class="absolute bottom-0 left-0 w-full h-[120px] sm:h-[300px] md:h-[500px] object-cover pointer-events-none z-[1]"
+      class="absolute bottom-0 left-0 w-full h-[115px] md:h-[200px] lg:h-[500px] object-cover pointer-events-none z-[1]"
     />
   </section>
 </template>
@@ -185,6 +194,7 @@ import CustomButton from '../BasicComponents/CustomButton.vue'
 import HeaderBadge from '../BasicComponents/HeaderBadge.vue'
 import TechStrip from './TechStrip.vue'
 import SectionHeading from '../BasicComponents/SectionHeading.vue'
+import { Icon } from '@iconify/vue'
 
 gsap.registerPlugin(ScrollTrigger, CSSPlugin)
 
@@ -217,17 +227,17 @@ const stats = [
   {
     value: `${siteInfo.dev.experience}`,
     label: 'Years\nExperience',
-    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
+    icon: `hugeicons:work-history`,
   },
   {
-    value: '15+',
+    value: siteInfo.dev.projects,
     label: 'Projects\nCompleted',
-    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+    icon: `hugeicons:computer-programming-01`,
   },
   {
-    value: '20+',
-    label: 'Happy\nClients',
-    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
+    value: '90%',
+    label: 'Performance\nFocused',
+    icon: 'eos-icons:performance',
   },
 ]
 
