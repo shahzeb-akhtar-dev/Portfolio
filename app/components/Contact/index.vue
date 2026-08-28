@@ -250,7 +250,7 @@ const submitForm = async () => {
                   <a-input
                     v-model:value="formData.phoneNumber"
                     size="large"
-                    placeholder="0320 8055453"
+                    placeholder="03xx xxxxxxx"
                     class="custom-input"
                   >
                     <template #prefix>

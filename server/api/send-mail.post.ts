@@ -14,8 +14,8 @@ export default defineEventHandler(async (event) => {
 
   // Create transporter using SMTP credentials from runtime config
   const transporter = nodemailer.createTransport({
-    host: config.smtpHost,
-    port: Number(config.smtpPort),
+    host: config.smtpHost || 'smtp.gmail.com',
+    port: Number(config.smtpPort) ||587,
     secure: Number(config.smtpPort) === 465,
     auth: {
       user: config.smtpUser,
@@ -80,7 +80,8 @@ export default defineEventHandler(async (event) => {
     console.error('Mail send error:', error)
     throw createError({
       statusCode: 500,
-      statusMessage: error.message||'Failed to send email. Please try again later.',
+      statusMessage:
+        error.message || 'Failed to send email. Please try again later.',
     })
   }
 })

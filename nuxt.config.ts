@@ -4,11 +4,11 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     // Server-only keys (not exposed to client)
-    smtpHost: process.env.SMTP_HOST || '',
-    smtpPort: process.env.SMTP_PORT || '587',
-    smtpUser: process.env.SMTP_USER || '',
-    smtpPass: process.env.SMTP_PASS || '',
-    contactEmail: process.env.CONTACT_EMAIL || '',
+    smtpHost: process.env.SMTP_HOST,
+    smtpPort: process.env.SMTP_PORT,
+    smtpUser: process.env.Nuxt_SMTP_USER,
+    smtpPass: process.env.Nuxt_SMTP_PASS,
+    contactEmail: process.env.Nuxt_CONTACT_EMAIL,
   },
 
   app: {
@@ -19,7 +19,8 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         {
           name: 'description',
-          content: 'Shahzeb Akhtar - Senior Vue.js Developer. I build modern, responsive and user-focused web applications with clean code and great user experience.',
+          content:
+            'Shahzeb Akhtar - Senior Vue.js Developer. I build modern, responsive and user-focused web applications with clean code and great user experience.',
         },
       ],
       link: [
