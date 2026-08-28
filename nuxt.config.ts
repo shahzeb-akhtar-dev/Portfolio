@@ -6,9 +6,9 @@ export default defineNuxtConfig({
     // Server-only keys (not exposed to client)
     smtpHost: process.env.SMTP_HOST,
     smtpPort: process.env.SMTP_PORT,
-    smtpUser: process.env.Nuxt_SMTP_USER,
-    smtpPass: process.env.Nuxt_SMTP_PASS,
-    contactEmail: process.env.Nuxt_CONTACT_EMAIL,
+    smtpUser: process.env.NUXT_SMTP_USER,
+    smtpPass: process.env.NUXT_SMTP_PASS,
+    contactEmail: process.env.NUXT_CONTACT_EMAIL,
   },
 
   app: {
