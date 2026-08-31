@@ -1,31 +1,31 @@
 <template>
-  <section class="work-gallery-wrapper">
-    <div class="gallery-container">
+  <section class="relative w-full py-16 pb-24">
+    <div class="relative w-full max-w-[1400px] mx-auto px-6">
       <article
         v-for="(project, index) in projects"
         :key="project.id"
         ref="cardRefs"
-        class="project-card"
+        class="sticky mb-16"
       >
-        <div class="card-inner gap-4 md:gap-10 p-4 md:p-12">
+        <div class="group relative grid grid-cols-1 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_1.2fr] items-start bg-[var(--bg-card-color)] rounded-3xl border border-[var(--border-color)] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15),0_2px_10px_rgba(0,0,0,0.05)] overflow-hidden transition-shadow duration-[400ms] ease-[ease] hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.15)] gap-4 lg:gap-10 p-4 lg:p-12">
           <!-- Left: Number + Category -->
-          <div class="card-number-col">
-            <div class="number-group">
-              <span class="project-number">{{
+          <div class="flex flex-row items-center gap-4 min-w-0 md:flex-col md:items-start md:gap-2 md:min-w-[80px]">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl md:text-5xl font-extrabold leading-none bg-[linear-gradient(135deg,var(--theme-primary-color),var(--theme-primary-dark))] bg-clip-text text-transparent">{{
                 String(index + 1).padStart(2, '0')
               }}</span>
-              <span class="project-total"
+              <span class="text-[1.1rem] font-medium text-[var(--text-muted-color)]"
                 >/{{ String(projects.length).padStart(2, '0') }}</span
               >
             </div>
-            <span class="project-category">{{
+            <span class="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[var(--theme-primary-color)]">{{
               project.category || 'Web Application'
             }}</span>
           </div>
 
           <!-- Center: Content -->
-          <div class="card-content-col">
-            <div class="featured-badge">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex items-center gap-[0.4rem] py-[0.35rem] px-[0.9rem] rounded-full text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-[var(--theme-primary-color)] bg-[var(--glow-primary)] border border-[rgba(59,130,246,0.15)] w-fit">
               <svg
                 width="14"
                 height="14"
@@ -40,20 +40,20 @@
               <span>Featured Project</span>
             </div>
 
-            <h2 class="project-title">{{ project.name }}</h2>
-            <p class="project-description">{{ project.description }}</p>
+            <h2 class="text-[1.4rem] md:text-[1.75rem] font-extrabold leading-[1.2] text-[var(--text-primary-color)] m-0">{{ project.name }}</h2>
+            <p class="text-[0.95rem] leading-[1.65] text-[var(--text-secondary-color)] m-0 max-w-[420px]">{{ project.description }}</p>
 
             <!-- Feature badges -->
             <div
               v-if="project.features?.length"
-              class="hidden md:flex flex-wrap mt-1 gap-2"
+              class="hidden lg:flex flex-wrap mt-1 gap-2"
             >
               <div
                 v-for="feature in project.features"
                 :key="feature.label"
-                class="feature-badge"
+                class="inline-flex items-center gap-[0.4rem] py-[0.4rem] px-[0.85rem] rounded-[0.6rem] text-[0.78rem] font-medium text-[var(--text-secondary-color)] bg-[var(--bg-elevated-color)] border border-[var(--border-color)]"
               >
-                <i :class="feature.icon"></i>
+                <i :class="feature.icon" class="text-[0.85rem] text-[var(--theme-primary-color)]"></i>
                 <span>{{ feature.label }}</span>
               </div>
             </div>
@@ -66,7 +66,7 @@
               <span
                 v-for="tech in project.skills.slice(0, 5)"
                 :key="tech"
-                class="tech-tag"
+                class="py-1 px-[0.65rem] rounded-full text-[0.7rem] font-medium text-[var(--text-muted-color)] bg-[var(--white-transparent-05)] border border-[var(--border-color)]"
               >
                 {{ tech }}
               </span>
@@ -90,15 +90,15 @@
           </div>
 
           <!-- Right: Preview Image -->
-          <div class="card-preview-col">
-            <div class="preview-wrapper">
+          <div class="relative flex items-center justify-center col-span-full mt-4 lg:col-auto lg:mt-0">
+            <div class="relative w-full rounded-xl overflow-hidden shadow-[0_15px_40px_-10px_rgba(15,23,42,0.12)]">
               <img
                 :src="project.image"
                 :alt="project.name"
                 loading="lazy"
-                class="preview-image"
+                class="w-full h-[200px] md:h-[260px] lg:h-[320px] object-cover block transition-transform duration-[600ms] ease-[ease] group-hover:scale-[1.03]"
               />
-              <div class="preview-overlay"></div>
+              <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(59,130,246,0.04),rgba(139,92,246,0.06))] pointer-events-none"></div>
             </div>
           </div>
         </div>
@@ -150,285 +150,3 @@ onMounted(() => {
   })
 })
 </script>
-
-<style scoped>
-.work-gallery-wrapper {
-  position: relative;
-  width: 100%;
-  padding: 4rem 0 6rem;
-}
-
-.gallery-container {
-  position: relative;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.project-card {
-  position: sticky;
-  margin-bottom: 4rem;
-}
-
-.card-inner {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr 1.2fr;
-  align-items: start;
-  background: var(--bg-card-color);
-  border-radius: 1.5rem;
-  border: 1px solid var(--border-color);
-  box-shadow:
-    0 10px 40px -10px rgba(0, 0, 0, 0.15),
-    0 2px 10px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  transition: box-shadow 0.4s ease;
-}
-
-.card-inner:hover {
-  box-shadow: 0 20px 60px -15px rgba(59, 130, 246, 0.15);
-}
-
-/* Number Column */
-.card-number-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-  min-width: 80px;
-}
-
-.number-group {
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-
-.project-number {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1;
-  background: linear-gradient(
-    135deg,
-    var(--theme-primary-color),
-    var(--theme-primary-dark)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.project-total {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-muted-color);
-}
-
-.project-category {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--theme-primary-color);
-}
-
-/* Content Column */
-.card-content-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.featured-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--theme-primary-color);
-  background: var(--glow-primary);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  width: fit-content;
-}
-
-.project-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--text-primary-color);
-  margin: 0;
-}
-
-.project-description {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--text-secondary-color);
-  margin: 0;
-  max-width: 420px;
-}
-
-.feature-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 0.6rem;
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--text-secondary-color);
-  background: var(--bg-elevated-color);
-  border: 1px solid var(--border-color);
-}
-
-.feature-badge i {
-  font-size: 0.85rem;
-  color: var(--theme-primary-color);
-}
-
-.tech-tag {
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-muted-color);
-  background: var(--white-transparent-05);
-  border: 1px solid var(--border-color);
-}
-
-/* CTA Buttons */
-.cta-group {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.4rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  outline: none;
-}
-
-.cta-btn.primary {
-  color: #fff;
-  background: linear-gradient(
-    135deg,
-    var(--theme-primary-color),
-    var(--theme-primary-dark)
-  );
-  box-shadow: 0 6px 20px -6px rgba(59, 130, 246, 0.4);
-}
-
-.cta-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px -6px rgba(59, 130, 246, 0.5);
-}
-
-.cta-btn.secondary {
-  color: var(--text-primary-color);
-  background: transparent;
-  border: 1.5px solid var(--border-color);
-}
-
-.cta-btn.secondary:hover {
-  border-color: var(--theme-primary-color);
-  color: var(--theme-primary-color);
-  background: var(--glow-primary);
-}
-
-/* Preview Column */
-.card-preview-col {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.preview-wrapper {
-  position: relative;
-  width: 100%;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 15px 40px -10px rgba(15, 23, 42, 0.12);
-}
-
-.preview-image {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-
-.card-inner:hover .preview-image {
-  transform: scale(1.03);
-}
-
-.preview-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.04),
-    rgba(139, 92, 246, 0.06)
-  );
-  pointer-events: none;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .card-inner {
-    grid-template-columns: auto 1fr;
-  }
-
-  .card-preview-col {
-    grid-column: 1 / -1;
-    margin-top: 1rem;
-  }
-
-  .preview-image {
-    height: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  .card-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .card-number-col {
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    min-width: auto;
-  }
-
-  .project-number {
-    font-size: 2.25rem;
-  }
-
-  .project-title {
-    font-size: 1.4rem;
-  }
-
-  .preview-image {
-    height: 200px;
-  }
-
-  .cta-group {
-    flex-wrap: wrap;
-  }
-}
-</style>

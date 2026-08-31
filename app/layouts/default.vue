@@ -13,7 +13,7 @@
     <!-- Body -->
     <a-layout-content
       id="BodyWrapper"
-      class="layout-content flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-5.5rem)] scroll-smooth"
+      class="layout-content flex-1 overflow-y-auto custom-scrollbar max-h-[calc(100vh-5.5rem)] scroll-smooth pb-24 md:pb-0"
       @scroll="handleScroll"
     >
       <div class="body-wrapper max-h-full">
@@ -100,6 +100,13 @@ onMounted(() => {
   background: var(--surface-glass);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .scroll-button .ant-btn {
+    bottom: 5rem;
+    right: 1rem;
+  }
 }
 
 .scroll-button .ant-btn:hover {

@@ -2,7 +2,6 @@
   <header
     id="main-header-wrapper"
     class="header-wrapper w-full px-4 md:px-6 lg:px-8"
-    :class="{ 'is-expanded': isMenuOpen }"
   >
     <div class="header-inner max-w-7xl px-2 md:px-6 mx-auto">
       <div class="header-top flex items-center justify-between h-20">
@@ -31,7 +30,7 @@
         <div class="flex items-center gap-3">
           <a
             href="#contact-info"
-            class="lets-connect-btn hidden md:inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-200"
+            class="lets-connect-btn hidden lg:inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-200"
           >
             Let's Connect
             <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
@@ -49,53 +48,34 @@
               class="theme-toggle-icon"
             ></i>
           </a-button>
-
-          <a-button
-            class="drawer-toggle-btn md:!hidden"
-            :aria-expanded="isMenuOpen"
-            aria-controls="mobile-nav-inline"
-            aria-label="Toggle navigation menu"
-            @click="toggleMenu"
-            type="text"
-          >
-            <i
-              :class="isMenuOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
-            ></i>
-          </a-button>
         </div>
       </div>
-
-      <!-- Mobile Navigation -->
-      <section
-        id="mobile-nav-inline"
-        class="mobile-nav-inline md:hidden"
-        :class="{ open: isMenuOpen }"
-        :aria-hidden="!isMenuOpen"
-      >
-        <nav>
-          <ul class="mobile-nav-list">
-            <li v-for="(item, i) in navItems" :key="`mobile-${i}`">
-              <a
-                :href="item.href"
-                class="mobile-nav-link inline-flex w-full items-center px-3 py-2 font-semibold transition-all duration-300"
-                :class="{ 'is-active': activeNavHref === item.href }"
-                @click="setActiveAndClose(item.href)"
-              >
-                {{ item.label }}
-              </a>
-            </li>
-          </ul>
-          <a
-            href="#contact-info"
-            class="mobile-connect-btn inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-            @click="closeMenu"
-          >
-            Let's Connect
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-          </a>
-        </nav>
-      </section>
     </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav
+      class="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-[28rem] -translate-x-1/2 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card-color)] px-3 py-2 shadow-[0_8px_32px_var(--box-shadow-color)] backdrop-blur-xl md:hidden max-[360px]:bottom-2 max-[360px]:w-[calc(100%-1rem)] max-[360px]:px-2 max-[360px]:py-1.5"
+    >
+      <ul class="m-0 flex list-none items-center justify-around gap-1 p-0">
+        <li v-for="(item, i) in navItems" :key="`bottom-${i}`">
+          <a
+            :href="item.href"
+            class="group flex min-w-[3.5rem] flex-col items-center justify-center gap-1 rounded-xl px-3 py-2 no-underline transition-all duration-200 hover:bg-[var(--white-transparent-05)] max-[360px]:min-w-[2.8rem] max-[360px]:px-1.5 max-[360px]:py-1.5"
+            :class="activeNavHref === item.href ? 'bg-primary/10' : ''"
+            @click="activeNavHref = item.href"
+          >
+            <i
+              :class="[item.icon, 'text-xl text-[var(--text-secondary-color)] transition-colors duration-200 group-hover:text-[var(--text-primary-color)] max-[360px]:text-[1.1rem]', activeNavHref === item.href ? '!text-primary' : '']"
+            ></i>
+            <span
+              :class="['text-[0.7rem] font-medium text-[var(--text-secondary-color)] transition-colors duration-200 group-hover:text-[var(--text-primary-color)] max-[360px]:text-[0.6rem]', activeNavHref === item.href ? '!text-primary font-semibold' : '']"
+            >
+              {{ item.label }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -108,31 +88,18 @@ const { isDark, toggleTheme } = useTheme()
 interface NavItem {
   label: string
   href: string
+  icon: string
 }
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '#hero-section' },
-  { label: 'About', href: '#about-me' },
-  { label: 'Skills', href: '#my-skill' },
-  { label: 'Projects', href: '#my-work' },
-  { label: 'Contact', href: '#contact-info' },
+  { label: 'Home', href: '#hero-section', icon: 'fa-solid fa-house' },
+  { label: 'About', href: '#about-me', icon: 'fa-regular fa-user' },
+  { label: 'Skills', href: '#my-skill', icon: 'fa-solid fa-code' },
+  { label: 'Projects', href: '#my-work', icon: 'fa-regular fa-folder' },
+  { label: 'Contact', href: '#contact-info', icon: 'fa-regular fa-envelope' },
 ]
 
-const isMenuOpen = ref(false)
 const activeNavHref = ref(navItems[0]?.href ?? '#hero-section')
-
-const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
-const closeMenu = () => {
-  isMenuOpen.value = false
-}
-
-const setActiveAndClose = (href: string) => {
-  activeNavHref.value = href
-  closeMenu()
-}
 
 const syncActiveSection = () => {
   if (typeof window === 'undefined') {
@@ -175,31 +142,6 @@ onUnmounted(() => {
 /* Logo */
 .logo-link {
   text-decoration: none;
-}
-
-.logo-mark {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #14b8a6 0%, #3b82f6 50%, #8b5cf6 100%);
-  box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.35);
-}
-
-.logo-text {
-  font-family: 'Saira Stencil One', sans-serif;
-  font-size: 1.25rem;
-  color: #ffffff;
-  letter-spacing: 0.02em;
-}
-
-.logo-name {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary-color);
-  letter-spacing: -0.01em;
 }
 
 /* Desktop Navigation */
@@ -280,97 +222,9 @@ onUnmounted(() => {
   transform: rotate(30deg);
 }
 
-:deep(.theme-toggle-btn.ant-btn),
-:deep(.drawer-toggle-btn.ant-btn) {
+:deep(.theme-toggle-btn.ant-btn) {
   padding: 0 !important;
   line-height: 1 !important;
 }
 
-/* Mobile Toggle */
-.drawer-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-  background: var(--surface-glass);
-  backdrop-filter: blur(10px);
-  color: var(--theme-primary-color);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.drawer-toggle-btn:hover {
-  border-color: var(--theme-primary-color);
-  background: var(--glow-primary);
-  transform: scale(1.05);
-}
-
-/* Mobile Navigation */
-.mobile-nav-inline {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition:
-    max-height 0.28s ease,
-    opacity 0.2s ease;
-}
-
-.mobile-nav-inline.open {
-  max-height: 24rem;
-  opacity: 1;
-  overflow-y: auto;
-}
-
-.mobile-nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 0 0.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.mobile-nav-link {
-  min-height: 2.2rem;
-  border-radius: 0.5rem;
-  background: var(--white-transparent-03);
-  color: var(--text-primary-color);
-  justify-content: flex-start;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
-}
-
-.mobile-nav-link:hover {
-  background: var(--white-transparent-05);
-  color: var(--text-primary-color);
-}
-
-.mobile-nav-link.is-active {
-  background: var(--theme-primary-color);
-  color: var(--text-white-color);
-}
-
-.mobile-connect-btn {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary-color);
-  border: 1px solid var(--border-color);
-  background: transparent;
-}
-
-.mobile-connect-btn:hover {
-  border-color: var(--theme-primary-color);
-  color: var(--theme-primary-color);
-  background: var(--glow-primary);
-}
-
-@media (min-width: 768px) {
-  .mobile-nav-inline {
-    display: none;
-  }
-}
 </style>
