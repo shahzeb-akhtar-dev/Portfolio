@@ -129,25 +129,30 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <section class="contact-section relative overflow-hidden py-20 lg:py-28">
+  <section
+    class="relative overflow-hidden bg-[var(--bg-secondary-color)] py-20 lg:py-28"
+  >
     <div class="contact-noise pointer-events-none absolute inset-0"></div>
 
     <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="contact-intro rounded-3xl p-6 sm:p-10">
+      <div
+        class="rounded-3xl border border-[var(--glass-border)] bg-[linear-gradient(135deg,var(--surface-glass),transparent_70%)] p-6 sm:p-10"
+      >
         <HeaderBadge icon="fa-solid fa-paper-plane" heading="Let's Connect" />
         <SectionHeading
           first-part="Have an idea?"
-          second-part="Let’s shape it."
+          second-part="Let's shape it."
           wrapperClass="!gap-4"
         />
 
         <div class="mt-8">
           <p
-            class="contact-description max-w-2xl text-base leading-relaxed sm:text-lg text-center md:text-left"
+            class="max-w-2xl text-center text-base leading-relaxed text-[var(--text-secondary-color)] sm:text-lg md:text-left"
           >
             I transform your ideas into high-quality digital solutions with
             clear communication and reliable delivery.
-            <span class="mt-2 block contact-description-strong"
+            <span
+              class="mt-2 block font-semibold text-[var(--text-primary-color)]"
               >Share your project details — I'll get back to you with a
               practical plan.</span
             >
@@ -160,10 +165,8 @@ const submitForm = async () => {
       <div class="mt-8 grid gap-6 lg:grid-cols-12">
         <div class="lg:col-span-8">
           <div
-            class="contact-form-card relative overflow-hidden rounded-3xl p-6 sm:p-10"
+            class="relative overflow-hidden rounded-3xl border border-[var(--glass-border)] bg-[var(--surface-glass)] p-6 sm:p-10"
           >
-            <!-- <div class="contact-form-decor absolute -right-16 -top-16 h-40 w-40 rounded-full"></div> -->
-
             <div
               class="relative mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
             >
@@ -177,19 +180,21 @@ const submitForm = async () => {
                 </div>
                 <div>
                   <h2
-                    class="contact-form-title text-2xl font-black sm:text-3xl"
+                    class="text-2xl font-black text-[var(--text-primary-color)] sm:text-3xl"
                   >
                     Send Me a Message
                   </h2>
-                  <p class="contact-form-subtitle mt-1 text-sm">
+                  <p class="mt-1 text-sm text-[var(--text-muted-color)]">
                     Tell me about your project, goals and requirements.
                   </p>
                 </div>
               </div>
               <div
-                class="contact-status inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm"
+                class="inline-flex items-center gap-2 rounded-full border border-[var(--glass-border)] bg-[var(--white-transparent-05)] px-4 py-2 text-sm text-[var(--text-primary-color)]"
               >
-                <span class="status-dot"></span>
+                <span
+                  class="size-[0.55rem] rounded-full bg-green-500 shadow-[0_0_0_5px_var(--glow-primary)]"
+                ></span>
                 Available now
               </div>
             </div>
@@ -205,7 +210,9 @@ const submitForm = async () => {
               <div class="grid gap-5 sm:grid-cols-2">
                 <a-form-item name="name" class="group/item">
                   <template #label>
-                    <span class="contact-label text-sm font-semibold">
+                    <span
+                      class="text-sm font-semibold text-[var(--text-secondary-color)]"
+                    >
                       Full Name <span class="text-red-500">*</span>
                     </span>
                   </template>
@@ -216,14 +223,18 @@ const submitForm = async () => {
                     class="custom-input"
                   >
                     <template #prefix>
-                      <UserOutlined class="input-prefix-icon" />
+                      <UserOutlined
+                        class="mr-[0.6rem] text-[1.2rem] text-[var(--theme-primary-color)]"
+                      />
                     </template>
                   </a-input>
                 </a-form-item>
 
                 <a-form-item name="email" class="group/item">
                   <template #label>
-                    <span class="contact-label text-sm font-semibold">
+                    <span
+                      class="text-sm font-semibold text-[var(--text-secondary-color)]"
+                    >
                       Email Address <span class="text-red-500">*</span>
                     </span>
                   </template>
@@ -234,7 +245,9 @@ const submitForm = async () => {
                     class="custom-input"
                   >
                     <template #prefix>
-                      <MailOutlined class="input-prefix-icon" />
+                      <MailOutlined
+                        class="mr-[0.6rem] text-[1.2rem] text-[var(--theme-primary-color)]"
+                      />
                     </template>
                   </a-input>
                 </a-form-item>
@@ -243,7 +256,9 @@ const submitForm = async () => {
               <div class="grid gap-5 sm:grid-cols-2">
                 <a-form-item name="phoneNumber" class="group/item">
                   <template #label>
-                    <span class="contact-label text-sm font-semibold">
+                    <span
+                      class="text-sm font-semibold text-[var(--text-secondary-color)]"
+                    >
                       Phone Number
                     </span>
                   </template>
@@ -254,14 +269,18 @@ const submitForm = async () => {
                     class="custom-input"
                   >
                     <template #prefix>
-                      <PhoneOutlined class="input-prefix-icon" />
+                      <PhoneOutlined
+                        class="mr-[0.6rem] text-[1.2rem] text-[var(--theme-primary-color)]"
+                      />
                     </template>
                   </a-input>
                 </a-form-item>
 
                 <a-form-item name="subject" class="group/item">
                   <template #label>
-                    <span class="contact-label text-sm font-semibold">
+                    <span
+                      class="text-sm font-semibold text-[var(--text-secondary-color)]"
+                    >
                       Subject <span class="text-red-500">*</span>
                     </span>
                   </template>
@@ -272,7 +291,9 @@ const submitForm = async () => {
                     class="custom-input"
                   >
                     <template #prefix>
-                      <FlagOutlined class="input-prefix-icon" />
+                      <FlagOutlined
+                        class="mr-[0.6rem] text-[1.2rem] text-[var(--theme-primary-color)]"
+                      />
                     </template>
                   </a-input>
                 </a-form-item>
@@ -280,7 +301,9 @@ const submitForm = async () => {
 
               <a-form-item name="message" class="group/item">
                 <template #label>
-                  <span class="contact-label text-sm font-semibold">
+                  <span
+                    class="text-sm font-semibold text-[var(--text-secondary-color)]"
+                  >
                     Your Message <span class="text-red-500">*</span>
                   </span>
                 </template>
@@ -291,7 +314,9 @@ const submitForm = async () => {
                   class="custom-input"
                 >
                   <template #prefix>
-                    <EditOutlined class="input-prefix-icon" />
+                    <EditOutlined
+                      class="mr-[0.6rem] text-[1.2rem] text-[var(--theme-primary-color)]"
+                    />
                   </template>
                 </a-textarea>
               </a-form-item>
@@ -301,7 +326,7 @@ const submitForm = async () => {
                   :disabled="isSubmitting"
                   type="submit"
                   variant="primary"
-                  class="submit-btn w-full"
+                  class="!rounded-xl !py-[0.85rem] !px-6 !font-bold !text-base hover:-translate-y-0.5 w-full"
                 >
                   <span
                     class="relative z-10 flex items-center justify-center gap-3"
@@ -319,13 +344,9 @@ const submitForm = async () => {
               </a-form-item>
 
               <div
-                class="flex items-center justify-center gap-2 text-xs"
-                style="color: var(--text-muted-color)"
+                class="flex items-center justify-center gap-2 text-xs text-[var(--text-muted-color)]"
               >
-                <LockOutlined
-                  class="text-xs"
-                  style="color: var(--text-muted-color)"
-                />
+                <LockOutlined class="text-xs text-[var(--text-muted-color)]" />
                 <span
                   >Your information is secure and will never be shared.</span
                 >
@@ -358,47 +379,69 @@ const submitForm = async () => {
             />
           </div>
 
-          <div class="contact-why-card rounded-2xl p-6">
-            <h3 class="contact-why-heading text-xl font-black sm:text-2xl">
+          <div
+            class="rounded-2xl border border-[var(--glass-border)] bg-[var(--surface-glass)] p-6"
+          >
+            <h3
+              class="text-xl font-black text-[var(--text-primary-color)] sm:text-2xl"
+            >
               Why work with me
             </h3>
             <div class="mt-5 space-y-4">
-              <div class="contact-why-item rounded-xl p-3">
+              <div
+                class="rounded-xl border border-transparent bg-[var(--white-transparent-03)] p-3 transition-all duration-[250ms] ease-in-out hover:border-[var(--glass-border)] hover:translate-x-1"
+              >
                 <div class="flex items-start gap-3">
-                  <div class="why-icon">
+                  <div
+                    class="flex h-8 w-8 items-center justify-center rounded-[0.6rem] border border-[var(--theme-primary-light)] bg-[var(--theme-primary-light)] text-[var(--theme-primary-color)]"
+                  >
                     <ThunderboltOutlined class="text-[1.2rem]" />
                   </div>
                   <div>
-                    <h4 class="contact-why-title">Fast Response</h4>
-                    <p class="contact-why-desc">
+                    <h4 class="font-bold text-[var(--text-primary-color)]">
+                      Fast Response
+                    </h4>
+                    <p class="text-[var(--text-muted-color)]">
                       Quick replies and clear communication.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div class="contact-why-item rounded-xl p-3">
+              <div
+                class="rounded-xl border border-transparent bg-[var(--white-transparent-03)] p-3 transition-all duration-[250ms] ease-in-out hover:border-[var(--glass-border)] hover:translate-x-1"
+              >
                 <div class="flex items-start gap-3">
-                  <div class="why-icon">
+                  <div
+                    class="flex h-8 w-8 items-center justify-center rounded-[0.6rem] border border-[var(--theme-primary-light)] bg-[var(--theme-primary-light)] text-[var(--theme-primary-color)]"
+                  >
                     <SafetyCertificateOutlined class="text-[1.2rem]" />
                   </div>
                   <div>
-                    <h4 class="contact-why-title">Quality Delivery</h4>
-                    <p class="contact-why-desc">
+                    <h4 class="font-bold text-[var(--text-primary-color)]">
+                      Quality Delivery
+                    </h4>
+                    <p class="text-[var(--text-muted-color)]">
                       Pixel-perfect and performance-focused solutions.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div class="contact-why-item rounded-xl p-3">
+              <div
+                class="rounded-xl border border-transparent bg-[var(--white-transparent-03)] p-3 transition-all duration-[250ms] ease-in-out hover:border-[var(--glass-border)] hover:translate-x-1"
+              >
                 <div class="flex items-start gap-3">
-                  <div class="why-icon">
+                  <div
+                    class="flex h-8 w-8 items-center justify-center rounded-[0.6rem] border border-[var(--theme-primary-light)] bg-[var(--theme-primary-light)] text-[var(--theme-primary-color)]"
+                  >
                     <TeamOutlined class="text-[1.2rem]" />
                   </div>
                   <div>
-                    <h4 class="contact-why-title">Long-Term Partner</h4>
-                    <p class="contact-why-desc">
+                    <h4 class="font-bold text-[var(--text-primary-color)]">
+                      Long-Term Partner
+                    </h4>
+                    <p class="text-[var(--text-muted-color)]">
                       Built for sustainable collaboration and growth.
                     </p>
                   </div>
@@ -423,28 +466,28 @@ const submitForm = async () => {
       wrap-class-name="custom-modal"
     >
       <div
-        class="contact-modal relative overflow-hidden rounded-2xl p-10 text-center"
+        class="relative overflow-hidden rounded-2xl bg-[linear-gradient(to_bottom_right,var(--bg-card-color),var(--bg-secondary-color))] p-10 text-center"
       >
         <div
           class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,var(--primary-transparent),transparent_52%)]"
         ></div>
         <div class="relative">
           <div
-            class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full contact-modal-icon"
+            class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--theme-gradient-primary)] shadow-[var(--shadow-md)]"
           >
             <i
               class="fa-solid fa-circle-check text-4xl text-[var(--text-white-color)]"
             ></i>
           </div>
-          <h3 class="contact-modal-title mb-3 text-3xl font-black">
+          <h3 class="mb-3 text-3xl font-black text-[var(--text-primary-color)]">
             Message Sent!
           </h3>
-          <p class="contact-modal-desc mb-8 text-base">
+          <p class="mb-8 text-base text-[var(--text-secondary-color)]">
             Thank you for reaching out. I'll get back to you within 24 hours.
           </p>
           <button
             @click="showSuccessModal = false"
-            class="contact-modal-btn rounded-xl px-8 py-3 text-base font-bold text-[var(--text-white-color)] transition-transform duration-300 hover:scale-105"
+            class="rounded-xl bg-[var(--theme-gradient-primary)] px-8 py-3 text-base font-bold text-[var(--text-white-color)] shadow-[var(--shadow-sm)] transition-transform duration-300 hover:scale-105"
           >
             Great!
           </button>
@@ -455,10 +498,6 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
-.contact-section {
-  background-color: var(--bg-secondary-color);
-}
-
 .contact-noise {
   background-image:
     radial-gradient(circle at 10% 10%, var(--glow-primary), transparent 30%),
@@ -468,135 +507,6 @@ const submitForm = async () => {
       transparent 28%
     ),
     radial-gradient(circle at 75% 85%, var(--glow-primary), transparent 26%);
-}
-
-.contact-intro {
-  border: 1px solid var(--glass-border);
-  background: linear-gradient(135deg, var(--surface-glass), transparent 70%);
-}
-
-.contact-description {
-  color: var(--text-secondary-color);
-}
-
-.contact-description-strong {
-  color: var(--text-primary-color);
-  font-weight: 600;
-}
-
-.contact-form-card {
-  border: 1px solid var(--glass-border);
-  background: var(--surface-glass);
-}
-
-.contact-form-decor {
-  border: 1px solid var(--glass-border);
-  background: radial-gradient(
-    circle,
-    var(--white-transparent-10),
-    transparent 60%
-  );
-}
-
-.contact-form-title {
-  color: var(--text-primary-color);
-}
-
-.contact-status {
-  background: var(--white-transparent-05);
-  border: 1px solid var(--glass-border);
-  color: var(--text-primary-color);
-}
-
-.contact-form-subtitle {
-  color: var(--text-muted-color);
-}
-
-.status-dot {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 9999px;
-  background: green;
-  box-shadow: 0 0 0 5px var(--glow-primary);
-}
-
-.contact-label {
-  color: var(--text-secondary-color);
-}
-
-.contact-why-card {
-  border: 1px solid var(--glass-border);
-  background: var(--surface-glass);
-}
-
-.contact-why-heading {
-  color: var(--text-primary-color);
-}
-
-.contact-why-title {
-  color: var(--text-primary-color);
-  font-weight: 700;
-}
-
-.contact-why-desc {
-  color: var(--text-muted-color);
-}
-
-.contact-why-item {
-  border: 1px solid transparent;
-  background: var(--white-transparent-03);
-  transition:
-    border-color 250ms ease,
-    transform 250ms ease;
-}
-
-.contact-why-item:hover {
-  border-color: var(--glass-border);
-  transform: translateX(4px);
-}
-
-.why-icon {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 0.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--theme-primary-color);
-  background: var(--theme-primary-light);
-  border: 1px solid var(--theme-primary-light);
-}
-
-.contact-modal {
-  background: linear-gradient(
-    to bottom right,
-    var(--bg-card-color),
-    var(--bg-secondary-color)
-  );
-}
-
-.contact-modal-icon {
-  background: var(--theme-gradient-primary);
-  box-shadow: var(--shadow-md);
-}
-
-.contact-modal-btn {
-  background: var(--theme-gradient-primary);
-  box-shadow: var(--shadow-sm);
-}
-
-.contact-modal-title {
-  color: var(--text-primary-color);
-}
-
-.contact-modal-desc {
-  color: var(--text-secondary-color);
-}
-
-.input-prefix-icon {
-  color: var(--theme-primary-color);
-  font-size: 1.2rem;
-  margin-right: 0.6rem;
 }
 
 :deep(.custom-input) {
@@ -610,11 +520,12 @@ const submitForm = async () => {
 }
 
 :deep(.custom-input .ant-input) {
-  background: transparent;
+  background: transparent ;
+  color: var(--text-primary-color);
 }
-
-:deep(.custom-input)::placeholder {
-  color: var(--text-muted-color);
+:deep(.ant-input::placeholder) {
+  background: transparent;
+  color: var(--text-muted-color) ;
 }
 
 :deep(.custom-input:hover) {
@@ -632,38 +543,6 @@ const submitForm = async () => {
   min-height: 150px;
   resize: vertical;
 }
-
-:deep(.ant-input-textarea .ant-input) {
-  background: transparent;
-}
-
-.submit-btn {
-  border-radius: 0.75rem !important;
-  padding: 0.85rem 1.5rem !important;
-  font-weight: 700 !important;
-  font-size: 1rem !important;
-}
-
-.submit-btn:hover {
-  transform: translateY(-1px);
-}
-
-:deep(.ant-input-textarea textarea)::-webkit-scrollbar {
-  width: 8px;
-}
-
-:deep(.ant-input-textarea textarea)::-webkit-scrollbar-track {
-  @apply rounded-lg bg-white/5;
-}
-
-:deep(.ant-input-textarea textarea)::-webkit-scrollbar-thumb {
-  @apply rounded-lg bg-orange-500/50 transition-colors;
-}
-
-:deep(.ant-input-textarea textarea)::-webkit-scrollbar-thumb:hover {
-  @apply bg-orange-500/70;
-}
-
 :deep(.ant-form-item) {
   @apply mb-6;
 }
@@ -673,7 +552,7 @@ const submitForm = async () => {
 }
 
 :deep(.ant-form-item-explain-error) {
-  @apply text-pink-400;
+  @apply text-red-400;
 }
 
 :deep(.custom-modal .ant-modal-content) {
@@ -682,11 +561,5 @@ const submitForm = async () => {
 
 :deep(.custom-modal .ant-modal-body) {
   @apply p-0;
-}
-
-@media (max-width: 640px) {
-  .contact-intro {
-    padding: 1.25rem;
-  }
 }
 </style>

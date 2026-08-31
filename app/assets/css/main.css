@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira+Stencil+One&display=swap');
 
 /* =============================
-     LIGHT THEME (Default)
-  ============================= */
+     LIGHT THEME
+   ============================= */
 :root,
 [data-theme='light'] {
   /* Typography */
@@ -82,8 +82,8 @@
 }
 
 /* =============================
-     DARK THEME
-  ============================= */
+     DARK THEME (Default)
+   ============================= */
 [data-theme='dark'] {
   /* Background colors */
   --bg-primary-color: #0f172a;

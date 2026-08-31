@@ -132,7 +132,7 @@ const props = defineProps<{
 const cardRefs = ref<HTMLElement[]>([])
 
 const STICKY_TOP = computed(() => {
-  return window.innerWidth > 768 ? 80 : 10
+  return window.innerWidth > 768 ? 60 : 10
 })
 const STICKY_OFFSET = computed(() => {
   return window.innerWidth > 768 ? 24 : 10
